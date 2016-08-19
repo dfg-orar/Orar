@@ -1,0 +1,2391 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE Ontology [
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://uob.iodt.ibm.com/univ-bench-dl.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     ontologyIRI="http://uob.iodt.ibm.com/univ-bench-dl.owl">
+    <Prefix name="" IRI="http://uob.iodt.ibm.com/univ-bench-dl.owl#"/>
+    <Prefix name="dc" IRI="http://purl.org/dc/elements/1.1/"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix name="benchmark-dl" IRI="http://uob.iodt.ibm.com/univ-bench-dl.owl#"/>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="owl:versionInfo"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">benchmark-lite.owl, ver April 15, 2005</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">An university ontology for benchmark tests. Language Level: OWL-DL SHIN(D).
+   This ontology are built on basis of Lehigh Benchmark Ontology, 
+   http://www.lehigh.edu/~zhp2/2004/0401/univ-bench.owl</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Univ-benchmark Ontology</Literal>
+    </Annotation>
+    <Declaration>
+        <Class IRI="#AcademicSubject"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Aeronautical_EngineeringClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AnthropologyClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ArchitectureClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Article"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Asian_ArtsClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AssistantProfessor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AssociateProfessor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AstronomyClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BaseballClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BaseballFan"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BaseballLover"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BasketBallClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BasketBallFan"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BasketBallLover"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BiologyClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Biomedical_EngineeringClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Book"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Chair"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Chemical_EngineeringClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ChemistryClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Civil_EngineeringClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ClericalStaff"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#College"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Computer_EngineeringClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Computer_ScienceClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ConferencePaper"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Course"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Dean"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Department"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Director"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DramaClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#EconomicsClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Electrical_EngineeringClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Employee"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Engineering"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#EnglishClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Faculty"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FineArts"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FullProfessor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GeosciencesClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GraduateCourse"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GraduateStudent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HistoryClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HumanitiesAndSocial"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HumanitiesClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Industry_EngineeringClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Insterest"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Institute"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JournalArtical"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Latin_ArtsClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Lecturer"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#LeisureStudent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#LinguisticsClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Man"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Manual"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Marine_ScienceClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Materials_ScienceClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Materical_Science_EngineeringClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MathematicsClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Mechanical_EngineeringClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Media_Arts_And_ciencesClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Medieval_ArtsClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Modern_ArtsClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Modern_LanguagesClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Music"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MusicsClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NonScienceStudent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Organization"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PeopleWithHobby"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PeopleWithManyHobbies"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Performing_ArtsClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Person"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Petroleuml_EngineeringClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PhilosophyClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PhysicsClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PostDoc"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Professor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Program"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PsychologyClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Publication"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ReligionsClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Research"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ResearchAssistant"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ResearchGroup"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Schedule"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Science"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ScienceStudent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Software"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Specification"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Sports"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SportsFan"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SportsLover"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#StatisticsClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Student"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SupportingStaff"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SwimmingClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SwimmingFan"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SwimmingLover"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SystemsStaff"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TeachingAssistant"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TechnicalReport"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TennisClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TennisFan"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Theatre_and_DanceClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#UndergraduateStudent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#University"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#UnofficialPublication"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#VisitingProfessor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Woman"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#WomanCollege"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Work"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#enrollIn"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasAlumnus"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasDegreeFrom"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasDoctoralDegreeFrom"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasMajor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasMasterDegreeFrom"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasMember"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasSameHomeTownWith"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasStudent"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasUndergraduateDegreeFrom"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isAdvisedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isAffiliateOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isAffiliatedOrganizationOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isCrazyAbout"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isFriendOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isHeadOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isMemberOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isStudentOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isTaughtBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#like"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#listedCourse"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#love"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#orgPublication"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#publicationAuthor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#publicationDate"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#publicationResearch"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#researchProject"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#softwareDocumentation"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#softwareVersion"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#subOrganizationOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#takesCourse"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#teacherOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#teachingAssistantOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#tenured"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#worksFor"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#age"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#emailAddress"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#firstName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#lastName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#officeNumber"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#researchInterest"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#telephone"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#title"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Aeronautical_Engineering"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AmericanFootball"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Anthropology"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Architecture"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Asian_Arts"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Astronomy"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Baseball"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BasketBall"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Biology"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Biomedical_Engineering"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Chemical_Engineering"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Chemistry"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Civil_Engineering"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Classic_Music"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Computer_Engineering"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Computer_Science"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Drama"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Economics"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Electrical_Engineering"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#English"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Geosciences"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#History"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Humanities"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Industry_Engineering"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Kickboxing"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Latin_Arts"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Linguistics"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Marine_Science"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Materials_Science"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Materical_Science_Engineering"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Mathematics"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Mechanical_Engineering"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Media_Arts_And_ciences"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Medieval_Arts"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Modern_Arts"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Modern_Languages"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Movie"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Musics"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PC_Game"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Painting"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Performing_Arts"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Petroleuml_Engineering"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Philosophy"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Physics"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Pop_Music"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Psychology"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Reading"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Religions"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Rock_and_Roll"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Shopping"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Soccer"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#StampCollecting"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Statistics"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Swimming"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Tennis"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Theatre_and_Dance"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Travelling"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Video_Game"/>
+    </Declaration>
+    <Declaration>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#Aeronautical_EngineeringClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Aeronautical_Engineering"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#AnthropologyClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Anthropology"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#ArchitectureClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Architecture"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Asian_ArtsClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Asian_Arts"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#AstronomyClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Astronomy"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#BaseballFan"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#isCrazyAbout"/>
+                <Class IRI="#BaseballClass"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#BaseballLover"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#like"/>
+                <Class IRI="#BaseballClass"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#BasketBallFan"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#isCrazyAbout"/>
+                <Class IRI="#BasketBallClass"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#BasketBallLover"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#like"/>
+                <Class IRI="#BasketBallClass"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#BiologyClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Biology"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Biomedical_EngineeringClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Biomedical_Engineering"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Chair"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#isHeadOf"/>
+                <Class IRI="#Department"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Chemical_EngineeringClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Chemical_Engineering"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#ChemistryClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Chemistry"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Civil_EngineeringClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Civil_Engineering"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Computer_EngineeringClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Computer_Engineering"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Computer_ScienceClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Computer_Science"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Dean"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#isHeadOf"/>
+                <Class IRI="#College"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Director"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#isHeadOf"/>
+                <Class IRI="#Program"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#DramaClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Drama"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#EconomicsClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Economics"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Electrical_EngineeringClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Electrical_Engineering"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Employee"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#worksFor"/>
+                <Class IRI="#Organization"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#EnglishClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#English"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#GeosciencesClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Geosciences"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#GraduateStudent"/>
+        <ObjectIntersectionOf>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="#takesCourse"/>
+                <Class IRI="#GraduateCourse"/>
+            </ObjectAllValuesFrom>
+            <ObjectMinCardinality cardinality="1">
+                <ObjectProperty IRI="#takesCourse"/>
+            </ObjectMinCardinality>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#HistoryClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#History"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#HumanitiesClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Humanities"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Industry_EngineeringClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Industry_Engineering"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Latin_ArtsClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Latin_Arts"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#LinguisticsClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Linguistics"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Marine_ScienceClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Marine_Science"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Materials_ScienceClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Materials_Science"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Materical_Science_EngineeringClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Materical_Science_Engineering"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#MathematicsClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Mathematics"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Mechanical_EngineeringClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Mechanical_Engineering"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Media_Arts_And_ciencesClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Media_Arts_And_ciences"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Medieval_ArtsClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Medieval_Arts"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Modern_ArtsClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Modern_Arts"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Modern_LanguagesClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Modern_Languages"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#MusicsClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Musics"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#NonScienceStudent"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Student"/>
+            <ObjectComplementOf>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="#hasMajor"/>
+                    <Class IRI="#Science"/>
+                </ObjectSomeValuesFrom>
+            </ObjectComplementOf>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#PeopleWithHobby"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Person"/>
+            <ObjectMinCardinality cardinality="1">
+                <ObjectProperty IRI="#like"/>
+            </ObjectMinCardinality>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#PeopleWithManyHobbies"/>
+        <ObjectMinCardinality cardinality="3">
+            <ObjectProperty IRI="#like"/>
+        </ObjectMinCardinality>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Performing_ArtsClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Performing_Arts"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Person"/>
+        <ObjectUnionOf>
+            <Class IRI="#Man"/>
+            <Class IRI="#Woman"/>
+        </ObjectUnionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Petroleuml_EngineeringClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Petroleuml_Engineering"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#PhilosophyClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Philosophy"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#PhysicsClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Physics"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#PsychologyClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Psychology"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#ReligionsClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Religions"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#ScienceStudent"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Student"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasMajor"/>
+                <Class IRI="#Science"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#SportsFan"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#isCrazyAbout"/>
+                <Class IRI="#Sports"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#SportsLover"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#like"/>
+                <Class IRI="#Sports"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#StatisticsClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Statistics"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Student"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#isStudentOf"/>
+                <Class IRI="#Organization"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#SwimmingFan"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#isCrazyAbout"/>
+                <Class IRI="#SwimmingClass"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#SwimmingLover"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#like"/>
+                <Class IRI="#SwimmingClass"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#TeachingAssistant"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#teachingAssistantOf"/>
+                <Class IRI="#Course"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#TennisFan"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#isCrazyAbout"/>
+                <Class IRI="#TennisClass"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Theatre_and_DanceClass"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Theatre_and_Dance"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#WomanCollege"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#College"/>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="#hasStudent"/>
+                <Class IRI="#UndergraduateStudent"/>
+            </ObjectAllValuesFrom>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="#hasStudent"/>
+                <ObjectComplementOf>
+                    <Class IRI="#Man"/>
+                </ObjectComplementOf>
+            </ObjectAllValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <SubClassOf>
+        <Class IRI="#Aeronautical_EngineeringClass"/>
+        <Class IRI="#Engineering"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AnthropologyClass"/>
+        <Class IRI="#HumanitiesAndSocial"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ArchitectureClass"/>
+        <Class IRI="#FineArts"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Article"/>
+        <Class IRI="#Publication"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Asian_ArtsClass"/>
+        <Class IRI="#FineArts"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AssistantProfessor"/>
+        <Class IRI="#Professor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AssociateProfessor"/>
+        <Class IRI="#Professor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AstronomyClass"/>
+        <Class IRI="#Science"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BaseballClass"/>
+        <Class IRI="#Sports"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BasketBallClass"/>
+        <Class IRI="#Sports"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BiologyClass"/>
+        <Class IRI="#Science"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Biomedical_EngineeringClass"/>
+        <Class IRI="#Engineering"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Book"/>
+        <Class IRI="#Publication"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Chair"/>
+        <Class IRI="#Professor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Chemical_EngineeringClass"/>
+        <Class IRI="#Engineering"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ChemistryClass"/>
+        <Class IRI="#Science"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Civil_EngineeringClass"/>
+        <Class IRI="#Engineering"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ClericalStaff"/>
+        <Class IRI="#SupportingStaff"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#College"/>
+        <Class IRI="#Organization"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Computer_EngineeringClass"/>
+        <Class IRI="#Engineering"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Computer_ScienceClass"/>
+        <Class IRI="#Science"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ConferencePaper"/>
+        <Class IRI="#Article"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Course"/>
+        <Class IRI="#Work"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Dean"/>
+        <Class IRI="#Professor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Department"/>
+        <Class IRI="#Organization"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DramaClass"/>
+        <Class IRI="#FineArts"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#EconomicsClass"/>
+        <Class IRI="#HumanitiesAndSocial"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Electrical_EngineeringClass"/>
+        <Class IRI="#Engineering"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Engineering"/>
+        <Class IRI="#AcademicSubject"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#EnglishClass"/>
+        <Class IRI="#HumanitiesAndSocial"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Faculty"/>
+        <Class IRI="#Employee"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FineArts"/>
+        <Class IRI="#AcademicSubject"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FullProfessor"/>
+        <Class IRI="#Professor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GeosciencesClass"/>
+        <Class IRI="#Science"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GraduateCourse"/>
+        <Class IRI="#Course"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HistoryClass"/>
+        <Class IRI="#HumanitiesAndSocial"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HumanitiesAndSocial"/>
+        <Class IRI="#AcademicSubject"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HumanitiesClass"/>
+        <Class IRI="#HumanitiesAndSocial"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Industry_EngineeringClass"/>
+        <Class IRI="#Engineering"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Institute"/>
+        <Class IRI="#Organization"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#JournalArtical"/>
+        <Class IRI="#Article"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Latin_ArtsClass"/>
+        <Class IRI="#FineArts"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Lecturer"/>
+        <Class IRI="#Faculty"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#LeisureStudent"/>
+        <ObjectMaxCardinality cardinality="3">
+            <ObjectProperty IRI="#takesCourse"/>
+        </ObjectMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#LinguisticsClass"/>
+        <Class IRI="#HumanitiesAndSocial"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Manual"/>
+        <Class IRI="#Publication"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Marine_ScienceClass"/>
+        <Class IRI="#Science"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Materials_ScienceClass"/>
+        <Class IRI="#Science"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Materical_Science_EngineeringClass"/>
+        <Class IRI="#Engineering"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MathematicsClass"/>
+        <Class IRI="#Science"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Mechanical_EngineeringClass"/>
+        <Class IRI="#Engineering"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Media_Arts_And_ciencesClass"/>
+        <Class IRI="#FineArts"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Medieval_ArtsClass"/>
+        <Class IRI="#FineArts"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Modern_ArtsClass"/>
+        <Class IRI="#FineArts"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Modern_LanguagesClass"/>
+        <Class IRI="#HumanitiesAndSocial"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Music"/>
+        <Class IRI="#Insterest"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MusicsClass"/>
+        <Class IRI="#FineArts"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Performing_ArtsClass"/>
+        <Class IRI="#FineArts"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Petroleuml_EngineeringClass"/>
+        <Class IRI="#Engineering"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PhilosophyClass"/>
+        <Class IRI="#HumanitiesAndSocial"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PhysicsClass"/>
+        <Class IRI="#Science"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PostDoc"/>
+        <Class IRI="#Faculty"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Professor"/>
+        <Class IRI="#Faculty"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Program"/>
+        <Class IRI="#Organization"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PsychologyClass"/>
+        <Class IRI="#HumanitiesAndSocial"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ReligionsClass"/>
+        <Class IRI="#HumanitiesAndSocial"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Research"/>
+        <Class IRI="#Work"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ResearchAssistant"/>
+        <Class IRI="#Person"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ResearchAssistant"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#worksFor"/>
+            <Class IRI="#ResearchGroup"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ResearchGroup"/>
+        <Class IRI="#Organization"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Science"/>
+        <Class IRI="#AcademicSubject"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Software"/>
+        <Class IRI="#Publication"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Specification"/>
+        <Class IRI="#Publication"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sports"/>
+        <Class IRI="#Insterest"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#StatisticsClass"/>
+        <Class IRI="#Science"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SupportingStaff"/>
+        <Class IRI="#Employee"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SwimmingClass"/>
+        <Class IRI="#Sports"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SystemsStaff"/>
+        <Class IRI="#SupportingStaff"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TechnicalReport"/>
+        <Class IRI="#Article"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TennisClass"/>
+        <Class IRI="#Sports"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Theatre_and_DanceClass"/>
+        <Class IRI="#FineArts"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#UndergraduateStudent"/>
+        <Class IRI="#Student"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#University"/>
+        <Class IRI="#Organization"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#UnofficialPublication"/>
+        <Class IRI="#Publication"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#VisitingProfessor"/>
+        <Class IRI="#Professor"/>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#Man"/>
+        <Class IRI="#Woman"/>
+    </DisjointClasses>
+    <ClassAssertion>
+        <Class IRI="#Sports"/>
+        <NamedIndividual IRI="#AmericanFootball"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#BaseballClass"/>
+        <NamedIndividual IRI="#Baseball"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#BasketBallClass"/>
+        <NamedIndividual IRI="#BasketBall"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Chemical_EngineeringClass"/>
+        <NamedIndividual IRI="#Chemical_Engineering"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Civil_EngineeringClass"/>
+        <NamedIndividual IRI="#Civil_Engineering"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Music"/>
+        <NamedIndividual IRI="#Classic_Music"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Industry_EngineeringClass"/>
+        <NamedIndividual IRI="#Industry_Engineering"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Sports"/>
+        <NamedIndividual IRI="#Kickboxing"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Insterest"/>
+        <NamedIndividual IRI="#Movie"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Insterest"/>
+        <NamedIndividual IRI="#PC_Game"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Insterest"/>
+        <NamedIndividual IRI="#Painting"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Music"/>
+        <NamedIndividual IRI="#Pop_Music"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Insterest"/>
+        <NamedIndividual IRI="#Reading"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Music"/>
+        <NamedIndividual IRI="#Rock_and_Roll"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Insterest"/>
+        <NamedIndividual IRI="#Shopping"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Sports"/>
+        <NamedIndividual IRI="#Soccer"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Insterest"/>
+        <NamedIndividual IRI="#StampCollecting"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SwimmingClass"/>
+        <NamedIndividual IRI="#Swimming"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TennisClass"/>
+        <NamedIndividual IRI="#Tennis"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Insterest"/>
+        <NamedIndividual IRI="#Travelling"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Insterest"/>
+        <NamedIndividual IRI="#Video_Game"/>
+    </ClassAssertion>
+    <EquivalentObjectProperties>
+        <ObjectProperty IRI="#like"/>
+        <ObjectProperty IRI="#love"/>
+    </EquivalentObjectProperties>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#enrollIn"/>
+        <ObjectProperty IRI="#isStudentOf"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasDoctoralDegreeFrom"/>
+        <ObjectProperty IRI="#hasDegreeFrom"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasMasterDegreeFrom"/>
+        <ObjectProperty IRI="#hasDegreeFrom"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasStudent"/>
+        <ObjectProperty IRI="#hasMember"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasUndergraduateDegreeFrom"/>
+        <ObjectProperty IRI="#hasDegreeFrom"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#isCrazyAbout"/>
+        <ObjectProperty IRI="#like"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#isHeadOf"/>
+        <ObjectProperty IRI="#worksFor"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#isStudentOf"/>
+        <ObjectProperty IRI="#isMemberOf"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#worksFor"/>
+        <ObjectProperty IRI="#isMemberOf"/>
+    </SubObjectPropertyOf>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasDegreeFrom"/>
+        <ObjectProperty IRI="#hasAlumnus"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#isMemberOf"/>
+        <ObjectProperty IRI="#hasMember"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasStudent"/>
+        <ObjectProperty IRI="#isStudentOf"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#isTaughtBy"/>
+        <ObjectProperty IRI="#teacherOf"/>
+    </InverseObjectProperties>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#isTaughtBy"/>
+    </FunctionalObjectProperty>
+    <InverseFunctionalObjectProperty>
+        <ObjectProperty IRI="#isHeadOf"/>
+    </InverseFunctionalObjectProperty>
+    <SymmetricObjectProperty>
+        <ObjectProperty IRI="#hasSameHomeTownWith"/>
+    </SymmetricObjectProperty>
+    <SymmetricObjectProperty>
+        <ObjectProperty IRI="#isFriendOf"/>
+    </SymmetricObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="#hasSameHomeTownWith"/>
+    </TransitiveObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="#subOrganizationOf"/>
+    </TransitiveObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasAlumnus"/>
+        <Class IRI="#University"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasDegreeFrom"/>
+        <Class IRI="#Person"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasDoctoralDegreeFrom"/>
+        <Class IRI="#Person"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasMasterDegreeFrom"/>
+        <Class IRI="#Person"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasMember"/>
+        <Class IRI="#Organization"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasSameHomeTownWith"/>
+        <Class IRI="#Person"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasStudent"/>
+        <Class IRI="#Organization"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasUndergraduateDegreeFrom"/>
+        <Class IRI="#Person"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isAdvisedBy"/>
+        <Class IRI="#Person"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isAffiliateOf"/>
+        <Class IRI="#Organization"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isAffiliatedOrganizationOf"/>
+        <Class IRI="#Organization"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isFriendOf"/>
+        <Class IRI="#Person"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isStudentOf"/>
+        <Class IRI="#Student"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isTaughtBy"/>
+        <Class IRI="#Course"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#listedCourse"/>
+        <Class IRI="#Schedule"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#orgPublication"/>
+        <Class IRI="#Organization"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#publicationAuthor"/>
+        <Class IRI="#Publication"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#publicationDate"/>
+        <Class IRI="#Publication"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#publicationResearch"/>
+        <Class IRI="#Publication"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#researchProject"/>
+        <Class IRI="#ResearchGroup"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#softwareDocumentation"/>
+        <Class IRI="#Software"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#softwareVersion"/>
+        <Class IRI="#Software"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#subOrganizationOf"/>
+        <Class IRI="#Organization"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#takesCourse"/>
+        <Class IRI="#Student"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#teacherOf"/>
+        <Class IRI="#Faculty"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#teachingAssistantOf"/>
+        <Class IRI="#TeachingAssistant"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#tenured"/>
+        <Class IRI="#Professor"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#enrollIn"/>
+        <Class IRI="#Department"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasAlumnus"/>
+        <Class IRI="#Person"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasDegreeFrom"/>
+        <Class IRI="#University"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasDoctoralDegreeFrom"/>
+        <Class IRI="#University"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasMajor"/>
+        <Class IRI="#AcademicSubject"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasMasterDegreeFrom"/>
+        <Class IRI="#University"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasMember"/>
+        <Class IRI="#Person"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasSameHomeTownWith"/>
+        <Class IRI="#Person"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasStudent"/>
+        <Class IRI="#Student"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasUndergraduateDegreeFrom"/>
+        <Class IRI="#University"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isAdvisedBy"/>
+        <Class IRI="#Professor"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isAffiliateOf"/>
+        <Class IRI="#Person"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isAffiliatedOrganizationOf"/>
+        <Class IRI="#Organization"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isFriendOf"/>
+        <Class IRI="#Person"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isStudentOf"/>
+        <Class IRI="#Organization"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isTaughtBy"/>
+        <Class IRI="#Faculty"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#listedCourse"/>
+        <Class IRI="#Course"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#orgPublication"/>
+        <Class IRI="#Publication"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#publicationAuthor"/>
+        <Class IRI="#Person"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#publicationResearch"/>
+        <Class IRI="#Research"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#researchProject"/>
+        <Class IRI="#Research"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#softwareDocumentation"/>
+        <Class IRI="#Publication"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#subOrganizationOf"/>
+        <Class IRI="#Organization"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#teacherOf"/>
+        <Class IRI="#Course"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#teachingAssistantOf"/>
+        <Class IRI="#Course"/>
+    </ObjectPropertyRange>
+    <DataPropertyDomain>
+        <DataProperty IRI="#age"/>
+        <Class IRI="#Person"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#emailAddress"/>
+        <Class IRI="#Person"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#firstName"/>
+        <Class IRI="#Person"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#lastName"/>
+        <Class IRI="#Person"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#telephone"/>
+        <Class IRI="#Person"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#title"/>
+        <Class IRI="#Person"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#firstName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#lastName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#AcademicSubject</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Academic Subject</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#AmericanFootball</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">AmericanFootball</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Article</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">article</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#AssistantProfessor</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">assistant professor</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#AssociateProfessor</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">associate professor</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Baseball</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Baseball</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#BaseballLover</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">people who like baseball</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#BasketBall</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">BasketBall</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#BasketBallLover</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">people who like basket ball</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Book</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">book</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Chair</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">chair</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ClericalStaff</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">clerical staff worker</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#College</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">school</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ConferencePaper</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">conference paper</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Course</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">teaching course</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Dean</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">dean</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Department</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">university department</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Director</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">director</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Employee</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Employee</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Engineering</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Engineering</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Faculty</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">faculty member</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#FullProfessor</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">full professor</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#GraduateCourse</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Graduate Level Courses</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#GraduateStudent</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">graduate student</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#HumanitiesAndSocial</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">HumanitiesAndSocial</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Institute</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">institute</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#JournalArtical</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">journal article</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Kickboxing</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Kickboxing</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Lecturer</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">lecturer</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#LeisureStudent</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">students who have plenty of leisure time</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Manual</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">manual</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#NonScienceStudent</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">student whose major is not science</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Organization</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">organization</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#PeopleWithManyHobbies</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">People who have at least 3 hobbies</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Person</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">person</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#PostDoc</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">post doctorate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Professor</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">professor</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Program</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">program</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Publication</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">publication</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Research</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">research work</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ResearchAssistant</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">university research assistant</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ResearchGroup</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">research group</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Schedule</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">schedule</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Science</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Science</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Soccer</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Soccer</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Software</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">software program</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Specification</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">published specification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#SportsLover</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">People who like Sports</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Student</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">student</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#SupportingStaff</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">administrative staff worker</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Swimming</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Swimming</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#SwimmingLover</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">people who like swimming</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#SystemsStaff</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">systems staff worker</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#TeachingAssistant</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">university teaching assistant</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#TechnicalReport</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">technical report</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Tennis</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Tennis</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#UndergraduateStudent</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">undergraduate student</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#University</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">university</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#UnofficialPublication</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">unnoficial publication</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#VisitingProfessor</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">visiting professor</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#WomanCollege</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">a college who only take female undergraduate students</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Work</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Work</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#age</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">is age</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#emailAddress</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">can be reached at</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasAlumnus</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">has as an alumnus</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasDegreeFrom</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">has a degree from</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasDoctoralDegreeFrom</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">has a doctoral degree from</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasMasterDegreeFrom</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">has a masters degree from</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasMember</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">has as a member</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasUndergraduateDegreeFrom</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">has an undergraduate degree from</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#isAdvisedBy</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">is being advised by</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#isAffiliateOf</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">is affiliated with</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#isAffiliatedOrganizationOf</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">is affiliated with</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#isFriendOf</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">is a friend of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#isHeadOf</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">is the head of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#isMemberOf</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">member of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#isTaughtBy</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">is taught by</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#like</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">like</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#listedCourse</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">lists as a course</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#love</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">same property of liike</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#name</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#officeNumber</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">office room No.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#orgPublication</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">publishes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#publicationAuthor</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">was written by</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#publicationDate</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">was written on</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#publicationResearch</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">is about</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#researchInterest</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">is researching</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#researchProject</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">has as a research project</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#softwareDocumentation</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">is documented in</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#softwareVersion</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">is version</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#subOrganizationOf</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">is part of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#takesCourse</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">is taking</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#teacherOf</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">teaches</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#teachingAssistantOf</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">is a teaching assistant for</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#telephone</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">telephone number</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#tenured</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">is tenured:</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#title</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">title</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#worksFor</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Works For</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net -->
+

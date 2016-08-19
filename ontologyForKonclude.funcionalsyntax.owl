@@ -1,0 +1,2659 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.w3.org/2002/07/owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace">
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Aeronautical_EngineeringClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Engineering"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#AnthropologyClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#HumanitiesAndSocial"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#ArchitectureClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#FineArts"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Article"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Publication"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Asian_ArtsClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#FineArts"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#AssistantProfessor"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Professor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#AssociateProfessor"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Professor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#AstronomyClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Science"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#BaseballClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Sports"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#BaseballFan"/>
+        <ObjectIntersectionOf>
+            <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isCrazyAbout"/>
+                <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#BaseballClass"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#BaseballLover"/>
+        <ObjectIntersectionOf>
+            <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#like"/>
+                <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#BaseballClass"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#BasketBallClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Sports"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#BasketBallFan"/>
+        <ObjectIntersectionOf>
+            <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isCrazyAbout"/>
+                <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#BasketBallClass"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#BasketBallLover"/>
+        <ObjectIntersectionOf>
+            <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#like"/>
+                <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#BasketBallClass"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#BiologyClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Science"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Biomedical_EngineeringClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Engineering"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Book"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Publication"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Chair"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Professor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Chair"/>
+        <ObjectIntersectionOf>
+            <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isHeadOf"/>
+                <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Department"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Chemical_EngineeringClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Engineering"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#ChemistryClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Science"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Civil_EngineeringClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Engineering"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#ClericalStaff"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#SupportingStaff"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#College"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Organization"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Computer_EngineeringClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Engineering"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Computer_ScienceClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Science"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#ConferencePaper"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Article"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Course"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Work"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Dean"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Professor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Dean"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isHeadOf"/>
+                <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#College"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Department"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Organization"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Director"/>
+        <ObjectIntersectionOf>
+            <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isHeadOf"/>
+                <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Program"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#DramaClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#FineArts"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#EconomicsClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#HumanitiesAndSocial"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Electrical_EngineeringClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Engineering"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Employee"/>
+        <ObjectIntersectionOf>
+            <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#worksFor"/>
+                <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Organization"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Engineering"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#AcademicSubject"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#EnglishClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#HumanitiesAndSocial"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Faculty"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Employee"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#FineArts"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#AcademicSubject"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#FullProfessor"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Professor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#GeosciencesClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Science"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#GraduateCourse"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Course"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#GraduateStudent"/>
+        <ObjectIntersectionOf>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#takesCourse"/>
+                <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#GraduateCourse"/>
+            </ObjectAllValuesFrom>
+            <ObjectMinCardinality cardinality="1">
+                <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#takesCourse"/>
+            </ObjectMinCardinality>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#HistoryClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#HumanitiesAndSocial"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#HumanitiesAndSocial"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#AcademicSubject"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#HumanitiesClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#HumanitiesAndSocial"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Industry_EngineeringClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Engineering"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Institute"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Organization"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#JournalArticle"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Article"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Latin_ArtsClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#FineArts"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Lecturer"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Faculty"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#LinguisticsClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#HumanitiesAndSocial"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Manual"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Publication"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Marine_ScienceClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Science"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Materials_ScienceClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Science"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Materical_Science_EngineeringClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Engineering"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#MathematicsClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Science"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Mechanical_EngineeringClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Engineering"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Media_Arts_And_ciencesClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#FineArts"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Medieval_ArtsClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#FineArts"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Modern_ArtsClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#FineArts"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Modern_LanguagesClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#HumanitiesAndSocial"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Music"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Insterest"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#MusicsClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#FineArts"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#NonScienceStudent"/>
+        <ObjectIntersectionOf>
+            <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Student"/>
+            <ObjectComplementOf>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMajor"/>
+                    <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Science"/>
+                </ObjectSomeValuesFrom>
+            </ObjectComplementOf>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#PeopleWithHobby"/>
+        <ObjectIntersectionOf>
+            <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+            <ObjectMinCardinality cardinality="1">
+                <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#like"/>
+            </ObjectMinCardinality>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Performing_ArtsClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#FineArts"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Petroleuml_EngineeringClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Engineering"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#PhilosophyClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#HumanitiesAndSocial"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#PhysicsClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Science"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#PostDoc"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Faculty"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Professor"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Faculty"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Program"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Organization"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#PsychologyClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#HumanitiesAndSocial"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#ReligionsClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#HumanitiesAndSocial"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Research"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Work"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#ResearchAssistant"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#ResearchAssistant"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#worksFor"/>
+            <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#ResearchGroup"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#ResearchGroup"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Organization"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Science"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#AcademicSubject"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#ScienceStudent"/>
+        <ObjectIntersectionOf>
+            <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Student"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMajor"/>
+                <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Science"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Software"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Publication"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Specification"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Publication"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Sports"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Insterest"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#SportsFan"/>
+        <ObjectIntersectionOf>
+            <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isCrazyAbout"/>
+                <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Sports"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#SportsLover"/>
+        <ObjectIntersectionOf>
+            <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#like"/>
+                <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Sports"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#StatisticsClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Science"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Student"/>
+        <ObjectIntersectionOf>
+            <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isStudentOf"/>
+                <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Organization"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#SupportingStaff"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Employee"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#SwimmingClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Sports"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#SwimmingFan"/>
+        <ObjectIntersectionOf>
+            <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isCrazyAbout"/>
+                <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#SwimmingClass"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#SwimmingLover"/>
+        <ObjectIntersectionOf>
+            <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#like"/>
+                <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#SwimmingClass"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#SystemsStaff"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#SupportingStaff"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#TeachingAssistant"/>
+        <ObjectIntersectionOf>
+            <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#teachingAssistantOf"/>
+                <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Course"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#TechnicalReport"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Article"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#TennisClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Sports"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#TennisFan"/>
+        <ObjectIntersectionOf>
+            <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isCrazyAbout"/>
+                <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#TennisClass"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Theatre_and_DanceClass"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#FineArts"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#UndergraduateStudent"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Student"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#University"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Organization"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#UnofficialPublication"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Publication"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Professor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#WomanCollege"/>
+        <ObjectIntersectionOf>
+            <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#College"/>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasStudent"/>
+                <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#UndergraduateStudent"/>
+            </ObjectAllValuesFrom>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasStudent"/>
+                <ObjectComplementOf>
+                    <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Man"/>
+                </ObjectComplementOf>
+            </ObjectAllValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectIntersectionOf>
+            <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isCrazyAbout"/>
+                <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#BaseballClass"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#BaseballFan"/>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectIntersectionOf>
+            <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isCrazyAbout"/>
+                <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#BasketBallClass"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#BasketBallFan"/>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectIntersectionOf>
+            <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isCrazyAbout"/>
+                <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Sports"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#SportsFan"/>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectIntersectionOf>
+            <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isCrazyAbout"/>
+                <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#SwimmingClass"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#SwimmingFan"/>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectIntersectionOf>
+            <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isCrazyAbout"/>
+                <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#TennisClass"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#TennisFan"/>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectIntersectionOf>
+            <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isHeadOf"/>
+                <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Department"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Chair"/>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectIntersectionOf>
+            <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isHeadOf"/>
+                <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Program"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Director"/>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectIntersectionOf>
+            <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isStudentOf"/>
+                <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Organization"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Student"/>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectIntersectionOf>
+            <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#like"/>
+                <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#BaseballClass"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#BaseballLover"/>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectIntersectionOf>
+            <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#like"/>
+                <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#BasketBallClass"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#BasketBallLover"/>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectIntersectionOf>
+            <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#like"/>
+                <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Sports"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#SportsLover"/>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectIntersectionOf>
+            <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#like"/>
+                <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#SwimmingClass"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#SwimmingLover"/>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectIntersectionOf>
+            <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#teachingAssistantOf"/>
+                <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Course"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#TeachingAssistant"/>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectIntersectionOf>
+            <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#worksFor"/>
+                <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Organization"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Employee"/>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectIntersectionOf>
+            <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+            <ObjectMinCardinality cardinality="1">
+                <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#like"/>
+            </ObjectMinCardinality>
+        </ObjectIntersectionOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#PeopleWithHobby"/>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectIntersectionOf>
+            <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Student"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMajor"/>
+                <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Science"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#ScienceStudent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isHeadOf"/>
+                <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#College"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Dean"/>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectUnionOf>
+            <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Man"/>
+            <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Woman"/>
+        </ObjectUnionOf>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Man"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Woman"/>
+    </DisjointClasses>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#College"/>
+        <NamedIndividual IRI="http://www.College0.University1.edu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#College"/>
+        <NamedIndividual IRI="http://www.College0.University2.edu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#College"/>
+        <NamedIndividual IRI="http://www.College1.University1.edu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#College"/>
+        <NamedIndividual IRI="http://www.College1.University2.edu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#College"/>
+        <NamedIndividual IRI="http://www.College2.University1.edu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#College"/>
+        <NamedIndividual IRI="http://www.College2.University2.edu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#College"/>
+        <NamedIndividual IRI="http://www.College3.University1.edu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#College"/>
+        <NamedIndividual IRI="http://www.College4.University1.edu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Department"/>
+        <NamedIndividual IRI="http://www.Department0.University1.edu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Department"/>
+        <NamedIndividual IRI="http://www.Department0.University2.edu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Department"/>
+        <NamedIndividual IRI="http://www.Department1.University1.edu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Department"/>
+        <NamedIndividual IRI="http://www.Department1.University2.edu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Department"/>
+        <NamedIndividual IRI="http://www.Department10.University1.edu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Department"/>
+        <NamedIndividual IRI="http://www.Department10.University2.edu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Department"/>
+        <NamedIndividual IRI="http://www.Department11.University2.edu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Department"/>
+        <NamedIndividual IRI="http://www.Department12.University2.edu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Department"/>
+        <NamedIndividual IRI="http://www.Department13.University2.edu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Department"/>
+        <NamedIndividual IRI="http://www.Department14.University2.edu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Department"/>
+        <NamedIndividual IRI="http://www.Department15.University2.edu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Department"/>
+        <NamedIndividual IRI="http://www.Department16.University2.edu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Department"/>
+        <NamedIndividual IRI="http://www.Department17.University2.edu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Department"/>
+        <NamedIndividual IRI="http://www.Department18.University2.edu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Department"/>
+        <NamedIndividual IRI="http://www.Department19.University2.edu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Department"/>
+        <NamedIndividual IRI="http://www.Department2.University2.edu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Department"/>
+        <NamedIndividual IRI="http://www.Department20.University2.edu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Department"/>
+        <NamedIndividual IRI="http://www.Department3.University2.edu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Department"/>
+        <NamedIndividual IRI="http://www.Department4.University2.edu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Department"/>
+        <NamedIndividual IRI="http://www.Department5.University2.edu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Department"/>
+        <NamedIndividual IRI="http://www.Department6.University2.edu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Department"/>
+        <NamedIndividual IRI="http://www.Department7.University2.edu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Department"/>
+        <NamedIndividual IRI="http://www.Department8.University1.edu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Department"/>
+        <NamedIndividual IRI="http://www.Department8.University2.edu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Department"/>
+        <NamedIndividual IRI="http://www.Department9.University1.edu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Department"/>
+        <NamedIndividual IRI="http://www.Department9.University2.edu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#University"/>
+        <NamedIndividual IRI="http://www.University1.edu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#University"/>
+        <NamedIndividual IRI="http://www.University2.edu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Aeronautical_EngineeringClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Aeronautical_Engineering"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Sports"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#AmericanFootball"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#AnthropologyClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Anthropology"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#ArchitectureClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Architecture"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Asian_ArtsClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Asian_Arts"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#AstronomyClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Astronomy"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#BaseballClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Baseball"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#BasketBallClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#BasketBall"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#BiologyClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Biology"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Biomedical_EngineeringClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Biomedical_Engineering"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Chemical_EngineeringClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Chemical_Engineering"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#ChemistryClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Chemistry"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Civil_EngineeringClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Civil_Engineering"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Music"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Classic_Music"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Computer_EngineeringClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Computer_Engineering"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Computer_ScienceClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Computer_Science"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#DramaClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Drama"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#EconomicsClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Economics"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Electrical_EngineeringClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Electrical_Engineering"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#EnglishClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#English"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#GeosciencesClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Geosciences"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#HistoryClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#History"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#HumanitiesClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Humanities"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Industry_EngineeringClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Industry_Engineering"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Sports"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Kickboxing"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Latin_ArtsClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Latin_Arts"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#LinguisticsClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Linguistics"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Marine_ScienceClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Marine_Science"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Materials_ScienceClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Materials_Science"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Materical_Science_EngineeringClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Materical_Science_Engineering"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#MathematicsClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Mathematics"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Mechanical_EngineeringClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Mechanical_Engineering"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Media_Arts_And_ciencesClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Media_Arts_And_ciences"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Medieval_ArtsClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Medieval_Arts"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Modern_ArtsClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Modern_Arts"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Modern_LanguagesClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Modern_Languages"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Insterest"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Movie"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#MusicsClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Musics"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Insterest"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#PC_Game"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Insterest"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Painting"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Performing_ArtsClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Performing_Arts"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Petroleuml_EngineeringClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Petroleuml_Engineering"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#PhilosophyClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Philosophy"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#PhysicsClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Physics"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Music"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Pop_Music"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#PsychologyClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Psychology"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Insterest"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Reading"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#ReligionsClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Religions"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Music"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Rock_and_Roll"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Insterest"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Shopping"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Sports"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Soccer"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Insterest"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#StampCollecting"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#StatisticsClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Statistics"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#SwimmingClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Swimming"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#TennisClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Tennis"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Theatre_and_DanceClass"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Theatre_and_Dance"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Insterest"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Travelling"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Insterest"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Video_Game"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#AssistantProfessor"/>
+        <NamedIndividual IRI="http://www.Department0.University1.edu/AssistantProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Man"/>
+        <NamedIndividual IRI="http://www.Department0.University1.edu/AssistantProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#AssistantProfessor"/>
+        <NamedIndividual IRI="http://www.Department0.University1.edu/AssistantProfessor2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Woman"/>
+        <NamedIndividual IRI="http://www.Department0.University1.edu/AssistantProfessor2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Man"/>
+        <NamedIndividual IRI="http://www.Department0.University1.edu/UndergraduateStudent494"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#UndergraduateStudent"/>
+        <NamedIndividual IRI="http://www.Department0.University1.edu/UndergraduateStudent494"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Man"/>
+        <NamedIndividual IRI="http://www.Department0.University1.edu/UndergraduateStudent5"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#TennisFan"/>
+        <NamedIndividual IRI="http://www.Department0.University1.edu/UndergraduateStudent5"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#UndergraduateStudent"/>
+        <NamedIndividual IRI="http://www.Department0.University1.edu/UndergraduateStudent5"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department0.University1.edu/VisitingProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#AssistantProfessor"/>
+        <NamedIndividual IRI="http://www.Department0.University2.edu/AssistantProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Woman"/>
+        <NamedIndividual IRI="http://www.Department0.University2.edu/AssistantProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department0.University2.edu/VisitingProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department0.University2.edu/VisitingProfessor1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department0.University2.edu/VisitingProfessor2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department0.University2.edu/VisitingProfessor3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#AssistantProfessor"/>
+        <NamedIndividual IRI="http://www.Department1.University1.edu/AssistantProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#BasketBallFan"/>
+        <NamedIndividual IRI="http://www.Department1.University1.edu/AssistantProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Man"/>
+        <NamedIndividual IRI="http://www.Department1.University1.edu/AssistantProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#SportsLover"/>
+        <NamedIndividual IRI="http://www.Department1.University1.edu/AssistantProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#AssistantProfessor"/>
+        <NamedIndividual IRI="http://www.Department1.University1.edu/AssistantProfessor2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Man"/>
+        <NamedIndividual IRI="http://www.Department1.University1.edu/AssistantProfessor2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#SportsFan"/>
+        <NamedIndividual IRI="http://www.Department1.University1.edu/AssistantProfessor2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Man"/>
+        <NamedIndividual IRI="http://www.Department1.University1.edu/UndergraduateStudent5"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#UndergraduateStudent"/>
+        <NamedIndividual IRI="http://www.Department1.University1.edu/UndergraduateStudent5"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department1.University1.edu/VisitingProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department1.University1.edu/VisitingProfessor5"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#AssistantProfessor"/>
+        <NamedIndividual IRI="http://www.Department1.University2.edu/AssistantProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#BaseballLover"/>
+        <NamedIndividual IRI="http://www.Department1.University2.edu/AssistantProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Man"/>
+        <NamedIndividual IRI="http://www.Department1.University2.edu/AssistantProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#SportsLover"/>
+        <NamedIndividual IRI="http://www.Department1.University2.edu/AssistantProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department1.University2.edu/VisitingProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department1.University2.edu/VisitingProfessor1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department1.University2.edu/VisitingProfessor2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department1.University2.edu/VisitingProfessor3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department1.University2.edu/VisitingProfessor4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department1.University2.edu/VisitingProfessor5"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#AssistantProfessor"/>
+        <NamedIndividual IRI="http://www.Department10.University1.edu/AssistantProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Man"/>
+        <NamedIndividual IRI="http://www.Department10.University1.edu/AssistantProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#AssistantProfessor"/>
+        <NamedIndividual IRI="http://www.Department10.University1.edu/AssistantProfessor2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Woman"/>
+        <NamedIndividual IRI="http://www.Department10.University1.edu/AssistantProfessor2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#AssistantProfessor"/>
+        <NamedIndividual IRI="http://www.Department10.University2.edu/AssistantProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Man"/>
+        <NamedIndividual IRI="http://www.Department10.University2.edu/AssistantProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department10.University2.edu/VisitingProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department10.University2.edu/VisitingProfessor1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department10.University2.edu/VisitingProfessor2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department10.University2.edu/VisitingProfessor3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#AssistantProfessor"/>
+        <NamedIndividual IRI="http://www.Department11.University1.edu/AssistantProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Man"/>
+        <NamedIndividual IRI="http://www.Department11.University1.edu/AssistantProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#AssistantProfessor"/>
+        <NamedIndividual IRI="http://www.Department11.University1.edu/AssistantProfessor2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Man"/>
+        <NamedIndividual IRI="http://www.Department11.University1.edu/AssistantProfessor2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#UndergraduateStudent"/>
+        <NamedIndividual IRI="http://www.Department11.University1.edu/UndergraduateStudent494"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Woman"/>
+        <NamedIndividual IRI="http://www.Department11.University1.edu/UndergraduateStudent494"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department11.University2.edu/VisitingProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#AssistantProfessor"/>
+        <NamedIndividual IRI="http://www.Department12.University1.edu/AssistantProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Woman"/>
+        <NamedIndividual IRI="http://www.Department12.University1.edu/AssistantProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#AssistantProfessor"/>
+        <NamedIndividual IRI="http://www.Department12.University1.edu/AssistantProfessor2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#BasketBallFan"/>
+        <NamedIndividual IRI="http://www.Department12.University1.edu/AssistantProfessor2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Man"/>
+        <NamedIndividual IRI="http://www.Department12.University1.edu/AssistantProfessor2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#UndergraduateStudent"/>
+        <NamedIndividual IRI="http://www.Department12.University1.edu/UndergraduateStudent481"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Woman"/>
+        <NamedIndividual IRI="http://www.Department12.University1.edu/UndergraduateStudent481"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#UndergraduateStudent"/>
+        <NamedIndividual IRI="http://www.Department12.University1.edu/UndergraduateStudent494"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Woman"/>
+        <NamedIndividual IRI="http://www.Department12.University1.edu/UndergraduateStudent494"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department12.University2.edu/VisitingProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#AssistantProfessor"/>
+        <NamedIndividual IRI="http://www.Department13.University1.edu/AssistantProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Man"/>
+        <NamedIndividual IRI="http://www.Department13.University1.edu/AssistantProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Man"/>
+        <NamedIndividual IRI="http://www.Department13.University1.edu/UndergraduateStudent481"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#UndergraduateStudent"/>
+        <NamedIndividual IRI="http://www.Department13.University1.edu/UndergraduateStudent481"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department13.University2.edu/VisitingProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department13.University2.edu/VisitingProfessor1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department13.University2.edu/VisitingProfessor2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department13.University2.edu/VisitingProfessor3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#AssistantProfessor"/>
+        <NamedIndividual IRI="http://www.Department14.University1.edu/AssistantProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Man"/>
+        <NamedIndividual IRI="http://www.Department14.University1.edu/AssistantProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department14.University2.edu/VisitingProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department14.University2.edu/VisitingProfessor1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department14.University2.edu/VisitingProfessor2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#AssistantProfessor"/>
+        <NamedIndividual IRI="http://www.Department15.University1.edu/AssistantProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Woman"/>
+        <NamedIndividual IRI="http://www.Department15.University1.edu/AssistantProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#AssistantProfessor"/>
+        <NamedIndividual IRI="http://www.Department16.University1.edu/AssistantProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Woman"/>
+        <NamedIndividual IRI="http://www.Department16.University1.edu/AssistantProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department16.University1.edu/VisitingProfessor5"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department16.University2.edu/VisitingProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department16.University2.edu/VisitingProfessor1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department16.University2.edu/VisitingProfessor2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department16.University2.edu/VisitingProfessor3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department16.University2.edu/VisitingProfessor4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department16.University2.edu/VisitingProfessor5"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#AssistantProfessor"/>
+        <NamedIndividual IRI="http://www.Department17.University1.edu/AssistantProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Man"/>
+        <NamedIndividual IRI="http://www.Department17.University1.edu/AssistantProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department17.University2.edu/VisitingProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department17.University2.edu/VisitingProfessor1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department17.University2.edu/VisitingProfessor2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department18.University2.edu/VisitingProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department18.University2.edu/VisitingProfessor1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#UndergraduateStudent"/>
+        <NamedIndividual IRI="http://www.Department19.University1.edu/UndergraduateStudent481"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Woman"/>
+        <NamedIndividual IRI="http://www.Department19.University1.edu/UndergraduateStudent481"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department2.University2.edu/VisitingProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department2.University2.edu/VisitingProfessor1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department2.University2.edu/VisitingProfessor2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department2.University2.edu/VisitingProfessor3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department2.University2.edu/VisitingProfessor4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department20.University2.edu/VisitingProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Man"/>
+        <NamedIndividual IRI="http://www.Department21.University1.edu/UndergraduateStudent499"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#SwimmingLover"/>
+        <NamedIndividual IRI="http://www.Department21.University1.edu/UndergraduateStudent499"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#UndergraduateStudent"/>
+        <NamedIndividual IRI="http://www.Department21.University1.edu/UndergraduateStudent499"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#UndergraduateStudent"/>
+        <NamedIndividual IRI="http://www.Department3.University2.edu/UndergraduateStudent99"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Woman"/>
+        <NamedIndividual IRI="http://www.Department3.University2.edu/UndergraduateStudent99"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department3.University2.edu/VisitingProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department3.University2.edu/VisitingProfessor1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department3.University2.edu/VisitingProfessor2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department3.University2.edu/VisitingProfessor3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department3.University2.edu/VisitingProfessor4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department3.University2.edu/VisitingProfessor5"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#UndergraduateStudent"/>
+        <NamedIndividual IRI="http://www.Department4.University1.edu/UndergraduateStudent493"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Woman"/>
+        <NamedIndividual IRI="http://www.Department4.University1.edu/UndergraduateStudent493"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#UndergraduateStudent"/>
+        <NamedIndividual IRI="http://www.Department4.University1.edu/UndergraduateStudent499"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Woman"/>
+        <NamedIndividual IRI="http://www.Department4.University1.edu/UndergraduateStudent499"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Man"/>
+        <NamedIndividual IRI="http://www.Department4.University2.edu/UndergraduateStudent99"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#UndergraduateStudent"/>
+        <NamedIndividual IRI="http://www.Department4.University2.edu/UndergraduateStudent99"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#TennisFan"/>
+        <NamedIndividual IRI="http://www.Department5.University1.edu/UndergraduateStudent493"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#UndergraduateStudent"/>
+        <NamedIndividual IRI="http://www.Department5.University1.edu/UndergraduateStudent493"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Woman"/>
+        <NamedIndividual IRI="http://www.Department5.University1.edu/UndergraduateStudent493"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Man"/>
+        <NamedIndividual IRI="http://www.Department5.University1.edu/UndergraduateStudent499"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#UndergraduateStudent"/>
+        <NamedIndividual IRI="http://www.Department5.University1.edu/UndergraduateStudent499"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Man"/>
+        <NamedIndividual IRI="http://www.Department5.University2.edu/UndergraduateStudent99"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#UndergraduateStudent"/>
+        <NamedIndividual IRI="http://www.Department5.University2.edu/UndergraduateStudent99"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department6.University1.edu/VisitingProfessor5"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#UndergraduateStudent"/>
+        <NamedIndividual IRI="http://www.Department6.University2.edu/UndergraduateStudent99"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Woman"/>
+        <NamedIndividual IRI="http://www.Department6.University2.edu/UndergraduateStudent99"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department6.University2.edu/VisitingProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department6.University2.edu/VisitingProfessor1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department6.University2.edu/VisitingProfessor2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department6.University2.edu/VisitingProfessor3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department6.University2.edu/VisitingProfessor4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department6.University2.edu/VisitingProfessor5"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#UndergraduateStudent"/>
+        <NamedIndividual IRI="http://www.Department7.University2.edu/UndergraduateStudent99"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Woman"/>
+        <NamedIndividual IRI="http://www.Department7.University2.edu/UndergraduateStudent99"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department7.University2.edu/VisitingProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department7.University2.edu/VisitingProfessor1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department7.University2.edu/VisitingProfessor2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Man"/>
+        <NamedIndividual IRI="http://www.Department8.University2.edu/UndergraduateStudent99"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#UndergraduateStudent"/>
+        <NamedIndividual IRI="http://www.Department8.University2.edu/UndergraduateStudent99"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department8.University2.edu/VisitingProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department8.University2.edu/VisitingProfessor1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department8.University2.edu/VisitingProfessor2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department8.University2.edu/VisitingProfessor3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Man"/>
+        <NamedIndividual IRI="http://www.Department9.University1.edu/UndergraduateStudent99"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#UndergraduateStudent"/>
+        <NamedIndividual IRI="http://www.Department9.University1.edu/UndergraduateStudent99"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#VisitingProfessor"/>
+        <NamedIndividual IRI="http://www.Department9.University1.edu/VisitingProfessor4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Man"/>
+        <NamedIndividual IRI="http://www.Department9.University2.edu/UndergraduateStudent99"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#UndergraduateStudent"/>
+        <NamedIndividual IRI="http://www.Department9.University2.edu/UndergraduateStudent99"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf"/>
+        <NamedIndividual IRI="http://www.College0.University1.edu"/>
+        <NamedIndividual IRI="http://www.University1.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf"/>
+        <NamedIndividual IRI="http://www.College0.University2.edu"/>
+        <NamedIndividual IRI="http://www.University2.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf"/>
+        <NamedIndividual IRI="http://www.College1.University1.edu"/>
+        <NamedIndividual IRI="http://www.University1.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf"/>
+        <NamedIndividual IRI="http://www.College1.University2.edu"/>
+        <NamedIndividual IRI="http://www.University2.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf"/>
+        <NamedIndividual IRI="http://www.College2.University1.edu"/>
+        <NamedIndividual IRI="http://www.University1.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf"/>
+        <NamedIndividual IRI="http://www.College2.University2.edu"/>
+        <NamedIndividual IRI="http://www.University2.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf"/>
+        <NamedIndividual IRI="http://www.College3.University1.edu"/>
+        <NamedIndividual IRI="http://www.University1.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf"/>
+        <NamedIndividual IRI="http://www.College4.University1.edu"/>
+        <NamedIndividual IRI="http://www.University1.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf"/>
+        <NamedIndividual IRI="http://www.Department0.University1.edu"/>
+        <NamedIndividual IRI="http://www.College2.University1.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf"/>
+        <NamedIndividual IRI="http://www.Department0.University2.edu"/>
+        <NamedIndividual IRI="http://www.College0.University2.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf"/>
+        <NamedIndividual IRI="http://www.Department1.University1.edu"/>
+        <NamedIndividual IRI="http://www.College3.University1.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf"/>
+        <NamedIndividual IRI="http://www.Department1.University2.edu"/>
+        <NamedIndividual IRI="http://www.College0.University2.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf"/>
+        <NamedIndividual IRI="http://www.Department10.University1.edu"/>
+        <NamedIndividual IRI="http://www.College0.University1.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf"/>
+        <NamedIndividual IRI="http://www.Department10.University2.edu"/>
+        <NamedIndividual IRI="http://www.College0.University2.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf"/>
+        <NamedIndividual IRI="http://www.Department11.University2.edu"/>
+        <NamedIndividual IRI="http://www.College0.University2.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf"/>
+        <NamedIndividual IRI="http://www.Department12.University2.edu"/>
+        <NamedIndividual IRI="http://www.College2.University2.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf"/>
+        <NamedIndividual IRI="http://www.Department13.University2.edu"/>
+        <NamedIndividual IRI="http://www.College0.University2.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf"/>
+        <NamedIndividual IRI="http://www.Department14.University2.edu"/>
+        <NamedIndividual IRI="http://www.College2.University2.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf"/>
+        <NamedIndividual IRI="http://www.Department15.University2.edu"/>
+        <NamedIndividual IRI="http://www.College0.University2.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf"/>
+        <NamedIndividual IRI="http://www.Department16.University2.edu"/>
+        <NamedIndividual IRI="http://www.College1.University2.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf"/>
+        <NamedIndividual IRI="http://www.Department17.University2.edu"/>
+        <NamedIndividual IRI="http://www.College1.University2.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf"/>
+        <NamedIndividual IRI="http://www.Department18.University2.edu"/>
+        <NamedIndividual IRI="http://www.College1.University2.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf"/>
+        <NamedIndividual IRI="http://www.Department19.University2.edu"/>
+        <NamedIndividual IRI="http://www.College0.University2.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf"/>
+        <NamedIndividual IRI="http://www.Department2.University2.edu"/>
+        <NamedIndividual IRI="http://www.College1.University2.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf"/>
+        <NamedIndividual IRI="http://www.Department20.University2.edu"/>
+        <NamedIndividual IRI="http://www.College0.University2.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf"/>
+        <NamedIndividual IRI="http://www.Department3.University2.edu"/>
+        <NamedIndividual IRI="http://www.College1.University2.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf"/>
+        <NamedIndividual IRI="http://www.Department4.University2.edu"/>
+        <NamedIndividual IRI="http://www.College0.University2.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf"/>
+        <NamedIndividual IRI="http://www.Department5.University2.edu"/>
+        <NamedIndividual IRI="http://www.College0.University2.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf"/>
+        <NamedIndividual IRI="http://www.Department6.University2.edu"/>
+        <NamedIndividual IRI="http://www.College2.University2.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf"/>
+        <NamedIndividual IRI="http://www.Department7.University2.edu"/>
+        <NamedIndividual IRI="http://www.College2.University2.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf"/>
+        <NamedIndividual IRI="http://www.Department8.University1.edu"/>
+        <NamedIndividual IRI="http://www.College0.University1.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf"/>
+        <NamedIndividual IRI="http://www.Department8.University2.edu"/>
+        <NamedIndividual IRI="http://www.College1.University2.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf"/>
+        <NamedIndividual IRI="http://www.Department9.University1.edu"/>
+        <NamedIndividual IRI="http://www.College3.University1.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf"/>
+        <NamedIndividual IRI="http://www.Department9.University2.edu"/>
+        <NamedIndividual IRI="http://www.College1.University2.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasDoctoralDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department0.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University6.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMasterDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department0.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University0.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasUndergraduateDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department0.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University2.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isFriendOf"/>
+        <NamedIndividual IRI="http://www.Department0.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.Department12.University0.edu/AssistantProfessor0"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#researchInterest"/>
+        <NamedIndividual IRI="http://www.Department0.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.Department0.University1.edu/Research29"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#worksFor"/>
+        <NamedIndividual IRI="http://www.Department0.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.Department0.University1.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasDoctoralDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department0.University1.edu/AssistantProfessor2"/>
+        <NamedIndividual IRI="http://www.University6.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMasterDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department0.University1.edu/AssistantProfessor2"/>
+        <NamedIndividual IRI="http://www.University6.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasUndergraduateDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department0.University1.edu/AssistantProfessor2"/>
+        <NamedIndividual IRI="http://www.University6.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isMemberOf"/>
+        <NamedIndividual IRI="http://www.Department0.University1.edu/AssistantProfessor2"/>
+        <NamedIndividual IRI="http://www.Department0.University1.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#like"/>
+        <NamedIndividual IRI="http://www.Department0.University1.edu/AssistantProfessor2"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#AmericanFootball"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#researchInterest"/>
+        <NamedIndividual IRI="http://www.Department0.University1.edu/AssistantProfessor2"/>
+        <NamedIndividual IRI="http://www.Department0.University1.edu/Research29"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#enrollIn"/>
+        <NamedIndividual IRI="http://www.Department0.University1.edu/UndergraduateStudent494"/>
+        <NamedIndividual IRI="http://www.Department0.University1.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#like"/>
+        <NamedIndividual IRI="http://www.Department0.University1.edu/UndergraduateStudent494"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#AmericanFootball"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#enrollIn"/>
+        <NamedIndividual IRI="http://www.Department0.University1.edu/UndergraduateStudent5"/>
+        <NamedIndividual IRI="http://www.Department0.University1.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasDoctoralDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department0.University2.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University8.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMasterDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department0.University2.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University7.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasUndergraduateDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department0.University2.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University14.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isMemberOf"/>
+        <NamedIndividual IRI="http://www.Department0.University2.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.Department0.University2.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasDoctoralDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department1.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University8.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMasterDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department1.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University0.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasUndergraduateDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department1.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University2.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isMemberOf"/>
+        <NamedIndividual IRI="http://www.Department1.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.Department1.University1.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#researchInterest"/>
+        <NamedIndividual IRI="http://www.Department1.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.Department1.University1.edu/Research29"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasDoctoralDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department1.University1.edu/AssistantProfessor2"/>
+        <NamedIndividual IRI="http://www.University5.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMasterDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department1.University1.edu/AssistantProfessor2"/>
+        <NamedIndividual IRI="http://www.University8.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasUndergraduateDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department1.University1.edu/AssistantProfessor2"/>
+        <NamedIndividual IRI="http://www.University4.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isMemberOf"/>
+        <NamedIndividual IRI="http://www.Department1.University1.edu/AssistantProfessor2"/>
+        <NamedIndividual IRI="http://www.Department1.University1.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#researchInterest"/>
+        <NamedIndividual IRI="http://www.Department1.University1.edu/AssistantProfessor2"/>
+        <NamedIndividual IRI="http://www.Department1.University1.edu/Research29"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#enrollIn"/>
+        <NamedIndividual IRI="http://www.Department1.University1.edu/UndergraduateStudent5"/>
+        <NamedIndividual IRI="http://www.Department1.University1.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasDoctoralDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department1.University2.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University8.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMasterDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department1.University2.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University6.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasUndergraduateDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department1.University2.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University1.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isMemberOf"/>
+        <NamedIndividual IRI="http://www.Department1.University2.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.Department1.University2.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#love"/>
+        <NamedIndividual IRI="http://www.Department1.University2.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#AmericanFootball"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasDoctoralDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department10.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University4.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMasterDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department10.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University1.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasUndergraduateDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department10.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University7.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#researchInterest"/>
+        <NamedIndividual IRI="http://www.Department10.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.Department10.University1.edu/Research29"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#worksFor"/>
+        <NamedIndividual IRI="http://www.Department10.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.Department10.University1.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasDoctoralDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department10.University1.edu/AssistantProfessor2"/>
+        <NamedIndividual IRI="http://www.University5.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMasterDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department10.University1.edu/AssistantProfessor2"/>
+        <NamedIndividual IRI="http://www.University1.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasUndergraduateDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department10.University1.edu/AssistantProfessor2"/>
+        <NamedIndividual IRI="http://www.University9.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isMemberOf"/>
+        <NamedIndividual IRI="http://www.Department10.University1.edu/AssistantProfessor2"/>
+        <NamedIndividual IRI="http://www.Department10.University1.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#researchInterest"/>
+        <NamedIndividual IRI="http://www.Department10.University1.edu/AssistantProfessor2"/>
+        <NamedIndividual IRI="http://www.Department10.University1.edu/Research29"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasDoctoralDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department10.University2.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University7.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMasterDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department10.University2.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University9.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasUndergraduateDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department10.University2.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University12.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isMemberOf"/>
+        <NamedIndividual IRI="http://www.Department10.University2.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.Department10.University2.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasDoctoralDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department11.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University0.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMasterDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department11.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University2.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasUndergraduateDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department11.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University4.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#researchInterest"/>
+        <NamedIndividual IRI="http://www.Department11.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.Department11.University1.edu/Research29"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasDoctoralDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department11.University1.edu/AssistantProfessor2"/>
+        <NamedIndividual IRI="http://www.University6.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMasterDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department11.University1.edu/AssistantProfessor2"/>
+        <NamedIndividual IRI="http://www.University3.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasUndergraduateDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department11.University1.edu/AssistantProfessor2"/>
+        <NamedIndividual IRI="http://www.University8.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#researchInterest"/>
+        <NamedIndividual IRI="http://www.Department11.University1.edu/AssistantProfessor2"/>
+        <NamedIndividual IRI="http://www.Department11.University1.edu/Research29"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasDoctoralDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department12.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University7.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMasterDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department12.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University0.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasUndergraduateDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department12.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University9.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#researchInterest"/>
+        <NamedIndividual IRI="http://www.Department12.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.Department12.University1.edu/Research29"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasDoctoralDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department12.University1.edu/AssistantProfessor2"/>
+        <NamedIndividual IRI="http://www.University9.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMasterDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department12.University1.edu/AssistantProfessor2"/>
+        <NamedIndividual IRI="http://www.University5.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasUndergraduateDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department12.University1.edu/AssistantProfessor2"/>
+        <NamedIndividual IRI="http://www.University3.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#researchInterest"/>
+        <NamedIndividual IRI="http://www.Department12.University1.edu/AssistantProfessor2"/>
+        <NamedIndividual IRI="http://www.Department12.University1.edu/Research29"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMajor"/>
+        <NamedIndividual IRI="http://www.Department12.University1.edu/UndergraduateStudent494"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Anthropology"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasDoctoralDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department13.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University0.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMasterDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department13.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University8.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasUndergraduateDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department13.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University8.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#researchInterest"/>
+        <NamedIndividual IRI="http://www.Department13.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.Department13.University1.edu/Research29"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasDoctoralDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department14.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University9.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMasterDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department14.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University0.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasUndergraduateDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department14.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University7.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#researchInterest"/>
+        <NamedIndividual IRI="http://www.Department14.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.Department14.University1.edu/Research29"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasDoctoralDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department15.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University4.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMasterDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department15.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University9.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasUndergraduateDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department15.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University0.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#researchInterest"/>
+        <NamedIndividual IRI="http://www.Department15.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.Department15.University1.edu/Research29"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasDoctoralDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department16.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University7.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMasterDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department16.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University1.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasUndergraduateDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department16.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University7.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#love"/>
+        <NamedIndividual IRI="http://www.Department16.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#AmericanFootball"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#researchInterest"/>
+        <NamedIndividual IRI="http://www.Department16.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.Department16.University1.edu/Research29"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasDoctoralDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department17.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University8.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMasterDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department17.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University3.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasUndergraduateDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department17.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.University7.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#researchInterest"/>
+        <NamedIndividual IRI="http://www.Department17.University1.edu/AssistantProfessor0"/>
+        <NamedIndividual IRI="http://www.Department17.University1.edu/Research29"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#enrollIn"/>
+        <NamedIndividual IRI="http://www.Department3.University2.edu/UndergraduateStudent99"/>
+        <NamedIndividual IRI="http://www.Department3.University2.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#enrollIn"/>
+        <NamedIndividual IRI="http://www.Department4.University2.edu/UndergraduateStudent99"/>
+        <NamedIndividual IRI="http://www.Department4.University2.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#enrollIn"/>
+        <NamedIndividual IRI="http://www.Department5.University2.edu/UndergraduateStudent99"/>
+        <NamedIndividual IRI="http://www.Department5.University2.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#enrollIn"/>
+        <NamedIndividual IRI="http://www.Department6.University2.edu/UndergraduateStudent99"/>
+        <NamedIndividual IRI="http://www.Department6.University2.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#enrollIn"/>
+        <NamedIndividual IRI="http://www.Department7.University2.edu/UndergraduateStudent99"/>
+        <NamedIndividual IRI="http://www.Department7.University2.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#enrollIn"/>
+        <NamedIndividual IRI="http://www.Department8.University2.edu/UndergraduateStudent99"/>
+        <NamedIndividual IRI="http://www.Department8.University2.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#enrollIn"/>
+        <NamedIndividual IRI="http://www.Department9.University1.edu/UndergraduateStudent99"/>
+        <NamedIndividual IRI="http://www.Department9.University1.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#enrollIn"/>
+        <NamedIndividual IRI="http://www.Department9.University2.edu/UndergraduateStudent99"/>
+        <NamedIndividual IRI="http://www.Department9.University2.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isFriendOf"/>
+        <NamedIndividual IRI="http://www.Department9.University2.edu/UndergraduateStudent99"/>
+        <NamedIndividual IRI="http://www.College0.University0.edu/woman_student100"/>
+    </ObjectPropertyAssertion>
+    <EquivalentObjectProperties>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#like"/>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#love"/>
+    </EquivalentObjectProperties>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#enrollIn"/>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isStudentOf"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasDoctoralDegreeFrom"/>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasDegreeFrom"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMasterDegreeFrom"/>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasDegreeFrom"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasStudent"/>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMember"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasUndergraduateDegreeFrom"/>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasDegreeFrom"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isCrazyAbout"/>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#like"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isHeadOf"/>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#worksFor"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isStudentOf"/>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isMemberOf"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#worksFor"/>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isMemberOf"/>
+    </SubObjectPropertyOf>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasDegreeFrom"/>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasAlumnus"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isMemberOf"/>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMember"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasStudent"/>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isStudentOf"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isTaughtBy"/>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#teacherOf"/>
+    </InverseObjectProperties>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isTaughtBy"/>
+    </FunctionalObjectProperty>
+    <InverseFunctionalObjectProperty>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isHeadOf"/>
+    </InverseFunctionalObjectProperty>
+    <SymmetricObjectProperty>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasSameHomeTownWith"/>
+    </SymmetricObjectProperty>
+    <SymmetricObjectProperty>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isFriendOf"/>
+    </SymmetricObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasSameHomeTownWith"/>
+    </TransitiveObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf"/>
+    </TransitiveObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasAlumnus"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#University"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasDegreeFrom"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasDoctoralDegreeFrom"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMasterDegreeFrom"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMember"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Organization"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasSameHomeTownWith"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasStudent"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Organization"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasUndergraduateDegreeFrom"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isAdvisedBy"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isAffiliateOf"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Organization"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isAffiliatedOrganizationOf"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Organization"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isFriendOf"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isStudentOf"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Student"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isTaughtBy"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Course"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#listedCourse"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Schedule"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#orgPublication"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Organization"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#publicationAuthor"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Publication"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#publicationDate"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Publication"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#publicationResearch"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Publication"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#researchProject"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#ResearchGroup"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#softwareDocumentation"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Software"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#softwareVersion"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Software"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Organization"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#takesCourse"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Student"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#teacherOf"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Faculty"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#teachingAssistantOf"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#TeachingAssistant"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#tenured"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Professor"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#enrollIn"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Department"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasAlumnus"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasDegreeFrom"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#University"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasDoctoralDegreeFrom"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#University"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMajor"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#AcademicSubject"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMasterDegreeFrom"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#University"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasMember"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasSameHomeTownWith"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasStudent"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Student"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#hasUndergraduateDegreeFrom"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#University"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isAdvisedBy"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Professor"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isAffiliateOf"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isAffiliatedOrganizationOf"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Organization"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isFriendOf"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isStudentOf"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Organization"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#isTaughtBy"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Faculty"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#listedCourse"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Course"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#orgPublication"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Publication"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#publicationAuthor"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Person"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#publicationResearch"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Research"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#researchProject"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Research"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#softwareDocumentation"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Publication"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#subOrganizationOf"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Organization"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#teacherOf"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Course"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#teachingAssistantOf"/>
+        <Class IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#Course"/>
+    </ObjectPropertyRange>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+

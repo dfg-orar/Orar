@@ -1,0 +1,174 @@
+2016-08-19 17:40:27 INFO  OntologyReaderTemplate:124 - Using OWLAPI to read the ontology:src/test/resources/uobm-origin/tbox/uobmtbox_origin.owl ...
+2016-08-19 17:40:28 INFO  NormalizerTemplate:215 - Normalizing the input ontology...
+2016-08-19 17:40:28 INFO  NormalizerTemplate:225 - Finished normalizing TBox of the input ontology.
+2016-08-19 17:40:28 INFO  TransitivityNormalizerWithHermit:79 - Normalizing transitivity...
+2016-08-19 17:40:28 INFO  TransitivityNormalizerWithHermit:91 - Finished normalizing transitivity.
+2016-08-19 17:40:28 INFO  OntologyReaderTemplate:218 - Information of the validated normalized ontology.
+2016-08-19 17:40:28 INFO  OntologyReaderTemplate:219 - Extracted from ontology input file:src/test/resources/uobm-origin/tbox/uobmtbox_origin.owl
+2016-08-19 17:40:28 INFO  OntologyStatistic:72 - Statistic: Number_of_TBox_Axioms = 175
+2016-08-19 17:40:28 INFO  OntologyStatistic:73 - Statistic: Number_of_input_concept_names = 91
+2016-08-19 17:40:28 INFO  OntologyStatistic:74 - Statistic: Number_of_input_role_names = 35
+2016-08-19 17:40:28 INFO  OntologyStatistic:77 - Statistic: Number_of_input_individuals = 58
+2016-08-19 17:40:28 INFO  OntologyStatistic:87 - Statistic: Number_of_input_concept_assertions = 102
+2016-08-19 17:40:28 INFO  OntologyStatistic:88 - Statistic: Number_of_input_role_assertions = 0
+2016-08-19 17:40:28 INFO  OntologyStatistic:89 - Statistic: Number_of_input_concept_and_role_assertions = 102
+2016-08-19 17:40:28 INFO  JenaMultipleABoxesStreamReader:82 - ABox 1:/Users/kien/git/ORAR-HSHOIF/src/test/resources/uobm-origin/abox/tinyABox2.owl
+2016-08-19 17:40:28 INFO  JenaMultipleABoxesStreamReader:82 - ABox 2:/Users/kien/git/ORAR-HSHOIF/src/test/resources/uobm-origin/abox/tinyABox1.owl
+2016-08-19 17:40:28 INFO  OntologyReaderTemplate:247 - ABoxList file:src/test/resources/uobm-origin/abox/aboxListOf2.txt
+2016-08-19 17:40:28 INFO  OntologyReaderTemplate:248 - ABox statistic:
+2016-08-19 17:40:28 INFO  OntologyStatistic:51 - Statistic: Number_of_input_individuals = 199
+2016-08-19 17:40:28 INFO  OntologyStatistic:61 - Statistic: Number_of_input_concept_assertions = 247
+2016-08-19 17:40:28 INFO  OntologyStatistic:62 - Statistic: Number_of_input_role_assertions = 191
+2016-08-19 17:40:28 INFO  OntologyStatistic:63 - Statistic: Number_of_input_concept_and_role_assertions = 438
+2016-08-19 17:40:28 INFO  OntologyReaderTemplate:124 - Using OWLAPI to read the ontology:src/test/resources/uobm-origin/tbox/uobmtbox_origin.owl ...
+2016-08-19 17:40:29 INFO  JenaMultipleABoxesStreamReader:82 - ABox 1:/Users/kien/git/ORAR-HSHOIF/src/test/resources/uobm-origin/abox/tinyABox2.owl
+2016-08-19 17:40:29 INFO  JenaStreamRDF2OWLAPI:190 - Total number of all parsed triples up to now: 676
+2016-08-19 17:40:29 INFO  JenaMultipleABoxesStreamReader:82 - ABox 2:/Users/kien/git/ORAR-HSHOIF/src/test/resources/uobm-origin/abox/tinyABox1.owl
+2016-08-19 17:40:29 INFO  JenaStreamRDF2OWLAPI:190 - Total number of all parsed triples up to now: 719
+2016-08-19 17:40:29 INFO  OntologyReaderTemplate:320 - ===Information of the validated ontology===
+2016-08-19 17:40:29 INFO  OntologyReaderTemplate:321 - TBox file: src/test/resources/uobm-origin/tbox/uobmtbox_origin.owl
+2016-08-19 17:40:29 INFO  OntologyReaderTemplate:322 - ABoxList file: src/test/resources/uobm-origin/abox/aboxListOf2.txt
+2016-08-19 17:40:29 INFO  OntologyStatistic:72 - Statistic: Number_of_TBox_Axioms = 157
+2016-08-19 17:40:29 INFO  OntologyStatistic:73 - Statistic: Number_of_input_concept_names = 67
+2016-08-19 17:40:29 INFO  OntologyStatistic:74 - Statistic: Number_of_input_role_names = 35
+2016-08-19 17:40:29 INFO  OntologyStatistic:77 - Statistic: Number_of_input_individuals = 199
+2016-08-19 17:40:29 INFO  OntologyStatistic:87 - Statistic: Number_of_input_concept_assertions = 203
+2016-08-19 17:40:29 INFO  OntologyStatistic:88 - Statistic: Number_of_input_role_assertions = 191
+2016-08-19 17:40:29 INFO  OntologyStatistic:89 - Statistic: Number_of_input_concept_and_role_assertions = 394
+2016-08-19 17:40:29 INFO  OntologyReaderTemplate:324 - ===========================================
+2016-08-19 17:40:29 INFO  MaterializerTemplate:82 - Performing role reasoning ...
+2016-08-19 17:40:29 INFO  MaterializerTemplate:89 - First time computing deductive closure...
+2016-08-19 17:40:29 INFO  SameasRuleExecutor:43 - time in materializer step: 0
+2016-08-19 17:40:29 INFO  SemiNaiveRuleEngine:51 - Size of new role assertion fromorar.ruleengine.SameasRuleExecutor: 0
+2016-08-19 17:40:29 INFO  SemiNaiveRuleEngine:52 - Size of new sameas assertion fromorar.ruleengine.SameasRuleExecutor: 0
+2016-08-19 17:40:29 INFO  SubRoleRuleExecutor:84 - Time for obtaining role assertions wrt the role hierarchy: 0
+2016-08-19 17:40:29 INFO  SubRoleRuleExecutor:89 - number of possibly new role assertions 254
+2016-08-19 17:40:29 INFO  SubRoleRuleExecutor:95 - number of new role assertions 5
+2016-08-19 17:40:29 INFO  SubRoleRuleExecutor:97 - Time for inserting new role assertions wrt the role hierarchy: 0
+2016-08-19 17:40:29 INFO  SemiNaiveRuleEngine:51 - Size of new role assertion fromorar.ruleengine.SubRoleRuleExecutor: 5
+2016-08-19 17:40:29 INFO  SemiNaiveRuleEngine:52 - Size of new sameas assertion fromorar.ruleengine.SubRoleRuleExecutor: 0
+2016-08-19 17:40:29 INFO  TransitivityRuleExecutor:58 - time in materializer step: 0
+2016-08-19 17:40:29 INFO  SemiNaiveRuleEngine:51 - Size of new role assertion fromorar.ruleengine.TransitivityRuleExecutor: 25
+2016-08-19 17:40:29 INFO  SemiNaiveRuleEngine:52 - Size of new sameas assertion fromorar.ruleengine.TransitivityRuleExecutor: 0
+2016-08-19 17:40:29 INFO  FunctionalityRuleExecutor:36 - time in materializer step: 0
+2016-08-19 17:40:29 INFO  SemiNaiveRuleEngine:51 - Size of new role assertion fromorar.ruleengine.FunctionalityRuleExecutor: 0
+2016-08-19 17:40:29 INFO  SemiNaiveRuleEngine:52 - Size of new sameas assertion fromorar.ruleengine.FunctionalityRuleExecutor: 0
+2016-08-19 17:40:29 INFO  SemiNaiveRuleEngine:61 - Reasoning time for incremental rule reasoning step: 0
+2016-08-19 17:40:29 INFO  SemiNaiveRuleEngine:62 - Reasoning time for deductive closure computing in this step: 0
+2016-08-19 17:40:29 INFO  MaterializerTemplate:95 - Starting the abstraction refinement loop...
+2016-08-19 17:40:29 INFO  MaterializerTemplate:103 - Current loop: 1
+2016-08-19 17:40:29 INFO  MaterializerTemplate:115 - Computing types...
+2016-08-19 17:40:29 INFO  MaterializerTemplate:130 - Statistic: Current_loop = 1;Statistic: Number_of_types = 80
+2016-08-19 17:40:29 INFO  MaterializerTemplate:142 - Generating abstractions ...
+2016-08-19 17:40:29 INFO  MaterializerTemplate:144 - Info:Number of abstraction ontolog(ies):1
+2016-08-19 17:40:29 INFO  MaterializerTemplate:157 - Statistic: Current_loop = 1;Statistic: Number_of_x = 80
+2016-08-19 17:40:29 INFO  MaterializerTemplate:159 - Statistic: Current_loop = 1;Statistic: Number_of_u = 80
+2016-08-19 17:40:29 INFO  MaterializerTemplate:162 - Statistic: Current_loop = 1;Statistic: Number_of_yz = 343
+2016-08-19 17:40:29 INFO  MaterializerTemplate:167 - Statistic: Current_loop = 1;Statistic: Number_of_abstract_individuals_xuyz = 503
+2016-08-19 17:40:29 INFO  MaterializerTemplate:180 - Statistic: Current_loop = 1;Statistic: Number_of_abstract_concept_assertions = 282
+2016-08-19 17:40:29 INFO  MaterializerTemplate:182 - Statistic: Current_loop = 1;Statistic: Number_of_abstract_role_assertions = 343
+2016-08-19 17:40:29 INFO  MaterializerTemplate:184 - Statistic: Current_loop = 1;Statistic: Number_of_abstract_concept_and_role_assertions = 625
+2016-08-19 17:40:29 INFO  MaterializerTemplate:191 - Materializing the abstractions ...
+2016-08-19 17:40:29 INFO  MaterializerTemplate:202 - Info:Materializing (splitted) abstract ontology: 1
+2016-08-19 17:40:29 INFO  MaterializerTemplate:203 - Info:Size of the (splitted) abstract ontology: 798
+2016-08-19 17:40:29 INFO  Konclude_HornSHOIF_InnerReasoner:122 - Orar Info: Konclude is started.
+2016-08-19 17:40:29 INFO  Konclude_HornSHOIF_InnerReasoner:123 - {info} 17:40:29:437 >> Starting Konclude ... 
+{info} 17:40:29:437 >> Konclude - Uni Ulm Parallel Reasoner
+{info} 17:40:29:437 >> Reasoner for the SROIQV(D) Description Logic, 64-bit, Version v0.6.2-544 - f07c265 (Oct 27 2015)
+
+{info} 17:40:29:439 >> Initializing reasoner. Creating calculation context.
+{info} 17:40:29:439 >> Listening on port '8080'
+{info} 17:40:29:439 >> Reasoner initialized with 1 processing unit(s).
+
+2016-08-19 17:40:29 INFO  Konclude_HornSHOIF_InnerReasoner:130 - Konclude has been started.
+2016-08-19 17:40:29 INFO  Konclude_HornSHOIF_InnerReasoner:196 - Connected to Konclude server at: http://localhost:8080
+2016-08-19 17:40:29 INFO  InnerReasonerTemplate:177 - Computing concept assertions.... 
+2016-08-19 17:40:32 INFO  InnerReasonerTemplate:185 - Computing role assertions.... 
+2016-08-19 17:40:32 INFO  InnerReasonerTemplate:187 - Computing sameas assertions.... 
+2016-08-19 17:40:33 INFO  Konclude_HornSHOIF_InnerReasoner:144 - Konclude server has been stoped.
+2016-08-19 17:40:33 INFO  MaterializerTemplate:227 - Transferring the entailments ...
+2016-08-19 17:40:33 INFO  MaterializerTemplate:239 - Computing the deductive closure wrt new entailments ...
+2016-08-19 17:40:33 INFO  MaterializerTemplate:245 - Finished loop: 1
+2016-08-19 17:40:33 INFO  MaterializerTemplate:103 - Current loop: 2
+2016-08-19 17:40:33 INFO  MaterializerTemplate:115 - Computing types...
+2016-08-19 17:40:33 INFO  MaterializerTemplate:130 - Statistic: Current_loop = 2;Statistic: Number_of_types = 82
+2016-08-19 17:40:33 INFO  MaterializerTemplate:142 - Generating abstractions ...
+2016-08-19 17:40:33 INFO  MaterializerTemplate:144 - Info:Number of abstraction ontolog(ies):1
+2016-08-19 17:40:33 INFO  MaterializerTemplate:157 - Statistic: Current_loop = 2;Statistic: Number_of_x = 82
+2016-08-19 17:40:33 INFO  MaterializerTemplate:159 - Statistic: Current_loop = 2;Statistic: Number_of_u = 82
+2016-08-19 17:40:33 INFO  MaterializerTemplate:162 - Statistic: Current_loop = 2;Statistic: Number_of_yz = 391
+2016-08-19 17:40:33 INFO  MaterializerTemplate:167 - Statistic: Current_loop = 2;Statistic: Number_of_abstract_individuals_xuyz = 555
+2016-08-19 17:40:33 INFO  MaterializerTemplate:180 - Statistic: Current_loop = 2;Statistic: Number_of_abstract_concept_assertions = 910
+2016-08-19 17:40:33 INFO  MaterializerTemplate:182 - Statistic: Current_loop = 2;Statistic: Number_of_abstract_role_assertions = 391
+2016-08-19 17:40:33 INFO  MaterializerTemplate:184 - Statistic: Current_loop = 2;Statistic: Number_of_abstract_concept_and_role_assertions = 1301
+2016-08-19 17:40:33 INFO  MaterializerTemplate:191 - Materializing the abstractions ...
+2016-08-19 17:40:33 INFO  MaterializerTemplate:202 - Info:Materializing (splitted) abstract ontology: 1
+2016-08-19 17:40:33 INFO  MaterializerTemplate:203 - Info:Size of the (splitted) abstract ontology: 1474
+2016-08-19 17:40:33 INFO  Konclude_HornSHOIF_InnerReasoner:122 - Orar Info: Konclude is started.
+2016-08-19 17:40:33 INFO  Konclude_HornSHOIF_InnerReasoner:123 - {info} 17:40:33:192 >> Starting Konclude ... 
+{info} 17:40:33:192 >> Konclude - Uni Ulm Parallel Reasoner
+{info} 17:40:33:192 >> Reasoner for the SROIQV(D) Description Logic, 64-bit, Version v0.6.2-544 - f07c265 (Oct 27 2015)
+
+{info} 17:40:33:194 >> Initializing reasoner. Creating calculation context.
+{info} 17:40:33:194 >> Listening on port '8080'
+{info} 17:40:33:195 >> Reasoner initialized with 1 processing unit(s).
+
+2016-08-19 17:40:33 INFO  Konclude_HornSHOIF_InnerReasoner:130 - Konclude has been started.
+2016-08-19 17:40:33 INFO  Konclude_HornSHOIF_InnerReasoner:196 - Connected to Konclude server at: http://localhost:8080
+2016-08-19 17:40:33 INFO  InnerReasonerTemplate:177 - Computing concept assertions.... 
+2016-08-19 17:40:35 INFO  InnerReasonerTemplate:185 - Computing role assertions.... 
+2016-08-19 17:40:35 INFO  InnerReasonerTemplate:187 - Computing sameas assertions.... 
+2016-08-19 17:40:36 INFO  Konclude_HornSHOIF_InnerReasoner:144 - Konclude server has been stoped.
+2016-08-19 17:40:36 INFO  MaterializerTemplate:227 - Transferring the entailments ...
+2016-08-19 17:40:36 INFO  MaterializerTemplate:239 - Computing the deductive closure wrt new entailments ...
+2016-08-19 17:40:36 INFO  MaterializerTemplate:245 - Finished loop: 2
+2016-08-19 17:40:36 INFO  MaterializerTemplate:103 - Current loop: 3
+2016-08-19 17:40:36 INFO  MaterializerTemplate:115 - Computing types...
+2016-08-19 17:40:36 INFO  MaterializerTemplate:130 - Statistic: Current_loop = 3;Statistic: Number_of_types = 81
+2016-08-19 17:40:36 INFO  MaterializerTemplate:142 - Generating abstractions ...
+2016-08-19 17:40:36 INFO  MaterializerTemplate:144 - Info:Number of abstraction ontolog(ies):1
+2016-08-19 17:40:36 INFO  MaterializerTemplate:157 - Statistic: Current_loop = 3;Statistic: Number_of_x = 81
+2016-08-19 17:40:36 INFO  MaterializerTemplate:159 - Statistic: Current_loop = 3;Statistic: Number_of_u = 81
+2016-08-19 17:40:36 INFO  MaterializerTemplate:162 - Statistic: Current_loop = 3;Statistic: Number_of_yz = 384
+2016-08-19 17:40:36 INFO  MaterializerTemplate:167 - Statistic: Current_loop = 3;Statistic: Number_of_abstract_individuals_xuyz = 546
+2016-08-19 17:40:36 INFO  MaterializerTemplate:180 - Statistic: Current_loop = 3;Statistic: Number_of_abstract_concept_assertions = 930
+2016-08-19 17:40:36 INFO  MaterializerTemplate:182 - Statistic: Current_loop = 3;Statistic: Number_of_abstract_role_assertions = 384
+2016-08-19 17:40:36 INFO  MaterializerTemplate:184 - Statistic: Current_loop = 3;Statistic: Number_of_abstract_concept_and_role_assertions = 1314
+2016-08-19 17:40:36 INFO  MaterializerTemplate:191 - Materializing the abstractions ...
+2016-08-19 17:40:36 INFO  MaterializerTemplate:202 - Info:Materializing (splitted) abstract ontology: 1
+2016-08-19 17:40:36 INFO  MaterializerTemplate:203 - Info:Size of the (splitted) abstract ontology: 1487
+2016-08-19 17:40:36 INFO  Konclude_HornSHOIF_InnerReasoner:122 - Orar Info: Konclude is started.
+2016-08-19 17:40:36 INFO  Konclude_HornSHOIF_InnerReasoner:123 - {info} 17:40:36:171 >> Starting Konclude ... 
+{info} 17:40:36:171 >> Konclude - Uni Ulm Parallel Reasoner
+{info} 17:40:36:171 >> Reasoner for the SROIQV(D) Description Logic, 64-bit, Version v0.6.2-544 - f07c265 (Oct 27 2015)
+
+{info} 17:40:36:173 >> Initializing reasoner. Creating calculation context.
+{info} 17:40:36:173 >> Listening on port '8080'
+{info} 17:40:36:173 >> Reasoner initialized with 1 processing unit(s).
+
+2016-08-19 17:40:36 INFO  Konclude_HornSHOIF_InnerReasoner:130 - Konclude has been started.
+2016-08-19 17:40:36 INFO  Konclude_HornSHOIF_InnerReasoner:196 - Connected to Konclude server at: http://localhost:8080
+2016-08-19 17:40:36 INFO  InnerReasonerTemplate:177 - Computing concept assertions.... 
+2016-08-19 17:40:38 INFO  InnerReasonerTemplate:185 - Computing role assertions.... 
+2016-08-19 17:40:38 INFO  InnerReasonerTemplate:187 - Computing sameas assertions.... 
+2016-08-19 17:40:39 INFO  Konclude_HornSHOIF_InnerReasoner:144 - Konclude server has been stoped.
+2016-08-19 17:40:39 INFO  MaterializerTemplate:227 - Transferring the entailments ...
+2016-08-19 17:40:39 INFO  MaterializerTemplate:245 - Finished loop: 3
+2016-08-19 17:40:39 INFO  MaterializerTemplate:251 - Statistic: Number_of_refinement_steps = 2
+2016-08-19 17:40:39 INFO  MaterializerTemplate:260 - Statistic: Time_reasoning_using_abstraction_in_seconds = 9
+2016-08-19 17:40:39 INFO  MaterializerTemplate:272 - Statistic: Number_of_materialized_concept_assertions = 714
+2016-08-19 17:40:39 INFO  MaterializerTemplate:274 - Statistic: Number_of_materialized_role_assertions = 501
+2016-08-19 17:40:39 INFO  MaterializerTemplate:275 - Statistic: Number_of_materialized_equality_assertions = 0
+2016-08-19 17:40:39 INFO  CompletenessCheckerHorn:62 - Time by abstraction refinement (s):9
+2016-08-19 17:40:39 INFO  CompletenessCheckerHorn:68 - Number of derived concept assertions by abstraction materializer:550
+2016-08-19 17:40:39 INFO  CompletenessCheckerHorn:70 - Number of derived role assertions by abstraction materializer:501
+2016-08-19 17:40:40 INFO  DLReasonerTemplate:124 - computing concept assertions...
+2016-08-19 17:40:40 INFO  DLReasonerTemplate:126 - computing role assertions...
+2016-08-19 17:40:40 INFO  DLReasonerTemplate:128 - computing sameas assertions...
+2016-08-19 17:40:40 INFO  DLReasonerTemplate:133 - computing entailments...finished!
+2016-08-19 17:40:40 INFO  DLReasonerTemplate:136 - Statistic: Time_reasoning_using_dlreasoner_in_seconds = 1
+2016-08-19 17:40:40 INFO  CompletenessCheckerHorn:79 - Time by a DL Reasoner (s):1
+2016-08-19 17:40:40 INFO  CompletenessCheckerHorn:188 - Number of derived concept assertions by abstraction materializer:550
+2016-08-19 17:40:40 INFO  CompletenessCheckerHorn:191 - Number of derived concept assertions by OWL reasoner:550
+2016-08-19 17:40:40 INFO  CompletenessCheckerHorn:125 - Number of derived role assertions by abstraction materializer:501
+2016-08-19 17:40:40 INFO  CompletenessCheckerHorn:128 - Number of derived role assertions by OWL reasoner:501

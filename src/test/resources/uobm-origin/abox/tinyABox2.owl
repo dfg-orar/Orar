@@ -1,0 +1,1458 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY benchmark-dl "http://uob.iodt.ibm.com/univ-bench-dl.owl#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="file:/Users/kien/git/ORAR-HSHOIF/src/test/resources/uobm-origin/abox/1-ub-dl-univ0-dept0.owl#"
+     xml:base="file:/Users/kien/git/ORAR-HSHOIF/src/test/resources/uobm-origin/abox/1-ub-dl-univ0-dept0.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:benchmark-dl="http://uob.iodt.ibm.com/univ-bench-dl.owl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="file:/Users/kien/git/ORAR-HSHOIF/src/test/resources/uobm-origin/abox/1-ub-dl-univ0-dept0.owl">
+       <owl:imports rdf:resource="file:/Users/kien/git/ORAR-HSHOIF/src/test/resources/uobm-origin/tbox/uobmtbox_origin.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.College2.University0.edu -->
+
+    <owl:NamedIndividual rdf:about="http://www.College2.University0.edu"/>
+    
+
+
+    <!-- http://www.Department0.University0.edu -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu">
+        <rdf:type rdf:resource="&benchmark-dl;Department"/>
+        <benchmark-dl:name>Department0</benchmark-dl:name>
+        <benchmark-dl:subOrganizationOf rdf:resource="http://www.College2.University0.edu"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.University0.edu -->
+
+    <owl:NamedIndividual rdf:about="http://www.University0.edu"/>
+    
+
+
+    <!-- http://www.University12.edu -->
+
+    <owl:NamedIndividual rdf:about="http://www.University12.edu"/>
+    
+
+
+    <!-- http://www.University13.edu -->
+
+    <owl:NamedIndividual rdf:about="http://www.University13.edu"/>
+    
+
+
+    <!-- http://www.University16.edu -->
+
+    <owl:NamedIndividual rdf:about="http://www.University16.edu"/>
+    
+
+
+    <!-- http://www.University17.edu -->
+
+    <owl:NamedIndividual rdf:about="http://www.University17.edu"/>
+    
+
+
+    <!-- http://www.University18.edu -->
+
+    <owl:NamedIndividual rdf:about="http://www.University18.edu"/>
+    
+
+
+    <!-- http://www.University19.edu -->
+
+    <owl:NamedIndividual rdf:about="http://www.University19.edu"/>
+    
+
+
+    <!-- http://www.University2.edu -->
+
+    <owl:NamedIndividual rdf:about="http://www.University2.edu"/>
+    
+
+
+    <!-- http://www.University20.edu -->
+
+    <owl:NamedIndividual rdf:about="http://www.University20.edu"/>
+    
+
+
+    <!-- http://www.University21.edu -->
+
+    <owl:NamedIndividual rdf:about="http://www.University21.edu"/>
+    
+
+
+    <!-- http://www.University23.edu -->
+
+    <owl:NamedIndividual rdf:about="http://www.University23.edu"/>
+    
+
+
+    <!-- http://www.University24.edu -->
+
+    <owl:NamedIndividual rdf:about="http://www.University24.edu"/>
+    
+
+
+    <!-- http://www.University25.edu -->
+
+    <owl:NamedIndividual rdf:about="http://www.University25.edu"/>
+    
+
+
+    <!-- http://www.University26.edu -->
+
+    <owl:NamedIndividual rdf:about="http://www.University26.edu"/>
+    
+
+
+    <!-- http://www.University29.edu -->
+
+    <owl:NamedIndividual rdf:about="http://www.University29.edu"/>
+    
+
+
+    <!-- http://www.University4.edu -->
+
+    <owl:NamedIndividual rdf:about="http://www.University4.edu"/>
+    
+
+
+    <!-- http://www.University5.edu -->
+
+    <owl:NamedIndividual rdf:about="http://www.University5.edu"/>
+    
+
+
+    <!-- http://www.University8.edu -->
+
+    <owl:NamedIndividual rdf:about="http://www.University8.edu"/>
+    
+
+
+    <!-- http://www.Department0.University0.edu/AssistantProfessor0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/AssistantProfessor0">
+        <rdf:type rdf:resource="&benchmark-dl;AssistantProfessor"/>
+        <rdf:type rdf:resource="&benchmark-dl;Woman"/>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:lastName>AssistantProfessor0.lastname</benchmark-dl:lastName>
+        <benchmark-dl:firstName>AssistantProfessor0.firstname</benchmark-dl:firstName>
+        <benchmark-dl:emailAddress>AssistantProfessor0@Department0.College3.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:researchInterest>Research20</benchmark-dl:researchInterest>
+        <benchmark-dl:isMemberOf rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:hasUndergraduateDegreeFrom rdf:resource="http://www.University0.edu"/>
+        <benchmark-dl:hasDoctoralDegreeFrom rdf:resource="http://www.University21.edu"/>
+        <benchmark-dl:hasMasterDegreeFrom rdf:resource="http://www.University25.edu"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/Chair0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/Chair0">
+        <rdf:type rdf:resource="&benchmark-dl;Chair"/>
+        <benchmark-dl:isHeadOf rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:like rdf:resource="&benchmark-dl;StampCollecting"/>
+        <benchmark-dl:like rdf:resource="&benchmark-dl;Swimming"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department12.University0.edu/Lecturer4"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department2.University0.edu/ClericalStaff0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/ClericalStaff0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/ClericalStaff0">
+        <rdf:type rdf:resource="&benchmark-dl;ClericalStaff"/>
+        <rdf:type rdf:resource="&benchmark-dl;Woman"/>
+        <benchmark-dl:emailAddress>ClericalStaff0@Department0.College3.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:firstName>ClericalStaff0.firstname</benchmark-dl:firstName>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:lastName>ClericalStaff0.lastname</benchmark-dl:lastName>
+        <benchmark-dl:isMemberOf rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department10.University0.edu/SystemsStaff4"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department17.University0.edu/ClericalStaff0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/Course0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/Course0">
+        <rdf:type rdf:resource="&benchmark-dl;Course"/>
+        <benchmark-dl:name>Course0</benchmark-dl:name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/FullProfessor0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/FullProfessor0">
+        <rdf:type rdf:resource="&benchmark-dl;FullProfessor"/>
+        <rdf:type rdf:resource="&benchmark-dl;Man"/>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:lastName>FullProfessor0.lastname</benchmark-dl:lastName>
+        <benchmark-dl:researchInterest>Research24</benchmark-dl:researchInterest>
+        <benchmark-dl:firstName>FullProfessor0.firstname</benchmark-dl:firstName>
+        <benchmark-dl:emailAddress>FullProfessor0@Department0.College3.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:isMemberOf rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:hasUndergraduateDegreeFrom rdf:resource="http://www.University12.edu"/>
+        <benchmark-dl:hasMasterDegreeFrom rdf:resource="http://www.University16.edu"/>
+        <benchmark-dl:hasDoctoralDegreeFrom rdf:resource="http://www.University2.edu"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department8.University0.edu/ClericalStaff0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/GraduateCourse0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/GraduateCourse0">
+        <rdf:type rdf:resource="&benchmark-dl;Course"/>
+        <benchmark-dl:name>GraduateCourse0</benchmark-dl:name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/GraduateCourse1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/GraduateCourse1">
+        <rdf:type rdf:resource="&benchmark-dl;Course"/>
+        <benchmark-dl:name>GraduateCourse1</benchmark-dl:name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/Lecturer0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/Lecturer0">
+        <rdf:type rdf:resource="&benchmark-dl;Lecturer"/>
+        <rdf:type rdf:resource="&benchmark-dl;Woman"/>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:firstName>Lecturer0.firstname</benchmark-dl:firstName>
+        <benchmark-dl:emailAddress>Lecturer0@Department0.College3.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:lastName>Lecturer0.lastname</benchmark-dl:lastName>
+        <benchmark-dl:worksFor rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:hasDoctoralDegreeFrom rdf:resource="http://www.University2.edu"/>
+        <benchmark-dl:hasUndergraduateDegreeFrom rdf:resource="http://www.University23.edu"/>
+        <benchmark-dl:hasMasterDegreeFrom rdf:resource="http://www.University26.edu"/>
+        <benchmark-dl:isCrazyAbout rdf:resource="&benchmark-dl;PC_Game"/>
+        <benchmark-dl:isCrazyAbout rdf:resource="&benchmark-dl;Shopping"/>
+        <benchmark-dl:teacherOf rdf:resource="http://www.Department0.University0.edu/Course0"/>
+        <benchmark-dl:teacherOf rdf:resource="http://www.Department0.University0.edu/GraduateCourse0"/>
+        <benchmark-dl:teacherOf rdf:resource="http://www.Department0.University0.edu/GraduateCourse1"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department13.University0.edu/ClericalStaff0"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department13.University0.edu/SystemsStaff9"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department17.University0.edu/Lecturer2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/Lecturer1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/Lecturer1">
+        <rdf:type rdf:resource="&benchmark-dl;Lecturer"/>
+        <rdf:type rdf:resource="&benchmark-dl;Woman"/>
+        <benchmark-dl:emailAddress>Lecturer1@Department0.College3.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:lastName>Lecturer1.lastname</benchmark-dl:lastName>
+        <benchmark-dl:firstName>Lecturer1.firstname</benchmark-dl:firstName>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:isMemberOf rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:hasDoctoralDegreeFrom rdf:resource="http://www.University17.edu"/>
+        <benchmark-dl:hasMasterDegreeFrom rdf:resource="http://www.University17.edu"/>
+        <benchmark-dl:hasUndergraduateDegreeFrom rdf:resource="http://www.University18.edu"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/Lecturer2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/Lecturer2">
+        <rdf:type rdf:resource="&benchmark-dl;Lecturer"/>
+        <rdf:type rdf:resource="&benchmark-dl;Woman"/>
+        <benchmark-dl:firstName>Lecturer2.firstname</benchmark-dl:firstName>
+        <benchmark-dl:emailAddress>Lecturer2@Department0.College3.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:lastName>Lecturer2.lastname</benchmark-dl:lastName>
+        <benchmark-dl:worksFor rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:hasDoctoralDegreeFrom rdf:resource="http://www.University20.edu"/>
+        <benchmark-dl:hasUndergraduateDegreeFrom rdf:resource="http://www.University25.edu"/>
+        <benchmark-dl:hasMasterDegreeFrom rdf:resource="http://www.University8.edu"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department15.University0.edu/Lecturer1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/Lecturer3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/Lecturer3">
+        <rdf:type rdf:resource="&benchmark-dl;BasketBallLover"/>
+        <rdf:type rdf:resource="&benchmark-dl;Lecturer"/>
+        <rdf:type rdf:resource="&benchmark-dl;Woman"/>
+        <benchmark-dl:lastName>Lecturer3.lastname</benchmark-dl:lastName>
+        <benchmark-dl:emailAddress>Lecturer3@Department0.College3.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:firstName>Lecturer3.firstname</benchmark-dl:firstName>
+        <benchmark-dl:worksFor rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:hasDoctoralDegreeFrom rdf:resource="http://www.University2.edu"/>
+        <benchmark-dl:hasMasterDegreeFrom rdf:resource="http://www.University20.edu"/>
+        <benchmark-dl:hasUndergraduateDegreeFrom rdf:resource="http://www.University29.edu"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/Lecturer4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/Lecturer4">
+        <rdf:type rdf:resource="&benchmark-dl;Lecturer"/>
+        <rdf:type rdf:resource="&benchmark-dl;Woman"/>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:firstName>Lecturer4.firstname</benchmark-dl:firstName>
+        <benchmark-dl:lastName>Lecturer4.lastname</benchmark-dl:lastName>
+        <benchmark-dl:emailAddress>Lecturer4@Department0.College3.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:isMemberOf rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:hasDoctoralDegreeFrom rdf:resource="http://www.University16.edu"/>
+        <benchmark-dl:hasMasterDegreeFrom rdf:resource="http://www.University24.edu"/>
+        <benchmark-dl:hasUndergraduateDegreeFrom rdf:resource="http://www.University4.edu"/>
+        <benchmark-dl:like rdf:resource="&benchmark-dl;PC_Game"/>
+        <benchmark-dl:like rdf:resource="&benchmark-dl;Reading"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department7.University0.edu/SystemsStaff1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/Lecturer5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/Lecturer5">
+        <rdf:type rdf:resource="&benchmark-dl;Lecturer"/>
+        <rdf:type rdf:resource="&benchmark-dl;Man"/>
+        <benchmark-dl:lastName>Lecturer5.lastname</benchmark-dl:lastName>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:firstName>Lecturer5.firstname</benchmark-dl:firstName>
+        <benchmark-dl:emailAddress>Lecturer5@Department0.College3.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:isMemberOf rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:hasMasterDegreeFrom rdf:resource="http://www.University13.edu"/>
+        <benchmark-dl:hasUndergraduateDegreeFrom rdf:resource="http://www.University19.edu"/>
+        <benchmark-dl:hasDoctoralDegreeFrom rdf:resource="http://www.University5.edu"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department1.University0.edu/Lecturer5"/>
+        <benchmark-dl:hasSameHomeTownWith rdf:resource="http://www.Department4.University0.edu/Lecturer1"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department4.University0.edu/SystemsStaff14"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/ResearchGroup0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/ResearchGroup0">
+        <rdf:type rdf:resource="&benchmark-dl;ResearchGroup"/>
+        <benchmark-dl:name>ResearchGroup0</benchmark-dl:name>
+        <benchmark-dl:subOrganizationOf rdf:resource="http://www.Department0.University0.edu"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/ResearchGroup1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/ResearchGroup1">
+        <rdf:type rdf:resource="&benchmark-dl;ResearchGroup"/>
+        <benchmark-dl:name>ResearchGroup1</benchmark-dl:name>
+        <benchmark-dl:subOrganizationOf rdf:resource="http://www.Department0.University0.edu"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/ResearchGroup2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/ResearchGroup2">
+        <rdf:type rdf:resource="&benchmark-dl;ResearchGroup"/>
+        <benchmark-dl:name>ResearchGroup2</benchmark-dl:name>
+        <benchmark-dl:subOrganizationOf rdf:resource="http://www.Department0.University0.edu"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/ResearchGroup3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/ResearchGroup3">
+        <rdf:type rdf:resource="&benchmark-dl;ResearchGroup"/>
+        <benchmark-dl:name>ResearchGroup3</benchmark-dl:name>
+        <benchmark-dl:subOrganizationOf rdf:resource="http://www.Department0.University0.edu"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/ResearchGroup4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/ResearchGroup4">
+        <rdf:type rdf:resource="&benchmark-dl;ResearchGroup"/>
+        <benchmark-dl:name>ResearchGroup4</benchmark-dl:name>
+        <benchmark-dl:subOrganizationOf rdf:resource="http://www.Department0.University0.edu"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/ResearchGroup5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/ResearchGroup5">
+        <rdf:type rdf:resource="&benchmark-dl;ResearchGroup"/>
+        <benchmark-dl:name>ResearchGroup5</benchmark-dl:name>
+        <benchmark-dl:subOrganizationOf rdf:resource="http://www.Department0.University0.edu"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/ResearchGroup6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/ResearchGroup6">
+        <rdf:type rdf:resource="&benchmark-dl;ResearchGroup"/>
+        <benchmark-dl:name>ResearchGroup6</benchmark-dl:name>
+        <benchmark-dl:subOrganizationOf rdf:resource="http://www.Department0.University0.edu"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/ResearchGroup7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/ResearchGroup7">
+        <rdf:type rdf:resource="&benchmark-dl;ResearchGroup"/>
+        <benchmark-dl:name>ResearchGroup7</benchmark-dl:name>
+        <benchmark-dl:subOrganizationOf rdf:resource="http://www.Department0.University0.edu"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/ResearchGroup8 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/ResearchGroup8">
+        <rdf:type rdf:resource="&benchmark-dl;ResearchGroup"/>
+        <benchmark-dl:name>ResearchGroup8</benchmark-dl:name>
+        <benchmark-dl:subOrganizationOf rdf:resource="http://www.Department0.University0.edu"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/ResearchGroup9 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/ResearchGroup9">
+        <rdf:type rdf:resource="&benchmark-dl;ResearchGroup"/>
+        <benchmark-dl:name>ResearchGroup9</benchmark-dl:name>
+        <benchmark-dl:subOrganizationOf rdf:resource="http://www.Department0.University0.edu"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/SystemsStaff0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/SystemsStaff0">
+        <rdf:type rdf:resource="&benchmark-dl;SystemsStaff"/>
+        <rdf:type rdf:resource="&benchmark-dl;Woman"/>
+        <benchmark-dl:firstName>SystemsStaff0.firstname</benchmark-dl:firstName>
+        <benchmark-dl:lastName>SystemsStaff0.lastname</benchmark-dl:lastName>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:emailAddress>SystemsStaff0@Department0.College3.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:worksFor rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:like rdf:resource="&benchmark-dl;Classic_Music"/>
+        <benchmark-dl:love rdf:resource="&benchmark-dl;Pop_Music"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department6.University0.edu/ClericalStaff0"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department7.University0.edu/SystemsStaff16"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/SystemsStaff1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/SystemsStaff1">
+        <rdf:type rdf:resource="&benchmark-dl;SystemsStaff"/>
+        <rdf:type rdf:resource="&benchmark-dl;Woman"/>
+        <benchmark-dl:emailAddress>SystemsStaff1@Department0.College3.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:lastName>SystemsStaff1.lastname</benchmark-dl:lastName>
+        <benchmark-dl:firstName>SystemsStaff1.firstname</benchmark-dl:firstName>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:worksFor rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:love rdf:resource="&benchmark-dl;Baseball"/>
+        <benchmark-dl:like rdf:resource="&benchmark-dl;Classic_Music"/>
+        <benchmark-dl:love rdf:resource="&benchmark-dl;PC_Game"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department3.University0.edu/SystemsStaff5"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/SystemsStaff10 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/SystemsStaff10">
+        <rdf:type rdf:resource="&benchmark-dl;Man"/>
+        <rdf:type rdf:resource="&benchmark-dl;SystemsStaff"/>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:lastName>SystemsStaff10.lastname</benchmark-dl:lastName>
+        <benchmark-dl:firstName>SystemsStaff10.firstname</benchmark-dl:firstName>
+        <benchmark-dl:emailAddress>SystemsStaff10@Department0.College3.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:isMemberOf rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department14.University0.edu/ClericalStaff0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/SystemsStaff11 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/SystemsStaff11">
+        <rdf:type rdf:resource="&benchmark-dl;BasketBallFan"/>
+        <rdf:type rdf:resource="&benchmark-dl;SystemsStaff"/>
+        <rdf:type rdf:resource="&benchmark-dl;Woman"/>
+        <benchmark-dl:firstName>SystemsStaff11.firstname</benchmark-dl:firstName>
+        <benchmark-dl:emailAddress>SystemsStaff11@Department0.College3.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:lastName>SystemsStaff11.lastname</benchmark-dl:lastName>
+        <benchmark-dl:worksFor rdf:resource="http://www.Department0.University0.edu"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/SystemsStaff12 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/SystemsStaff12">
+        <rdf:type rdf:resource="&benchmark-dl;Man"/>
+        <rdf:type rdf:resource="&benchmark-dl;SystemsStaff"/>
+        <benchmark-dl:lastName>SystemsStaff12.lastname</benchmark-dl:lastName>
+        <benchmark-dl:emailAddress>SystemsStaff12@Department0.College3.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:firstName>SystemsStaff12.firstname</benchmark-dl:firstName>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:isMemberOf rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department0.University0.edu/ClericalStaff0"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department18.University0.edu/ClericalStaff0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/SystemsStaff13 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/SystemsStaff13">
+        <rdf:type rdf:resource="&benchmark-dl;SwimmingFan"/>
+        <rdf:type rdf:resource="&benchmark-dl;SystemsStaff"/>
+        <rdf:type rdf:resource="&benchmark-dl;Woman"/>
+        <benchmark-dl:emailAddress>SystemsStaff13@Department0.College3.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:firstName>SystemsStaff13.firstname</benchmark-dl:firstName>
+        <benchmark-dl:lastName>SystemsStaff13.lastname</benchmark-dl:lastName>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:isMemberOf rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department13.University0.edu/SystemsStaff15"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department8.University0.edu/ClericalStaff0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/SystemsStaff14 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/SystemsStaff14">
+        <rdf:type rdf:resource="&benchmark-dl;Man"/>
+        <rdf:type rdf:resource="&benchmark-dl;SystemsStaff"/>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:firstName>SystemsStaff14.firstname</benchmark-dl:firstName>
+        <benchmark-dl:lastName>SystemsStaff14.lastname</benchmark-dl:lastName>
+        <benchmark-dl:emailAddress>SystemsStaff14@Department0.College3.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:isMemberOf rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department14.University0.edu/SystemsStaff5"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department5.University0.edu/ClericalStaff0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/SystemsStaff15 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/SystemsStaff15">
+        <rdf:type rdf:resource="&benchmark-dl;Man"/>
+        <rdf:type rdf:resource="&benchmark-dl;SystemsStaff"/>
+        <benchmark-dl:emailAddress>SystemsStaff15@Department0.College3.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:firstName>SystemsStaff15.firstname</benchmark-dl:firstName>
+        <benchmark-dl:lastName>SystemsStaff15.lastname</benchmark-dl:lastName>
+        <benchmark-dl:isMemberOf rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:isCrazyAbout rdf:resource="&benchmark-dl;Classic_Music"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department9.University0.edu/ClericalStaff0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/SystemsStaff16 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/SystemsStaff16">
+        <rdf:type rdf:resource="&benchmark-dl;SportsLover"/>
+        <rdf:type rdf:resource="&benchmark-dl;SystemsStaff"/>
+        <rdf:type rdf:resource="&benchmark-dl;Woman"/>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:lastName>SystemsStaff16.lastname</benchmark-dl:lastName>
+        <benchmark-dl:firstName>SystemsStaff16.firstname</benchmark-dl:firstName>
+        <benchmark-dl:emailAddress>SystemsStaff16@Department0.College3.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:isMemberOf rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department0.University0.edu/ClericalStaff0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/SystemsStaff17 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/SystemsStaff17">
+        <rdf:type rdf:resource="&benchmark-dl;SystemsStaff"/>
+        <rdf:type rdf:resource="&benchmark-dl;Woman"/>
+        <benchmark-dl:lastName>SystemsStaff17.lastname</benchmark-dl:lastName>
+        <benchmark-dl:firstName>SystemsStaff17.firstname</benchmark-dl:firstName>
+        <benchmark-dl:emailAddress>SystemsStaff17@Department0.College3.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:isMemberOf rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:love rdf:resource="&benchmark-dl;Classic_Music"/>
+        <benchmark-dl:like rdf:resource="&benchmark-dl;Pop_Music"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/SystemsStaff2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/SystemsStaff2">
+        <rdf:type rdf:resource="&benchmark-dl;Man"/>
+        <rdf:type rdf:resource="&benchmark-dl;SystemsStaff"/>
+        <benchmark-dl:emailAddress>SystemsStaff2@Department0.College3.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:lastName>SystemsStaff2.lastname</benchmark-dl:lastName>
+        <benchmark-dl:firstName>SystemsStaff2.firstname</benchmark-dl:firstName>
+        <benchmark-dl:isMemberOf rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department8.University0.edu/ClericalStaff0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/SystemsStaff3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/SystemsStaff3">
+        <rdf:type rdf:resource="&benchmark-dl;SystemsStaff"/>
+        <rdf:type rdf:resource="&benchmark-dl;Woman"/>
+        <benchmark-dl:emailAddress>SystemsStaff3@Department0.College3.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:lastName>SystemsStaff3.lastname</benchmark-dl:lastName>
+        <benchmark-dl:firstName>SystemsStaff3.firstname</benchmark-dl:firstName>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:worksFor rdf:resource="http://www.Department0.University0.edu"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/SystemsStaff4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/SystemsStaff4">
+        <rdf:type rdf:resource="&benchmark-dl;Man"/>
+        <rdf:type rdf:resource="&benchmark-dl;SystemsStaff"/>
+        <benchmark-dl:emailAddress>SystemsStaff4@Department0.College3.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:lastName>SystemsStaff4.lastname</benchmark-dl:lastName>
+        <benchmark-dl:firstName>SystemsStaff4.firstname</benchmark-dl:firstName>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:worksFor rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:love rdf:resource="&benchmark-dl;Reading"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/SystemsStaff5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/SystemsStaff5">
+        <rdf:type rdf:resource="&benchmark-dl;Man"/>
+        <rdf:type rdf:resource="&benchmark-dl;SportsLover"/>
+        <rdf:type rdf:resource="&benchmark-dl;SystemsStaff"/>
+        <benchmark-dl:firstName>SystemsStaff5.firstname</benchmark-dl:firstName>
+        <benchmark-dl:emailAddress>SystemsStaff5@Department0.College3.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:lastName>SystemsStaff5.lastname</benchmark-dl:lastName>
+        <benchmark-dl:isMemberOf rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department9.University0.edu/Lecturer2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/SystemsStaff6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/SystemsStaff6">
+        <rdf:type rdf:resource="&benchmark-dl;SystemsStaff"/>
+        <rdf:type rdf:resource="&benchmark-dl;Woman"/>
+        <benchmark-dl:emailAddress>SystemsStaff6@Department0.College3.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:firstName>SystemsStaff6.firstname</benchmark-dl:firstName>
+        <benchmark-dl:lastName>SystemsStaff6.lastname</benchmark-dl:lastName>
+        <benchmark-dl:isMemberOf rdf:resource="http://www.Department0.University0.edu"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/SystemsStaff7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/SystemsStaff7">
+        <rdf:type rdf:resource="&benchmark-dl;Man"/>
+        <rdf:type rdf:resource="&benchmark-dl;SwimmingFan"/>
+        <rdf:type rdf:resource="&benchmark-dl;SystemsStaff"/>
+        <benchmark-dl:firstName>SystemsStaff7.firstname</benchmark-dl:firstName>
+        <benchmark-dl:emailAddress>SystemsStaff7@Department0.College3.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:lastName>SystemsStaff7.lastname</benchmark-dl:lastName>
+        <benchmark-dl:worksFor rdf:resource="http://www.Department0.University0.edu"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/SystemsStaff8 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/SystemsStaff8">
+        <rdf:type rdf:resource="&benchmark-dl;SwimmingLover"/>
+        <rdf:type rdf:resource="&benchmark-dl;SystemsStaff"/>
+        <rdf:type rdf:resource="&benchmark-dl;Woman"/>
+        <benchmark-dl:lastName>SystemsStaff8.lastname</benchmark-dl:lastName>
+        <benchmark-dl:emailAddress>SystemsStaff8@Department0.College3.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:firstName>SystemsStaff8.firstname</benchmark-dl:firstName>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:worksFor rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department13.University0.edu/Lecturer4"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/SystemsStaff9 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/SystemsStaff9">
+        <rdf:type rdf:resource="&benchmark-dl;SystemsStaff"/>
+        <rdf:type rdf:resource="&benchmark-dl;Woman"/>
+        <benchmark-dl:emailAddress>SystemsStaff9@Department0.College3.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:firstName>SystemsStaff9.firstname</benchmark-dl:firstName>
+        <benchmark-dl:lastName>SystemsStaff9.lastname</benchmark-dl:lastName>
+        <benchmark-dl:isMemberOf rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:like rdf:resource="&benchmark-dl;Shopping"/>
+        <benchmark-dl:isCrazyAbout rdf:resource="&benchmark-dl;Soccer"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department13.University0.edu/Lecturer5"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/UndergraduateStudent0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/UndergraduateStudent0">
+        <rdf:type rdf:resource="&benchmark-dl;Man"/>
+        <rdf:type rdf:resource="&benchmark-dl;UndergraduateStudent"/>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:emailAddress>UndergraduateStudent0@Department0.College3.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:firstName>UndergraduateStudent0.firstname</benchmark-dl:firstName>
+        <benchmark-dl:lastName>UndergraduateStudent0.lastname</benchmark-dl:lastName>
+        <benchmark-dl:enrollIn rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:hasMajor rdf:resource="&benchmark-dl;Medieval_Arts"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department4.University0.edu/ClericalStaff0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/UndergraduateStudent1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/UndergraduateStudent1">
+        <rdf:type rdf:resource="&benchmark-dl;UndergraduateStudent"/>
+        <rdf:type rdf:resource="&benchmark-dl;Woman"/>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:lastName>UndergraduateStudent1.lastname</benchmark-dl:lastName>
+        <benchmark-dl:emailAddress>UndergraduateStudent1@Department0.College3.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:firstName>UndergraduateStudent1.firstname</benchmark-dl:firstName>
+        <benchmark-dl:enrollIn rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:hasMajor rdf:resource="&benchmark-dl;Mechanical_Engineering"/>
+        <benchmark-dl:like rdf:resource="&benchmark-dl;Soccer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/UndergraduateStudent97 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/UndergraduateStudent97">
+        <rdf:type rdf:resource="&benchmark-dl;Man"/>
+        <rdf:type rdf:resource="&benchmark-dl;UndergraduateStudent"/>
+        <benchmark-dl:firstName>UndergraduateStudent97.firstname</benchmark-dl:firstName>
+        <benchmark-dl:lastName>UndergraduateStudent97.lastname</benchmark-dl:lastName>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:emailAddress>UndergraduateStudent97@Department0.College3.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:enrollIn rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:hasMajor rdf:resource="&benchmark-dl;Chemistry"/>
+        <benchmark-dl:like rdf:resource="&benchmark-dl;Video_Game"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/UndergraduateStudent98 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/UndergraduateStudent98">
+        <rdf:type rdf:resource="&benchmark-dl;Man"/>
+        <rdf:type rdf:resource="&benchmark-dl;UndergraduateStudent"/>
+        <benchmark-dl:lastName>UndergraduateStudent98.lastname</benchmark-dl:lastName>
+        <benchmark-dl:emailAddress>UndergraduateStudent98@Department0.College3.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:firstName>UndergraduateStudent98.firstname</benchmark-dl:firstName>
+        <benchmark-dl:enrollIn rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:hasMajor rdf:resource="&benchmark-dl;Media_Arts_And_ciences"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/UndergraduateStudent99 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/UndergraduateStudent99">
+        <rdf:type rdf:resource="&benchmark-dl;Man"/>
+        <rdf:type rdf:resource="&benchmark-dl;UndergraduateStudent"/>
+        <benchmark-dl:emailAddress>UndergraduateStudent99@Department0.College3.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:lastName>UndergraduateStudent99.lastname</benchmark-dl:lastName>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:firstName>UndergraduateStudent99.firstname</benchmark-dl:firstName>
+        <benchmark-dl:enrollIn rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:hasMajor rdf:resource="&benchmark-dl;Astronomy"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department18.University0.edu/ClericalStaff0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/other_staff0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/other_staff0">
+        <rdf:type rdf:resource="&benchmark-dl;Person"/>
+        <rdf:type rdf:resource="&benchmark-dl;Woman"/>
+        <benchmark-dl:firstName>other_staff0.firstname</benchmark-dl:firstName>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:emailAddress>other_staff0@Department0.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:lastName>other_staff0.lastname</benchmark-dl:lastName>
+        <benchmark-dl:worksFor rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:like rdf:resource="&benchmark-dl;Reading"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department4.University0.edu/ClericalStaff0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/other_staff1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/other_staff1">
+        <rdf:type rdf:resource="&benchmark-dl;BasketBallFan"/>
+        <rdf:type rdf:resource="&benchmark-dl;Person"/>
+        <rdf:type rdf:resource="&benchmark-dl;SportsLover"/>
+        <rdf:type rdf:resource="&benchmark-dl;Woman"/>
+        <benchmark-dl:lastName>other_staff1.lastname</benchmark-dl:lastName>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:emailAddress>other_staff1@Department0.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:firstName>other_staff1.firstname</benchmark-dl:firstName>
+        <benchmark-dl:worksFor rdf:resource="http://www.Department0.University0.edu"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/other_staff10 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/other_staff10">
+        <rdf:type rdf:resource="&benchmark-dl;Man"/>
+        <rdf:type rdf:resource="&benchmark-dl;Person"/>
+        <rdf:type rdf:resource="&benchmark-dl;SportsLover"/>
+        <benchmark-dl:lastName>other_staff10.lastname</benchmark-dl:lastName>
+        <benchmark-dl:firstName>other_staff10.firstname</benchmark-dl:firstName>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:emailAddress>other_staff10@Department0.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:worksFor rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:isCrazyAbout rdf:resource="&benchmark-dl;BasketBall"/>
+        <benchmark-dl:like rdf:resource="&benchmark-dl;Movie"/>
+        <benchmark-dl:like rdf:resource="&benchmark-dl;PC_Game"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/other_staff11 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/other_staff11">
+        <rdf:type rdf:resource="&benchmark-dl;Person"/>
+        <rdf:type rdf:resource="&benchmark-dl;Woman"/>
+        <benchmark-dl:firstName>other_staff11.firstname</benchmark-dl:firstName>
+        <benchmark-dl:lastName>other_staff11.lastname</benchmark-dl:lastName>
+        <benchmark-dl:emailAddress>other_staff11@Department0.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:worksFor rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department10.University0.edu/SystemsStaff1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/other_staff12 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/other_staff12">
+        <rdf:type rdf:resource="&benchmark-dl;BasketBallFan"/>
+        <rdf:type rdf:resource="&benchmark-dl;Man"/>
+        <rdf:type rdf:resource="&benchmark-dl;Person"/>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:firstName>other_staff12.firstname</benchmark-dl:firstName>
+        <benchmark-dl:emailAddress>other_staff12@Department0.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:lastName>other_staff12.lastname</benchmark-dl:lastName>
+        <benchmark-dl:worksFor rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department10.University0.edu/Lecturer1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/other_staff13 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/other_staff13">
+        <rdf:type rdf:resource="&benchmark-dl;BaseballLover"/>
+        <rdf:type rdf:resource="&benchmark-dl;Man"/>
+        <rdf:type rdf:resource="&benchmark-dl;Person"/>
+        <benchmark-dl:emailAddress>other_staff13@Department0.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:lastName>other_staff13.lastname</benchmark-dl:lastName>
+        <benchmark-dl:firstName>other_staff13.firstname</benchmark-dl:firstName>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:worksFor rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:like rdf:resource="&benchmark-dl;Movie"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department6.University0.edu/Lecturer3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/other_staff14 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/other_staff14">
+        <rdf:type rdf:resource="&benchmark-dl;Man"/>
+        <rdf:type rdf:resource="&benchmark-dl;Person"/>
+        <rdf:type rdf:resource="&benchmark-dl;SwimmingLover"/>
+        <benchmark-dl:emailAddress>other_staff14@Department0.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:lastName>other_staff14.lastname</benchmark-dl:lastName>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:firstName>other_staff14.firstname</benchmark-dl:firstName>
+        <benchmark-dl:worksFor rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:isCrazyAbout rdf:resource="&benchmark-dl;BasketBall"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department3.University0.edu/Lecturer4"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/other_staff15 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/other_staff15">
+        <rdf:type rdf:resource="&benchmark-dl;Man"/>
+        <rdf:type rdf:resource="&benchmark-dl;Person"/>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:firstName>other_staff15.firstname</benchmark-dl:firstName>
+        <benchmark-dl:emailAddress>other_staff15@Department0.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:lastName>other_staff15.lastname</benchmark-dl:lastName>
+        <benchmark-dl:worksFor rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:hasSameHomeTownWith rdf:resource="http://www.Department18.University0.edu/SystemsStaff14"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/other_staff16 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/other_staff16">
+        <rdf:type rdf:resource="&benchmark-dl;Man"/>
+        <rdf:type rdf:resource="&benchmark-dl;Person"/>
+        <benchmark-dl:emailAddress>other_staff16@Department0.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:firstName>other_staff16.firstname</benchmark-dl:firstName>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:lastName>other_staff16.lastname</benchmark-dl:lastName>
+        <benchmark-dl:worksFor rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department10.University0.edu/SystemsStaff12"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department11.University0.edu/ClericalStaff0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/other_staff17 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/other_staff17">
+        <rdf:type rdf:resource="&benchmark-dl;Person"/>
+        <rdf:type rdf:resource="&benchmark-dl;TennisFan"/>
+        <rdf:type rdf:resource="&benchmark-dl;Woman"/>
+        <benchmark-dl:firstName>other_staff17.firstname</benchmark-dl:firstName>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:lastName>other_staff17.lastname</benchmark-dl:lastName>
+        <benchmark-dl:emailAddress>other_staff17@Department0.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:worksFor rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:like rdf:resource="&benchmark-dl;Baseball"/>
+        <benchmark-dl:like rdf:resource="&benchmark-dl;BasketBall"/>
+        <benchmark-dl:love rdf:resource="&benchmark-dl;Kickboxing"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department5.University0.edu/ClericalStaff0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/other_staff2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/other_staff2">
+        <rdf:type rdf:resource="&benchmark-dl;Person"/>
+        <rdf:type rdf:resource="&benchmark-dl;Woman"/>
+        <benchmark-dl:emailAddress>other_staff2@Department0.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:lastName>other_staff2.lastname</benchmark-dl:lastName>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:firstName>other_staff2.firstname</benchmark-dl:firstName>
+        <benchmark-dl:worksFor rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:isCrazyAbout rdf:resource="&benchmark-dl;Movie"/>
+        <benchmark-dl:isCrazyAbout rdf:resource="&benchmark-dl;Pop_Music"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department10.University0.edu/SystemsStaff16"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/other_staff3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/other_staff3">
+        <rdf:type rdf:resource="&benchmark-dl;Person"/>
+        <rdf:type rdf:resource="&benchmark-dl;Woman"/>
+        <benchmark-dl:firstName>other_staff3.firstname</benchmark-dl:firstName>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:emailAddress>other_staff3@Department0.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:lastName>other_staff3.lastname</benchmark-dl:lastName>
+        <benchmark-dl:worksFor rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:like rdf:resource="&benchmark-dl;AmericanFootball"/>
+        <benchmark-dl:like rdf:resource="&benchmark-dl;BasketBall"/>
+        <benchmark-dl:like rdf:resource="&benchmark-dl;Kickboxing"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department12.University0.edu/ClericalStaff0"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department13.University0.edu/SystemsStaff4"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/other_staff4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/other_staff4">
+        <rdf:type rdf:resource="&benchmark-dl;BaseballFan"/>
+        <rdf:type rdf:resource="&benchmark-dl;Person"/>
+        <rdf:type rdf:resource="&benchmark-dl;SwimmingLover"/>
+        <rdf:type rdf:resource="&benchmark-dl;Woman"/>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:firstName>other_staff4.firstname</benchmark-dl:firstName>
+        <benchmark-dl:emailAddress>other_staff4@Department0.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:lastName>other_staff4.lastname</benchmark-dl:lastName>
+        <benchmark-dl:worksFor rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department1.University0.edu/Lecturer3"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department7.University0.edu/Lecturer1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/other_staff5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/other_staff5">
+        <rdf:type rdf:resource="&benchmark-dl;Person"/>
+        <rdf:type rdf:resource="&benchmark-dl;Woman"/>
+        <benchmark-dl:firstName>other_staff5.firstname</benchmark-dl:firstName>
+        <benchmark-dl:emailAddress>other_staff5@Department0.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:lastName>other_staff5.lastname</benchmark-dl:lastName>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:worksFor rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department10.University0.edu/SystemsStaff14"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department19.University0.edu/ClericalStaff0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/other_staff6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/other_staff6">
+        <rdf:type rdf:resource="&benchmark-dl;Person"/>
+        <rdf:type rdf:resource="&benchmark-dl;Woman"/>
+        <benchmark-dl:firstName>other_staff6.firstname</benchmark-dl:firstName>
+        <benchmark-dl:emailAddress>other_staff6@Department0.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:lastName>other_staff6.lastname</benchmark-dl:lastName>
+        <benchmark-dl:worksFor rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department11.University0.edu/Lecturer5"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/other_staff7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/other_staff7">
+        <rdf:type rdf:resource="&benchmark-dl;BasketBallLover"/>
+        <rdf:type rdf:resource="&benchmark-dl;Person"/>
+        <rdf:type rdf:resource="&benchmark-dl;Woman"/>
+        <benchmark-dl:firstName>other_staff7.firstname</benchmark-dl:firstName>
+        <benchmark-dl:emailAddress>other_staff7@Department0.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:lastName>other_staff7.lastname</benchmark-dl:lastName>
+        <benchmark-dl:worksFor rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:love rdf:resource="&benchmark-dl;Shopping"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department6.University0.edu/Lecturer3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/other_staff8 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/other_staff8">
+        <rdf:type rdf:resource="&benchmark-dl;Man"/>
+        <rdf:type rdf:resource="&benchmark-dl;Person"/>
+        <benchmark-dl:firstName>other_staff8.firstname</benchmark-dl:firstName>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:emailAddress>other_staff8@Department0.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:lastName>other_staff8.lastname</benchmark-dl:lastName>
+        <benchmark-dl:worksFor rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department13.University0.edu/Lecturer2"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department9.University0.edu/SystemsStaff12"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/other_staff9 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/other_staff9">
+        <rdf:type rdf:resource="&benchmark-dl;Man"/>
+        <rdf:type rdf:resource="&benchmark-dl;Person"/>
+        <benchmark-dl:firstName>other_staff9.firstname</benchmark-dl:firstName>
+        <benchmark-dl:lastName>other_staff9.lastname</benchmark-dl:lastName>
+        <benchmark-dl:emailAddress>other_staff9@Department0.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:worksFor rdf:resource="http://www.Department0.University0.edu"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department14.University0.edu/Lecturer1"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department15.University0.edu/ClericalStaff0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/sameIndividual0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/sameIndividual0">
+        <rdf:type rdf:resource="&benchmark-dl;Person"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/sameIndividual1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/sameIndividual1">
+        <rdf:type rdf:resource="&benchmark-dl;Person"/>
+        <benchmark-dl:isFriendOf rdf:resource="http://www.Department18.University0.edu/Lecturer1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/AssistantProfessor0/Publication0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/AssistantProfessor0/Publication0">
+        <rdf:type rdf:resource="&benchmark-dl;Book"/>
+        <benchmark-dl:name>Publication0</benchmark-dl:name>
+        <benchmark-dl:publicationAuthor rdf:resource="http://www.Department0.University0.edu/AssistantProfessor0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/FullProfessor7/Publication9 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/FullProfessor7/Publication9">
+        <rdf:type rdf:resource="&benchmark-dl;ConferencePaper"/>
+        <benchmark-dl:name>Publication9</benchmark-dl:name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department0.University0.edu/FullProfessor8/Publication9 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department0.University0.edu/FullProfessor8/Publication9">
+        <rdf:type rdf:resource="&benchmark-dl;Publication"/>
+        <benchmark-dl:name>Publication9</benchmark-dl:name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.Department1.University0.edu/Lecturer3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department1.University0.edu/Lecturer3"/>
+    
+
+
+    <!-- http://www.Department1.University0.edu/Lecturer5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department1.University0.edu/Lecturer5"/>
+    
+
+
+    <!-- http://www.Department10.University0.edu/Lecturer1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department10.University0.edu/Lecturer1"/>
+    
+
+
+    <!-- http://www.Department10.University0.edu/SystemsStaff1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department10.University0.edu/SystemsStaff1"/>
+    
+
+
+    <!-- http://www.Department10.University0.edu/SystemsStaff12 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department10.University0.edu/SystemsStaff12"/>
+    
+
+
+    <!-- http://www.Department10.University0.edu/SystemsStaff14 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department10.University0.edu/SystemsStaff14"/>
+    
+
+
+    <!-- http://www.Department10.University0.edu/SystemsStaff16 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department10.University0.edu/SystemsStaff16"/>
+    
+
+
+    <!-- http://www.Department10.University0.edu/SystemsStaff4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department10.University0.edu/SystemsStaff4"/>
+    
+
+
+    <!-- http://www.Department11.University0.edu/ClericalStaff0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department11.University0.edu/ClericalStaff0"/>
+    
+
+
+    <!-- http://www.Department11.University0.edu/Lecturer5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department11.University0.edu/Lecturer5"/>
+    
+
+
+    <!-- http://www.Department12.University0.edu/ClericalStaff0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department12.University0.edu/ClericalStaff0"/>
+    
+
+
+    <!-- http://www.Department12.University0.edu/Lecturer4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department12.University0.edu/Lecturer4"/>
+    
+
+
+    <!-- http://www.Department13.University0.edu/ClericalStaff0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department13.University0.edu/ClericalStaff0"/>
+    
+
+
+    <!-- http://www.Department13.University0.edu/Lecturer2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department13.University0.edu/Lecturer2"/>
+    
+
+
+    <!-- http://www.Department13.University0.edu/Lecturer4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department13.University0.edu/Lecturer4"/>
+    
+
+
+    <!-- http://www.Department13.University0.edu/Lecturer5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department13.University0.edu/Lecturer5"/>
+    
+
+
+    <!-- http://www.Department13.University0.edu/SystemsStaff15 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department13.University0.edu/SystemsStaff15"/>
+    
+
+
+    <!-- http://www.Department13.University0.edu/SystemsStaff4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department13.University0.edu/SystemsStaff4"/>
+    
+
+
+    <!-- http://www.Department13.University0.edu/SystemsStaff9 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department13.University0.edu/SystemsStaff9"/>
+    
+
+
+    <!-- http://www.Department14.University0.edu/ClericalStaff0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department14.University0.edu/ClericalStaff0"/>
+    
+
+
+    <!-- http://www.Department14.University0.edu/Lecturer1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department14.University0.edu/Lecturer1"/>
+    
+
+
+    <!-- http://www.Department14.University0.edu/SystemsStaff5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department14.University0.edu/SystemsStaff5"/>
+    
+
+
+    <!-- http://www.Department15.University0.edu/ClericalStaff0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department15.University0.edu/ClericalStaff0"/>
+    
+
+
+    <!-- http://www.Department15.University0.edu/Lecturer1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department15.University0.edu/Lecturer1"/>
+    
+
+
+    <!-- http://www.Department17.University0.edu/ClericalStaff0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department17.University0.edu/ClericalStaff0"/>
+    
+
+
+    <!-- http://www.Department17.University0.edu/Lecturer2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department17.University0.edu/Lecturer2"/>
+    
+
+
+    <!-- http://www.Department18.University0.edu/ClericalStaff0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department18.University0.edu/ClericalStaff0"/>
+    
+
+
+    <!-- http://www.Department18.University0.edu/Lecturer1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department18.University0.edu/Lecturer1"/>
+    
+
+
+    <!-- http://www.Department18.University0.edu/SystemsStaff14 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department18.University0.edu/SystemsStaff14"/>
+    
+
+
+    <!-- http://www.Department19.University0.edu/ClericalStaff0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department19.University0.edu/ClericalStaff0"/>
+    
+
+
+    <!-- http://www.Department2.University0.edu/ClericalStaff0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department2.University0.edu/ClericalStaff0"/>
+    
+
+
+    <!-- http://www.Department3.University0.edu/Lecturer4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department3.University0.edu/Lecturer4"/>
+    
+
+
+    <!-- http://www.Department3.University0.edu/SystemsStaff5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department3.University0.edu/SystemsStaff5"/>
+    
+
+
+    <!-- http://www.Department4.University0.edu/ClericalStaff0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department4.University0.edu/ClericalStaff0"/>
+    
+
+
+    <!-- http://www.Department4.University0.edu/Lecturer1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department4.University0.edu/Lecturer1"/>
+    
+
+
+    <!-- http://www.Department4.University0.edu/SystemsStaff14 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department4.University0.edu/SystemsStaff14"/>
+    
+
+
+    <!-- http://www.Department5.University0.edu/ClericalStaff0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department5.University0.edu/ClericalStaff0"/>
+    
+
+
+    <!-- http://www.Department6.University0.edu/ClericalStaff0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department6.University0.edu/ClericalStaff0"/>
+    
+
+
+    <!-- http://www.Department6.University0.edu/Lecturer3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department6.University0.edu/Lecturer3"/>
+    
+
+
+    <!-- http://www.Department7.University0.edu/Lecturer1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department7.University0.edu/Lecturer1"/>
+    
+
+
+    <!-- http://www.Department7.University0.edu/SystemsStaff1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department7.University0.edu/SystemsStaff1"/>
+    
+
+
+    <!-- http://www.Department7.University0.edu/SystemsStaff16 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department7.University0.edu/SystemsStaff16"/>
+    
+
+
+    <!-- http://www.Department8.University0.edu/ClericalStaff0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department8.University0.edu/ClericalStaff0"/>
+    
+
+
+    <!-- http://www.Department9.University0.edu/ClericalStaff0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department9.University0.edu/ClericalStaff0"/>
+    
+
+
+    <!-- http://www.Department9.University0.edu/Lecturer2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department9.University0.edu/Lecturer2"/>
+    
+
+
+    <!-- http://www.Department9.University0.edu/SystemsStaff12 -->
+
+    <owl:NamedIndividual rdf:about="http://www.Department9.University0.edu/SystemsStaff12"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net -->
+

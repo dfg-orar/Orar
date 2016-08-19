@@ -1,0 +1,3 @@
+/Users/kien/git/ORAR-HSHOIF/src/test/resources/uobm-origin/abox/tinyABox1.owl
+/Users/kien/git/ORAR-HSHOIF/src/test/resources/uobm-origin/abox/tinyABox2.owl
+

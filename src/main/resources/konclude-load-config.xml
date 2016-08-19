@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RequestMessage xmlns="http://www.owllink.org/owllink-xml#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xml:base="http://www.owllink.org/testsuite/1a#"
+    xsi:schemaLocation="http://www.owllink.org/owllink-xml# http://www.owllink.org/owllink-xml.xsd">
+	
+	<!--Configurations for the Konclude reasoner.-->	
+	
+	
+	
+	<Set key='Konclude.Ontology.Revision.BasementResolveKBName'>
+		<Literal>http://init-ontology.ex</Literal>
+	</Set>
+		
+	
+	
+    <CreateKB kb="http://init-ontology.ex"/>
+    
+	<LoadOntologies kb="http://init-ontology.ex">
+		<OntologyIRI IRI="file:/var/tmp/kien/iswc16benchmark/software/ontologyForKonclude.funcionalsyntax.owl"/>
+	</LoadOntologies>
+	
+	
+	
+	
+	
+</RequestMessage>

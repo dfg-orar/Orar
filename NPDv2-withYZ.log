@@ -1,0 +1,92 @@
+2016-05-10 16:20:49 INFO  OntologyReaderTemplate:123 - Using OWLAPI to read the ontology:/Users/kien/benchmarks/npd-v2/npd.owl ...
+2016-05-10 16:20:51 INFO  OntologyReaderTemplate:128 - Information of the input ontology.
+2016-05-10 16:20:51 INFO  OntologyReaderTemplate:129 - Ontology file:/Users/kien/benchmarks/npd-v2/npd.owl
+2016-05-10 16:20:51 INFO  OntologyStatistic:67 - Statistic: Number_of_TBox_Axioms = 1216
+2016-05-10 16:20:51 INFO  OntologyStatistic:68 - Statistic: Number_of_input_concept_names = 253
+2016-05-10 16:20:51 INFO  OntologyStatistic:69 - Statistic: Number_of_input_role_names = 95
+2016-05-10 16:20:51 INFO  OntologyStatistic:72 - Statistic: Number_of_input_individuals = 7
+2016-05-10 16:20:51 INFO  OntologyStatistic:82 - Statistic: Number_of_input_concept_assertions = 0
+2016-05-10 16:20:51 INFO  OntologyStatistic:83 - Statistic: Number_of_input_role_assertions = 0
+2016-05-10 16:20:51 INFO  OntologyStatistic:84 - Statistic: Number_of_input_concept_and_role_assertions = 0
+2016-05-10 16:20:51 INFO  NormalizerTemplate:215 - Normalizing the input ontology...
+2016-05-10 16:20:52 INFO  NormalizerTemplate:225 - Finished normalizing TBox of the input ontology.
+2016-05-10 16:20:52 INFO  TransitivityNormalizerWithHermit:79 - Normalizing transitivity...
+2016-05-10 16:20:52 INFO  TransitivityNormalizerWithHermit:91 - Finished normalizing transitivity.
+2016-05-10 16:20:52 INFO  OntologyReaderTemplate:106 - Statistic: Time_loading_input_ontology_in_seconds = 2
+2016-05-10 16:20:52 INFO  JenaMultipleABoxesStreamReader:80 - ABox 1:/Users/kien/benchmarks/npd-v2/npd-data-dump.ttl
+2016-05-10 16:22:10 WARN  riot:77 - [line: 10303061, col: 1 ] Bad IRI: <http://sws.ifi.uio.no/data/npd-v2/wellbore/105/document/3675/105_05_31_6_5_Statoils_StrÃ¸mningsmÃ¥ler> Code: 47/NOT_NFKC in PATH: The IRI is not in Unicode Normal Form KC.
+2016-05-10 16:22:10 WARN  riot:77 - [line: 10303061, col: 1 ] Bad IRI: <http://sws.ifi.uio.no/data/npd-v2/wellbore/105/document/3675/105_05_31_6_5_Statoils_StrÃ¸mningsmÃ¥ler> Code: 56/COMPATIBILITY_CHARACTER in PATH: Bad character
+2016-05-10 16:22:10 WARN  riot:77 - [line: 10303068, col: 22] Bad IRI: <http://www.npd.no/engelsk/cwi/pbl/wellbore_documents/105_05_31_6_5_Statoils_StrÃ¸mningsmÃ¥ler.pdf> Code: 47/NOT_NFKC in PATH: The IRI is not in Unicode Normal Form KC.
+2016-05-10 16:22:10 WARN  riot:77 - [line: 10303068, col: 22] Bad IRI: <http://www.npd.no/engelsk/cwi/pbl/wellbore_documents/105_05_31_6_5_Statoils_StrÃ¸mningsmÃ¥ler.pdf> Code: 56/COMPATIBILITY_CHARACTER in PATH: Bad character
+2016-05-10 16:22:10 WARN  riot:77 - [line: 10372077, col: 1 ] Bad IRI: <http://sws.ifi.uio.no/data/npd-v2/wellbore/127/document/3688/127_03_31_6_6_En_Petrografisk_UndersÃ¸kelse_av_BrÃ¸nn> Code: 47/NOT_NFKC in PATH: The IRI is not in Unicode Normal Form KC.
+2016-05-10 16:22:10 WARN  riot:77 - [line: 10372077, col: 1 ] Bad IRI: <http://sws.ifi.uio.no/data/npd-v2/wellbore/127/document/3688/127_03_31_6_6_En_Petrografisk_UndersÃ¸kelse_av_BrÃ¸nn> Code: 56/COMPATIBILITY_CHARACTER in PATH: Bad character
+2016-05-10 16:22:10 WARN  riot:77 - [line: 10372084, col: 22] Bad IRI: <http://www.npd.no/engelsk/cwi/pbl/wellbore_documents/127_03_31_6_6_En_Petrografisk_UndersÃ¸kelse_av_BrÃ¸nn.pdf> Code: 47/NOT_NFKC in PATH: The IRI is not in Unicode Normal Form KC.
+2016-05-10 16:22:10 WARN  riot:77 - [line: 10372084, col: 22] Bad IRI: <http://www.npd.no/engelsk/cwi/pbl/wellbore_documents/127_03_31_6_6_En_Petrografisk_UndersÃ¸kelse_av_BrÃ¸nn.pdf> Code: 56/COMPATIBILITY_CHARACTER in PATH: Bad character
+2016-05-10 16:22:13 WARN  riot:77 - [line: 10649371, col: 1 ] Bad IRI: <http://sws.ifi.uio.no/data/npd-v2/wellbore/199/document/321/199_11_15_12_3_MiljÃ¸messige_effekter> Code: 47/NOT_NFKC in PATH: The IRI is not in Unicode Normal Form KC.
+2016-05-10 16:22:13 WARN  riot:77 - [line: 10649371, col: 1 ] Bad IRI: <http://sws.ifi.uio.no/data/npd-v2/wellbore/199/document/321/199_11_15_12_3_MiljÃ¸messige_effekter> Code: 56/COMPATIBILITY_CHARACTER in PATH: Bad character
+2016-05-10 16:22:13 WARN  riot:77 - [line: 10649378, col: 22] Bad IRI: <http://www.npd.no/engelsk/cwi/pbl/wellbore_documents/199_11_15_12_3_MiljÃ¸messige_effekter.pdf> Code: 47/NOT_NFKC in PATH: The IRI is not in Unicode Normal Form KC.
+2016-05-10 16:22:13 WARN  riot:77 - [line: 10649378, col: 22] Bad IRI: <http://www.npd.no/engelsk/cwi/pbl/wellbore_documents/199_11_15_12_3_MiljÃ¸messige_effekter.pdf> Code: 56/COMPATIBILITY_CHARACTER in PATH: Bad character
+2016-05-10 16:22:14 WARN  riot:77 - [line: 10799937, col: 1 ] Bad IRI: <http://sws.ifi.uio.no/data/npd-v2/wellbore/26/document/5672/26_09_SedimentundersÃ¸kelse_etter_prÃ¸veboring_med_oljebasert_slam> Code: 47/NOT_NFKC in PATH: The IRI is not in Unicode Normal Form KC.
+2016-05-10 16:22:14 WARN  riot:77 - [line: 10799937, col: 1 ] Bad IRI: <http://sws.ifi.uio.no/data/npd-v2/wellbore/26/document/5672/26_09_SedimentundersÃ¸kelse_etter_prÃ¸veboring_med_oljebasert_slam> Code: 56/COMPATIBILITY_CHARACTER in PATH: Bad character
+2016-05-10 16:22:14 WARN  riot:77 - [line: 10799944, col: 22] Bad IRI: <http://www.npd.no/engelsk/cwi/pbl/wellbore_documents/26_09_SedimentundersÃ¸kelse_etter_prÃ¸veboring_med_oljebasert_slam.pdf> Code: 47/NOT_NFKC in PATH: The IRI is not in Unicode Normal Form KC.
+2016-05-10 16:22:14 WARN  riot:77 - [line: 10799944, col: 22] Bad IRI: <http://www.npd.no/engelsk/cwi/pbl/wellbore_documents/26_09_SedimentundersÃ¸kelse_etter_prÃ¸veboring_med_oljebasert_slam.pdf> Code: 56/COMPATIBILITY_CHARACTER in PATH: Bad character
+2016-05-10 16:22:19 WARN  riot:77 - [line: 10962087, col: 1 ] Bad IRI: <http://sws.ifi.uio.no/data/npd-v2/wellbore/34/document/3630/34_05_31_6_2_Analyse_av_vannprÃ¸ver> Code: 47/NOT_NFKC in PATH: The IRI is not in Unicode Normal Form KC.
+2016-05-10 16:22:19 WARN  riot:77 - [line: 10962087, col: 1 ] Bad IRI: <http://sws.ifi.uio.no/data/npd-v2/wellbore/34/document/3630/34_05_31_6_2_Analyse_av_vannprÃ¸ver> Code: 56/COMPATIBILITY_CHARACTER in PATH: Bad character
+2016-05-10 16:22:19 WARN  riot:77 - [line: 10962094, col: 22] Bad IRI: <http://www.npd.no/engelsk/cwi/pbl/wellbore_documents/34_05_31_6_2_Analyse_av_vannprÃ¸ver.pdf> Code: 47/NOT_NFKC in PATH: The IRI is not in Unicode Normal Form KC.
+2016-05-10 16:22:19 WARN  riot:77 - [line: 10962094, col: 22] Bad IRI: <http://www.npd.no/engelsk/cwi/pbl/wellbore_documents/34_05_31_6_2_Analyse_av_vannprÃ¸ver.pdf> Code: 56/COMPATIBILITY_CHARACTER in PATH: Bad character
+2016-05-10 16:22:19 WARN  riot:77 - [line: 11032132, col: 1 ] Bad IRI: <http://sws.ifi.uio.no/data/npd-v2/wellbore/399/document/3285/399_05_31_2_6_BrÃ¸nntestrapport_by_Geco> Code: 47/NOT_NFKC in PATH: The IRI is not in Unicode Normal Form KC.
+2016-05-10 16:22:19 WARN  riot:77 - [line: 11032132, col: 1 ] Bad IRI: <http://sws.ifi.uio.no/data/npd-v2/wellbore/399/document/3285/399_05_31_2_6_BrÃ¸nntestrapport_by_Geco> Code: 56/COMPATIBILITY_CHARACTER in PATH: Bad character
+2016-05-10 16:22:19 WARN  riot:77 - [line: 11032139, col: 22] Bad IRI: <http://www.npd.no/engelsk/cwi/pbl/wellbore_documents/399_05_31_2_6_BrÃ¸nntestrapport_by_Geco.pdf> Code: 47/NOT_NFKC in PATH: The IRI is not in Unicode Normal Form KC.
+2016-05-10 16:22:19 WARN  riot:77 - [line: 11032139, col: 22] Bad IRI: <http://www.npd.no/engelsk/cwi/pbl/wellbore_documents/399_05_31_2_6_BrÃ¸nntestrapport_by_Geco.pdf> Code: 56/COMPATIBILITY_CHARACTER in PATH: Bad character
+2016-05-10 16:22:19 WARN  riot:77 - [line: 11032142, col: 1 ] Bad IRI: <http://sws.ifi.uio.no/data/npd-v2/wellbore/399/document/3286/399_05_31_2_6_BrÃ¸nntestrapport_encl_1> Code: 47/NOT_NFKC in PATH: The IRI is not in Unicode Normal Form KC.
+2016-05-10 16:22:19 WARN  riot:77 - [line: 11032142, col: 1 ] Bad IRI: <http://sws.ifi.uio.no/data/npd-v2/wellbore/399/document/3286/399_05_31_2_6_BrÃ¸nntestrapport_encl_1> Code: 56/COMPATIBILITY_CHARACTER in PATH: Bad character
+2016-05-10 16:22:19 WARN  riot:77 - [line: 11032149, col: 22] Bad IRI: <http://www.npd.no/engelsk/cwi/pbl/wellbore_documents/399_05_31_2_6_BrÃ¸nntestrapport_encl_1.pdf> Code: 47/NOT_NFKC in PATH: The IRI is not in Unicode Normal Form KC.
+2016-05-10 16:22:19 WARN  riot:77 - [line: 11032149, col: 22] Bad IRI: <http://www.npd.no/engelsk/cwi/pbl/wellbore_documents/399_05_31_2_6_BrÃ¸nntestrapport_encl_1.pdf> Code: 56/COMPATIBILITY_CHARACTER in PATH: Bad character
+2016-05-10 16:22:20 WARN  riot:77 - [line: 11075317, col: 1 ] Bad IRI: <http://sws.ifi.uio.no/data/npd-v2/wellbore/425/document/3963/425_34_10_2_VÃ¦skeprÃ¸ve_fra_DST-1%2C2%2C3> Code: 47/NOT_NFKC in PATH: The IRI is not in Unicode Normal Form KC.
+2016-05-10 16:22:20 WARN  riot:77 - [line: 11075317, col: 1 ] Bad IRI: <http://sws.ifi.uio.no/data/npd-v2/wellbore/425/document/3963/425_34_10_2_VÃ¦skeprÃ¸ve_fra_DST-1%2C2%2C3> Code: 56/COMPATIBILITY_CHARACTER in PATH: Bad character
+2016-05-10 16:22:20 WARN  riot:77 - [line: 11075325, col: 22] Bad IRI: <http://www.npd.no/engelsk/cwi/pbl/wellbore_documents/425_34_10_2_VÃ¦skeprÃ¸ve_fra_DST-1,2,3.pdf> Code: 47/NOT_NFKC in PATH: The IRI is not in Unicode Normal Form KC.
+2016-05-10 16:22:20 WARN  riot:77 - [line: 11075325, col: 22] Bad IRI: <http://www.npd.no/engelsk/cwi/pbl/wellbore_documents/425_34_10_2_VÃ¦skeprÃ¸ve_fra_DST-1,2,3.pdf> Code: 56/COMPATIBILITY_CHARACTER in PATH: Bad character
+2016-05-10 16:22:20 WARN  riot:77 - [line: 11075328, col: 1 ] Bad IRI: <http://sws.ifi.uio.no/data/npd-v2/wellbore/425/document/3964/425_34_10_2_VÃ¦skeprÃ¸ve_fra_DST-3A%2C4%2C5> Code: 47/NOT_NFKC in PATH: The IRI is not in Unicode Normal Form KC.
+2016-05-10 16:22:20 WARN  riot:77 - [line: 11075328, col: 1 ] Bad IRI: <http://sws.ifi.uio.no/data/npd-v2/wellbore/425/document/3964/425_34_10_2_VÃ¦skeprÃ¸ve_fra_DST-3A%2C4%2C5> Code: 56/COMPATIBILITY_CHARACTER in PATH: Bad character
+2016-05-10 16:22:20 WARN  riot:77 - [line: 11075336, col: 22] Bad IRI: <http://www.npd.no/engelsk/cwi/pbl/wellbore_documents/425_34_10_2_VÃ¦skeprÃ¸ve_fra_DST-3A,4,5.pdf> Code: 47/NOT_NFKC in PATH: The IRI is not in Unicode Normal Form KC.
+2016-05-10 16:22:20 WARN  riot:77 - [line: 11075336, col: 22] Bad IRI: <http://www.npd.no/engelsk/cwi/pbl/wellbore_documents/425_34_10_2_VÃ¦skeprÃ¸ve_fra_DST-3A,4,5.pdf> Code: 56/COMPATIBILITY_CHARACTER in PATH: Bad character
+2016-05-10 16:22:22 WARN  riot:77 - [line: 11247919, col: 1 ] Bad IRI: <http://sws.ifi.uio.no/data/npd-v2/wellbore/509/document/2522/509_2_Geokjemisk_analyse_TOC_og_Rock_eval_for_brÃ¸nn_30_3_1> Code: 47/NOT_NFKC in PATH: The IRI is not in Unicode Normal Form KC.
+2016-05-10 16:22:22 WARN  riot:77 - [line: 11247919, col: 1 ] Bad IRI: <http://sws.ifi.uio.no/data/npd-v2/wellbore/509/document/2522/509_2_Geokjemisk_analyse_TOC_og_Rock_eval_for_brÃ¸nn_30_3_1> Code: 56/COMPATIBILITY_CHARACTER in PATH: Bad character
+2016-05-10 16:22:22 WARN  riot:77 - [line: 11247926, col: 22] Bad IRI: <http://www.npd.no/engelsk/cwi/pbl/geochemical_pdfs/509_2_Geokjemisk_analyse_TOC_og_Rock_eval_for_brÃ¸nn_30_3_1.pdf> Code: 47/NOT_NFKC in PATH: The IRI is not in Unicode Normal Form KC.
+2016-05-10 16:22:22 WARN  riot:77 - [line: 11247926, col: 22] Bad IRI: <http://www.npd.no/engelsk/cwi/pbl/geochemical_pdfs/509_2_Geokjemisk_analyse_TOC_og_Rock_eval_for_brÃ¸nn_30_3_1.pdf> Code: 56/COMPATIBILITY_CHARACTER in PATH: Bad character
+2016-05-10 16:22:25 WARN  riot:77 - [line: 11501734, col: 1 ] Bad IRI: <http://sws.ifi.uio.no/data/npd-v2/wellbore/70/document/3325/70_02_31_2_7_BrÃ¸nntestrapport> Code: 47/NOT_NFKC in PATH: The IRI is not in Unicode Normal Form KC.
+2016-05-10 16:22:25 WARN  riot:77 - [line: 11501734, col: 1 ] Bad IRI: <http://sws.ifi.uio.no/data/npd-v2/wellbore/70/document/3325/70_02_31_2_7_BrÃ¸nntestrapport> Code: 56/COMPATIBILITY_CHARACTER in PATH: Bad character
+2016-05-10 16:22:25 WARN  riot:77 - [line: 11501741, col: 22] Bad IRI: <http://www.npd.no/engelsk/cwi/pbl/wellbore_documents/70_02_31_2_7_BrÃ¸nntestrapport.pdf> Code: 47/NOT_NFKC in PATH: The IRI is not in Unicode Normal Form KC.
+2016-05-10 16:22:25 WARN  riot:77 - [line: 11501741, col: 22] Bad IRI: <http://www.npd.no/engelsk/cwi/pbl/wellbore_documents/70_02_31_2_7_BrÃ¸nntestrapport.pdf> Code: 56/COMPATIBILITY_CHARACTER in PATH: Bad character
+2016-05-10 16:22:25 WARN  riot:77 - [line: 11565961, col: 1 ] Bad IRI: <http://sws.ifi.uio.no/data/npd-v2/wellbore/88/document/3379/88_02_31_2_9_Overlagringstrykk_fra_brÃ¸nn> Code: 47/NOT_NFKC in PATH: The IRI is not in Unicode Normal Form KC.
+2016-05-10 16:22:25 WARN  riot:77 - [line: 11565961, col: 1 ] Bad IRI: <http://sws.ifi.uio.no/data/npd-v2/wellbore/88/document/3379/88_02_31_2_9_Overlagringstrykk_fra_brÃ¸nn> Code: 56/COMPATIBILITY_CHARACTER in PATH: Bad character
+2016-05-10 16:22:25 WARN  riot:77 - [line: 11565968, col: 22] Bad IRI: <http://www.npd.no/engelsk/cwi/pbl/wellbore_documents/88_02_31_2_9_Overlagringstrykk_fra_brÃ¸nn.pdf> Code: 47/NOT_NFKC in PATH: The IRI is not in Unicode Normal Form KC.
+2016-05-10 16:22:25 WARN  riot:77 - [line: 11565968, col: 22] Bad IRI: <http://www.npd.no/engelsk/cwi/pbl/wellbore_documents/88_02_31_2_9_Overlagringstrykk_fra_brÃ¸nn.pdf> Code: 56/COMPATIBILITY_CHARACTER in PATH: Bad character
+2016-05-10 16:22:26 INFO  OntologyReaderTemplate:241 - ABoxList file:/Users/kien/benchmarks/npd-v2/aboxList.txt
+2016-05-10 16:22:26 INFO  OntologyReaderTemplate:242 - ABox statistic:
+2016-05-10 16:22:26 INFO  OntologyStatistic:47 - Statistic: Number_of_input_individuals = 785656
+2016-05-10 16:22:26 INFO  OntologyStatistic:57 - Statistic: Number_of_input_concept_assertions = 772877
+2016-05-10 16:22:26 INFO  OntologyStatistic:58 - Statistic: Number_of_input_role_assertions = 645072
+2016-05-10 16:22:26 INFO  OntologyStatistic:59 - Statistic: Number_of_input_concept_and_role_assertions = 1417949
+2016-05-10 16:22:26 INFO  OntologyReaderTemplate:251 - Statistic: Time_loading_input_ontology_in_seconds = 96
+2016-05-10 16:22:26 INFO  DLLiteR_MaterializeTemplate:91 - Performing role reasoning ...
+2016-05-10 16:22:26 INFO  DLLiteR_MaterializeTemplate:98 - First time computing deductive closure...
+2016-05-10 16:22:26 INFO  SemiNaiveRuleEngine:58 - Reasoning time for deductive closure computing in this step: 0
+2016-05-10 16:22:26 INFO  DLLiteR_MaterializeTemplate:104 - Computing types...
+2016-05-10 16:22:29 INFO  DLLiteR_MaterializeTemplate:119 - Statistic: Number_of_types = 1028
+2016-05-10 16:22:29 INFO  DLLiteR_MaterializeTemplate:130 - Generating abstractions ...
+2016-05-10 16:22:30 INFO  DLLiteR_MaterializeTemplate:132 - Info:Number of abstraction ontolog(ies):1
+2016-05-10 16:22:30 INFO  DLLiteR_MaterializeTemplate:145 - Statistic: Number_of_x = 1028
+2016-05-10 16:22:30 INFO  DLLiteR_MaterializeTemplate:146 - Statistic: Number_of_u = 0
+2016-05-10 16:22:30 INFO  DLLiteR_MaterializeTemplate:148 - Statistic: Number_of_yz = 16441
+2016-05-10 16:22:30 INFO  DLLiteR_MaterializeTemplate:152 - Statistic: Number_of_abstract_individuals_xuyz = 17469
+2016-05-10 16:22:30 INFO  DLLiteR_MaterializeTemplate:164 - Statistic: Number_of_abstract_concept_assertions = 3694
+2016-05-10 16:22:30 INFO  DLLiteR_MaterializeTemplate:165 - Statistic: Number_of_abstract_role_assertions = 16441
+2016-05-10 16:22:30 INFO  DLLiteR_MaterializeTemplate:166 - Statistic: Number_of_abstract_concept_and_role_assertions = 20135
+2016-05-10 16:22:30 INFO  DLLiteR_MaterializeTemplate:172 - Materializing the abstractions ...
+2016-05-10 16:22:30 INFO  DLLiteR_MaterializeTemplate:183 - Info:Size of the (splitted) abstract ontology: 20574
+2016-05-10 16:22:36 INFO  InnerReasonerTemplate:141 - Computing concept assertions.... 
+2016-05-10 16:22:36 INFO  DLLiteR_MaterializeTemplate:204 - Transferring the entailments ...
+2016-05-10 16:22:37 INFO  DLLiteR_MaterializeTemplate:224 - Statistic: Number_of_materialized_concept_assertions = 898525
+2016-05-10 16:22:37 INFO  DLLiteR_MaterializeTemplate:226 - Statistic: Number_of_materialized_role_assertions = 667496
+2016-05-10 16:22:37 INFO  DLLiteR_MaterializeTemplate:227 - Statistic: Number_of_materialized_concept_and_role_assertions = 1566021

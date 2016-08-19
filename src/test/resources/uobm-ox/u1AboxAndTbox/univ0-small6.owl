@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE Ontology [
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="file:/Users/kien/git/ORAR-HSHOIF/src/test/resources/uobm-ox/u1/univ0.owl"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="file:/Users/kien/git/ORAR-HSHOIF/src/test/resources/uobm-ox/u1/univ0.owl">
+    <Prefix name="" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix name="benchmark-dl" IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#"/>
+     <Import>file:/Users/kien/git/Orar2/src/test/resources/uobm-ox/tbox/uobm-tbox-oxford.owl</Import>
+    <ClassAssertion>
+        <Class abbreviatedIRI="benchmark-dl:Department"/>
+        <NamedIndividual IRI="http://www.Department0.University0.edu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="benchmark-dl:University"/>
+        <NamedIndividual IRI="http://www.University0.edu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="benchmark-dl:BaseballLover"/>
+        <NamedIndividual IRI="http://www.Department0.University0.edu/Chair0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="benchmark-dl:Chair"/>
+        <NamedIndividual IRI="http://www.Department0.University0.edu/Chair0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="benchmark-dl:FullProfessor"/>
+        <NamedIndividual IRI="http://www.Department0.University0.edu/FullProfessor0"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="benchmark-dl:Man"/>
+        <NamedIndividual IRI="http://www.Department0.University0.edu/FullProfessor0"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="benchmark-dl:isHeadOf"/>
+        <NamedIndividual IRI="http://www.Department0.University0.edu/Chair0"/>
+        <NamedIndividual IRI="http://www.Department0.University0.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="benchmark-dl:hasDoctoralDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department0.University0.edu/FullProfessor0"/>
+        <NamedIndividual IRI="http://www.University2.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="benchmark-dl:hasMasterDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department0.University0.edu/FullProfessor0"/>
+        <NamedIndividual IRI="http://www.University4.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="benchmark-dl:hasUndergraduateDegreeFrom"/>
+        <NamedIndividual IRI="http://www.Department0.University0.edu/FullProfessor0"/>
+        <NamedIndividual IRI="http://www.University0.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="benchmark-dl:isHeadOf"/>
+        <NamedIndividual IRI="http://www.Department0.University0.edu/FullProfessor0"/>
+        <NamedIndividual IRI="http://www.Department0.University0.edu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="benchmark-dl:isMemberOf"/>
+        <NamedIndividual IRI="http://www.Department0.University0.edu/FullProfessor0"/>
+        <NamedIndividual IRI="http://www.Department0.University0.edu"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="benchmark-dl:name"/>
+        <NamedIndividual IRI="http://www.University0.edu"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">University0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="benchmark-dl:emailAddress"/>
+        <NamedIndividual IRI="http://www.Department0.University0.edu/FullProfessor0"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">FullProfessor0@Department0.University0.edu/FullProfessor0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="benchmark-dl:firstName"/>
+        <NamedIndividual IRI="http://www.Department0.University0.edu/FullProfessor0"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">FullProfessor0.first</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="benchmark-dl:lastName"/>
+        <NamedIndividual IRI="http://www.Department0.University0.edu/FullProfessor0"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">FullProfessor0.second</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="benchmark-dl:telephone"/>
+        <NamedIndividual IRI="http://www.Department0.University0.edu/FullProfessor0"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">xxx-xxx-xxxx</Literal>
+    </DataPropertyAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="benchmark-dl:name"/>
+        <IRI>http://www.Department0.University0.edu</IRI>
+        <IRI>file:/Users/kien/git/ORAR-HSHOIF/src/test/resources/uobm-ox/u1/Department0</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="benchmark-dl:researchInterest"/>
+        <IRI>http://www.Department0.University0.edu/FullProfessor0</IRI>
+        <IRI>http://www.Department0.University0.edu/Research29</IRI>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net -->
+

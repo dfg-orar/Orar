@@ -1,0 +1,2 @@
+/Users/kien/git/ORAR-HSHOIF/src/test/resources/uobm-ox/abox/univ2-abox-small.owl
+/Users/kien/git/ORAR-HSHOIF/src/test/resources/uobm-ox/abox/univ0-abox-small.owl

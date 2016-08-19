@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY benchmark-dl "http://uob.iodt.ibm.com/univ-bench-dl.owl#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="file:/Users/kien/git/ORAR-HSHOIF/src/test/resources/uobm-origin/abox/1-ub-dl-univ0.owl#"
+     xml:base="file:/Users/kien/git/ORAR-HSHOIF/src/test/resources/uobm-origin/abox/1-ub-dl-univ0.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:benchmark-dl="http://uob.iodt.ibm.com/univ-bench-dl.owl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="file:/Users/kien/git/ORAR-HSHOIF/src/test/resources/uobm-origin/abox/1-ub-dl-univ0.owl">
+        <owl:imports rdf:resource="file:/Users/kien/git/ORAR-HSHOIF/src/test/resources/uobm-origin/tbox/uobmtbox_origin.owl"/>
+        
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.College0.University0.edu -->
+
+    <owl:NamedIndividual rdf:about="http://www.College0.University0.edu">
+        <rdf:type rdf:resource="&benchmark-dl;College"/>
+        <benchmark-dl:name>College0</benchmark-dl:name>
+        <benchmark-dl:subOrganizationOf rdf:resource="http://www.University0.edu"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.College1.University0.edu -->
+
+    <owl:NamedIndividual rdf:about="http://www.College1.University0.edu">
+        <rdf:type rdf:resource="&benchmark-dl;College"/>
+        <benchmark-dl:name>College1</benchmark-dl:name>
+        <benchmark-dl:subOrganizationOf rdf:resource="http://www.University0.edu"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.College2.University0.edu -->
+
+    <owl:NamedIndividual rdf:about="http://www.College2.University0.edu">
+        <rdf:type rdf:resource="&benchmark-dl;College"/>
+        <benchmark-dl:name>College2</benchmark-dl:name>
+        <benchmark-dl:subOrganizationOf rdf:resource="http://www.University0.edu"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.College3.University0.edu -->
+
+    <owl:NamedIndividual rdf:about="http://www.College3.University0.edu">
+        <rdf:type rdf:resource="&benchmark-dl;WomanCollege"/>
+        <benchmark-dl:name>College3</benchmark-dl:name>
+        <benchmark-dl:subOrganizationOf rdf:resource="http://www.University0.edu"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.University0.edu -->
+
+    <owl:NamedIndividual rdf:about="http://www.University0.edu">
+        <rdf:type rdf:resource="&benchmark-dl;University"/>
+        <benchmark-dl:name>University0</benchmark-dl:name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.College3.University0.edu/woman_student0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.College3.University0.edu/woman_student0">
+        <rdf:type rdf:resource="&benchmark-dl;Person"/>
+        <benchmark-dl:firstName>woman_student0.firstname</benchmark-dl:firstName>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:lastName>woman_student0.lastname</benchmark-dl:lastName>
+        <benchmark-dl:emailAddress>woman_student0@College3.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:isStudentOf rdf:resource="http://www.College3.University0.edu"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.College3.University0.edu/woman_student98 -->
+
+    <owl:NamedIndividual rdf:about="http://www.College3.University0.edu/woman_student98">
+        <rdf:type rdf:resource="&benchmark-dl;Person"/>
+        <benchmark-dl:firstName>woman_student98.firstname</benchmark-dl:firstName>
+        <benchmark-dl:emailAddress>woman_student98@College3.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:lastName>woman_student98.lastname</benchmark-dl:lastName>
+        <benchmark-dl:isStudentOf rdf:resource="http://www.College3.University0.edu"/>
+        <benchmark-dl:isCrazyAbout rdf:resource="&benchmark-dl;Pop_Music"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.College3.University0.edu/woman_student99 -->
+
+    <owl:NamedIndividual rdf:about="http://www.College3.University0.edu/woman_student99">
+        <rdf:type rdf:resource="&benchmark-dl;Person"/>
+        <benchmark-dl:firstName>woman_student99.firstname</benchmark-dl:firstName>
+        <benchmark-dl:telephone>xxx-xxx-xxxx</benchmark-dl:telephone>
+        <benchmark-dl:emailAddress>woman_student99@College3.University0.edu</benchmark-dl:emailAddress>
+        <benchmark-dl:lastName>woman_student99.lastname</benchmark-dl:lastName>
+        <benchmark-dl:isStudentOf rdf:resource="http://www.College3.University0.edu"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net -->
+
