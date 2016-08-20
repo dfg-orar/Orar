@@ -18,6 +18,7 @@ import orar.io.ontologyreader.HornSHOIF_OntologyReader;
 import orar.io.ontologyreader.OntologyReader;
 import orar.materializer.Materializer;
 import orar.modeling.ontology.OrarOntology;
+import orar.modeling.ontology2.OrarOntology2;
 
 public class HornSHIF_Materializer_HermitTest {
 
@@ -45,7 +46,7 @@ public class HornSHIF_Materializer_HermitTest {
 		// DebugLevel.ADDING_MARKING_AXIOMS);
 		System.out.println("Loading ontology for abstraction materializer....");
 		OntologyReader ontoReader = new HornSHOIF_OntologyReader();
-		OrarOntology normalizedOrarOntology = ontoReader.getNormalizedOrarOntology(ontologyPath);
+		OrarOntology2 normalizedOrarOntology = ontoReader.getNormalizedOrarOntology(ontologyPath);
 
 		Materializer materializer = new HornSHIF_Materializer_Hermit(normalizedOrarOntology);
 

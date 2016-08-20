@@ -82,7 +82,7 @@ public class AssertionDecoder {
 			
 			OWLNamedIndividual keyOWLIndividual = indexer.getOWLIndividual(key);
 			Set<Integer> values = entry.getValue();
-			Set<OWLNamedIndividual> valueOWLIndividuals = indexer.getOWLIndividual(values);
+			Set<OWLNamedIndividual> valueOWLIndividuals = indexer.getOWLIndividuals(values);
 			sameasMap.put(keyOWLIndividual, valueOWLIndividuals);
 		}
 		return sameasMap;

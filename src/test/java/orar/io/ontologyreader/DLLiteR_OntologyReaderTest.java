@@ -16,7 +16,7 @@ import orar.data.AbstractDataFactory;
 import orar.data.DataForTransferingEntailments;
 import orar.data.MetaDataOfOntology;
 import orar.data.NormalizationDataFactory;
-import orar.modeling.ontology.OrarOntology;
+import orar.modeling.ontology2.OrarOntology2;
 import orar.util.PrintingHelper;
 
 public class DLLiteR_OntologyReaderTest {
@@ -35,10 +35,10 @@ public class DLLiteR_OntologyReaderTest {
 		Configuration.getInstance().addDebugLevels(DebugLevel.DL_FRAGMENT_VALIDATING);
 		System.out.println("Loading ontology for abstraction materializer....");
 		OntologyReader ontoReader = new DLLiteH_OntologyReader();
-		OrarOntology normalizedOrarOntology = ontoReader.getNormalizedOrarOntology(ontologyTbox, aboxList);
+		OrarOntology2 normalizedOrarOntology = ontoReader.getNormalizedOrarOntology(ontologyTbox, aboxList);
 		int numberOfAssertions = normalizedOrarOntology.getNumberOfInputConceptAssertions()
 				+ normalizedOrarOntology.getNumberOfInputRoleAssertions();
-		System.out.println("DEBUG***Number of assertions in OrarOntology: " + numberOfAssertions);
+		System.out.println("DEBUG***Number of assertions in OrarOntology2: " + numberOfAssertions);
 		 HashSet<OWLClass> orarConceptNames = new HashSet<OWLClass>(normalizedOrarOntology.getConceptNamesInSignature());
 		 HashSet<OWLObjectProperty> orarRoleNames = new HashSet<OWLObjectProperty>(normalizedOrarOntology.getRoleNamesInSignature());
 		 System.out.println(

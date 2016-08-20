@@ -9,6 +9,7 @@ import orar.io.ontologyreader.OntologyReader;
 import orar.materializer.Materializer;
 import orar.materializer.HornSHOIF.HornSHOIF_Materializer_Hermit;
 import orar.modeling.ontology.OrarOntology;
+import orar.modeling.ontology2.OrarOntology2;
 
 /**
  * Examples to demostrate how to run Abstraction Refinement Materilzer with
@@ -39,7 +40,7 @@ public class RunMaterializationUsingAbstractionRefinement {
 
 	public static void runWithSeperatedTBoxAndABoxes() {
 		OntologyReader ontologyReader = new HornSHOIF_OntologyReader();
-		OrarOntology normalizedOrarOntology = ontologyReader.getNormalizedOrarOntology(tboxFileName, aboxListFileName);
+		OrarOntology2 normalizedOrarOntology = ontologyReader.getNormalizedOrarOntology(tboxFileName, aboxListFileName);
 
 		// long startAbstraction = System.currentTimeMillis();
 		Materializer materializer = new HornSHOIF_Materializer_Hermit(normalizedOrarOntology);
@@ -49,7 +50,7 @@ public class RunMaterializationUsingAbstractionRefinement {
 
 	public static void runWithCombinedTBoxAndABoxes() {
 		OntologyReader ontologyReader = new HornSHOIF_OntologyReader();
-		OrarOntology normalizedOrarOntology = ontologyReader.getNormalizedOrarOntology(combinedAboxAndTBox);
+		OrarOntology2 normalizedOrarOntology = ontologyReader.getNormalizedOrarOntology(combinedAboxAndTBox);
 
 		// long startAbstraction = System.currentTimeMillis();
 		Materializer materializer = new HornSHOIF_Materializer_Hermit(normalizedOrarOntology);

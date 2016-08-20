@@ -10,8 +10,11 @@ import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 
 import junit.framework.Assert;
+import orar.indexing.IndividualIndexer;
 import orar.modeling.ontology.MapbasedOrarOntology;
 import orar.modeling.ontology.OrarOntology;
+import orar.modeling.ontology2.MapbasedOrarOntology2;
+import orar.modeling.ontology2.OrarOntology2;
 import orar.type.BasicIndividualTypeFactory;
 import orar.type.BasicIndividualTypeFactory_UsingWeakHashMap;
 import orar.type.IndividualType;
@@ -23,7 +26,7 @@ public class Basic_TypeComputorTest {
 	 * Signature
 	 */
 	DefaultTestDataFactory testData = DefaultTestDataFactory.getInsatnce();
-
+	IndividualIndexer indexer = IndividualIndexer.getInstance();
 	OWLNamedIndividual a = testData.getIndividual("a");
 	OWLNamedIndividual a1 = testData.getIndividual("a1");
 	OWLNamedIndividual a2 = testData.getIndividual("a2");
@@ -58,34 +61,35 @@ public class Basic_TypeComputorTest {
 
 	@Test
 	public void shouldComputeTypeProperly() {
-		OrarOntology orarOntology = new MapbasedOrarOntology();
+		OrarOntology2 orarOntology = new MapbasedOrarOntology2();
 		/*
 		 * Note to add individuals to the signature of the ontology. When we
 		 * load ontology from file, the OntologyReader will do the job.
 		 */
-		orarOntology.addIndividualsToSignature(testData.getSetOfIndividuals(a1, a2, b1, b2));
+		orarOntology.addIndividualsToSignature(
+				indexer.getIndexesOfOWLIndividuals(testData.getSetOfIndividuals(a1, a2, b1, b2)));
 
-		orarOntology.addConceptAssertion(a1, A1);
-		orarOntology.addConceptAssertion(a2, A2);
+		orarOntology.addConceptAssertion(indexer.getIndexOfOWLIndividual(a1), A1);
+		orarOntology.addConceptAssertion(indexer.getIndexOfOWLIndividual(a2), A2);
 
-		orarOntology.addConceptAssertion(b1, B1);
-		orarOntology.addConceptAssertion(b2, B2);
+		orarOntology.addConceptAssertion(indexer.getIndexOfOWLIndividual(b1), B1);
+		orarOntology.addConceptAssertion(indexer.getIndexOfOWLIndividual(b2), B2);
 
-		orarOntology.addRoleAssertion(a1, R1, b1);
-		orarOntology.addRoleAssertion(a2, R2, b2);
+		orarOntology.addRoleAssertion(indexer.getIndexOfOWLIndividual(a1), R1, indexer.getIndexOfOWLIndividual(b1));
+		orarOntology.addRoleAssertion(indexer.getIndexOfOWLIndividual(a2), R2, indexer.getIndexOfOWLIndividual(b2));
 
 		/*
 		 * Note that the ontology should be closed under equality. In the
 		 * procedure, the RuleReasoner will compute the closure before we
 		 * compute types.
 		 */
-		orarOntology.addSameAsAssertion(a1, a2);
-		orarOntology.addSameAsAssertion(a2, a1);
+		orarOntology.addSameAsAssertion(indexer.getIndexOfOWLIndividual(a1), indexer.getIndexOfOWLIndividual(a2));
+		orarOntology.addSameAsAssertion(indexer.getIndexOfOWLIndividual(a2), indexer.getIndexOfOWLIndividual(a1));
 
 		/*
 		 * Compute types
 		 */
-		Map<IndividualType, Set<OWLNamedIndividual>> typeMap2Individuals = typeComputor.computeTypes(orarOntology);
+		Map<IndividualType, Set<Integer>> typeMap2Individuals = typeComputor.computeTypes(orarOntology);
 		PrintingHelper.printMap(typeMap2Individuals);
 		/*
 		 * Compare results

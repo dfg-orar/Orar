@@ -13,6 +13,7 @@ import orar.materializer.Materializer;
 import orar.materializer.DLLite.DLLite_Materializer_Hermit;
 import orar.materializer.HornSHOIF.HornSHOIF_Materializer_Hermit;
 import orar.modeling.ontology.OrarOntology;
+import orar.modeling.ontology2.OrarOntology2;
 
 public class MaterializeNPD {
 	static String tboxFileName = "/Users/kien/benchmarks/npd-v2/npd.owl";
@@ -29,7 +30,7 @@ public class MaterializeNPD {
 
 	public static void runWithSeperatedTBoxAndABoxes() {
 		OntologyReader ontologyReader = new DLLiteH_OntologyReader();
-		OrarOntology normalizedOrarOntology = ontologyReader.getNormalizedOrarOntology(tboxFileName, aboxListFileName);
+		OrarOntology2 normalizedOrarOntology = ontologyReader.getNormalizedOrarOntology(tboxFileName, aboxListFileName);
 
 		// long startAbstraction = System.currentTimeMillis();
 		Materializer materializer = new DLLite_Materializer_Hermit(normalizedOrarOntology);

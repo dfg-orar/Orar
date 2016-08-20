@@ -12,7 +12,8 @@ import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 
-import orar.modeling.ontology.OrarOntology;
+
+import orar.modeling.ontology2.OrarOntology2;
 
 public class StreamOntologyReaderTest {
 
@@ -36,13 +37,13 @@ public class StreamOntologyReaderTest {
 		 * Load ontology using a stream reader
 		 */
 
-		OrarOntology ontologyByStreamReader = loadOntologyUsingStreamReader(tboxFileName, aboxListFileName);
+		OrarOntology2 ontologyByStreamReader = loadOntologyUsingStreamReader(tboxFileName, aboxListFileName);
 
 		/*
 		 * Load ontology where TBox and ABox are mixed into one file.
 		 */
 
-		OrarOntology ontologyByOWLAPI = loadOntologyUsingOWLAPI(allInOneOntologyName);
+		OrarOntology2 ontologyByOWLAPI = loadOntologyUsingOWLAPI(allInOneOntologyName);
 
 		/*
 		 * Comparing results
@@ -77,13 +78,13 @@ public class StreamOntologyReaderTest {
 		 * Load ontology using a stream reader
 		 */
 
-		OrarOntology ontologyByStreamReader = loadOntologyUsingStreamReader(tboxFileName, aboxListFileName);
+		OrarOntology2 ontologyByStreamReader = loadOntologyUsingStreamReader(tboxFileName, aboxListFileName);
 
 		/*
 		 * Load ontology where TBox and ABox are mixed into one file.
 		 */
 
-		OrarOntology ontologyByOWLAPI = loadOntologyUsingOWLAPI(allInOneOntologyName);
+		OrarOntology2 ontologyByOWLAPI = loadOntologyUsingOWLAPI(allInOneOntologyName);
 
 		/*
 		 * Comparing results
@@ -114,13 +115,13 @@ public class StreamOntologyReaderTest {
 		 * Load ontology using a stream reader
 		 */
 
-		OrarOntology ontologyByStreamReader = loadOntologyUsingStreamReader(tboxFileName, aboxListFileName);
+		OrarOntology2 ontologyByStreamReader = loadOntologyUsingStreamReader(tboxFileName, aboxListFileName);
 
 		/*
 		 * Load ontology where TBox and ABox are mixed into one file.
 		 */
 
-		OrarOntology ontologyByOWLAPI = loadOntologyUsingOWLAPI(allInOneOntologyName);
+		OrarOntology2 ontologyByOWLAPI = loadOntologyUsingOWLAPI(allInOneOntologyName);
 
 		/*
 		 * Comparing results
@@ -144,13 +145,13 @@ public class StreamOntologyReaderTest {
 		 * Load ontology using a stream reader
 		 */
 
-		OrarOntology ontologyByStreamReader = loadOntologyUsingStreamReader(tboxFileName, aboxListFileName);
+		OrarOntology2 ontologyByStreamReader = loadOntologyUsingStreamReader(tboxFileName, aboxListFileName);
 
 		/*
 		 * Load ontology where TBox and ABox are mixed into one file.
 		 */
 
-		OrarOntology ontologyByOWLAPI = loadOntologyUsingOWLAPI(allInOneOntologyName);
+		OrarOntology2 ontologyByOWLAPI = loadOntologyUsingOWLAPI(allInOneOntologyName);
 
 		/*
 		 * Comparing results
@@ -167,7 +168,7 @@ public class StreamOntologyReaderTest {
 
 	}
 
-	private OrarOntology loadOntologyUsingStreamReader(String tboxFileName, String aboxListFileName)
+	private OrarOntology2 loadOntologyUsingStreamReader(String tboxFileName, String aboxListFileName)
 			throws OWLOntologyCreationException {
 		long streamStart = System.currentTimeMillis();
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
@@ -176,7 +177,7 @@ public class StreamOntologyReaderTest {
 		StreamOntologyReader2InternalModel streamReader = new StreamOntologyReader2InternalModel(owlOntology,
 				aboxListFileName);
 
-		OrarOntology ontologyByStreamReader = streamReader.getOntology();
+		OrarOntology2 ontologyByStreamReader = streamReader.getOntology();
 
 		long streamEnd = System.currentTimeMillis();
 
@@ -185,13 +186,13 @@ public class StreamOntologyReaderTest {
 		return ontologyByStreamReader;
 	}
 
-	private OrarOntology loadOntologyUsingOWLAPI(String allInOneOntologyName) throws OWLOntologyCreationException {
+	private OrarOntology2 loadOntologyUsingOWLAPI(String allInOneOntologyName) throws OWLOntologyCreationException {
 		long owlapiStart = System.currentTimeMillis();
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 
 		OWLOntology mixedOntology = manager.loadOntologyFromOntologyDocument(new File(allInOneOntologyName));
 		OWLAPI2OrarConverter converter = new OWLAPI2OrarConverter(mixedOntology);
-		OrarOntology ontologyByOWLAPI = converter.getInternalOntology();
+		OrarOntology2 ontologyByOWLAPI = converter.getInternalOntology();
 
 		long owlapiEnd = System.currentTimeMillis();
 

@@ -13,6 +13,7 @@ import orar.config.DebugLevel;
 import orar.config.LogInfo;
 import orar.config.StatisticVocabulary;
 import orar.dlfragmentvalidator.OWLOntologyValidator;
+import orar.indexing.IndividualIndexer;
 import orar.modeling.ontology.OrarOntology;
 import orar.modeling.ontology2.OrarOntology2;
 import orar.normalization.Normalizer;
@@ -37,6 +38,10 @@ public abstract class OntologyReaderTemplate implements OntologyReader {
 	public OrarOntology2 getNormalizedOrarOntology(String ontologyFileName) {
 
 		long startParsing = System.currentTimeMillis();
+		/*
+		 * clear old indexing if there is
+		 */
+		IndividualIndexer.getInstance().clear();
 		/*
 		 * Get a normalized OWLAPI ontology
 		 */

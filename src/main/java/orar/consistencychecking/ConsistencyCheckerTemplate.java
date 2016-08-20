@@ -27,7 +27,7 @@ import orar.data.MetaDataOfOntology;
 import orar.innerconsistencychecking.InnerConsistencyChecker;
 import orar.innerreasoner.InnerReasoner;
 import orar.materializer.DLLite_MaterializerTemplate;
-import orar.modeling.ontology.OrarOntology;
+import orar.modeling.ontology2.OrarOntology2;
 import orar.refinement.abstractroleassertion.AbstractRoleAssertionBox;
 import orar.refinement.assertiontransferring.AssertionTransporter;
 import orar.refinement.assertiontransferring.HornSHIF.HornSHIF_AssertionTransporter;
@@ -40,7 +40,7 @@ import orar.util.PrintingHelper;
 public abstract class ConsistencyCheckerTemplate implements ConsistencyChecker {
 
 	// input & output
-	protected final OrarOntology normalizedORAROntology;
+	protected final OrarOntology2 normalizedORAROntology;
 
 	private long reasoningTimeInSeconds;
 	protected final Configuration config;
@@ -58,7 +58,7 @@ public abstract class ConsistencyCheckerTemplate implements ConsistencyChecker {
 	protected final RuleEngine ruleEngine;
 	private boolean isConsistent;
 
-	public ConsistencyCheckerTemplate(OrarOntology normalizedOrarOntology) {
+	public ConsistencyCheckerTemplate(OrarOntology2 normalizedOrarOntology) {
 		// input & output
 		this.normalizedORAROntology = normalizedOrarOntology;
 
@@ -70,7 +70,7 @@ public abstract class ConsistencyCheckerTemplate implements ConsistencyChecker {
 
 		// other fields
 		this.abstractOntologies = new HashSet<OWLOntology>();
-		this.ruleEngine = new SemiNaiveRuleEngine(normalizedOrarOntology);
+		 this.ruleEngine = new SemiNaiveRuleEngine(normalizedOrarOntology);
 		this.typeComputor = new BasicTypeComputor();
 		this.isConsistent = true;
 	}
@@ -86,7 +86,7 @@ public abstract class ConsistencyCheckerTemplate implements ConsistencyChecker {
 		 * (3). Compute types
 		 */
 		logger.info("Computing types...");
-		Map<IndividualType, Set<OWLNamedIndividual>> typeMap2Individuals = this.typeComputor
+		Map<IndividualType, Set<Integer>> typeMap2Individuals = this.typeComputor
 				.computeTypes(this.normalizedORAROntology);
 
 		/*
@@ -191,7 +191,7 @@ public abstract class ConsistencyCheckerTemplate implements ConsistencyChecker {
 
 	protected abstract InnerConsistencyChecker getInnerConsistencyChecker(OWLOntology abstraction);
 
-	protected List<OWLOntology> getAbstractions(Map<IndividualType, Set<OWLNamedIndividual>> typeMap2Individuals) {
+	protected List<OWLOntology> getAbstractions(Map<IndividualType, Set<Integer>> typeMap2Individuals) {
 		AbstractionGenerator abstractionGenerator = new HornSHIF_AbstractionGenerator(normalizedORAROntology,
 				typeMap2Individuals);
 		// AbstractionGenerator abstractionGenerator = new

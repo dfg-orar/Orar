@@ -9,7 +9,7 @@ import orar.io.ontologyreader.HornSHOIF_OntologyReader;
 import orar.io.ontologyreader.OntologyReader;
 import orar.materializer.Materializer;
 import orar.materializer.HornSHOIF.HornSHOIF_Materializer_Hermit;
-import orar.modeling.ontology.OrarOntology;
+import orar.modeling.ontology2.OrarOntology2;
 
 /**
  * This example is to demonstrate that the types could remain the same in
@@ -36,7 +36,7 @@ public class DemoSameTypesInDifferentLoops {
 	public static void runWithCombinedTBoxAndABoxes() {
 
 		OntologyReader ontologyReader = new HornSHOIF_OntologyReader();
-		OrarOntology normalizedOrarOntology = ontologyReader.getNormalizedOrarOntology(combinedAboxAndTBox);
+		OrarOntology2 normalizedOrarOntology = ontologyReader.getNormalizedOrarOntology(combinedAboxAndTBox);
 		logger.info(
 				"Info: Concstructors in the validated ontology:" + normalizedOrarOntology.getActualDLConstructors());
 		// long startAbstraction = System.currentTimeMillis();

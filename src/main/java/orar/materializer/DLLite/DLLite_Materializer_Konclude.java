@@ -5,18 +5,18 @@ import org.semanticweb.owlapi.model.OWLOntology;
 import orar.innerreasoner.InnerReasoner;
 import orar.innerreasoner.HornSHIF.Konclude_HornSHIF_InnerReasoner;
 import orar.materializer.DLLite_MaterializerTemplate;
-import orar.modeling.ontology.OrarOntology;
+import orar.modeling.ontology2.OrarOntology2;
 
 public class DLLite_Materializer_Konclude extends DLLite_MaterializerTemplate {
 
 	private int port = 8080;
 
-	public DLLite_Materializer_Konclude(OrarOntology normalizedOrarOntology) {
+	public DLLite_Materializer_Konclude(OrarOntology2 normalizedOrarOntology) {
 		super(normalizedOrarOntology);
 
 	}
 
-	public DLLite_Materializer_Konclude(OrarOntology normalizedOrarOntology, int port) {
+	public DLLite_Materializer_Konclude(OrarOntology2 normalizedOrarOntology, int port) {
 		super(normalizedOrarOntology);
 		this.port = port;
 	}

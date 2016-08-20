@@ -21,6 +21,7 @@ import orar.io.ontologyreader.HornSHOIF_OntologyReader;
 import orar.io.ontologyreader.OntologyReader;
 import orar.materializer.Materializer;
 import orar.modeling.ontology.OrarOntology;
+import orar.modeling.ontology2.OrarOntology2;
 import orar.util.PrintingHelper;
 
 public class HornSHOIF_Materializer_Fact_Test {
@@ -251,7 +252,7 @@ public class HornSHOIF_Materializer_Fact_Test {
 		
 		System.out.println("Loading ontology for abstraction materializer....");
 		OntologyReader ontoReader = new HornSHOIF_OntologyReader();
-		OrarOntology normalizedOrarOntology = ontoReader.getNormalizedOrarOntology(ontologyPath);
+		OrarOntology2 normalizedOrarOntology = ontoReader.getNormalizedOrarOntology(ontologyPath);
 
 		Materializer materializer = new HornSHOIF_Materializer_Fact(normalizedOrarOntology);
 

@@ -16,8 +16,8 @@ import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 
 import junit.framework.Assert;
-import orar.modeling.ontology.MapbasedOrarOntology;
-import orar.modeling.ontology.OrarOntology;
+import orar.modeling.ontology2.MapbasedOrarOntology2;
+import orar.modeling.ontology2.OrarOntology2;
 
 /**
  * Check if parsing using Jena and using OWLAPI return the same results
@@ -39,7 +39,7 @@ public class JenaABoxStreamReaderTest {
 		/*
 		 * Get ontologies
 		 */
-		OrarOntology orarOntology = getOrarOntologyWithJena(tboxFileName, aboxListFileName);
+		OrarOntology2 orarOntology = getOrarOntologyWithJena(tboxFileName, aboxListFileName);
 		OWLOntology tbox = getOWLAPIOntology(tboxFileName);
 		OWLOntology owlOntology = getOWLAPIOntology(allInOneOntologyName);
 		/*
@@ -74,7 +74,7 @@ public class JenaABoxStreamReaderTest {
 		/*
 		 * Get ontologies
 		 */
-		OrarOntology orarOntology = getOrarOntologyWithJena(tboxFileName, aboxListFileName);
+		OrarOntology2 orarOntology = getOrarOntologyWithJena(tboxFileName, aboxListFileName);
 		OWLOntology tbox = getOWLAPIOntology(tboxFileName);
 		OWLOntology owlOntology = getOWLAPIOntology(allInOneOntologyName);
 		/*
@@ -99,16 +99,16 @@ public class JenaABoxStreamReaderTest {
 
 	}
 
-	private OrarOntology getOrarOntologyWithJena(String tboxFile, String aboxListFile)
+	private OrarOntology2 getOrarOntologyWithJena(String tboxFile, String aboxListFile)
 			throws OWLOntologyCreationException {
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 		OWLOntology tbox = manager.loadOntologyFromOntologyDocument(new File(tboxFile));
 		Set<OWLObjectProperty> definedRoles = tbox.getObjectPropertiesInSignature(true);
 		Set<OWLClass> defiedConcepts = tbox.getClassesInSignature(true);
 
-		OrarOntology orarOntology = new MapbasedOrarOntology();
-		ABoxStreamReader aboxStreamReader = new JenaMultipleABoxesStreamReader(definedRoles, defiedConcepts, aboxListFile,
-				orarOntology);
+		OrarOntology2 orarOntology = new MapbasedOrarOntology2();
+		ABoxStreamReader aboxStreamReader = new JenaMultipleABoxesStreamReader(definedRoles, defiedConcepts,
+				aboxListFile, orarOntology);
 		aboxStreamReader.readABoxes();
 		return orarOntology;
 	}

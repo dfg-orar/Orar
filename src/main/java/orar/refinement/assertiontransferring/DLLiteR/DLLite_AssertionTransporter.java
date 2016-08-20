@@ -15,6 +15,8 @@ import orar.config.DebugLevel;
 import orar.data.AbstractDataFactory;
 import orar.data.DataForTransferingEntailments;
 import orar.modeling.ontology.OrarOntology;
+import orar.modeling.ontology2.OrarOntology2;
+import orar.modeling.roleassertion2.IndexedRoleAssertionList;
 import orar.refinement.abstractroleassertion.AbstractRoleAssertionBox;
 import orar.refinement.abstractroleassertion.RoleAssertionList;
 import orar.refinement.assertiontransferring.AssertionTransporter;
@@ -23,7 +25,7 @@ import orar.util.PrintingHelper;
 
 public class DLLite_AssertionTransporter implements AssertionTransporter {
 	// original ontology
-	protected final OrarOntology orarOntology;
+	protected final OrarOntology2 orarOntology;
 	// entailments of the abstraction
 	protected final Map<OWLNamedIndividual, Set<OWLClass>> abstractConceptAssertionsAsMap;
 
@@ -36,7 +38,7 @@ public class DLLite_AssertionTransporter implements AssertionTransporter {
 	protected final DataForTransferingEntailments dataForTransferingEntailments;
 	protected final AbstractDataFactory abstractDataFactory;
 
-	public DLLite_AssertionTransporter(OrarOntology orarOntoloy,
+	public DLLite_AssertionTransporter(OrarOntology2 orarOntoloy,
 			Map<OWLNamedIndividual, Set<OWLClass>> entailedAbstractConceptAssertions) {
 		this.orarOntology = orarOntoloy;
 		// this.abstractConceptAssertionsAsMap = new HashMap<>();
@@ -72,9 +74,9 @@ public class DLLite_AssertionTransporter implements AssertionTransporter {
 			}
 			Set<OWLClass> concepts = entry.getValue();
 			if (concepts != null) {
-				Set<OWLNamedIndividual> originalIndividuals = this.dataForTransferingEntailments
+				Set<Integer> originalIndividuals = this.dataForTransferingEntailments
 						.getOriginalIndividuals(abstractInd);
-				for (OWLNamedIndividual originalInd : originalIndividuals) {
+				for (Integer originalInd : originalIndividuals) {
 					/*
 					 * debug:begin
 					 */
@@ -116,12 +118,12 @@ public class DLLite_AssertionTransporter implements AssertionTransporter {
 	}
 
 	@Override
-	public RoleAssertionList getNewlyAddedRoleAssertions() {
-		return new RoleAssertionList();
+	public IndexedRoleAssertionList getNewlyAddedRoleAssertions() {
+		return new IndexedRoleAssertionList();
 	}
 
 	@Override
-	public Set<Set<OWLNamedIndividual>> getNewlyAddedSameasAssertions() {
-		return new HashSet<Set<OWLNamedIndividual>>();
+	public Set<Set<Integer>> getNewlyAddedSameasAssertions() {
+		return new HashSet<Set<Integer>>();
 	}
 }

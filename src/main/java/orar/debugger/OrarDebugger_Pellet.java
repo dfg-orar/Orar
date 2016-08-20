@@ -2,11 +2,11 @@ package orar.debugger;
 
 import orar.innerexplanation.InnerInconsistencyExplanation;
 import orar.innerexplanation.InnerInconsistencyExplanationPellet;
-import orar.modeling.ontology.OrarOntology;
+import orar.modeling.ontology2.OrarOntology2;
 
 public class OrarDebugger_Pellet extends OrarDebuggerDLLiteTemplate {
 
-	public OrarDebugger_Pellet(OrarOntology normalizedOrarOntology) {
+	public OrarDebugger_Pellet(OrarOntology2 normalizedOrarOntology) {
 		super(normalizedOrarOntology);
 
 	}

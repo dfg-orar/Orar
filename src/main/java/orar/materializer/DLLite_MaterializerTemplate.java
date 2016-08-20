@@ -26,6 +26,7 @@ import orar.data.DataForTransferingEntailments;
 import orar.data.MetaDataOfOntology;
 import orar.innerreasoner.InnerReasoner;
 import orar.modeling.ontology.OrarOntology;
+import orar.modeling.ontology2.OrarOntology2;
 import orar.refinement.assertiontransferring.AssertionTransporter;
 import orar.refinement.assertiontransferring.DLLiteR.DLLite_AssertionTransporter;
 import orar.rolereasoning.HermitRoleReasoner;
@@ -38,7 +39,7 @@ import orar.util.PrintingHelper;
 
 public abstract class DLLite_MaterializerTemplate implements Materializer {
 	// input & output
-	protected final OrarOntology normalizedORAROntology;
+	protected final OrarOntology2 normalizedORAROntology;
 
 	private long reasoningTimeInSeconds;
 	protected final Configuration config;
@@ -55,7 +56,7 @@ public abstract class DLLite_MaterializerTemplate implements Materializer {
 	protected Set<OWLOntology> abstractOntologies;
 	protected final RuleEngine ruleEngine;
 
-	public DLLite_MaterializerTemplate(OrarOntology normalizedOrarOntology) {
+	public DLLite_MaterializerTemplate(OrarOntology2 normalizedOrarOntology) {
 		// input & output
 		this.normalizedORAROntology = normalizedOrarOntology;
 
@@ -97,7 +98,7 @@ public abstract class DLLite_MaterializerTemplate implements Materializer {
 			 * (3). Compute types
 			 */
 			logger.info("Computing types...");
-			Map<IndividualType, Set<OWLNamedIndividual>> typeMap2Individuals = this.typeComputor
+			Map<IndividualType, Set<Integer>> typeMap2Individuals = this.typeComputor
 					.computeTypes(this.normalizedORAROntology);
 	
 			// // TODO:delete after debugging
@@ -229,7 +230,7 @@ public abstract class DLLite_MaterializerTemplate implements Materializer {
 		 * (1). Compute types
 		 */
 		logger.info("Computing types...");
-		Map<IndividualType, Set<OWLNamedIndividual>> typeMap2Individuals = this.typeComputor
+		Map<IndividualType, Set<Integer>> typeMap2Individuals = this.typeComputor
 				.computeTypes(this.normalizedORAROntology);
 
 		// // TODO:delete after debugging
@@ -341,7 +342,7 @@ public abstract class DLLite_MaterializerTemplate implements Materializer {
 		}
 		return isConsistent;
 	}
-	protected List<OWLOntology> getAbstractions(Map<IndividualType, Set<OWLNamedIndividual>> typeMap2Individuals) {
+	protected List<OWLOntology> getAbstractions(Map<IndividualType, Set<Integer>> typeMap2Individuals) {
 		AbstractionGenerator abstractionGenerator = new HornSHIF_AbstractionGenerator(normalizedORAROntology,
 				typeMap2Individuals);
 		// AbstractionGenerator abstractionGenerator = new
@@ -384,7 +385,7 @@ public abstract class DLLite_MaterializerTemplate implements Materializer {
 	}
 
 	@Override
-	public OrarOntology getOrarOntology() {
+	public OrarOntology2 getOrarOntology() {
 		return this.normalizedORAROntology;
 	}
 

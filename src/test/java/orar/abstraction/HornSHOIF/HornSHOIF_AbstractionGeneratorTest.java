@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
@@ -23,27 +24,40 @@ import orar.abstraction.PairOfSubjectAndObject;
 import orar.abstraction.TypeComputor;
 import orar.data.AbstractDataFactory;
 import orar.data.MetaDataOfOntology;
+import orar.indexing.IndividualIndexer;
 import orar.data.DataForTransferingEntailments;
 import orar.modeling.ontology.MapbasedOrarOntology;
 import orar.modeling.ontology.OrarOntology;
+import orar.modeling.ontology2.MapbasedOrarOntology2;
+import orar.modeling.ontology2.OrarOntology2;
 import orar.type.IndividualType;
 import orar.util.DefaultTestDataFactory;
 import orar.util.PrintingHelper;
 
 public class HornSHOIF_AbstractionGeneratorTest {
 	DefaultTestDataFactory testData = DefaultTestDataFactory.getInsatnce();
+	IndividualIndexer indexer = IndividualIndexer.getInstance();
+
 	/*
 	 * Signature
 	 */
-	OWLNamedIndividual a = testData.getIndividual("a");
-	OWLNamedIndividual a1 = testData.getIndividual("a1");
-	OWLNamedIndividual a2 = testData.getIndividual("a2");
+	Integer a = indexer.getIndexOfOWLIndividual(testData.getIndividual("a"));
+	Integer a1 = indexer.getIndexOfOWLIndividual(testData.getIndividual("a1"));
+	Integer a2 = indexer.getIndexOfOWLIndividual(testData.getIndividual("a2"));
 
-	OWLNamedIndividual b = testData.getIndividual("b");
-	OWLNamedIndividual b1 = testData.getIndividual("b1");
-	OWLNamedIndividual b2 = testData.getIndividual("b2");
+	Integer b = indexer.getIndexOfOWLIndividual(testData.getIndividual("b"));
+	Integer b1 = indexer.getIndexOfOWLIndividual(testData.getIndividual("b1"));
+	Integer b2 = indexer.getIndexOfOWLIndividual(testData.getIndividual("b2"));
 
-	OWLNamedIndividual c = testData.getIndividual("c");
+	Integer c = indexer.getIndexOfOWLIndividual(testData.getIndividual("c"));
+	Set<Integer> a1a2 = new HashSet<>();
+	Set<Integer> b1b2 = new HashSet<>();
+	Set<Integer> a1a2b1b2 = new HashSet<>();
+	Set<Integer> b1Set = new HashSet<>();
+	Set<Integer> a1Set = new HashSet<>();
+
+
+	
 
 	OWLClass A = testData.getConcept("A");
 	OWLClass A1 = testData.getConcept("A1");
@@ -70,7 +84,23 @@ public class HornSHOIF_AbstractionGeneratorTest {
 	MetaDataOfOntology sharedData = MetaDataOfOntology.getInstance();
 	DataForTransferingEntailments sharedMap = DataForTransferingEntailments.getInstance();
 	AbstractDataFactory abstractDataFactory = AbstractDataFactory.getInstance();
+	@Before
+	public void init() {
+		indexer.clear();
+		a1a2.add(a1);
+		a1a2.add(a2);
 
+		b1b2.add(b1);
+		b1b2.add(b2);
+
+		a1a2b1b2.add(a1);
+		a1a2b1b2.add(a2);
+		a1a2b1b2.add(b1);
+		a1a2b1b2.add(b2);
+
+		b1Set.add(b1);
+		a1Set.add(a1);
+	}
 	@Test
 	public void shouldGenerateOneAbstractionAndMapProperly() {
 		sharedData.clear();
@@ -79,7 +109,7 @@ public class HornSHOIF_AbstractionGeneratorTest {
 		/*
 		 * create ontology
 		 */
-		OrarOntology orarOntology = new MapbasedOrarOntology();
+		OrarOntology2 orarOntology = new MapbasedOrarOntology2();
 		sharedData.getFunctionalRoles().add(funcRole);
 		sharedData.getInverseFunctionalRoles().add(invFuncRole);
 
@@ -94,14 +124,14 @@ public class HornSHOIF_AbstractionGeneratorTest {
 		 * we only want to test for a1, a2, therefore we add a1,a2 to the
 		 * signature of the ontology
 		 */
-		orarOntology.addIndividualsToSignature(testData.getSetOfIndividuals(a1, a2));
+		orarOntology.addIndividualsToSignature(a1a2);
 
 		/*
 		 * compute type and generate the abstraction
 		 */
 
 		TypeComputor typeComputor = new BasicTypeComputor();
-		Map<IndividualType, Set<OWLNamedIndividual>> typeMap2Individuals = typeComputor.computeTypes(orarOntology);
+		Map<IndividualType, Set<Integer>> typeMap2Individuals = typeComputor.computeTypes(orarOntology);
 		AbstractionGenerator abstractionGenerator = new HornSHOIF_AbstractionGenerator(orarOntology,
 				typeMap2Individuals);
 		OWLOntology abstraction = abstractionGenerator.getAbstractOntology();
@@ -127,17 +157,17 @@ public class HornSHOIF_AbstractionGeneratorTest {
 		/*
 		 * compare mappings for x
 		 */
-		Assert.assertEquals(testData.getSetOfIndividuals(a1, a2),
+		Assert.assertEquals(a1a2,
 				sharedMap.getMap_XAbstractIndiv_2_OriginalIndivs().get(x1));
 		/*
 		 * compare mappings for u
 		 */
-		Assert.assertEquals(testData.getSetOfIndividuals(a1, a2),
+		Assert.assertEquals(a1a2,
 				sharedMap.getMap_UAbstractIndiv_2_OriginalIndivs().get(u1));
 		/*
 		 * compare mappings for y
 		 */
-		Assert.assertEquals(testData.getSetOfIndividuals(b1, b2),
+		Assert.assertEquals(b1b2,
 				sharedMap.getMap_YAbstractIndiv_2_OriginalIndivs().get(y1));
 		/*
 		 * compare mapping for x1y1
@@ -156,7 +186,7 @@ public class HornSHOIF_AbstractionGeneratorTest {
 		/*
 		 * create ontology
 		 */
-		OrarOntology orarOntology = new MapbasedOrarOntology();
+		OrarOntology2 orarOntology = new MapbasedOrarOntology2();
 		sharedData.getFunctionalRoles().add(funcRole);
 		sharedData.getInverseFunctionalRoles().add(invFuncRole);
 
@@ -169,14 +199,14 @@ public class HornSHOIF_AbstractionGeneratorTest {
 		 * we only want to test for b1
 		 * 
 		 */
-		orarOntology.addIndividualsToSignature(testData.getSetOfIndividuals(a1));
+		orarOntology.addIndividualsToSignature(a1Set);
 
 		/*
 		 * compute type and generate the abstraction
 		 */
 
 		TypeComputor typeComputor = new BasicTypeComputor();
-		Map<IndividualType, Set<OWLNamedIndividual>> typeMap2Individuals = typeComputor.computeTypes(orarOntology);
+		Map<IndividualType, Set<Integer>> typeMap2Individuals = typeComputor.computeTypes(orarOntology);
 		AbstractionGenerator abstractionGenerator = new HornSHOIF_AbstractionGenerator(orarOntology,
 				typeMap2Individuals);
 		OWLOntology abstraction = abstractionGenerator.getAbstractOntology();
@@ -189,9 +219,9 @@ public class HornSHOIF_AbstractionGeneratorTest {
 		OWLNamedIndividual u1 = testData.getAbstractIndividual("U1");
 		OWLNamedIndividual y1 = testData.getAbstractIndividual("Y1");
 		PrintingHelper.printSet(abstraction.getAxioms());
-		Assert.assertEquals(testData.getSetOfIndividuals(b1), sharedMap.getMap_YAbstractIndiv_2_OriginalIndivs().get(y1));
-		Assert.assertEquals(testData.getSetOfIndividuals(a1), sharedMap.getMap_XAbstractIndiv_2_OriginalIndivs().get(x1));
-		Assert.assertEquals(testData.getSetOfIndividuals(a1), sharedMap.getMap_UAbstractIndiv_2_OriginalIndivs().get(u1));
+		Assert.assertEquals(b1Set, sharedMap.getMap_YAbstractIndiv_2_OriginalIndivs().get(y1));
+		Assert.assertEquals(a1Set, sharedMap.getMap_XAbstractIndiv_2_OriginalIndivs().get(x1));
+		Assert.assertEquals(a1Set, sharedMap.getMap_UAbstractIndiv_2_OriginalIndivs().get(u1));
 
 		
 	}

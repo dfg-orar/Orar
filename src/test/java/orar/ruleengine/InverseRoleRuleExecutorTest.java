@@ -1,43 +1,52 @@
 package orar.ruleengine;
 
-import static org.junit.Assert.*;
+import java.util.HashSet;
+import java.util.Set;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLInverseObjectPropertiesAxiom;
-import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.semanticweb.owlapi.model.OWLObjectPropertyAssertionAxiom;
 
 import orar.data.DataForTransferingEntailments;
 import orar.data.MetaDataOfOntology;
-import orar.modeling.ontology.MapbasedOrarOntology;
-import orar.modeling.ontology.OrarOntology;
+import orar.indexing.IndividualIndexer;
+import orar.modeling.ontology2.MapbasedOrarOntology2;
+import orar.modeling.ontology2.OrarOntology2;
+import orar.modeling.roleassertion2.IndexedRoleAssertion;
 import orar.util.DefaultTestDataFactory;
 import orar.util.PrintingHelper;
 
 public class InverseRoleRuleExecutorTest {
 	DefaultTestDataFactory testData = DefaultTestDataFactory.getInsatnce();
+	IndividualIndexer indexer = IndividualIndexer.getInstance();
+
 	/*
 	 * Signature
 	 */
-	OWLNamedIndividual a = testData.getIndividual("a");
-	OWLNamedIndividual a1 = testData.getIndividual("a1");
-	OWLNamedIndividual a2 = testData.getIndividual("a2");
+	Integer a = indexer.getIndexOfOWLIndividual(testData.getIndividual("a"));
+	Integer a1 = indexer.getIndexOfOWLIndividual(testData.getIndividual("a1"));
+	Integer a2 = indexer.getIndexOfOWLIndividual(testData.getIndividual("a2"));
 
-	OWLNamedIndividual b = testData.getIndividual("b");
-	OWLNamedIndividual b1 = testData.getIndividual("b1");
-	OWLNamedIndividual b2 = testData.getIndividual("b2");
+	Integer b = indexer.getIndexOfOWLIndividual(testData.getIndividual("b"));
+	Integer b1 = indexer.getIndexOfOWLIndividual(testData.getIndividual("b1"));
+	Integer b2 = indexer.getIndexOfOWLIndividual(testData.getIndividual("b2"));
 
-	OWLNamedIndividual c = testData.getIndividual("c");
-	OWLNamedIndividual c1 = testData.getIndividual("c1");
-	OWLNamedIndividual c2 = testData.getIndividual("c2");
+	Integer c = indexer.getIndexOfOWLIndividual(testData.getIndividual("c"));
+	Set<Integer> a1a2 = new HashSet<>();
+	Set<Integer> b1b2 = new HashSet<>();
+	Set<Integer> a1a2b1b2 = new HashSet<>();
+	Set<Integer> b1Set = new HashSet<>();
+	Set<Integer> a1Set = new HashSet<>();
 
-	OWLNamedIndividual d = testData.getIndividual("d");
-
-	OWLNamedIndividual o = testData.getIndividual("o");
+	Integer c1 = indexer.getIndexOfOWLIndividual(testData.getIndividual("c1"));
+	Integer c2 = indexer.getIndexOfOWLIndividual(testData.getIndividual("c2"));
+	Integer d = indexer.getIndexOfOWLIndividual(testData.getIndividual("d"));
+	Integer o = indexer.getIndexOfOWLIndividual(testData.getIndividual("o"));
 
 	OWLClass A = testData.getConcept("A");
 	OWLClass A1 = testData.getConcept("A1");
@@ -74,7 +83,25 @@ public class InverseRoleRuleExecutorTest {
 	OWLObjectProperty invFuncRole = testData.getRole("invFuncRole");
 	DataForTransferingEntailments sharedMap = DataForTransferingEntailments.getInstance();
 	MetaDataOfOntology metaDataOfOntology = MetaDataOfOntology.getInstance();
-	OWLDataFactory owlDataFactory= OWLManager.getOWLDataFactory();
+	OWLDataFactory owlDataFactory = OWLManager.getOWLDataFactory();
+	@Before
+	public void init() {
+		indexer.clear();
+		a1a2.add(a1);
+		a1a2.add(a2);
+
+		b1b2.add(b1);
+		b1b2.add(b2);
+
+		a1a2b1b2.add(a1);
+		a1a2b1b2.add(a2);
+		a1a2b1b2.add(b1);
+		a1a2b1b2.add(b2);
+
+		b1Set.add(b1);
+		a1Set.add(a1);
+	}
+
 	@Test
 	public void test() {
 		sharedMap.clear();
@@ -82,19 +109,20 @@ public class InverseRoleRuleExecutorTest {
 		/*
 		 * create ontology
 		 */
-		OrarOntology orarOntology = new MapbasedOrarOntology();
-		
+		OrarOntology2 orarOntology = new MapbasedOrarOntology2();
+
 		orarOntology.addRoleAssertion(a, R, b);
-//		orarOntology.addRoleAssertion(c, S, d);
-		
+		// orarOntology.addRoleAssertion(c, S, d);
+
 		OWLInverseObjectPropertiesAxiom inverse_R_S = owlDataFactory.getOWLInverseObjectPropertiesAxiom(R, S);
 		orarOntology.getTBoxAxioms().add(inverse_R_S);
-		
-		RuleExecutor ruleExecutor= new InverseRoleRuleExecutor(orarOntology);
-		OWLObjectPropertyAssertionAxiom roleAssertion = owlDataFactory.getOWLObjectPropertyAssertionAxiom(R, a, b);
+
+		RuleExecutor ruleExecutor = new InverseRoleRuleExecutor(orarOntology);
+		IndexedRoleAssertion roleAssertion = new IndexedRoleAssertion(a,R, a);
+	
 		ruleExecutor.incrementalMaterialize(roleAssertion);
 		// after computing deductive closure
-		
+
 		PrintingHelper.printSet(orarOntology.getOWLAPIRoleAssertionsWithNormalizationSymbols());
 	}
 

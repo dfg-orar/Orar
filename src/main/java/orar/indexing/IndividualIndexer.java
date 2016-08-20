@@ -110,9 +110,9 @@ public class IndividualIndexer {
 	/**
 	 * only for testing
 	 * @param indexOfIndividuals
-	 * @return
+	 * @return a set of OWLNamedIndividual corresponding to the given indexes
 	 */
-	public Set<OWLNamedIndividual> getOWLIndividual(Set<Integer> indexOfIndividuals) {
+	public Set<OWLNamedIndividual> getOWLIndividuals(Set<Integer> indexOfIndividuals) {
 		Set<OWLNamedIndividual> owlIndividuals = new HashSet<>();
 		for (Integer eachInd : indexOfIndividuals) {
 			String eachIndString = this.mapNumber2IndividualString.get(eachInd);
@@ -148,5 +148,12 @@ public class IndividualIndexer {
 
 	public Set<Integer> getAllEncodedIndividuals() {
 		return this.mapNumber2IndividualString.keySet();
+	}
+	/**
+	 * clear indexing data
+	 */
+	public void clear(){
+		this.mapIndividualString2Number.clear();
+		this.mapNumber2IndividualString.clear();
 	}
 }

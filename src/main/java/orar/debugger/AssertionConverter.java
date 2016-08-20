@@ -15,7 +15,9 @@ import org.semanticweb.owlapi.model.OWLObjectPropertyAssertionAxiom;
 
 import orar.data.AbstractDataFactory;
 import orar.data.DataForTransferingEntailments;
+import orar.indexing.IndividualIndexer;
 import orar.modeling.ontology.OrarOntology;
+import orar.modeling.ontology2.OrarOntology2;
 
 /**
  * Convert abstract assertions to original assertions
@@ -27,11 +29,13 @@ public class AssertionConverter {
 	private final DataForTransferingEntailments mappings;
 	private final AbstractDataFactory abstractDataFactory;
 	private OWLDataFactory owlDataFactory;
-	private final OrarOntology orarOntology;
-	public AssertionConverter(OrarOntology orarOntology) {
+	private final OrarOntology2 orarOntology;
+	private final IndividualIndexer indexer = IndividualIndexer.getInstance();
+
+	public AssertionConverter(OrarOntology2 orarOntology) {
 		this.mappings = DataForTransferingEntailments.getInstance();
-		this.abstractDataFactory= AbstractDataFactory.getInstance();
-		this.orarOntology=orarOntology;
+		this.abstractDataFactory = AbstractDataFactory.getInstance();
+		this.orarOntology = orarOntology;
 		this.owlDataFactory = OWLManager.getOWLDataFactory();
 	}
 
@@ -54,8 +58,9 @@ public class AssertionConverter {
 		Set<OWLAxiom> originalConceptAssertions = new HashSet<>();
 		OWLClass concept = abstractConceptAssertion.getClassExpression().asOWLClass();
 		OWLNamedIndividual abstractInd = abstractConceptAssertion.getIndividual().asOWLNamedIndividual();
-		Set<OWLNamedIndividual> originalInds = this.mappings.getOriginalIndividuals(abstractInd);
-		for (OWLNamedIndividual ind : originalInds) {
+		Set<Integer> originalIndivisualIndexes = this.mappings.getOriginalIndividuals(abstractInd);
+		Set<OWLNamedIndividual> originalIndividuals = indexer.getOWLIndividuals(originalIndivisualIndexes);
+		for (OWLNamedIndividual ind : originalIndividuals) {
 			OWLClassAssertionAxiom originalConceptAssertion = this.owlDataFactory.getOWLClassAssertionAxiom(concept,
 					ind);
 			originalConceptAssertions.add(originalConceptAssertion);
@@ -68,41 +73,52 @@ public class AssertionConverter {
 		Set<OWLAxiom> originalRoleAssertions = new HashSet<>();
 		OWLObjectProperty role = abstractRoleAssertion.getProperty().asOWLObjectProperty();
 		OWLNamedIndividual abstractSubject = abstractRoleAssertion.getSubject().asOWLNamedIndividual();
-		OWLNamedIndividual abstractObject=abstractRoleAssertion.getObject().asOWLNamedIndividual();
-		
-		
-		if (this.abstractDataFactory.getXAbstractIndividuals().contains(abstractSubject)){
+		OWLNamedIndividual abstractObject = abstractRoleAssertion.getObject().asOWLNamedIndividual();
+
+		if (this.abstractDataFactory.getXAbstractIndividuals().contains(abstractSubject)) {
 			originalRoleAssertions.addAll(getOriginalSuccessors(abstractObject, role));
 		} else if (this.abstractDataFactory.getXAbstractIndividuals().contains(abstractObject)) {
 			originalRoleAssertions.addAll(getOriginalPredecessors(role, abstractObject));
 		}
-		
-		
-		
+
 		return originalRoleAssertions;
 
 	}
-	
-	private  Set<OWLObjectPropertyAssertionAxiom> getOriginalSuccessors(OWLNamedIndividual xAbstract, OWLObjectProperty sucRole){
+
+	private Set<OWLObjectPropertyAssertionAxiom> getOriginalSuccessors(OWLNamedIndividual xAbstract,
+			OWLObjectProperty sucRole) {
 		Set<OWLObjectPropertyAssertionAxiom> originalRoleAssertions = new HashSet<>();
-		Set<OWLNamedIndividual> originalIndividualsOfX = this.mappings.getOriginalIndividuals(xAbstract);
-		for (OWLNamedIndividual eachOriginalInd_ofX:originalIndividualsOfX){
-			Set<OWLNamedIndividual> allSuccessors = this.orarOntology.getSuccessors(eachOriginalInd_ofX, sucRole);
-			for (OWLNamedIndividual eachSuccessor:allSuccessors){
-				OWLObjectPropertyAssertionAxiom roleAssertion = this.owlDataFactory.getOWLObjectPropertyAssertionAxiom(sucRole, eachOriginalInd_ofX, eachSuccessor);
+		Set<Integer> originalIndexedIndividualOfX = this.mappings.getOriginalIndividuals(xAbstract);
+	
+		
+		for (Integer eachOriginalInd_ofX : originalIndexedIndividualOfX) {
+			Set<Integer> allSuccessorsIndexes = this.orarOntology.getSuccessors(eachOriginalInd_ofX, sucRole);
+		 
+			for (Integer eachSuccessor : allSuccessorsIndexes) {
+				OWLNamedIndividual subject = indexer.getOWLIndividual(eachOriginalInd_ofX);
+				OWLNamedIndividual object = indexer.getOWLIndividual(eachSuccessor);
+				OWLObjectPropertyAssertionAxiom roleAssertion = this.owlDataFactory
+						.getOWLObjectPropertyAssertionAxiom(sucRole, subject, object);
 				originalRoleAssertions.add(roleAssertion);
 			}
 		}
 		return originalRoleAssertions;
 	}
-	
-	private  Set<OWLObjectPropertyAssertionAxiom> getOriginalPredecessors( OWLObjectProperty preRole, OWLNamedIndividual xAbstract){
+
+	private Set<OWLObjectPropertyAssertionAxiom> getOriginalPredecessors(OWLObjectProperty preRole,
+			OWLNamedIndividual xAbstract) {
 		Set<OWLObjectPropertyAssertionAxiom> originalRoleAssertions = new HashSet<>();
-		Set<OWLNamedIndividual> originalIndividualsOfX = this.mappings.getOriginalIndividuals(xAbstract);
-		for (OWLNamedIndividual eachOriginalInd_ofX:originalIndividualsOfX){
-			Set<OWLNamedIndividual> allPredecessors = this.orarOntology.getPredecessors(eachOriginalInd_ofX, preRole);
-			for (OWLNamedIndividual eachPredecessor:allPredecessors){
-				OWLObjectPropertyAssertionAxiom roleAssertion = this.owlDataFactory.getOWLObjectPropertyAssertionAxiom(preRole, eachPredecessor,eachOriginalInd_ofX);
+		Set<Integer> originalIndexedIndividualOfX = this.mappings.getOriginalIndividuals(xAbstract);
+	
+		// Set<OWLNamedIndividual> originalIndividualsOfX =
+		// this.mappings.getOriginalIndividuals(xAbstract);
+		for (Integer eachOriginalInd_ofX : originalIndexedIndividualOfX) {
+			Set<Integer> allPredecessors = this.orarOntology.getPredecessors(eachOriginalInd_ofX, preRole);
+			for (Integer eachPredecessor : allPredecessors) {
+				OWLNamedIndividual predecessor = indexer.getOWLIndividual(eachPredecessor);
+				OWLNamedIndividual eachOriginalOWLIndividualOfX = indexer.getOWLIndividual(eachOriginalInd_ofX);
+				OWLObjectPropertyAssertionAxiom roleAssertion = this.owlDataFactory
+						.getOWLObjectPropertyAssertionAxiom(preRole, predecessor, eachOriginalOWLIndividualOfX);
 				originalRoleAssertions.add(roleAssertion);
 			}
 		}

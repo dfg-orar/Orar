@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
-import org.semanticweb.owlapi.model.AxiomType;
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
@@ -25,6 +24,7 @@ import orar.data.DataForTransferingEntailments;
 import orar.data.MetaDataOfOntology;
 import orar.innerexplanation.InnerInconsistencyExplanation;
 import orar.modeling.ontology.OrarOntology;
+import orar.modeling.ontology2.OrarOntology2;
 import orar.refinement.abstractroleassertion.AbstractRoleAssertionBox;
 import orar.refinement.assertiontransferring.AssertionTransporter;
 import orar.refinement.assertiontransferring.HornSHIF.HornSHIF_AssertionTransporter;
@@ -32,12 +32,11 @@ import orar.ruleengine.RuleEngine;
 import orar.ruleengine.SemiNaiveRuleEngine;
 import orar.type.BasicIndividualTypeFactory_UsingWeakHashMap;
 import orar.type.IndividualType;
-import orar.util.OntologySaving;
 import orar.util.PrintingHelper;
 
 public abstract class OrarDebuggerDLLiteTemplate implements OrarDebugger {
 	// input & output
-	protected final OrarOntology normalizedORAROntology;
+	protected final OrarOntology2 normalizedORAROntology;
 
 	private long reasoningTimeInSeconds;
 	protected final Configuration config;
@@ -58,7 +57,7 @@ public abstract class OrarDebuggerDLLiteTemplate implements OrarDebugger {
 	private final Set<Set<OWLAxiom>> originalInconsistencyExplanations;
 	private int problematicFileCounter = 0;
 
-	public OrarDebuggerDLLiteTemplate(OrarOntology normalizedOrarOntology) {
+	public OrarDebuggerDLLiteTemplate(OrarOntology2 normalizedOrarOntology) {
 		// input & output
 		this.normalizedORAROntology = normalizedOrarOntology;
 
@@ -89,7 +88,7 @@ public abstract class OrarDebuggerDLLiteTemplate implements OrarDebugger {
 		 */
 		logger.info("Computing types...");
 
-		Map<IndividualType, Set<OWLNamedIndividual>> typeMap2Individuals = this.typeComputor
+		Map<IndividualType, Set<Integer>> typeMap2Individuals = this.typeComputor
 				.computeTypes(this.normalizedORAROntology);
 
 		/*
@@ -203,7 +202,7 @@ public abstract class OrarDebuggerDLLiteTemplate implements OrarDebugger {
 
 	protected abstract InnerInconsistencyExplanation getInnerInconsistencyExplaner();
 
-	protected List<OWLOntology> getAbstractions(Map<IndividualType, Set<OWLNamedIndividual>> typeMap2Individuals) {
+	protected List<OWLOntology> getAbstractions(Map<IndividualType, Set<Integer>> typeMap2Individuals) {
 		int numberOfTypesPerOntology = this.config.getNumberOfTypePerOntology();
 		/*
 		 * 

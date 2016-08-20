@@ -24,6 +24,7 @@ import orar.io.ontologyreader.DLLiteHOD_OntologyReader;
 import orar.io.ontologyreader.OntologyReader;
 import orar.materializer.Materializer;
 import orar.modeling.ontology.OrarOntology;
+import orar.modeling.ontology2.OrarOntology2;
 import orar.util.PrintingHelper;
 
 public class DLLiteHOD_Materializer_HermitTest {
@@ -264,7 +265,7 @@ public class DLLiteHOD_Materializer_HermitTest {
 		Configuration.getInstance().addDebugLevels(DebugLevel.ADDING_MARKING_AXIOMS);
 		System.out.println("Loading ontology for abstraction materializer....");
 		OntologyReader ontoReader = new DLLiteHOD_OntologyReader();
-		OrarOntology normalizedOrarOntology = ontoReader.getNormalizedOrarOntology(tbox, aboxList);
+		OrarOntology2 normalizedOrarOntology = ontoReader.getNormalizedOrarOntology(tbox, aboxList);
 		int numberOfAssertions = normalizedOrarOntology.getNumberOfInputConceptAssertions()
 				+ normalizedOrarOntology.getNumberOfInputRoleAssertions();
 		System.out.println("DEBUG***Number of assertions in OrarOntology: " + numberOfAssertions);
@@ -318,7 +319,7 @@ public class DLLiteHOD_Materializer_HermitTest {
 
 		System.out.println("Loading ontology for abstraction materializer....");
 		OntologyReader ontoReader = new DLLiteHOD_OntologyReader();
-		OrarOntology normalizedOrarOntology = ontoReader.getNormalizedOrarOntology(ontologyPath);
+		OrarOntology2 normalizedOrarOntology = ontoReader.getNormalizedOrarOntology(ontologyPath);
 
 		Materializer materializer = new DLLite_Materializer_Hermit(normalizedOrarOntology);
 

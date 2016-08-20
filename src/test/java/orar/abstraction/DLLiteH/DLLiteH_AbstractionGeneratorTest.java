@@ -14,6 +14,7 @@ import orar.abstraction.DLLiteH.DLLiteR_AbstractionGenerator;
 import orar.io.ontologyreader.DLLiteH_OntologyReader;
 import orar.io.ontologyreader.OntologyReader;
 import orar.modeling.ontology.OrarOntology;
+import orar.modeling.ontology2.OrarOntology2;
 import orar.type.IndividualType;
 import orar.util.PrintingHelper;
 
@@ -40,10 +41,10 @@ public class DLLiteH_AbstractionGeneratorTest {
 
 	private OWLOntology getAbstraction(String ontologyPath) {
 		OntologyReader ontologyReader = new DLLiteH_OntologyReader();
-		OrarOntology normalizedOrarOntology = ontologyReader.getNormalizedOrarOntology(ontologyPath);
+		OrarOntology2 normalizedOrarOntology = ontologyReader.getNormalizedOrarOntology(ontologyPath);
 
 		TypeComputor typeComputor = new BasicTypeComputor();
-		Map<IndividualType, Set<OWLNamedIndividual>> typeMap2Individuals = typeComputor
+		Map<IndividualType, Set<Integer>> typeMap2Individuals = typeComputor
 				.computeTypes(normalizedOrarOntology);
 
 		AbstractionGenerator abstractionGenerator = new DLLiteR_AbstractionGenerator(normalizedOrarOntology,
