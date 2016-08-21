@@ -1,5 +1,6 @@
 package orar.materializer.HornSHOIF;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.semanticweb.owlapi.model.OWLOntology;
 
@@ -7,7 +8,6 @@ import junit.framework.Assert;
 import orar.completenesschecker.CompletenessChecker;
 import orar.completenesschecker.CompletenessCheckerHorn;
 import orar.config.Configuration;
-import orar.config.DebugLevel;
 import orar.config.LogInfo;
 import orar.data.AbstractDataFactory;
 import orar.data.DataForTransferingEntailments;
@@ -15,14 +15,18 @@ import orar.data.MetaDataOfOntology;
 import orar.data.NormalizationDataFactory;
 import orar.dlreasoner.DLReasoner;
 import orar.dlreasoner.HermitDLReasoner;
-import orar.dlreasoner.KoncludeDLReasoner;
+import orar.indexing.IndividualIndexer;
 import orar.io.ontologyreader.HornSHOIF_OntologyReader;
 import orar.io.ontologyreader.OntologyReader;
 import orar.materializer.Materializer;
-import orar.modeling.ontology.OrarOntology;
 import orar.modeling.ontology2.OrarOntology2;
 
 public class HornSHOIF_Materializer_KoncludeTest {
+	@Before
+	public void init() {
+		IndividualIndexer.getInstance().clear();
+	}
+
 	@Test
 	public void testHasValue1() {
 		Configuration.getInstance().addAllDebugInfos();
@@ -30,6 +34,7 @@ public class HornSHOIF_Materializer_KoncludeTest {
 
 		haveTheSameResults(ontologyPath);
 	}
+
 	/**
 	 * No new entailments
 	 */
@@ -223,7 +228,6 @@ public class HornSHOIF_Materializer_KoncludeTest {
 		haveTheSameResults(ontologyPath);
 	}
 
-	
 	@Test
 	public void testLUBM() {
 
@@ -237,13 +241,14 @@ public class HornSHOIF_Materializer_KoncludeTest {
 		String aboxList = "src/test/resources/uobm-origin/abox/aboxListOf2.txt";
 		haveTheSameResults(ontologyTbox, aboxList);
 	}
-//	@Test
-//	public void testUOBM_OriginU1() {
-//		String ontologyTbox = "src/test/resources/uobm-origin/tbox/uobmtbox_origin.owl";
-//		String aboxList =  "/Users/kien/benchmarks/UOB/dl620/1/aboxListOriginU1.txt";
-//		haveTheSameResults(ontologyTbox, aboxList);
-//	}
-	
+	// @Test
+	// public void testUOBM_OriginU1() {
+	// String ontologyTbox =
+	// "src/test/resources/uobm-origin/tbox/uobmtbox_origin.owl";
+	// String aboxList =
+	// "/Users/kien/benchmarks/UOB/dl620/1/aboxListOriginU1.txt";
+	// haveTheSameResults(ontologyTbox, aboxList);
+	// }
 
 	/**
 	 * Compare result by Abstraction and by OWLReasoner; assert that they have
@@ -258,7 +263,7 @@ public class HornSHOIF_Materializer_KoncludeTest {
 		DataForTransferingEntailments.getInstance().clear();
 
 		Configuration.getInstance().addLoginfoLevels(LogInfo.STATISTIC, LogInfo.REASONING_TIME);
-//		 Configuration.getInstance().addDebugLevels(DebugLevel.ADDING_MARKING_AXIOMS);
+		// Configuration.getInstance().addDebugLevels(DebugLevel.ADDING_MARKING_AXIOMS);
 		System.out.println("Loading ontology for abstraction materializer....");
 		OntologyReader ontoReader = new HornSHOIF_OntologyReader();
 		OrarOntology2 normalizedOrarOntology = ontoReader.getNormalizedOrarOntology(tbox, aboxList);
@@ -276,12 +281,12 @@ public class HornSHOIF_Materializer_KoncludeTest {
 		CompletenessChecker checker = new CompletenessCheckerHorn(materializer, koncludeRealizer);
 		checker.computeEntailments();
 
-		 Assert.assertTrue(checker.isConceptAssertionComplete());
+		Assert.assertTrue(checker.isConceptAssertionComplete());
 		Assert.assertTrue(checker.isSameasComplete());
-		 Assert.assertTrue(checker.isRoleAssertionComplete());
+		Assert.assertTrue(checker.isRoleAssertionComplete());
 
 	}
-  
+
 	/**
 	 * Compare result by Abstraction and by OWLReasoner; assert that they have
 	 * the same result.

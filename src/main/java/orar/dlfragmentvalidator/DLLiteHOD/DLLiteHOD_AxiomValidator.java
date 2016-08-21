@@ -186,8 +186,8 @@ public class DLLiteHOD_AxiomValidator implements AxiomValidator {
 
 	@Override
 	public OWLAxiom visit(OWLObjectPropertyDomainAxiom axiom) {
-		this.constructorsInInputOntology.add(DLConstructor.DOMAIN);
-		this.constructorsInValidatedOntology.add(DLConstructor.DOMAIN);
+		this.constructorsInInputOntology.add(DLConstructor.DOMAIN_CONSTRAIN_OF_ROLE);
+		this.constructorsInValidatedOntology.add(DLConstructor.DOMAIN_CONSTRAIN_OF_ROLE);
 		return axiom;
 	}
 
@@ -223,8 +223,8 @@ public class DLLiteHOD_AxiomValidator implements AxiomValidator {
 
 	@Override
 	public OWLAxiom visit(OWLObjectPropertyRangeAxiom axiom) {
-		this.constructorsInInputOntology.add(DLConstructor.RANGE);
-		this.constructorsInValidatedOntology.add(DLConstructor.RANGE);
+		this.constructorsInInputOntology.add(DLConstructor.RANGE_CONSTRAIN_OF_ROLE);
+		this.constructorsInValidatedOntology.add(DLConstructor.RANGE_CONSTRAIN_OF_ROLE);
 		return axiom;
 	}
 

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.semanticweb.owlapi.apibinding.OWLManager;
+import org.semanticweb.owlapi.model.ClassExpressionType;
 import org.semanticweb.owlapi.model.OWLAnnotationAssertionAxiom;
 import org.semanticweb.owlapi.model.OWLAnnotationPropertyDomainAxiom;
 import org.semanticweb.owlapi.model.OWLAnnotationPropertyRangeAxiom;
@@ -36,6 +37,7 @@ import org.semanticweb.owlapi.model.OWLInverseObjectPropertiesAxiom;
 import org.semanticweb.owlapi.model.OWLIrreflexiveObjectPropertyAxiom;
 import org.semanticweb.owlapi.model.OWLNegativeDataPropertyAssertionAxiom;
 import org.semanticweb.owlapi.model.OWLNegativeObjectPropertyAssertionAxiom;
+import org.semanticweb.owlapi.model.OWLObjectAllValuesFrom;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.semanticweb.owlapi.model.OWLObjectPropertyAssertionAxiom;
 import org.semanticweb.owlapi.model.OWLObjectPropertyDomainAxiom;
@@ -140,12 +142,19 @@ public class HornALCHOIF_AxiomValidator implements AxiomValidator {
 	public OWLAxiom visit(OWLSubClassOfAxiom axiom) {
 		OWLClassExpression subClass = axiom.getSubClass();
 		OWLClassExpression superClass = axiom.getSuperClass();
-		OWLClassExpression profiledSupClass = subClass.accept(this.subClassValidator);
+				OWLClassExpression profiledSupClass = subClass.accept(this.subClassValidator);
 		OWLClassExpression profiledSuperClass = superClass.accept(this.superClassValidator);
 		if (profiledSupClass == null || profiledSuperClass == null) {
 			this.violatedAxioms.add(axiom);
 			return null;
 		}
+//		if (!subClass.isOWLThing()
+//				&& superClass.getClassExpressionType() == ClassExpressionType.OBJECT_ALL_VALUES_FROM) {
+//			OWLObjectAllValuesFrom superClassCopy = (OWLObjectAllValuesFrom) superClass;
+//			if (!superClassCopy.getFiller().isOWLThing()){
+//				this.constructorsInValidatedOntology.add(DLConstructor.)
+//			}
+//		}
 		return axiom;
 	}
 
@@ -202,7 +211,8 @@ public class HornALCHOIF_AxiomValidator implements AxiomValidator {
 
 	@Override
 	public OWLAxiom visit(OWLObjectPropertyDomainAxiom axiom) {
-
+		this.constructorsInInputOntology.add(DLConstructor.DOMAIN_CONSTRAIN_OF_ROLE);
+		this.constructorsInValidatedOntology.add(DLConstructor.DOMAIN_CONSTRAIN_OF_ROLE);
 		return axiom;
 	}
 
@@ -238,7 +248,8 @@ public class HornALCHOIF_AxiomValidator implements AxiomValidator {
 
 	@Override
 	public OWLAxiom visit(OWLObjectPropertyRangeAxiom axiom) {
-
+		this.constructorsInInputOntology.add(DLConstructor.RANGE_CONSTRAIN_OF_ROLE);
+		this.constructorsInValidatedOntology.add(DLConstructor.RANGE_CONSTRAIN_OF_ROLE);
 		return axiom;
 	}
 

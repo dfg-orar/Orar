@@ -37,21 +37,23 @@ public class HornALCHOIF_SubClass_Validator implements OWLClassExpressionVisitor
 	private final Set<DLConstructor> dlConstructorsInInputOntology;
 	private final Set<DLConstructor> dlConstructorsInValidatedOntology;
 
-	//	private Logger logger =Logger.getLogger(HornALCHOIF_SubClass_Validator.class);
+	// private Logger logger
+	// =Logger.getLogger(HornALCHOIF_SubClass_Validator.class);
 	public HornALCHOIF_SubClass_Validator() {
 		owlDataFactory = OWLManager.getOWLDataFactory();
 		profilingFactory = ValidatorDataFactory.getInstance();
 		this.dlConstructorsInInputOntology = new HashSet<DLConstructor>();
-		this.dlConstructorsInValidatedOntology= new HashSet<DLConstructor>();
+		this.dlConstructorsInValidatedOntology = new HashSet<DLConstructor>();
 	}
 
 	public Set<DLConstructor> getDlConstructorsInInputOntology() {
 		return dlConstructorsInInputOntology;
 	}
-	
+
 	public Set<DLConstructor> getDlConstructorsInValidatedOntology() {
 		return dlConstructorsInValidatedOntology;
 	}
+
 	@Override
 	public OWLClassExpression visit(OWLClass ce) {
 		return ce;
@@ -109,8 +111,14 @@ public class HornALCHOIF_SubClass_Validator implements OWLClassExpressionVisitor
 	public OWLClassExpression visit(OWLObjectSomeValuesFrom ce) {
 		this.dlConstructorsInInputOntology.add(DLConstructor.EXISTENTIAL_RESTRICTION);
 		OWLClassExpression filler = ce.getFiller();
+		if (!filler.isOWLThing()) {
+			this.dlConstructorsInInputOntology.add(DLConstructor.QUALIFIED_EXISTENTIAL_RESTRICTION);
+		}
 		OWLClassExpression profiledFiller = filler.accept(this);
 		if (profiledFiller != null) {
+			if (!profiledFiller.isOWLThing()) {
+				this.dlConstructorsInValidatedOntology.add(DLConstructor.QUALIFIED_EXISTENTIAL_RESTRICTION);
+			}
 			this.dlConstructorsInValidatedOntology.add(DLConstructor.EXISTENTIAL_RESTRICTION);
 			return ce;
 		} else {
@@ -130,6 +138,7 @@ public class HornALCHOIF_SubClass_Validator implements OWLClassExpressionVisitor
 		this.dlConstructorsInInputOntology.add(DLConstructor.NOMINAL);
 		this.dlConstructorsInValidatedOntology.add(DLConstructor.HASVALUE);
 		this.dlConstructorsInValidatedOntology.add(DLConstructor.NOMINAL);
+		
 		/*
 		 * change anonymous individual to named individual
 		 */
@@ -183,7 +192,7 @@ public class HornALCHOIF_SubClass_Validator implements OWLClassExpressionVisitor
 
 	@Override
 	public OWLClassExpression visit(OWLObjectOneOf ce) {
-//		logger.info("***DEBUG OWLObjectOneOf:"+ce);
+		// logger.info("***DEBUG OWLObjectOneOf:"+ce);
 		return ce;
 	}
 

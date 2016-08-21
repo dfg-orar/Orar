@@ -100,8 +100,14 @@ public class HornALCHOIF_SuperClass_Validator implements OWLClassExpressionVisit
 	public OWLClassExpression visit(OWLObjectSomeValuesFrom ce) {
 		this.dlConstructorsInInputOntology.add(DLConstructor.EXISTENTIAL_RESTRICTION);
 		OWLClassExpression filler = ce.getFiller();
+		if (!filler.isOWLThing()) {
+			this.dlConstructorsInInputOntology.add(DLConstructor.QUALIFIED_EXISTENTIAL_RESTRICTION);
+		}
 		OWLClassExpression profiledFiller = filler.accept(this);
 		if (profiledFiller != null) {
+			if (!profiledFiller.isOWLThing()) {
+				this.dlConstructorsInValidatedOntology.add(DLConstructor.QUALIFIED_EXISTENTIAL_RESTRICTION);
+			}
 			this.dlConstructorsInValidatedOntology.add(DLConstructor.EXISTENTIAL_RESTRICTION);
 			return ce;
 		}

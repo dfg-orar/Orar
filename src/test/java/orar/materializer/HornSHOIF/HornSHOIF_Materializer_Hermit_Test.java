@@ -1,5 +1,6 @@
 package orar.materializer.HornSHOIF;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.semanticweb.owlapi.model.OWLOntology;
 
@@ -15,12 +16,17 @@ import orar.data.NormalizationDataFactory;
 import orar.dlfragmentvalidator.ValidatorDataFactory;
 import orar.dlreasoner.DLReasoner;
 import orar.dlreasoner.HermitDLReasoner;
+import orar.indexing.IndividualIndexer;
 import orar.io.ontologyreader.HornSHOIF_OntologyReader;
 import orar.io.ontologyreader.OntologyReader;
 import orar.materializer.Materializer;
 import orar.modeling.ontology2.OrarOntology2;
 
 public class HornSHOIF_Materializer_Hermit_Test {
+	@Before
+	public void init(){
+		IndividualIndexer.getInstance().clear();
+	}
 	@Test
 	public void testHasValue1() {
 		Configuration.getInstance().addAllDebugInfos();
