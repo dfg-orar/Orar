@@ -38,10 +38,10 @@ public abstract class OntologyReaderTemplate implements OntologyReader {
 	public OrarOntology2 getNormalizedOrarOntology(String ontologyFileName) {
 
 		long startParsing = System.currentTimeMillis();
-		/*
-		 * clear old indexing if there is
-		 */
-		IndividualIndexer.getInstance().clear();
+//		/*
+//		 * clear old indexing if there is
+//		 */
+//		IndividualIndexer.getInstance().clear();
 		/*
 		 * Get a normalized OWLAPI ontology
 		 */
@@ -119,7 +119,34 @@ public abstract class OntologyReaderTemplate implements OntologyReader {
 		}
 		return null;
 	}
+	private OWLOntology getValidatedOWLAPIOntology(String fileNameToOWLAPIOntology) {
+		try {
+			long startParsing = System.currentTimeMillis();
+			/*
+			 * Read the file
+			 */
+			OWLOntology inputOntology = getInputOWLAPIOntology(fileNameToOWLAPIOntology);
 
+			/*
+			 * Get ontology in target DL fragment
+			 */
+
+			OWLOntology ontologyInDesiredDLFragment = getOntologyInTargetDLFragment(inputOntology);
+
+			
+			long endParsing = System.currentTimeMillis();
+			long parsingTimeInSecond = (endParsing - startParsing) / 1000;
+			if (config.getLogInfos().contains(LogInfo.LOADING_TIME)) {
+				logger.info(StatisticVocabulary.TIME_LOADING_INPUT + parsingTimeInSecond);
+			}
+
+			return ontologyInDesiredDLFragment;
+		} catch (OWLOntologyCreationException e) {
+
+			e.printStackTrace();
+		}
+		return null;
+	}
 	/**
 	 * @param owlOntologyFileName
 	 * @return an OWLAPI Ontology
@@ -214,6 +241,10 @@ public abstract class OntologyReaderTemplate implements OntologyReader {
 	public OrarOntology2 getNormalizedOrarOntology(String tboxFileName, String aboxListFileName) {
 
 		long startParsing = System.currentTimeMillis();
+//		/*
+//		 * clear old indexing if there is
+//		 */
+//		IndividualIndexer.getInstance().clear();
 		/*
 		 * get a normalized owlapi ontology
 		 */
@@ -269,6 +300,10 @@ public abstract class OntologyReaderTemplate implements OntologyReader {
 	public OWLOntology getOWLAPIOntology(String ontologyFileName) {
 		try {
 			long startParsing = System.currentTimeMillis();
+//			/*
+//			 * clear old indexing if there is
+//			 */
+//			IndividualIndexer.getInstance().clear();
 			/*
 			 * Read the ontologyFile
 			 */
@@ -303,6 +338,10 @@ public abstract class OntologyReaderTemplate implements OntologyReader {
 	public OWLOntology getOWLAPIOntology(String tboxFile, String aboxListFile) {
 		try {
 			long startParsing = System.currentTimeMillis();
+//			/*
+//			 * clear old indexing if there is
+//			 */
+//			IndividualIndexer.getInstance().clear();
 			/*
 			 * Read the ontologyFile
 			 */
@@ -344,4 +383,96 @@ public abstract class OntologyReaderTemplate implements OntologyReader {
 		return null;
 	}
 
+	public OrarOntology2 getNOTNormalizedOrarOntology(String tboxFileName, String aboxListFileName) {
+		long startParsing = System.currentTimeMillis();
+//		/*
+//		 * clear old indexing if there is
+//		 */
+//		IndividualIndexer.getInstance().clear();
+		/*
+		 * get a normalized owlapi ontology
+		 */
+		OWLOntology validatedOWLAPIOntology = getValidatedOWLAPIOntology(
+				tboxFileName);
+		if (config.getLogInfos().contains(LogInfo.STATISTIC)) {
+			logger.info("Information of the validated normalized ontology.");
+			logger.info("Extracted from ontology input file:" + tboxFileName);
+
+			OntologyStatistic.printOWLOntologyInfo(validatedOWLAPIOntology);
+
+		}
+		if (config.getDebuglevels().contains(DebugLevel.DL_FRAGMENT_VALIDATING)) {
+			logger.info("***DEBUG***normalized validated orar ontology:");
+			logger.info("***DEBUG***TBox axioms:");
+			PrintingHelper.printSet(validatedOWLAPIOntology.getTBoxAxioms(true));
+			logger.info("***DEBUG***concept names in signature:");
+			PrintingHelper
+					.printSet(validatedOWLAPIOntology.getClassesInSignature(true));
+
+		}
+		/*
+		 * Read aboxes in stream mannner
+		 */
+		StreamOntologyReader2InternalModel streamReader = new StreamOntologyReader2InternalModel(
+				validatedOWLAPIOntology, aboxListFileName);
+
+		OrarOntology2 internalOntology = streamReader.getOntology();
+		internalOntology.setActualDLConstructors(profileValidator.getDLConstructorsInValidatedOntology());
+		// if
+		// (config.getDebuglevels().contains(DebugLevel.DL_FRAGMENT_VALIDATING)){
+		// logger.info("***DEBUG*** actual DL constructors:"+
+		// internalOntology.getActualDLConstructors());
+		// }
+		if (config.getLogInfos().contains(LogInfo.STATISTIC)) {
+			logger.info("ABoxList file:" + aboxListFileName);
+			logger.info("ABox statistic:");
+			OntologyStatistic.printInputABoxOrarOntologyInfo(internalOntology);
+
+		}
+
+		long endParsing = System.currentTimeMillis();
+		long parsingTimeInSecond = (endParsing - startParsing) / 1000;
+
+		if (config.getLogInfos().contains(LogInfo.LOADING_TIME)) {
+			logger.info(StatisticVocabulary.TIME_LOADING_INPUT + parsingTimeInSecond);
+		}
+		return internalOntology;
+
+	}
+
+	public OrarOntology2 getNOTNormalizedOrarOntology(String ontologyFileName) {
+		long startParsing = System.currentTimeMillis();
+//		/*
+//		 * clear old indexing if there is
+//		 */
+//		IndividualIndexer.getInstance().clear();
+		/*
+		 * Get a normalized OWLAPI ontology
+		 */
+		OWLOntology validatedOWLAPIOntology = getValidatedOWLAPIOntology(ontologyFileName);
+
+		/*
+		 * Convert to AromaOntology
+		 */
+		OWLAPI2OrarConverter converter = new OWLAPI2OrarConverter(validatedOWLAPIOntology);
+
+		OrarOntology2 internalOntology = converter.getInternalOntology();
+		internalOntology.setActualDLConstructors(profileValidator.getDLConstructorsInInputOntology());
+
+		// if (config.getLogInfos().contains(LogInfo.STATISTIC)) {
+		// logger.info("Information of the input ontology.");
+		// logger.info("Ontology file:" + ontologyFileName);
+		//
+		// OntologyStatistic.printInputOntologyInfo(internalOntology);
+		//
+		// }
+
+		long endParsing = System.currentTimeMillis();
+		long parsingTimeInSecond = (endParsing - startParsing) / 1000;
+
+		if (config.getLogInfos().contains(LogInfo.LOADING_TIME)) {
+			logger.info(StatisticVocabulary.TIME_LOADING_INPUT + parsingTimeInSecond);
+		}
+		return internalOntology;
+	}
 }

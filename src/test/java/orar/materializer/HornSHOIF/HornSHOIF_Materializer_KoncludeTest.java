@@ -20,6 +20,7 @@ import orar.io.ontologyreader.HornSHOIF_OntologyReader;
 import orar.io.ontologyreader.OntologyReader;
 import orar.materializer.Materializer;
 import orar.modeling.ontology2.OrarOntology2;
+import orar.util.PrintingHelper;
 
 public class HornSHOIF_Materializer_KoncludeTest {
 	@Before
@@ -269,7 +270,7 @@ public class HornSHOIF_Materializer_KoncludeTest {
 		OrarOntology2 normalizedOrarOntology = ontoReader.getNormalizedOrarOntology(tbox, aboxList);
 
 		Materializer materializer = new HornSHOIF_Materializer_Konclude(normalizedOrarOntology);
-
+//		PrintingHelper.printMap(IndividualIndexer.getInstance().viewMapIndividuslString2Integer());
 		/*
 		 * get result directly from Konclude reasoning over the input ontology
 		 */
@@ -308,7 +309,8 @@ public class HornSHOIF_Materializer_KoncludeTest {
 		System.out.println("Loading ontology for abstraction materializer....");
 		OntologyReader ontoReader = new HornSHOIF_OntologyReader();
 		OrarOntology2 normalizedOrarOntology = ontoReader.getNormalizedOrarOntology(ontologyPath);
-
+//		System.out.println("Print indexing after reading ontology");
+//		PrintingHelper.printMap(IndividualIndexer.getInstance().viewMapIndividuslString2Integer());
 		Materializer materializer = new HornSHOIF_Materializer_Konclude(normalizedOrarOntology);
 
 		/*

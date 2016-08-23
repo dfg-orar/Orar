@@ -26,7 +26,7 @@ import orar.data.DataForTransferingEntailments;
 import orar.data.MetaDataOfOntology;
 import orar.innerconsistencychecking.InnerConsistencyChecker;
 import orar.innerreasoner.InnerReasoner;
-import orar.materializer.DLLite_MaterializerTemplate;
+import orar.materializer.DLLite_ConceptMaterializerTemplate;
 import orar.modeling.ontology2.OrarOntology2;
 import orar.refinement.abstractroleassertion.AbstractRoleAssertionBox;
 import orar.refinement.assertiontransferring.AssertionTransporter;
@@ -45,7 +45,7 @@ public abstract class ConsistencyCheckerTemplate implements ConsistencyChecker {
 	private long reasoningTimeInSeconds;
 	protected final Configuration config;
 	// logging
-	private static final Logger logger = Logger.getLogger(DLLite_MaterializerTemplate.class);
+	private static final Logger logger = Logger.getLogger(DLLite_ConceptMaterializerTemplate.class);
 	// shared data
 	protected final DataForTransferingEntailments dataForTransferringEntailments;
 	protected final MetaDataOfOntology metaDataOfOntology;

@@ -60,6 +60,14 @@ public class StrategyIdentifierTest {
 		Assert.assertEquals(StrategyName.HORN_SHOIF_STRATEGY, name);
 	}
 
+	@Test
+	public void testImdb() throws OWLOntologyCreationException {
+		String tboxFileName="src/test/resources/strategy/hshoif_imdb.owl";
+		StrategyName name = getStrategyName(tboxFileName);
+		System.out.println(name);
+//		Assert.assertEquals(StrategyName.HORN_SHOIF_STRATEGY, name);
+	}
+
 	
 	private StrategyName getStrategyName(String tboxFileName) throws OWLOntologyCreationException{
 		OWLOntologyManager manager=OWLManager.createOWLOntologyManager();

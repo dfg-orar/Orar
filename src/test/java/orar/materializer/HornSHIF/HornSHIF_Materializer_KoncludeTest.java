@@ -29,6 +29,13 @@ public class HornSHIF_Materializer_KoncludeTest {
 		String ontologyPath = "src/test/resources/lubm/full-lubm.owl";
 		haveTheSameResults(ontologyPath);
 	}
+	
+	@Test
+	public void testExample3() {
+
+		String ontologyPath = "src/test/resources/ontologyinpaper/example4.owl";
+		haveTheSameResults(ontologyPath);
+	}
 
 	/**
 	 * Compare result by Abstraction and by OWLReasoner; assert that they have
@@ -63,9 +70,9 @@ public class HornSHIF_Materializer_KoncludeTest {
 		CompletenessChecker checker = new CompletenessCheckerHorn(materializer, koncludeRealizer);
 		checker.computeEntailments();
 
-		// Assert.assertTrue(checker.isConceptAssertionComplete());
+		 Assert.assertTrue(checker.isConceptAssertionComplete());
 		Assert.assertTrue(checker.isSameasComplete());
-		// Assert.assertTrue(checker.isRoleAssertionComplete());
+		 Assert.assertTrue(checker.isRoleAssertionComplete());
 
 	}
 

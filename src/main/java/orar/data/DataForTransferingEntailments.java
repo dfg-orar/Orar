@@ -128,26 +128,19 @@ public class DataForTransferingEntailments {
 	 *         the mapping.
 	 */
 	public Set<Integer> getOriginalIndividuals(OWLNamedIndividual abstractInd) {
-		Set<Integer> originalInds = new HashSet<>();
 
-		Set<Integer> originalOfX = this.xAbstract2OriginalIndividualsMap.get(abstractInd);
-		Set<Integer> originalOfY = this.yAbstract2OriginalIndividualsMap.get(abstractInd);
-		Set<Integer> originalOfZ = this.zAbstract2OriginalIndividualsMap.get(abstractInd);
-		Set<Integer> originalOfU = this.uAbstract2OriginalIndividualsMap.get(abstractInd);
-		/*
-		 * an abstract individual can ONLY be either x,y,z, or u.
-		 */
-		if (originalOfX != null) {
-			originalInds.addAll(originalOfX);
-		} else if (originalOfY != null) {
-			originalInds.addAll(originalOfY);
-		} else if (originalOfZ != null) {
-			originalInds.addAll(originalOfZ);
-		} else if (originalOfU != null) {
-			originalInds.addAll(originalOfU);
-		}
+		AbstractDataFactory abstractDataFactory = AbstractDataFactory.getInstance();
 
-		return originalInds;
+		if (abstractDataFactory.getXAbstractIndividuals().contains(abstractInd)) {
+			return this.xAbstract2OriginalIndividualsMap.get(abstractInd);
+		} else if (abstractDataFactory.getUAbstractIndividuals().contains(abstractInd)) {
+			return this.uAbstract2OriginalIndividualsMap.get(abstractInd);
+		} else if (abstractDataFactory.getYAbstractIndividuals().contains(abstractInd)) {
+			return this.yAbstract2OriginalIndividualsMap.get(abstractInd);
+		} else if (abstractDataFactory.getZAbstractIndividuals().contains(abstractInd)) {
+			return this.zAbstract2OriginalIndividualsMap.get(abstractInd);
+		} else return new HashSet<>();
+		
 	}
 
 	/**

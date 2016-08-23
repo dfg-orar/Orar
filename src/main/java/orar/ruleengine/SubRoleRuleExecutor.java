@@ -92,7 +92,7 @@ public class SubRoleRuleExecutor implements RuleExecutor {
 					entailedRoleAssertionFromRoleHierarchy.getRole(i),
 					entailedRoleAssertionFromRoleHierarchy.getObject(i));
 		}
-		logger.info("number of new role assertions "+this.newRoleAssertions.size());
+		logger.info("number of new role assertions for incremental steps "+this.newRoleAssertions.size());
 		long insertingTimeNow = System.currentTimeMillis();
 		logger.info("Time for inserting new role assertions wrt the role hierarchy: "
 				+ (insertingTimeNow - expandingRoleHierarcyTimeNow) / 1000);

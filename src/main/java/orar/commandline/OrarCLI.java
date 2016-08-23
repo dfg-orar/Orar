@@ -1,6 +1,9 @@
 package orar.commandline;
 
 import java.io.File;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import org.apache.commons.cli.CommandLine;
@@ -17,10 +20,14 @@ import org.semanticweb.owlapi.io.OWLFunctionalSyntaxOntologyFormat;
 import org.semanticweb.owlapi.io.OWLXMLOntologyFormat;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLAxiom;
+import org.semanticweb.owlapi.model.OWLClass;
+import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
+
+import com.google.common.base.CaseFormat;
 
 import orar.config.Configuration;
 import orar.config.LogInfo;
@@ -28,6 +35,8 @@ import orar.dlfragmentvalidator.DLConstructor;
 import orar.io.ontologyreader.HornSHOIF_OntologyReader;
 import orar.io.ontologyreader.OntologyReader;
 import orar.materializer.Materializer;
+import orar.materializer.DLLiteExtensions.DLLiteExtension_Materializer_Hermit;
+import orar.materializer.DLLiteExtensions.DLLiteExtension_Materializer_Konclude;
 import orar.materializer.HornSHIF.HornSHIF_Materializer_Fact;
 import orar.materializer.HornSHIF.HornSHIF_Materializer_Hermit;
 import orar.materializer.HornSHIF.HornSHIF_Materializer_Konclude;
@@ -39,7 +48,9 @@ import orar.materializer.HornSHOIF.HornSHOIF_Materializer_Pellet;
 import orar.modeling.ontology.OrarOntology;
 import orar.modeling.ontology2.MapbasedOrarOntology2;
 import orar.modeling.ontology2.OrarOntology2;
-
+import orar.strategyindentifying.StrategyIdentifier;
+import orar.strategyindentifying.StrategyIdentifierImpl;
+import orar.strategyindentifying.StrategyName;
 
 public class OrarCLI {
 	private static Configuration config = Configuration.getInstance();
@@ -62,6 +73,9 @@ public class OrarCLI {
 				"print statistic information of the (materialized) ontology");
 
 		Option help = new Option(Argument.HELP, false, "print help");
+
+		Option test = new Option(Argument.PRINT_RESULT, false, "print results");
+		Option performance = new Option(Argument.PERFORMANCE, false, "print detailed time in each step");
 		/*
 		 * Argument options
 		 */
@@ -107,20 +121,21 @@ public class OrarCLI {
 		 * add options
 		 */
 
-//		options.addOption(totalTime);
+		// options.addOption(totalTime);
 		options.addOption(parsingTime);
 		options.addOption(runningTime);
 		options.addOption(statistic);
 		options.addOption(tbox);
 		options.addOption(aboxes);
-		 options.addOption(ontology);
+		options.addOption(ontology);
 		options.addOption(reasoner);
 		options.addOption(konclude);
 		// options.addOption(split);
 		options.addOption(port);
 		options.addOption(outputABox);
 		options.addOption(help);
-
+		options.addOption(test);
+		options.addOption(performance);
 		// create the parser
 		CommandLineParser parser = new DefaultParser();
 		try {
@@ -187,6 +202,19 @@ public class OrarCLI {
 		String reasonerName = commandLine.getOptionValue(Argument.REASONER);
 		logger.info("Runnig Abstraction Refinement Using :" + reasonerName + " ...");
 		materializer.materialize();
+
+		if (commandLine.hasOption(Argument.PRINT_RESULT)) {
+			OrarOntology2 materializedOrarOntology = materializer.getOrarOntology();
+			Map<OWLClass, Set<OWLNamedIndividual>> map = materializedOrarOntology
+					.getOWLAPIConcepAssertionMapWITHOUTNormalizationSymbols();
+			Iterator<Entry<OWLClass, Set<OWLNamedIndividual>>> iterator = map.entrySet().iterator();
+			while (iterator.hasNext()) {
+				Entry<OWLClass, Set<OWLNamedIndividual>> entry = iterator.next();
+				logger.info("Instances of concept:" + entry.getKey().getIRI().toString());
+				logger.info("Number of instances:" + entry.getValue().size());
+			}
+		}
+
 		if (commandLine.hasOption(Argument.OUTPUTABOX)) {
 			String aboxFile = commandLine.getOptionValue(Argument.OUTPUTABOX);
 			Set<OWLAxiom> entailedAssertions = materializer.getOrarOntology().getOWLAPIMaterializedAssertions();
@@ -240,14 +268,24 @@ public class OrarCLI {
 		Materializer materializer = null;
 		// logger.info("Info: Some DL Constructors in the validated ontology: "
 		// + orarOntology.getActualDLConstructors());
-
+		StrategyIdentifier strategyIdentifier = new StrategyIdentifierImpl(orarOntology.getTBoxAxioms());
+		StrategyName strategyName = strategyIdentifier.getStrategyName();
+		if (config.getLogInfos().contains(LogInfo.PERFORMANCE)) {
+			logger.info("Strategy:" + strategyName);
+		}
 		if (reasonerName.equals(Argument.HERMIT)) {
-			if (orarOntology.getActualDLConstructors().contains(DLConstructor.NOMINAL)) {
-				materializer = new HornSHOIF_Materializer_Hermit(orarOntology);
-			} else {
-				materializer = new HornSHIF_Materializer_Hermit(orarOntology);
-			}
 
+			switch (strategyName) {
+			case DLLITE_EXTENSION_STRATEGY:
+				materializer = new DLLiteExtension_Materializer_Hermit(orarOntology);
+				break;
+			case HORN_SHIF_STRATEGY:
+				materializer = new HornSHIF_Materializer_Hermit(orarOntology);
+				break;
+			case HORN_SHOIF_STRATEGY:
+				materializer = new HornSHOIF_Materializer_Hermit(orarOntology);
+				break;
+			}
 		}
 
 		if (reasonerName.equals(Argument.KONCLUDE)) {
@@ -255,11 +293,27 @@ public class OrarCLI {
 			config.setKONCLUDE_BINARY_PATH(koncludePath);
 			String port = commandLine.getOptionValue(Argument.PORT);
 			int intPort = Integer.parseInt(port);
-			if (orarOntology.getActualDLConstructors().contains(DLConstructor.NOMINAL)) {
-				materializer = new HornSHOIF_Materializer_Konclude(orarOntology, intPort);
-			} else {
+
+			switch (strategyName) {
+			case DLLITE_EXTENSION_STRATEGY:
+				materializer = new DLLiteExtension_Materializer_Konclude(orarOntology, intPort);
+				break;
+			case HORN_SHIF_STRATEGY:
 				materializer = new HornSHIF_Materializer_Konclude(orarOntology, intPort);
+				break;
+			case HORN_SHOIF_STRATEGY:
+				materializer = new HornSHOIF_Materializer_Konclude(orarOntology, intPort);
+				break;
 			}
+			// if
+			// (orarOntology.getActualDLConstructors().contains(DLConstructor.NOMINAL))
+			// {
+			// materializer = new HornSHOIF_Materializer_Konclude(orarOntology,
+			// intPort);
+			// } else {
+			// materializer = new HornSHIF_Materializer_Konclude(orarOntology,
+			// intPort);
+			// }
 		}
 
 		if (reasonerName.equals(Argument.FACT)) {
@@ -351,6 +405,14 @@ public class OrarCLI {
 			config.addLoginfoLevels(LogInfo.STATISTIC);
 		}
 
+		if (commandLine.hasOption(Argument.PRINT_RESULT)) {
+			config.addLoginfoLevels(LogInfo.PRINT_RESULT);
+		}
+
+		if (commandLine.hasOption(Argument.PERFORMANCE)) {
+			config.addLoginfoLevels(LogInfo.PERFORMANCE);
+		}
+
 		if (commandLine.hasOption(Argument.SPLITTING)) {
 			String typePerOntString = commandLine.getOptionValue(Argument.SPLITTING);
 
@@ -367,9 +429,10 @@ public class OrarCLI {
 
 		if (commandLine.hasOption(Argument.ONTOLOGY)) {
 			String owlFilePath = commandLine.getOptionValue(Argument.ONTOLOGY);
-			//TODO: fix me. I just ignore this case by returning an empty ontology.
-//			orarOntology = ontReader.getNormalizedOrarOntology(owlFilePath);
-			orarOntology= new MapbasedOrarOntology2();
+			// TODO: fix me. I just ignore this case by returning an empty
+			// ontology.
+			// orarOntology = ontReader.getNormalizedOrarOntology(owlFilePath);
+			orarOntology = new MapbasedOrarOntology2();
 		} else {
 			String tboxFile = commandLine.getOptionValue(Argument.TBOX);
 			String aboxList = commandLine.getOptionValue(Argument.ABOX);

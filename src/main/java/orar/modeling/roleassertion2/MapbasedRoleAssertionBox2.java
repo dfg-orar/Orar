@@ -10,9 +10,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import org.semanticweb.owlapi.apibinding.OWLManager;
-import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLDataFactory;
-import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.semanticweb.owlapi.model.OWLObjectPropertyAssertionAxiom;
 
@@ -80,21 +78,22 @@ public class MapbasedRoleAssertionBox2 implements RoleAssertionBox2 {
 			addRoleAssertionToMapWithRoleAsKey(role, object, this.roleAssertionMapWithRoleAsKeyAndObjectAsValue);
 		}
 		return hasNewElement;
-	
+
 	}
 
 	private void addRoleAssertionToMapWithRoleAsKey(OWLObjectProperty role, Integer individual,
 			Map<OWLObjectProperty, Set<Integer>> roleAssertionMapWithRoleAsKey) {
-		
+
 		Set<Integer> existingSet = roleAssertionMapWithRoleAsKey.get(role);
 		if (existingSet == null) {
 			existingSet = new HashSet<Integer>();
 		}
-		existingSet.add(individual);
-		roleAssertionMapWithRoleAsKey.put(role, existingSet);
-
+		boolean hasNewElement = existingSet.add(individual);
+		if (hasNewElement) {
+			roleAssertionMapWithRoleAsKey.put(role, existingSet);
+		}
 	}
-	
+
 	/**
 	 * @param ind1
 	 * @param property
@@ -115,35 +114,38 @@ public class MapbasedRoleAssertionBox2 implements RoleAssertionBox2 {
 			neighbours = new HashSet<Integer>();
 		}
 		boolean addingSuccess = neighbours.add(ind2);
-		subMap.put(property, neighbours);
-		map.put(ind1, subMap);
+		if (addingSuccess) {
+			subMap.put(property, neighbours);
+			map.put(ind1, subMap);
+		}
 		return addingSuccess;
 	}
-	
-	/**
-	 * @param ind1
-	 * @param property
-	 * @param ind2
-	 * @param map
-	 *            add the entry {@code ind1 --> (property--->{ind2})} to the
-	 *            {@code map}
-	 */
-	boolean addRoleAssertionToMapWithIndividualAsKeyList(Integer ind1, OWLObjectProperty property, Integer ind2,
-			Map<Integer, Map<OWLObjectProperty, List<Integer>>> map) {
 
-		Map<OWLObjectProperty, List<Integer>> subMap = map.get(ind1);
-		if (subMap == null) {
-			subMap = new HashMap<OWLObjectProperty, List<Integer>>();
-		}
-		List<Integer> neighbours = subMap.get(property);
-		if (neighbours == null) {
-			neighbours = new ArrayList<Integer>();
-		}
-		boolean addingSuccess = neighbours.add(ind2);
-		subMap.put(property, neighbours);
-		map.put(ind1, subMap);
-		return addingSuccess;
-	}
+	// /**
+	// * @param ind1
+	// * @param property
+	// * @param ind2
+	// * @param map
+	// * add the entry {@code ind1 --> (property--->{ind2})} to the
+	// * {@code map}
+	// */
+	// boolean addRoleAssertionToMapWithIndividualAsKeyList(Integer ind1,
+	// OWLObjectProperty property, Integer ind2,
+	// Map<Integer, Map<OWLObjectProperty, List<Integer>>> map) {
+	//
+	// Map<OWLObjectProperty, List<Integer>> subMap = map.get(ind1);
+	// if (subMap == null) {
+	// subMap = new HashMap<OWLObjectProperty, List<Integer>>();
+	// }
+	// List<Integer> neighbours = subMap.get(property);
+	// if (neighbours == null) {
+	// neighbours = new ArrayList<Integer>();
+	// }
+	// boolean addingSuccess = neighbours.add(ind2);
+	// subMap.put(property, neighbours);
+	// map.put(ind1, subMap);
+	// return addingSuccess;
+	// }
 
 	@Override
 	public int getNumberOfRoleAssertions() {
@@ -153,14 +155,15 @@ public class MapbasedRoleAssertionBox2 implements RoleAssertionBox2 {
 				.entrySet().iterator();
 		while (iteratorOfRoleAssertionMap.hasNext()) {
 			Entry<Integer, Map<OWLObjectProperty, Set<Integer>>> entry = iteratorOfRoleAssertionMap.next(); // e.g.
-																										// a
-																										// ---><R
-																										// -->{b1,b2},
-																										// S
-																										// -->{c1,c2}
+			// a
+			// ---><R
+			// -->{b1,b2},
+			// S
+			// -->{c1,c2}
 
 			Map<OWLObjectProperty, Set<Integer>> successorMap = entry.getValue();
-			Iterator<Entry<OWLObjectProperty, Set<Integer>>> iteratorForSuccessorMap = successorMap.entrySet().iterator();
+			Iterator<Entry<OWLObjectProperty, Set<Integer>>> iteratorForSuccessorMap = successorMap.entrySet()
+					.iterator();
 			while (iteratorForSuccessorMap.hasNext()) {
 				Entry<OWLObjectProperty, Set<Integer>> successorMapEntry = iteratorForSuccessorMap.next();
 				// e.g R -->{b1,b2}
@@ -186,7 +189,8 @@ public class MapbasedRoleAssertionBox2 implements RoleAssertionBox2 {
 				OWLObjectProperty role = subEntry.getKey();
 				for (Integer object : subEntry.getValue()) {
 
-					OWLObjectPropertyAssertionAxiom assertion = AssertionDecoder.getOWLAPIRoleAssertion(role, subject, object);
+					OWLObjectPropertyAssertionAxiom assertion = AssertionDecoder.getOWLAPIRoleAssertion(role, subject,
+							object);
 					assertions.add(assertion);
 				}
 			}
@@ -194,16 +198,23 @@ public class MapbasedRoleAssertionBox2 implements RoleAssertionBox2 {
 		return assertions;
 	}
 
-//	private OWLObjectPropertyAssertionAxiom getOWLAPIRoleAssertion(OWLObjectProperty owlapiRole, Integer subjectInteger,
-//			Integer objectInteger) {
-//		String owlapiSubjectString = this.indexer.getIndividualString(subjectInteger);
-//		OWLNamedIndividual owlapiSubject = this.owlDataFactory.getOWLNamedIndividual(IRI.create(owlapiSubjectString));
-//		String owlapiObjectString = this.indexer.getIndividualString(objectInteger);
-//		OWLNamedIndividual owlapiObject = this.owlDataFactory.getOWLNamedIndividual(IRI.create(owlapiObjectString));
-//		OWLObjectPropertyAssertionAxiom assertion = owlDataFactory.getOWLObjectPropertyAssertionAxiom(owlapiRole,
-//				owlapiSubject, owlapiObject);
-//		return assertion;
-//	}
+	// private OWLObjectPropertyAssertionAxiom
+	// getOWLAPIRoleAssertion(OWLObjectProperty owlapiRole, Integer
+	// subjectInteger,
+	// Integer objectInteger) {
+	// String owlapiSubjectString =
+	// this.indexer.getIndividualString(subjectInteger);
+	// OWLNamedIndividual owlapiSubject =
+	// this.owlDataFactory.getOWLNamedIndividual(IRI.create(owlapiSubjectString));
+	// String owlapiObjectString =
+	// this.indexer.getIndividualString(objectInteger);
+	// OWLNamedIndividual owlapiObject =
+	// this.owlDataFactory.getOWLNamedIndividual(IRI.create(owlapiObjectString));
+	// OWLObjectPropertyAssertionAxiom assertion =
+	// owlDataFactory.getOWLObjectPropertyAssertionAxiom(owlapiRole,
+	// owlapiSubject, owlapiObject);
+	// return assertion;
+	// }
 
 	@Override
 	public Set<Integer> getSubjectsInRoleAssertions(OWLObjectProperty role) {
@@ -251,7 +262,7 @@ public class MapbasedRoleAssertionBox2 implements RoleAssertionBox2 {
 			predecessorAssertionsAsMap = new HashMap<OWLObjectProperty, Set<Integer>>();
 		}
 		return predecessorAssertionsAsMap;
-		
+
 	}
 
 	// @Override

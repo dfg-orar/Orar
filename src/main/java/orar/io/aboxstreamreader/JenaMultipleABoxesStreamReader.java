@@ -45,7 +45,7 @@ public class JenaMultipleABoxesStreamReader implements ABoxStreamReader {
 
 	private Set<String> getABoxList(String aboxListFile) {
 		Set<String> aboxList = new HashSet<String>();
-
+		logger.info("Get ABoxe files from: "+aboxListFile);
 		File file = new File(aboxListFile);
 		try {
 			FileInputStream inputStream = new FileInputStream(file);
@@ -79,7 +79,7 @@ public class JenaMultipleABoxesStreamReader implements ABoxStreamReader {
 	public void readABoxes() {
 		int count = 1;
 		for (String aboxFile : this.aboxList) {
-			logger.info("ABox " + count++ + ":" + aboxFile);
+//			logger.info("ABox " + count++ + ":" + aboxFile);
 			RDFDataMgr.parse(this.streamRDFReader, aboxFile);
 		}
 

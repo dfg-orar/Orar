@@ -56,8 +56,10 @@ public class MapbasedConceptAssertionBox2 implements ConceptAssertionBox2 {
 			Integer a = entry.getKey();
 			Set<OWLClass> assertedClasses = entry.getValue();
 			for (OWLClass owlClass : assertedClasses) {
-//				OWLClassAssertionAxiom classAssertion = getOWLAPIConceptAssertoin(owlClass, a); owlDataFactory.getOWLClassAssertionAxiom(owlClass, a);
-				OWLClassAssertionAxiom classAssertion = AssertionDecoder.getOWLAPIConceptAssertoin(owlClass, a); 
+				// OWLClassAssertionAxiom classAssertion =
+				// getOWLAPIConceptAssertoin(owlClass, a);
+				// owlDataFactory.getOWLClassAssertionAxiom(owlClass, a);
+				OWLClassAssertionAxiom classAssertion = AssertionDecoder.getOWLAPIConceptAssertoin(owlClass, a);
 				classAssertionAxioms.add(classAssertion);
 			}
 		}
@@ -67,13 +69,14 @@ public class MapbasedConceptAssertionBox2 implements ConceptAssertionBox2 {
 
 	@Override
 	public boolean addManyConceptAssertions(Integer individual, Set<OWLClass> concepts) {
-
 		Set<OWLClass> existingClasses = this.conceptAssertionMap.get(individual);
 		if (existingClasses == null) {
 			existingClasses = new HashSet<OWLClass>();
 		}
 		boolean hasNewElement = existingClasses.addAll(concepts);
-		this.conceptAssertionMap.put(individual, existingClasses);
+		if (hasNewElement) {
+			this.conceptAssertionMap.put(individual, existingClasses);
+		}
 		return hasNewElement;
 	}
 
@@ -84,9 +87,11 @@ public class MapbasedConceptAssertionBox2 implements ConceptAssertionBox2 {
 			existingClasses = new HashSet<OWLClass>();
 		}
 		boolean hasNewElement = existingClasses.add(concept);
-		this.conceptAssertionMap.put(individual, existingClasses);
+		if (hasNewElement) {
+			this.conceptAssertionMap.put(individual, existingClasses);
+		}
 		return hasNewElement;
-	
+
 	}
 
 	@Override
@@ -134,13 +139,17 @@ public class MapbasedConceptAssertionBox2 implements ConceptAssertionBox2 {
 		return classAssertionAxioms;
 	}
 
-//	private OWLClassAssertionAxiom getOWLAPIConceptAssertoin(OWLClass owlClass, Integer individualLong) {
-//		String individualString = this.indexer.getIndividualString(individualLong);
-//		OWLNamedIndividual owlapiIndividual = this.owlDataFactory.getOWLNamedIndividual(IRI.create(individualString));
-//		OWLClassAssertionAxiom classAssertion = this.owlDataFactory.getOWLClassAssertionAxiom(owlClass,
-//				owlapiIndividual);
-//		return classAssertion;
-//	}
+	// private OWLClassAssertionAxiom getOWLAPIConceptAssertoin(OWLClass
+	// owlClass, Integer individualLong) {
+	// String individualString =
+	// this.indexer.getIndividualString(individualLong);
+	// OWLNamedIndividual owlapiIndividual =
+	// this.owlDataFactory.getOWLNamedIndividual(IRI.create(individualString));
+	// OWLClassAssertionAxiom classAssertion =
+	// this.owlDataFactory.getOWLClassAssertionAxiom(owlClass,
+	// owlapiIndividual);
+	// return classAssertion;
+	// }
 
 	@Override
 	public Set<Integer> getAllIndividuals() {

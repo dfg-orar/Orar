@@ -14,6 +14,7 @@ import org.semanticweb.owlapi.model.OWLObjectProperty;
 import orar.abstraction.PairOfSubjectAndObject;
 import orar.config.Configuration;
 import orar.config.DebugLevel;
+import orar.config.LogInfo;
 import orar.data.DataForTransferingEntailments;
 import orar.modeling.ontology.OrarOntology;
 import orar.modeling.ontology2.OrarOntology2;
@@ -54,7 +55,13 @@ public abstract class AssertionTransporterTemplate implements AssertionTransport
 
 	@Override
 	public void updateOriginalABox() {
+		long startUpdateConceptAssertion = System.currentTimeMillis();
 		transferConceptAssertions();// not change
+		long endUpdateConceptAssertion = System.currentTimeMillis();
+		if (this.config.getLogInfos().contains(LogInfo.PERFORMANCE)){
+			long updateingConceptAsesrtionTime = (endUpdateConceptAssertion-startUpdateConceptAssertion)/1000;
+			logger.info("Time for updating concep assertions in the original ABox in seconds: "+updateingConceptAsesrtionTime);
+		}
 		transferRoleAssertions();// not change
 		transferSameasAssertions();// varies
 	}

@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import org.openrdf.sail.rdbms.managers.HashManager;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLClass;
@@ -30,6 +29,7 @@ public class AssertionDecoder {
 	private static IndividualIndexer indexer = IndividualIndexer.getInstance();
 	private static OWLDataFactory owlDataFactory = OWLManager.getOWLDataFactory();
 
+	//	private static Logger logger =Logger.getLogger(AssertionDecoder.class);
 	/**
 	 * @param owlClass
 	 * @param individualLong
@@ -37,6 +37,10 @@ public class AssertionDecoder {
 	 */
 	public static OWLClassAssertionAxiom getOWLAPIConceptAssertoin(OWLClass owlClass, Integer individualLong) {
 		String individualString = indexer.getIndividualString(individualLong);
+//		logger.info("index= "+individualLong);
+//		logger.info("individualString= "+individualString);
+//		PrintingHelper.printMap(indexer.viewMapIndividuslString2Integer());
+//		PrintingHelper.printMap(indexer.viewMapIndividuslString2Integer());
 		OWLNamedIndividual owlapiIndividual = owlDataFactory.getOWLNamedIndividual(IRI.create(individualString));
 		OWLClassAssertionAxiom classAssertion = owlDataFactory.getOWLClassAssertionAxiom(owlClass, owlapiIndividual);
 		return classAssertion;

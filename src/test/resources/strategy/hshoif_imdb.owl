@@ -1,0 +1,1019 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.w3.org/2002/07/owl"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://dbpedia.org/ontology/headquarter -->
+
+    <ObjectProperty rdf:about="http://dbpedia.org/ontology/headquarter">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://dbpedia.org/ontology/hometown -->
+
+    <ObjectProperty rdf:about="http://dbpedia.org/ontology/hometown">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#belongsToGenre -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#belongsToGenre">
+        <rdfs:range rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Genre"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#containsCountry -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#containsCountry">
+        <rdfs:range rdf:resource="http://dbpedia.org/ontology/Country"/>
+        <rdfs:domain rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Territory"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#enablesConsumptionOf -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#enablesConsumptionOf">
+        <rdfs:domain rdf:resource="http://www.movieontology.org/2009/11/09/movieontology.owl#Consumable_Product"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#hasActor -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#hasActor"/>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#hasActress -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#hasActress">
+        <rdfs:subPropertyOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#hasActor"/>
+        <rdfs:range rdf:resource="http://www.movieontology.org/2009/11/09/movieontology.owl#Actress"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#hasColor -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#hasColor">
+        <rdfs:range rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Colorinfo"/>
+        <inverseOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#isColorOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#hasComposer -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#hasComposer">
+        <rdfs:range rdf:resource="http://dbpedia.org/ontology/Musical_Artist"/>
+        <inverseOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#isComposerIn"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#hasCostumeDesigner -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#hasCostumeDesigner">
+        <rdfs:range rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Costume_Designer"/>
+        <inverseOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#isCostumeDesignerIn"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#hasDirector -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#hasDirector">
+        <rdfs:range rdf:resource="http://dbpedia.org/page/Film_Director"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#hasEditor -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#hasEditor">
+        <rdfs:range rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Editor"/>
+        <inverseOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#isEditorIn"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#hasFilmLocation -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#hasFilmLocation">
+        <rdfs:range rdf:resource="http://dbpedia.org/page/Place"/>
+        <inverseOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#isFilmLocationOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#hasMaleActor -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#hasMaleActor">
+        <rdfs:range rdf:resource="http://dbpedia.org/ontology/Actor"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#hasActor"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#hasProducer -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#hasProducer">
+        <rdfs:range rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Producer"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#hasReleasingCountry -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#hasReleasingCountry">
+        <rdfs:range rdf:resource="http://dbpedia.org/ontology/Country"/>
+        <inverseOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#isReleasingCountryOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#hasSoundmix -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#hasSoundmix">
+        <rdfs:range rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Sound_Mix"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#hasTranslatedMovie -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#hasTranslatedMovie">
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Language"/>
+        <inverseOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#isTranslatedTo"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#isActorIn -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#isActorIn">
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Actor"/>
+        <inverseOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#hasActor"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#isActorIn"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#isActressIn -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#isActressIn">
+        <inverseOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#hasActress"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#isActorIn"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#isAwardedWith -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#isAwardedWith">
+        <rdfs:range rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Award"/>
+        <inverseOf rdf:resource="http://www.movieontology.org/2009/11/09/movieontology.owl#isAwardOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#isCertificationOf -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#isCertificationOf">
+        <rdfs:domain rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Certification"/>
+        <inverseOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#isCertifiedWith"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#isCertifiedWith -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#isCertifiedWith">
+        <rdfs:range rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Certification"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#isColorOf -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#isColorOf">
+        <rdfs:domain rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Colorinfo"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#isComposerIn -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#isComposerIn">
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Musical_Artist"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#isConsumableAs -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#isConsumableAs">
+        <inverseOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#enablesConsumptionOf"/>
+        <rdfs:range rdf:resource="http://www.movieontology.org/2009/11/09/movieontology.owl#Consumable_Product"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#isCostumeDesignerIn -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#isCostumeDesignerIn">
+        <rdfs:domain rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Costume_Designer"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#isDirectorOf -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#isDirectorOf">
+        <rdfs:domain rdf:resource="http://dbpedia.org/page/Film_Director"/>
+        <inverseOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#hasDirector"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#isEditorIn -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#isEditorIn">
+        <rdfs:domain rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Editor"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#isFilmLocationOf -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#isFilmLocationOf">
+        <rdfs:domain rdf:resource="http://dbpedia.org/page/Place"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#isGenreOf -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#isGenreOf">
+        <inverseOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#belongsToGenre"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#isProducedBy -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#isProducedBy">
+        <rdfs:range rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Production_Company"/>
+        <inverseOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#produced"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#isReleasingCountryOf -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#isReleasingCountryOf">
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Country"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#isSoundmixOf -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#isSoundmixOf">
+        <rdfs:domain rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Sound_Mix"/>
+        <inverseOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#hasSoundmix"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#isTranslatedTo -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#isTranslatedTo">
+        <rdfs:range rdf:resource="http://dbpedia.org/ontology/Language"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#nominatedFor -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#nominatedFor">
+        <rdfs:range rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Award"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#partOfTerritory -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#partOfTerritory">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="http://dbpedia.org/ontology/Country"/>
+        <rdfs:range rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Territory"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#produced -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#produced">
+        <rdfs:domain rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Production_Company"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#hasCompanyLocation -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/11/09/movieontology.owl#hasCompanyLocation">
+        <rdfs:domain rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Production_Company"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#isAwardOf -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/11/09/movieontology.owl#isAwardOf">
+        <rdfs:domain rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Award"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#isMaleActorIn -->
+
+    <ObjectProperty rdf:about="http://www.movieontology.org/2009/11/09/movieontology.owl#isMaleActorIn">
+        <inverseOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#hasMaleActor"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#isActorIn"/>
+    </ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://dbpedia.org/ontology/Actor -->
+
+    <Class rdf:about="http://dbpedia.org/ontology/Actor">
+        <rdfs:subClassOf rdf:resource="http://dbpedia.org/ontology/Person"/>
+    </Class>
+    
+
+
+    <!-- http://dbpedia.org/ontology/Country -->
+
+    <Class rdf:about="http://dbpedia.org/ontology/Country"/>
+    
+
+
+    <!-- http://dbpedia.org/ontology/Language -->
+
+    <Class rdf:about="http://dbpedia.org/ontology/Language">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Presentation"/>
+    </Class>
+    
+
+
+    <!-- http://dbpedia.org/ontology/Musical_Artist -->
+
+    <Class rdf:about="http://dbpedia.org/ontology/Musical_Artist">
+        <rdfs:subClassOf rdf:resource="http://dbpedia.org/ontology/Person"/>
+    </Class>
+    
+
+
+    <!-- http://dbpedia.org/ontology/Person -->
+
+    <Class rdf:about="http://dbpedia.org/ontology/Person"/>
+    
+
+
+    <!-- http://dbpedia.org/ontology/Writer -->
+
+    <Class rdf:about="http://dbpedia.org/ontology/Writer">
+        <rdfs:subClassOf rdf:resource="http://dbpedia.org/ontology/Person"/>
+    </Class>
+    
+
+
+    <!-- http://dbpedia.org/page/Film_Director -->
+
+    <Class rdf:about="http://dbpedia.org/page/Film_Director">
+        <rdfs:subClassOf rdf:resource="http://dbpedia.org/ontology/Person"/>
+    </Class>
+    
+
+
+    <!-- http://dbpedia.org/page/Place -->
+
+    <Class rdf:about="http://dbpedia.org/page/Place"/>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Actionreach -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Actionreach">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Entertainment"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Africa -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Africa">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Territory"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#America -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#America">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Territory"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Asia -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Asia">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Territory"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Australia_and_New_Zealand -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Australia_and_New_Zealand">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Oceania"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Award -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Award"/>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Brute_Action -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Brute_Action">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Actionreach"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Caribbean -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Caribbean">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#America"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Center_Europe -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Center_Europe">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Europe"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Central_America -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Central_America">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#LatinAmerica"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Central_Asia -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Central_Asia">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Asia"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Certification -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Certification"/>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Colorinfo -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Colorinfo">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Presentation"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Costume_Designer -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Costume_Designer">
+        <rdfs:subClassOf rdf:resource="http://dbpedia.org/ontology/Person"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Documentarial_Information -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Documentarial_Information">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Special-Info"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Eastern_Africa -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Eastern_Africa">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Africa"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Eastern_Asia -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Eastern_Asia">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Asia"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Eastern_Europe -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Eastern_Europe">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Europe"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Editor -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Editor">
+        <rdfs:subClassOf rdf:resource="http://dbpedia.org/ontology/Person"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Entertaining_Information -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Entertaining_Information">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Entertainment"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Entertainment -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Entertainment">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Genre"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Europe -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Europe">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Territory"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Experience -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Experience">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Entertainment"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Fast-Info -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Fast-Info">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Information"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Fun -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Fun">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#SocialActive"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Genre -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Genre"/>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Heavy_Sensible -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Heavy_Sensible">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Sensible"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Historical_Information -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Historical_Information">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Documentarial_Information"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Imaginational_Entertainment -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Imaginational_Entertainment">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Entertainment"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Info-TV -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Info-TV">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Fast-Info"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Information -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Information">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Genre"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Intelectual_Entertainment -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Intelectual_Entertainment">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Experience"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Kids -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Kids">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#SocialActive"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#LatinAmerica -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#LatinAmerica">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#America"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Logical_Thrilling -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Logical_Thrilling">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Thrilling"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Love -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Love">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Sensible"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Melanesia -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Melanesia">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Oceania"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Micronesia -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Micronesia">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Oceania"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Middle_Africa -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Middle_Africa">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Africa"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Musical_Entertainment -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Musical_Entertainment">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Intelectual_Entertainment"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Northern_Africa -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Northern_Africa">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Africa"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Northern_America -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Northern_America">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#America"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Northern_Asia -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Northern_Asia">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Asia"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Northern_Europe -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Northern_Europe">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Europe"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Oceania -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Oceania">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Territory"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Old_Action -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Old_Action">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Actionreach"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Polynesia -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Polynesia">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Oceania"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Porn -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Porn">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Experience"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Presentation -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Presentation"/>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Producer -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Producer">
+        <rdfs:subClassOf rdf:resource="http://dbpedia.org/ontology/Person"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Production_Company -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Production_Company"/>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#SciFi_and_Fantasy -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#SciFi_and_Fantasy">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Imaginational_Entertainment"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Sensible -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Sensible">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Entertainment"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Sensible_Thrilling -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Sensible_Thrilling">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Thrilling"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#SocialActive -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#SocialActive">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Entertainment"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Sound_Mix -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Sound_Mix">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Presentation"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#South_America -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#South_America">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#LatinAmerica"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#South_East_Asia -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#South_East_Asia">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Asia"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#South_East_Europe -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#South_East_Europe">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Europe"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#South_West_Asia -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#South_West_Asia">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Asia"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#South_West_Europe -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#South_West_Europe">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Europe"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Southern_Africa -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Southern_Africa">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Africa"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Southern_Asia -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Southern_Asia">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Asia"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Southern_Europe -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Southern_Europe">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Europe"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Special-Info -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Special-Info">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Information"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#TV-Entertainment -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#TV-Entertainment">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Experience"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Territory -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Territory"/>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Thrilling -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Thrilling">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Imaginational_Entertainment"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Unknown -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Unknown">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Territory"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Western_Africa -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Western_Africa">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Africa"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Western_Asia -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Western_Asia">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Asia"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/10/01/movieontology.owl#Western_Europe -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/10/01/movieontology.owl#Western_Europe">
+        <rdfs:subClassOf rdf:resource="http://www.movieontology.org/2009/10/01/movieontology.owl#Europe"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Actress -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/11/09/movieontology.owl#Actress">
+        <rdfs:subClassOf rdf:resource="http://dbpedia.org/ontology/Person"/>
+    </Class>
+    
+
+
+    <!-- http://www.movieontology.org/2009/11/09/movieontology.owl#Consumable_Product -->
+
+    <Class rdf:about="http://www.movieontology.org/2009/11/09/movieontology.owl#Consumable_Product"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+

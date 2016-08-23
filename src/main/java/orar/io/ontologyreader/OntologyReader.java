@@ -19,6 +19,15 @@ public interface OntologyReader {
 	 *         normalized
 	 */
 	public OrarOntology2 getNormalizedOrarOntology(String ontologyFileName);
+	
+	/**
+	 * @param ontologyFileName
+	 *            a file that contains both TBox and ABox axioms
+	 * @return an OrarOntology in the target DL Fragment with TBox axioms are NOT
+	 *         normalized
+	 */
+	public OrarOntology2 getNOTNormalizedOrarOntology(String ontologyFileName);
+
 
 	/**
 	 * @param tboxFileName
@@ -29,6 +38,17 @@ public interface OntologyReader {
 	 *         normalized
 	 */
 	public OrarOntology2 getNormalizedOrarOntology(String tboxFileName, String aboxListFileName);
+	
+	/**
+	 * @param tboxFileName
+	 *            a file for TBox axioms.
+	 * @param aboxListFileName
+	 *            a file that contains a list of ABox files.
+	 * @return an OrarOntology in the target DL Fragment with TBox axioms are NOT
+	 *         normalized
+	 */
+	public OrarOntology2 getNOTNormalizedOrarOntology(String tboxFileName, String aboxListFileName);
+
 
 	/**
 	 * @param ontologyFileName

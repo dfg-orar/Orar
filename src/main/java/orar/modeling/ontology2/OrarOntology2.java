@@ -6,11 +6,14 @@ import java.util.Set;
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLClassAssertionAxiom;
+import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.semanticweb.owlapi.model.OWLObjectPropertyAssertionAxiom;
 
 import orar.dlfragmentvalidator.DLConstructor;
 import orar.dlfragmentvalidator.DLFragment;
+import orar.modeling.conceptassertion2.ConceptAssertionBox2;
+import orar.modeling.roleassertion2.RoleAssertionBox2;
 import orar.modeling.sameas2.SameAsBox2;
 
 /**
@@ -96,7 +99,7 @@ public interface OrarOntology2 {
 	 *         normalization and profile validation phase.
 	 */
 	public Set<OWLClassAssertionAxiom> getOWLAPIConceptAssertionsWHITOUTNormalizationSymbols();
-
+	public Map<OWLClass, Set<OWLNamedIndividual>> getOWLAPIConcepAssertionMapWITHOUTNormalizationSymbols();
 	/**
 	 * Get all OWLAPI role assertions, <b> INCLUDING </b> those for
 	 * individuals/concepts generated during NORMALIZATION and DL-PROFILE
@@ -228,11 +231,7 @@ public interface OrarOntology2 {
 	 */
 	public Set<Integer> getSuccessorsTakingEqualityIntoAccount(int subject, OWLObjectProperty role);
 
-	/*
-	 * others
-	 */
-	public SameAsBox2 getSameasBox();
-
+	
 	/**
 	 * @return entailed sameas assertion as a map. Note that this include (a
 	 *         equivalent a) for every individuals a. And note that in the
@@ -262,4 +261,7 @@ public interface OrarOntology2 {
 	public void increaseNumberOfInputConceptAssertions(int addedNumber);
 
 	public void increaseNumberOfInputRoleAssertions(int addedNumber);
+	public ConceptAssertionBox2 getConceptAssertionBox();
+	public RoleAssertionBox2 getRoleAssertionBox();
+	public SameAsBox2 getSameasBox();
 }

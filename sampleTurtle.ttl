@@ -1,0 +1,5 @@
+<http://example.org/alice>
+        a                       <http://example.org/Person> ;
+        <http://dbpedia/#love>  <http://example.org/wonderland> ;
+        <http://www.w3.org/2002/07/owl#sameAs>
+                <http://example.org/alice_alias> .

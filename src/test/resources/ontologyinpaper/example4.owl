@@ -1,0 +1,53 @@
+Prefix(:=<http://www.test.org/af#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<http://www.test.org/af>
+
+Declaration(Class(:A))
+Declaration(ObjectProperty(:F))
+Declaration(ObjectProperty(:R))
+Declaration(ObjectProperty(:S))
+Declaration(NamedIndividual(:a))
+Declaration(NamedIndividual(:b))
+############################
+#   Object Properties
+############################
+
+# Object Property: :F (:F)
+
+FunctionalObjectProperty(:F)
+
+# Object Property: :R (:R)
+
+SubObjectPropertyOf(:R :F)
+
+# Object Property: :S (:S)
+
+SubObjectPropertyOf(:S :F)
+
+
+############################
+#   Classes
+############################
+
+# Class: :A (:A)
+
+SubClassOf(:A ObjectSomeValuesFrom(:S owl:Thing))
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: :a (:a)
+
+ClassAssertion(:A :a)
+ObjectPropertyAssertion(:R :a :b)
+
+
+)

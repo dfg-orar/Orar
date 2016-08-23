@@ -21,5 +21,7 @@ public class Argument {
 	static final List<String> reasonerList = new ArrayList<String>(Arrays.asList(KONCLUDE, HERMIT, FACT, PELLET));
 	static final String HELP="help";
 	static final String ABSTRACT_DEBUG="abstract_debug";
+	static final String PRINT_RESULT="result";
+	static final String PERFORMANCE="performace";
 
 }

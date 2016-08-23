@@ -9,17 +9,37 @@ package orar.owlconverter;
  */
 public interface OWLOntologyConverter {
 	/**
-	 * convert an ontology <tboxFile,aboxListFile> to an all-in-one ontology in functional syntax.
-	 * @param tboxFile a file containing the TBox
-	 * @param aboxListFile a text file containing a list of ABoxes files
-	 * @param owlFunctionalSyntaxFile a file containing both TBox and ABoxes in OWLFunctionalSyntax
+	 * convert an ontology <tboxFile,aboxListFile> to an all-in-one ontology in
+	 * functional syntax.
+	 * 
+	 * @param tboxFile
+	 *            a file containing the TBox
+	 * @param aboxListFile
+	 *            a text file containing a list of ABoxes files
+	 * @param owlFunctionalSyntaxFile
+	 *            a file containing both TBox and ABoxes in OWLFunctionalSyntax
 	 */
-	public void convertToAllInOneOWLFunctionalSynxtax(String tboxFile, String aboxListFile, String owlFunctionalSyntaxFile);
+	public void convertToAllInOneOWLFunctionalSynxtax(String tboxFile, String aboxListFile,
+			String owlFunctionalSyntaxFile);
+
 	/**
-	 * convert an ontology in <allinoneOntologyFile>, which contains both TBox and the ABox, to a separated TBox file (in FunctionalSyntax) and an ABox file(in RDF/XML syntax)
+	 * convert an ontology in <allinoneOntologyFile>, which contains both TBox
+	 * and the ABox, to a separated TBox file (in FunctionalSyntax) and an ABox
+	 * file(in RDF/XML syntax)
+	 * 
 	 * @param allinoneOntologyFile
 	 * @param tboxFile
 	 * @param aboxFileInRDFXML
 	 */
 	public void convertToSeparatedFiles(String allinoneOntologyFile, String tboxFile, String aboxFileInRDFXML);
+
+	/**
+	 * Read an ontology (tboxFile, aboxListFile) and save abox assertions to a
+	 * file in Turtle
+	 * 
+	 * @param tboxFile
+	 * @param aboxListFile
+	 * @param aboxFileInTurtle
+	 */
+	public void convertToTurtleABox(String tboxFile, String aboxListFile, String aboxFileInTurtle);
 }

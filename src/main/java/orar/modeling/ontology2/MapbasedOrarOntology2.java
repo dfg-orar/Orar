@@ -390,11 +390,7 @@ public class MapbasedOrarOntology2 implements OrarOntology2 {
 		return setOfSuccessors;
 	}
 
-	@Override
-	public SameAsBox2 getSameasBox() {
-
-		return this.sameasBox;
-	}
+	
 
 	@Override
 	public Set<Integer> getSubjectsInRoleAssertions(OWLObjectProperty role) {
@@ -497,4 +493,38 @@ public class MapbasedOrarOntology2 implements OrarOntology2 {
 		return this.sameasBox.getEntailedSameasOWLAxioms();
 	}
 
+	@Override
+	public ConceptAssertionBox2 getConceptAssertionBox() {
+	
+		return this.conceptAssertionBox;
+	}
+
+	@Override
+	public RoleAssertionBox2 getRoleAssertionBox() {
+
+		return this.roleAssertionBox;
+	}
+	@Override
+	public SameAsBox2 getSameasBox() {
+
+		return this.sameasBox;
+	}
+
+	@Override
+	public Map<OWLClass, Set<OWLNamedIndividual>> getOWLAPIConcepAssertionMapWITHOUTNormalizationSymbols() {
+		Map<OWLClass, Set<OWLNamedIndividual>> map = new HashMap<>();
+		Set<OWLClassAssertionAxiom> conceptAssertions = getOWLAPIConceptAssertionsWHITOUTNormalizationSymbols();
+		for (OWLClassAssertionAxiom assertion:conceptAssertions){
+			OWLClass concept = assertion.getClassExpression().asOWLClass();
+			OWLNamedIndividual ind=assertion.getIndividual().asOWLNamedIndividual();
+			
+			Set<OWLNamedIndividual> existingInds = map.get(concept);
+			if (existingInds==null){
+				existingInds = new HashSet<>();
+			}
+			existingInds.add(ind);
+			map.put(concept, existingInds);
+		}
+		return map;
+	}
 }

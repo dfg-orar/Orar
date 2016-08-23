@@ -130,11 +130,11 @@ public abstract class InnerReasonerTemplate implements InnerReasoner {
 		/*
 		 * get the reasoner
 		 */
-		long starTimeOverhead=System.currentTimeMillis();
+		long starTimeOverhead = System.currentTimeMillis();
 		this.reasoner = getOWLReasoner(owlOntology);
-		long endTimeOverhead=System.currentTimeMillis();
-		this.overheadTimeToSetupReasoner=(endTimeOverhead-starTimeOverhead)/1000;
-		
+		long endTimeOverhead = System.currentTimeMillis();
+		this.overheadTimeToSetupReasoner = (endTimeOverhead - starTimeOverhead) / 1000;
+
 		/*
 		 * compute entailments
 		 */
@@ -167,10 +167,10 @@ public abstract class InnerReasonerTemplate implements InnerReasoner {
 		/*
 		 * get the reasoner
 		 */
-		long starTimeOverhead=System.currentTimeMillis();
+		long starTimeOverhead = System.currentTimeMillis();
 		this.reasoner = getOWLReasoner(owlOntology);
-		long endTimeOverhead=System.currentTimeMillis();
-		this.overheadTimeToSetupReasoner=(endTimeOverhead-starTimeOverhead)/1000;
+		long endTimeOverhead = System.currentTimeMillis();
+		this.overheadTimeToSetupReasoner = (endTimeOverhead - starTimeOverhead) / 1000;
 		/*
 		 * compute entailments
 		 */
@@ -290,6 +290,12 @@ public abstract class InnerReasonerTemplate implements InnerReasoner {
 
 		for (OWLClass eachConceptName : allConceptsNames) {
 			Set<OWLNamedIndividual> instances = this.reasoner.getInstances(eachConceptName, false).getFlattened();
+		
+			/*
+			 * mark special instances possibly have new role assertions
+			 */
+			
+			
 			if (config.getDebuglevels().contains(DebugLevel.REASONING_ABSTRACTONTOLOGY)) {
 				logger.info("***DEBUG*** all instances of: " + eachConceptName);
 				PrintingHelper.printSet(instances);
@@ -372,12 +378,14 @@ public abstract class InnerReasonerTemplate implements InnerReasoner {
 	 */
 	private void putIndividual2ConceptMap(Set<OWLNamedIndividual> instances, OWLClass concept) {
 		for (OWLNamedIndividual ind : instances) {
-			Set<OWLClass> concepts = this.conceptAssertionsMap.get(ind);
-			if (concepts == null) {
-				concepts = new HashSet<OWLClass>();
+			Set<OWLClass> existingConcepts = this.conceptAssertionsMap.get(ind);
+			if (existingConcepts == null) {
+				existingConcepts = new HashSet<OWLClass>();
 			}
-			concepts.add(concept);
-			this.conceptAssertionsMap.put(ind, concepts);
+			boolean hasNewElement = existingConcepts.add(concept);
+			if (hasNewElement) {
+				this.conceptAssertionsMap.put(ind, existingConcepts);
+			}
 
 		}
 	}
@@ -386,6 +394,7 @@ public abstract class InnerReasonerTemplate implements InnerReasoner {
 	public long getReasoningTime() {
 		return this.reasoningTime;
 	}
+
 	//
 	@Override
 	public long getOverheadTimeToSetupReasoner() {
@@ -393,16 +402,16 @@ public abstract class InnerReasonerTemplate implements InnerReasoner {
 	}
 
 	protected abstract void dispose();
-	
-	public boolean isOntologyConsistent(){
+
+	public boolean isOntologyConsistent() {
 		/*
 		 * get the reasoner
 		 */
-		long starTimeOverhead=System.currentTimeMillis();
+		long starTimeOverhead = System.currentTimeMillis();
 		this.reasoner = getOWLReasoner(owlOntology);
-		long endTimeOverhead=System.currentTimeMillis();
-		this.overheadTimeToSetupReasoner=(endTimeOverhead-starTimeOverhead)/1000;
-		
+		long endTimeOverhead = System.currentTimeMillis();
+		this.overheadTimeToSetupReasoner = (endTimeOverhead - starTimeOverhead) / 1000;
+
 		/*
 		 * compute entailments
 		 */
@@ -411,7 +420,7 @@ public abstract class InnerReasonerTemplate implements InnerReasoner {
 		if (!reasoner.isConsistent()) {
 			return false;
 		}
-		
+
 		long endTime = System.currentTimeMillis();
 		this.entailmentComputed = true;
 		this.reasoningTime = (endTime - startTime) / 1000; // get seconds
