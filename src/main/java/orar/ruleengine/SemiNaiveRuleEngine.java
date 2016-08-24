@@ -64,6 +64,7 @@ public class SemiNaiveRuleEngine implements RuleEngine {
 
 	@Override
 	public void incrementalMaterialize() {
+		boolean hasNewElement=false;
 		while (!this.todoRoleAssertions.isEmpty() || !this.todoSameasAssertions.isEmpty()) {
 			while (!this.todoSameasAssertions.isEmpty()) {
 				Set<Integer> setOfSameasIndividuals = this.todoSameasAssertions.poll();

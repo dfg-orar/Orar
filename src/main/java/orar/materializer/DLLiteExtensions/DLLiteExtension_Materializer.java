@@ -16,6 +16,7 @@ import orar.materializer.DLLiteExtension_MaterializerTemplate;
 import orar.modeling.ontology2.OrarOntology2;
 import orar.refinement.abstractroleassertion.AbstractRoleAssertionBox;
 import orar.refinement.assertiontransferring.AssertionTransporter;
+import orar.refinement.assertiontransferring.DLLiteExtensions.DLLiteExtension_AssertionTransporter;
 import orar.refinement.assertiontransferring.HornSHOIF.HornSHOIF_AssertionTransporter;
 import orar.type.IndividualType;
 
@@ -39,7 +40,7 @@ public abstract class DLLiteExtension_Materializer extends DLLiteExtension_Mater
 			Map<OWLNamedIndividual, Set<OWLClass>> entailedAbstractConceptAssertions,
 			AbstractRoleAssertionBox entailedAbstractRoleAssertion,
 			Map<OWLNamedIndividual, Set<OWLNamedIndividual>> entailedSameasMap) {
-		AssertionTransporter assertionTransporter = new HornSHOIF_AssertionTransporter(normalizedORAROntology,
+		AssertionTransporter assertionTransporter = new DLLiteExtension_AssertionTransporter(normalizedORAROntology,
 				entailedAbstractConceptAssertions, entailedAbstractRoleAssertion, entailedSameasMap);
 		return assertionTransporter;
 	}

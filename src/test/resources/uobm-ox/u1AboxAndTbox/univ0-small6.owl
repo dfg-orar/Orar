@@ -22,7 +22,8 @@
     <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Prefix name="benchmark-dl" IRI="http://semantics.crl.ibm.com/univ-bench-dl.owl#"/>
-     <Import>file:/Users/kien/git/Orar2/src/test/resources/uobm-ox/tbox/uobm-tbox-oxford.owl</Import>
+     <Import>file:/Users/kien/git/Orar2/src/test/resources/uobm_origintbox_oxforddata/uobmtbox_origin_workwith_oxford_generator.owl</Import>
+     
     <ClassAssertion>
         <Class abbreviatedIRI="benchmark-dl:Department"/>
         <NamedIndividual IRI="http://www.Department0.University0.edu"/>

@@ -55,7 +55,7 @@ public abstract class DLLiteExtension_MaterializerTemplate implements Materializ
 	protected final TypeComputor typeComputor;
 	protected Set<OWLOntology> abstractOntologies;
 	protected final RuleEngine ruleEngine;
-
+	private long loadingTimeOfInnerReasoner;
 	public DLLiteExtension_MaterializerTemplate(OrarOntology2 normalizedOrarOntology) {
 		// input & output
 		this.normalizedORAROntology = normalizedOrarOntology;
@@ -70,6 +70,7 @@ public abstract class DLLiteExtension_MaterializerTemplate implements Materializ
 		this.abstractOntologies = new HashSet<OWLOntology>();
 		this.ruleEngine = new SemiNaiveRuleEngine(normalizedOrarOntology);
 		this.typeComputor = new BasicTypeComputor();
+		this.loadingTimeOfInnerReasoner=0;
 	}
 
 	@Override
@@ -203,6 +204,7 @@ public abstract class DLLiteExtension_MaterializerTemplate implements Materializ
 				logger.info("Info:Size of the (splitted) abstract ontology: " + abstraction.getAxiomCount());
 				InnerReasoner innerReasoner = getInnerReasoner(abstraction);
 				innerReasoner.computeEntailments();
+				this.loadingTimeOfInnerReasoner+=innerReasoner.getOverheadTimeToSetupReasoner();
 				/*
 				 * in the next loop, only role assertions need to be transferred
 				 */
@@ -237,6 +239,9 @@ public abstract class DLLiteExtension_MaterializerTemplate implements Materializ
 				 * (7). Compute deductive closure
 				 */
 				logger.info("Computing the deductive closure wrt new entailments ...");
+//				if (newlyAddedRoleAssertions.getSize()==0 && newlyAddedSameasAssertions.isEmpty()) {
+//					break;
+//				}
 				ruleEngine.addTodoRoleAsesrtions(newlyAddedRoleAssertions.getSetOfIndexedRoleAssertions());
 				ruleEngine.addTodoSameasAssertions(newlyAddedSameasAssertions);
 				ruleEngine.incrementalMaterialize();
@@ -253,6 +258,7 @@ public abstract class DLLiteExtension_MaterializerTemplate implements Materializ
 		// get reasoning time
 		long endTime = System.currentTimeMillis();
 		this.reasoningTimeInSeconds = (endTime - startTime) / 1000;
+		this.reasoningTimeInSeconds-=this.loadingTimeOfInnerReasoner;
 		/*
 		 * logging
 		 */

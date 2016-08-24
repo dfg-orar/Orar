@@ -10,7 +10,7 @@ import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.semanticweb.owlapi.model.OWLObjectPropertyAssertionAxiom;
 
 import orar.abstraction.PairOfSubjectAndObject;
-import orar.abstraction.HornSHOIF.HornSHOIF_AbstractionGenerator;
+import orar.abstraction.HornSHIF.HornSHIF_AbstractionGenerator;
 import orar.modeling.ontology2.OrarOntology2;
 import orar.type.IndividualType;
 
@@ -20,7 +20,7 @@ import orar.type.IndividualType;
  * @author kien
  *
  */
-public class DLLiteExtension_AbstractionGenerator extends HornSHOIF_AbstractionGenerator {
+public class DLLiteExtension_AbstractionGenerator extends HornSHIF_AbstractionGenerator {
 
 	public DLLiteExtension_AbstractionGenerator(OrarOntology2 orarOntology,
 			Map<IndividualType, Set<Integer>> typeMap2Individuals) {

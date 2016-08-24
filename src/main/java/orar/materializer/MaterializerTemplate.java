@@ -56,6 +56,8 @@ public abstract class MaterializerTemplate implements Materializer {
 	protected Set<OWLOntology> abstractOntologies;
 	protected final RuleEngine ruleEngine;
 
+	private long loadingTimeOfInnerReasoner;
+	
 	public MaterializerTemplate(OrarOntology2 normalizedOrarOntology) {
 		// input & output
 		this.normalizedORAROntology = normalizedOrarOntology;
@@ -70,6 +72,7 @@ public abstract class MaterializerTemplate implements Materializer {
 		this.abstractOntologies = new HashSet<OWLOntology>();
 		this.ruleEngine = new SemiNaiveRuleEngine(normalizedOrarOntology);
 		this.typeComputor = new BasicTypeComputor();
+		this.loadingTimeOfInnerReasoner=0;
 	}
 
 	@Override
@@ -203,6 +206,7 @@ public abstract class MaterializerTemplate implements Materializer {
 				logger.info("Info:Size of the (splitted) abstract ontology: " + abstraction.getAxiomCount());
 				InnerReasoner innerReasoner = getInnerReasoner(abstraction);
 				innerReasoner.computeEntailments();
+				this.loadingTimeOfInnerReasoner+=innerReasoner.getOverheadTimeToSetupReasoner();
 				// we can use putAll since individuals in different abstractsion
 				// are
 				// disjointed.
@@ -253,6 +257,7 @@ public abstract class MaterializerTemplate implements Materializer {
 		// get reasoning time
 		long endTime = System.currentTimeMillis();
 		this.reasoningTimeInSeconds = (endTime - startTime) / 1000;
+		this.reasoningTimeInSeconds-=this.loadingTimeOfInnerReasoner;
 		/*
 		 * logging
 		 */

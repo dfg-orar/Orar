@@ -17,14 +17,17 @@ public class StrategyIdentifierImpl implements StrategyIdentifier {
 	public StrategyIdentifierImpl(Set<OWLAxiom> allAxiomsIntheNormalizedOntology) {
 		this.allAxioms = allAxiomsIntheNormalizedOntology;
 		this.strategyHasBenIdentified = false;
-		this.dlConstructors= new HashSet<>();
+		this.dlConstructors = new HashSet<>();
 	}
 
 	private void collectConstructos() {
 		ConstructorCollectorAxiomVisitor collector = new ConstructorCollectorAxiomVisitor();
 
 		for (OWLAxiom axiom : this.allAxioms) {
-			this.dlConstructors.addAll(axiom.accept(collector));
+			Set<DLConstructor> constructors = axiom.accept(collector);
+			if (constructors != null) {
+				this.dlConstructors.addAll(axiom.accept(collector));
+			}
 		}
 
 	}
@@ -59,7 +62,9 @@ public class StrategyIdentifierImpl implements StrategyIdentifier {
 
 	private boolean isWithinDLLiteExtentions() {
 		if (!this.dlConstructors.contains(DLConstructor.QUALIFIED_EXISTENTIAL_RESTRICTION)
-				&& !this.dlConstructors.contains(DLConstructor.UNIVERSAL_RESTRICTION)) {
+				&& !this.dlConstructors.contains(DLConstructor.UNIVERSAL_RESTRICTION)
+				&& !this.dlConstructors.contains(DLConstructor.NOMINAL)
+				&& !this.dlConstructors.contains(DLConstructor.HASVALUE)) {
 			return true;
 		} else
 			return false;

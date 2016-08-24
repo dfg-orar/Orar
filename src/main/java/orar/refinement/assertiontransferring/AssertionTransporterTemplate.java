@@ -16,6 +16,7 @@ import orar.config.Configuration;
 import orar.config.DebugLevel;
 import orar.config.LogInfo;
 import orar.data.DataForTransferingEntailments;
+import orar.indexing.IndividualIndexer;
 import orar.modeling.ontology.OrarOntology;
 import orar.modeling.ontology2.OrarOntology2;
 import orar.modeling.roleassertion2.IndexedRoleAssertionList;
@@ -222,7 +223,7 @@ public abstract class AssertionTransporterTemplate implements AssertionTransport
 					// }
 					if (config.getDebuglevels().contains(DebugLevel.UPDATING_CONCEPT_ASSERTION)) {
 						logger.info("***DEBUG Update concept assertions in the original ABox ***");
-						logger.info("Individual:" + originalInd);
+						logger.info("Individual:" + IndividualIndexer.getInstance().getIndividualString(originalInd));
 						logger.info("has new concepts:" + concepts);
 						logger.info("Reason: get from concept assertion of the abstract individual:" + abstractInd);
 						logger.info("*=====================================================*");
@@ -238,7 +239,7 @@ public abstract class AssertionTransporterTemplate implements AssertionTransport
 						this.isABoxExtended = true;
 						if (this.config.getDebuglevels().contains(DebugLevel.TRANSFER_CONCEPTASSERTION)) {
 							logger.info("***DEBUG***TRANSFER_CONCEPTASSERTION:");
-							logger.info("For individual:" + originalInd);
+							logger.info("For individual:" + IndividualIndexer.getInstance().getIndividualString(originalInd));
 							logger.info("Existing asserted concepts:");
 							PrintingHelper.printSet(existingAssertedConcept);
 							logger.info("Newly added asserted concepts:" + concepts);

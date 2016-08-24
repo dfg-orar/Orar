@@ -1,7 +1,5 @@
 package orar.strategyIdentifying;
 
-import static org.junit.Assert.*;
-
 import java.io.File;
 import java.util.HashSet;
 import java.util.Set;
@@ -65,9 +63,15 @@ public class StrategyIdentifierTest {
 		String tboxFileName="src/test/resources/strategy/hshoif_imdb.owl";
 		StrategyName name = getStrategyName(tboxFileName);
 		System.out.println(name);
-//		Assert.assertEquals(StrategyName.HORN_SHOIF_STRATEGY, name);
+		Assert.assertEquals(StrategyName.DLLITE_EXTENSION_STRATEGY, name);
 	}
-
+	@Test
+	public void testDBPedia() throws OWLOntologyCreationException {
+		String tboxFileName="src/test/resources/strategy/hshoif_dbpedia.owl";
+		StrategyName name = getStrategyName(tboxFileName);
+		System.out.println(name);
+		Assert.assertEquals(StrategyName.HORN_SHOIF_STRATEGY, name);
+	}
 	
 	private StrategyName getStrategyName(String tboxFileName) throws OWLOntologyCreationException{
 		OWLOntologyManager manager=OWLManager.createOWLOntologyManager();

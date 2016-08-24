@@ -60,6 +60,12 @@ public class BasicTypeComputor implements TypeComputor {
 			Set<OWLObjectProperty> preRoles = getPreRoles(sameIndsOfCurrentIndividual, orarOntology);
 			Set<OWLObjectProperty> sucRoles = getSuccRoles(sameIndsOfCurrentIndividual, orarOntology);
 
+			/*
+			 * small optimization: update also concept for all same insividuals. It will reduce number of refinement steps
+			 */
+			for (Integer eachInd : sameIndsOfCurrentIndividual) {
+				orarOntology.addManyConceptAssertions(eachInd, concepts);
+			}
 			// create type and add to the resulting map
 			IndividualType type = new BasicIndividualType(concepts, preRoles, sucRoles);
 

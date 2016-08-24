@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
+import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.semanticweb.owlapi.model.OWLObjectPropertyAssertionAxiom;
 
@@ -16,8 +17,10 @@ public class FunctionalityRuleExecutor implements RuleExecutor {
 	private final Set<Set<Integer>> newSameasAssertions;
 	private final OrarOntology2 orarOntology;
 	private final MetaDataOfOntology metaDataOfOntology;
-	//	private final Logger logger = Logger.getLogger(FunctionalityRuleExecutor.class);
-	Logger logger =Logger.getLogger(FunctionalityRuleExecutor.class);
+	// private final Logger logger =
+	// Logger.getLogger(FunctionalityRuleExecutor.class);
+	Logger logger = Logger.getLogger(FunctionalityRuleExecutor.class);
+
 	public FunctionalityRuleExecutor(OrarOntology2 orarOntology) {
 		this.orarOntology = orarOntology;
 		this.newSameasAssertions = new HashSet<Set<Integer>>();
@@ -32,8 +35,8 @@ public class FunctionalityRuleExecutor implements RuleExecutor {
 		mergeSuccessorsOfFunctionalRole();
 		mergePredecessorsOfInvFunctionalRole();
 		long endTime = System.currentTimeMillis();
-		long time = (endTime-startTime)/1000;
-		logger.info("time in materializer step: "+ time);
+		long time = (endTime - startTime) / 1000;
+		logger.info("time in materializer step: " + time);
 	}
 
 	private void mergePredecessorsOfInvFunctionalRole() {
@@ -49,8 +52,27 @@ public class FunctionalityRuleExecutor implements RuleExecutor {
 				// logger.info("********DEBUG**** allSubjects: "+allSubjects);
 				if (allSubjects.size() > 1) {
 					this.newSameasAssertions.add(allSubjects);
+//					addConceptNamesWrtNewSameIndividuals(allSubjects);
 				}
 			}
+		}
+
+	}
+
+	private void addConceptNamesWrtNewSameIndividuals(Set<Integer> sameIndividuals) {
+		Set<OWLClass> allConcepts = new HashSet<>();
+		/*
+		 * collect all concepts
+		 */
+		for (Integer eachInd : sameIndividuals) {
+			allConcepts.addAll(this.orarOntology.getAssertedConcepts(eachInd));
+		}
+
+		/*
+		 * add concepts
+		 */
+		for (Integer eachInd : sameIndividuals) {
+			this.orarOntology.addManyConceptAssertions(eachInd, allConcepts);
 		}
 
 	}
@@ -67,6 +89,7 @@ public class FunctionalityRuleExecutor implements RuleExecutor {
 				// logger.info("all objects:" + allObjects);
 				if (allObjects.size() > 1) {
 					this.newSameasAssertions.add(allObjects);
+//					addConceptNamesWrtNewSameIndividuals(allObjects);
 				}
 			}
 		}
@@ -91,6 +114,7 @@ public class FunctionalityRuleExecutor implements RuleExecutor {
 			}
 			if (allSubjects.size() > 1) {
 				this.newSameasAssertions.add(allSubjects);
+//				addConceptNamesWrtNewSameIndividuals(allSubjects);
 			}
 		}
 
@@ -107,7 +131,7 @@ public class FunctionalityRuleExecutor implements RuleExecutor {
 			}
 			if (allObjects.size() > 1) {
 				this.newSameasAssertions.add(allObjects);
-
+//				addConceptNamesWrtNewSameIndividuals(allObjects);
 			}
 		}
 	}
@@ -128,6 +152,7 @@ public class FunctionalityRuleExecutor implements RuleExecutor {
 		allObjects.add(object);
 		if (allObjects.size() > 1) {
 			this.newSameasAssertions.add(allObjects);
+//			addConceptNamesWrtNewSameIndividuals(allObjects);
 		}
 
 	}

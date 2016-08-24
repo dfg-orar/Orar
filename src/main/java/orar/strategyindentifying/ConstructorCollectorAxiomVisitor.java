@@ -72,11 +72,17 @@ public class ConstructorCollectorAxiomVisitor implements OWLAxiomVisitorEx<Set<D
 		Set<DLConstructor> constructors = new HashSet<>();
 		OWLClassExpression subClass = axiom.getSubClass();
 		ConstructorCollectorInSubClass collectorInSubClass = new ConstructorCollectorInSubClass();
-		constructors.add(subClass.accept(collectorInSubClass));
+		DLConstructor constructorInSubClass = subClass.accept(collectorInSubClass);
+		if (constructorInSubClass != null) {
+			constructors.add(subClass.accept(collectorInSubClass));
+		}
 
 		OWLClassExpression superClass = axiom.getSuperClass();
 		ConstructorCollectorInSuperClass collectorInSuperClass = new ConstructorCollectorInSuperClass(subClass);
-		constructors.add(superClass.accept(collectorInSuperClass));
+		DLConstructor constructorInSuperClass = superClass.accept(collectorInSuperClass);
+		if (constructorInSuperClass != null) {
+			constructors.add(superClass.accept(collectorInSuperClass));
+		}
 
 		return constructors;
 	}
