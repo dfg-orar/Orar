@@ -32,6 +32,9 @@ public interface InnerReasoner {
 	 *         their concepts.
 	 */
 	public Map<OWLNamedIndividual, Set<OWLClass>> getEntailedConceptAssertionsAsMap();
+	public Map<OWLNamedIndividual, Set<OWLClass>> getXEntailedConceptAssertionsAsMap();
+	public Map<OWLNamedIndividual, Set<OWLClass>> getYEntailedConceptAssertionsAsMap();
+	public Map<OWLNamedIndividual, Set<OWLClass>> getZEntailedConceptAssertionsAsMap();
 
 	/**
 	 * @return entailed role assertions stored in several lists. See

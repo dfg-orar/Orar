@@ -12,15 +12,16 @@ import orar.io.ontologyreader.OntologyReader;
 import orar.materializer.Materializer;
 import orar.materializer.HornSHOIF.HornSHOIF_Materializer_Hermit;
 import orar.materializer.HornSHOIF.HornSHOIF_Materializer_Konclude;
+import orar.materializer.HornSHOIF.HornSHOIF_Materializer_KoncludeOptimized;
 import orar.modeling.ontology2.OrarOntology2;
 
 public class MaterializeUobm1 {
 	static Logger logger = Logger.getLogger(DemoSameTypesInDifferentLoops.class);
 //	static String tbox="/Users/kien/benchmarks/uobm_ox/uobm_origin_minus.owl";
-	static String tbox="/Users/kien/benchmarks/aaai17/uobm_original_tiny2.owl";
-//	static String tbox="/Users/kien/benchmarks/uobm_ox/uobmtbox_origin_workwith_oxford_generator.owl";
-//	static String aboxList="/Users/kien/benchmarks/uobm_ox/aboxListUOBM1.txt";
-	static String aboxList="/Users/kien/benchmarks/aaai17/aboxList.txt";
+//	static String tbox="/Users/kien/benchmarks/aaai17/uobm_original_tiny2.owl";
+	static String tbox="/Users/kien/benchmarks/uobm_ox/uobmtbox_origin_workwith_oxford_generator.owl";
+	static String aboxList="/Users/kien/benchmarks/uobm_ox/aboxListUOBM1.txt";
+//	static String aboxList="/Users/kien/benchmarks/aaai17/aboxList.txt";
 	public static void main(String[] args) throws OWLOntologyCreationException {
 //		Configuration.getInstance().addDebugLevels(DebugLevel.UPDATING_CONCEPT_ASSERTION, DebugLevel.TRANSFER_CONCEPTASSERTION);
 		Configuration.getInstance().clearLogInfoLevels();
@@ -36,7 +37,8 @@ public class MaterializeUobm1 {
 		logger.info(
 				"Info: Concstructors in the validated ontology:" + normalizedOrarOntology.getActualDLConstructors());
 		// long startAbstraction = System.currentTimeMillis();
-		Materializer materializer = new HornSHOIF_Materializer_Konclude(normalizedOrarOntology);
+//		Materializer materializer = new HornSHOIF_Materializer_Konclude(normalizedOrarOntology);
+		Materializer materializer = new HornSHOIF_Materializer_KoncludeOptimized(normalizedOrarOntology);
 		materializer.materialize();
 
 	}

@@ -25,14 +25,15 @@ import orar.util.MapOperator;
  *
  */
 public class BasicTypeComputor implements TypeComputor {
-//	private final BasicIndividualTypeFactory typeFactory;
+	// private final BasicIndividualTypeFactory typeFactory;
 
 	// private Configuration config;
 	// private static Logger logger =
 	// Logger.getLogger(HornSHOIF_TypeComputor.class);
 
 	public BasicTypeComputor() {
-//		typeFactory = BasicIndividualTypeFactory_UsingWeakHashMap.getInstance();
+		// typeFactory =
+		// BasicIndividualTypeFactory_UsingWeakHashMap.getInstance();
 
 		// this.config = Configuration.getInstance();
 	}
@@ -41,40 +42,50 @@ public class BasicTypeComputor implements TypeComputor {
 	public Map<IndividualType, Set<Integer>> computeTypes(OrarOntology2 orarOntology) {
 		Map<IndividualType, Set<Integer>> typeMap2Individuals = new HashMap<IndividualType, Set<Integer>>();
 		Set<Integer> todoIndividuals = orarOntology.getIndividualsInSignature();
+		Set<Integer> processedIndividuals = new HashSet<>();
 		/*
 		 * compute type for each individual, taking into account other equal
 		 * individuals
 		 */
-		for (Integer currentIndividual : todoIndividuals) {
+		for (int currentIndividual : todoIndividuals) {
+			if (!processedIndividuals.contains(currentIndividual)) {
+				/*
+				 * collect from assertions of "currentIndividual" and its equal
+				 * individuals
+				 */
+				Set<Integer> sameIndsOfCurrentIndividual = orarOntology.getSameIndividuals(currentIndividual);
+				// sameInds should contains also the "currentIndividual"
+				sameIndsOfCurrentIndividual.add(currentIndividual);
 
-			/*
-			 * collect from assertions of "currentIndividual" and its equal
-			 * individuals
-			 */
-			Set<Integer> sameIndsOfCurrentIndividual = orarOntology.getSameIndividuals(currentIndividual);
-			// sameInds should contains also the "currentIndividual"
-			sameIndsOfCurrentIndividual.add(currentIndividual);
+				processedIndividuals.addAll(sameIndsOfCurrentIndividual);
+				// get element of accumulate type
+				Set<OWLClass> concepts = getConcepts(sameIndsOfCurrentIndividual, orarOntology);
+				Set<OWLObjectProperty> preRoles = getPreRoles(sameIndsOfCurrentIndividual, orarOntology);
+				Set<OWLObjectProperty> sucRoles = getSuccRoles(sameIndsOfCurrentIndividual, orarOntology);
 
-			// get element of accumulate type
-			Set<OWLClass> concepts = getConcepts(sameIndsOfCurrentIndividual, orarOntology);
-			Set<OWLObjectProperty> preRoles = getPreRoles(sameIndsOfCurrentIndividual, orarOntology);
-			Set<OWLObjectProperty> sucRoles = getSuccRoles(sameIndsOfCurrentIndividual, orarOntology);
+				// /*
+				// * small optimization: update also concept for all same
+				// insividuals. It will reduce number of refinement steps
+				// */
+//				 for (Integer eachInd : sameIndsOfCurrentIndividual) {
+//				 orarOntology.addManyConceptAssertions(eachInd, concepts);
+//				 }
+//				 
+//				 for (Integer eachInd : sameIndsOfCurrentIndividual) {
+//					 orarOntology.addManyConceptAssertions(eachInd, concepts);
+//					 }
+				 orarOntology.addManyConceptAssertions(currentIndividual, concepts);
+				// create type and add to the resulting map
+				IndividualType type = new BasicIndividualType(concepts, preRoles, sucRoles);
 
-			/*
-			 * small optimization: update also concept for all same insividuals. It will reduce number of refinement steps
-			 */
-			for (Integer eachInd : sameIndsOfCurrentIndividual) {
-				orarOntology.addManyConceptAssertions(eachInd, concepts);
+				// Map type to a set of individuals
+
+				// MapOperator.addValuesToMap(typeMap2Individuals, type,
+				// sameIndsOfCurrentIndividual);
+				MapOperator.addValueToMap(typeMap2Individuals, type, currentIndividual);
+				// Map individual to its type
+				mapIndividual2Type(sameIndsOfCurrentIndividual, type);
 			}
-			// create type and add to the resulting map
-			IndividualType type = new BasicIndividualType(concepts, preRoles, sucRoles);
-
-			// Map type to a set of individuals
-
-			MapOperator.addValuesToMap(typeMap2Individuals, type, sameIndsOfCurrentIndividual);
-			// Map individual to its type
-			mapIndividual2Type(sameIndsOfCurrentIndividual, type);
-
 		}
 
 		return typeMap2Individuals;
@@ -120,7 +131,7 @@ public class BasicTypeComputor implements TypeComputor {
 	private Set<OWLClass> getConcepts(Set<Integer> individuals, OrarOntology2 orarOntology) {
 		Set<OWLClass> accumulatedConcepts = new HashSet<OWLClass>();
 		for (Integer individual : individuals) {
-			accumulatedConcepts.addAll(getConcepts(individual, orarOntology));
+			accumulatedConcepts.addAll(orarOntology.getAssertedConcepts(individual));
 		}
 		return accumulatedConcepts;
 	}

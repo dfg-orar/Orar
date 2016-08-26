@@ -10,9 +10,6 @@ import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
-
 /**
  * To index individuals (using its StringID) to an integer number. This indexing
  * is 1-to-1
@@ -20,24 +17,24 @@ import com.google.common.collect.HashBiMap;
  * @author kien
  *
  */
-public class IndividualIndexer {
-	private static IndividualIndexer instance;
-	private BiMap<String, Integer> biMapString2Integer;
-
+public class IndividualIndexerOld {
+	private static IndividualIndexerOld instance;
+	private Map<String, Integer> mapIndividualString2Number;
+	private Map<Integer, String> mapNumber2IndividualString;
 	private Integer index;
 	private OWLDataFactory owlDataFactory;
 
-	private IndividualIndexer() {
-		this.biMapString2Integer = HashBiMap.create();
-
+	private IndividualIndexerOld() {
+		this.mapIndividualString2Number = new HashMap<>();
+		this.mapNumber2IndividualString = new HashMap<>();
 		index = 0;
 		this.owlDataFactory = OWLManager.getOWLDataFactory();
 	}
 
-	public static IndividualIndexer getInstance() {
+	public static IndividualIndexerOld getInstance() {
 
 		if (instance == null) {
-			instance = new IndividualIndexer();
+			instance = new IndividualIndexerOld();
 		}
 		return instance;
 	}
@@ -49,10 +46,11 @@ public class IndividualIndexer {
 	 *         individualStringID existed in the indexing map.
 	 */
 	public Integer getIndexOfIndividualString(String individualStringID) {
-		Integer existingIndex = this.biMapString2Integer.get(individualStringID);
+		Integer existingIndex = this.mapIndividualString2Number.get(individualStringID);
 		if (existingIndex == null) {
 			index++;
-			this.biMapString2Integer.put(individualStringID, index);
+			this.mapIndividualString2Number.put(individualStringID, index);
+			this.mapNumber2IndividualString.put(index, individualStringID);
 			return index;
 		}
 		return existingIndex;
@@ -95,7 +93,7 @@ public class IndividualIndexer {
 	}
 
 	public String getIndividualString(Integer indexOfIndividualStringID) {
-		return this.biMapString2Integer.inverse().get(indexOfIndividualStringID);
+		return this.mapNumber2IndividualString.get(indexOfIndividualStringID);
 	}
 
 	/**
@@ -105,20 +103,19 @@ public class IndividualIndexer {
 	 * @return
 	 */
 	public OWLNamedIndividual getOWLIndividual(Integer indexOfIndividualStringID) {
-		String indString = getIndividualString(indexOfIndividualStringID);
+		String indString = this.mapNumber2IndividualString.get(indexOfIndividualStringID);
 		return this.owlDataFactory.getOWLNamedIndividual(IRI.create(indString));
 	}
 
 	/**
 	 * only for testing
-	 * 
 	 * @param indexOfIndividuals
 	 * @return a set of OWLNamedIndividual corresponding to the given indexes
 	 */
 	public Set<OWLNamedIndividual> getOWLIndividuals(Set<Integer> indexOfIndividuals) {
 		Set<OWLNamedIndividual> owlIndividuals = new HashSet<>();
 		for (Integer eachInd : indexOfIndividuals) {
-			String eachIndString = getIndividualString(eachInd);
+			String eachIndString = this.mapNumber2IndividualString.get(eachInd);
 			OWLNamedIndividual owlInd = this.owlDataFactory.getOWLNamedIndividual(IRI.create(eachIndString));
 			owlIndividuals.add(owlInd);
 		}
@@ -135,7 +132,7 @@ public class IndividualIndexer {
 	 */
 	public Map<String, Integer> viewMapIndividuslString2Integer() {
 		Map<String, Integer> currentView = new HashMap<String, Integer>();
-		currentView.putAll(this.biMapString2Integer);
+		currentView.putAll(this.mapIndividualString2Number);
 		return currentView;
 	}
 
@@ -145,18 +142,18 @@ public class IndividualIndexer {
 	 */
 	public Map<Integer, String> viewMapInteger2IndividuslString() {
 		Map<Integer, String> currentView = new HashMap<Integer, String>();
-		currentView.putAll(this.biMapString2Integer.inverse());
+		currentView.putAll(this.mapNumber2IndividualString);
 		return currentView;
 	}
 
 	public Set<Integer> getAllEncodedIndividuals() {
-		return this.biMapString2Integer.values();
+		return this.mapNumber2IndividualString.keySet();
 	}
-
 	/**
 	 * clear indexing data
 	 */
-	public void clear() {
-		this.biMapString2Integer.clear();
+	public void clear(){
+		this.mapIndividualString2Number.clear();
+		this.mapNumber2IndividualString.clear();
 	}
 }

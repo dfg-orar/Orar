@@ -30,15 +30,45 @@ public interface AssertionTransporter {
 	public boolean isABoxExtended();
 
 	/**
+	 * @return true if the original ABox has been extended via assertion of X;
+	 *         false otherwise
+	 */
+	public boolean isABoxExtendedViaX();
+
+	/**
+	 * @return true if the original ABox has been extended via assertion of Y;
+	 *         false otherwise
+	 */
+	public boolean isABoxExtendedViaY();
+
+	/**
+	 * @return true if the original ABox has been extended via assertion of Z;
+	 *         false otherwise
+	 */
+	public boolean isABoxExtendedViaZ();
+
+	/**
+	 * @return true if the original ABox has been extended with role assertions
+	 *         of functional/transitive roles; false otherwise
+	 */
+	public boolean isABoxExtendedWithNewSpecialRoleAssertions();
+	
+	/**
+	 * @return true if the original ABox has been extended with new Sameas assertions
+	 *        ; false otherwise
+	 */
+	public boolean isABoxExtendedWithNewSameasAssertions();
+
+
+	/**
 	 * @return a list of new role assertions haven added to the original ABox.
 	 *         This will be used as an input for the rule engine.
 	 */
 	public IndexedRoleAssertionList getNewlyAddedRoleAssertions();
-	
 
 	/**
-	 * @return new sameas assertions haven added to the original ABox.
-	 *         This will be used as an input for the rule engine.
+	 * @return new sameas assertions haven added to the original ABox. This will
+	 *         be used as an input for the rule engine.
 	 */
 	public Set<Set<Integer>> getNewlyAddedSameasAssertions();
 }

@@ -37,14 +37,14 @@ import orar.type.BasicIndividualTypeFactory_UsingWeakHashMap;
 import orar.type.IndividualType;
 import orar.util.PrintingHelper;
 
-public abstract class MaterializerTemplate implements Materializer {
+public abstract class MaterializerTemplateOptimized implements Materializer {
 	// input & output
 	protected final OrarOntology2 normalizedORAROntology;
 	private int currentLoop;
 	private long reasoningTimeInSeconds;
 	protected final Configuration config;
 	// logging
-	private static final Logger logger = Logger.getLogger(MaterializerTemplate.class);
+	private static final Logger logger = Logger.getLogger(MaterializerTemplateOptimized.class);
 	// shared data
 	protected final DataForTransferingEntailments dataForTransferringEntailments;
 	protected final MetaDataOfOntology metaDataOfOntology;
@@ -56,9 +56,14 @@ public abstract class MaterializerTemplate implements Materializer {
 	protected Set<OWLOntology> abstractOntologies;
 	protected final RuleEngine ruleEngine;
 
+	/*
+	 * Stop signal will be true if we don't obtain any new assertions that will
+	 * triggers new entailments in the next refinement step
+	 */
+	private boolean hasStopSignal;
 	private long loadingTimeOfInnerReasoner;
-	
-	public MaterializerTemplate(OrarOntology2 normalizedOrarOntology) {
+
+	public MaterializerTemplateOptimized(OrarOntology2 normalizedOrarOntology) {
 		// input & output
 		this.normalizedORAROntology = normalizedOrarOntology;
 		this.currentLoop = 0;
@@ -72,7 +77,8 @@ public abstract class MaterializerTemplate implements Materializer {
 		this.abstractOntologies = new HashSet<OWLOntology>();
 		this.ruleEngine = new SemiNaiveRuleEngine(normalizedOrarOntology);
 		this.typeComputor = new BasicTypeComputor();
-		this.loadingTimeOfInnerReasoner=0;
+		this.loadingTimeOfInnerReasoner = 0;
+		this.hasStopSignal = false;
 	}
 
 	@Override
@@ -101,7 +107,7 @@ public abstract class MaterializerTemplate implements Materializer {
 		// HashSet<Object> typesLoop3 = new HashSet<>();
 		// HashSet<Object> typesLoop4 = new HashSet<>();
 
-		while (updated) {
+		while (updated & !hasStopSignal) {
 			currentLoop = this.currentLoop + 1;
 			logger.info("Current loop: " + currentLoop);
 			/*
@@ -192,9 +198,13 @@ public abstract class MaterializerTemplate implements Materializer {
 			 * (5). Materialize abstractions
 			 */
 			logger.info("Materializing the abstractions ...");
-			Map<OWLNamedIndividual, Set<OWLClass>> entailedAbstractConceptAssertions = new HashMap<OWLNamedIndividual, Set<OWLClass>>();
+			Map<OWLNamedIndividual, Set<OWLClass>> entailedAbstractConceptAssertionsForX = new HashMap<OWLNamedIndividual, Set<OWLClass>>();
+			Map<OWLNamedIndividual, Set<OWLClass>> entailedAbstractConceptAssertionsForY = new HashMap<OWLNamedIndividual, Set<OWLClass>>();
+			Map<OWLNamedIndividual, Set<OWLClass>> entailedAbstractConceptAssertionsForZ = new HashMap<OWLNamedIndividual, Set<OWLClass>>();
+
 			AbstractRoleAssertionBox entailedAbstractRoleAssertion = new AbstractRoleAssertionBox();
 			Map<OWLNamedIndividual, Set<OWLNamedIndividual>> entailedSameasMap = new HashMap<OWLNamedIndividual, Set<OWLNamedIndividual>>();
+
 			int countMaterializedOntology = 0;// for monitoring only.
 			for (OWLOntology abstraction : abstractions) {
 				if (config.getDebuglevels().contains(DebugLevel.REASONING_ABSTRACTONTOLOGY)) {
@@ -206,22 +216,33 @@ public abstract class MaterializerTemplate implements Materializer {
 				logger.info("Info:Size of the (splitted) abstract ontology: " + abstraction.getAxiomCount());
 				InnerReasoner innerReasoner = getInnerReasoner(abstraction);
 				innerReasoner.computeEntailments();
-				this.loadingTimeOfInnerReasoner+=innerReasoner.getOverheadTimeToSetupReasoner();
+				this.loadingTimeOfInnerReasoner += innerReasoner.getOverheadTimeToSetupReasoner();
 				// we can use putAll since individuals in different abstractsion
 				// are
 				// disjointed.
 
-				entailedAbstractConceptAssertions.putAll(innerReasoner.getEntailedConceptAssertionsAsMap());
+				entailedAbstractConceptAssertionsForX.putAll(innerReasoner.getXEntailedConceptAssertionsAsMap());
+				entailedAbstractConceptAssertionsForY.putAll(innerReasoner.getYEntailedConceptAssertionsAsMap());
+				entailedAbstractConceptAssertionsForZ.putAll(innerReasoner.getZEntailedConceptAssertionsAsMap());
+
 				entailedAbstractRoleAssertion.addAll(innerReasoner.getEntailedRoleAssertions());
+
 				entailedSameasMap.putAll(innerReasoner.getSameAsMap());
+
 				if (config.getDebuglevels().contains(DebugLevel.REASONING_ABSTRACTONTOLOGY)) {
 					logger.info(
 							"***DEBUG REASONING_ABSTRACTONTOLOGY *** entailed Role assertions by abstract ontoogy:");
 					PrintingHelper.printSet(entailedAbstractRoleAssertion.getSetOfRoleAssertions());
 
 					logger.info(
-							"***DEBUG REASONING_ABSTRACTONTOLOGY *** entailed Concept assertions by abstract ontoogy:");
-					PrintingHelper.printMap(entailedAbstractConceptAssertions);
+							"***DEBUG REASONING_ABSTRACTONTOLOGY *** entailed Concept assertions of X by abstract ontoogy:");
+					PrintingHelper.printMap(entailedAbstractConceptAssertionsForX);
+					logger.info(
+							"***DEBUG REASONING_ABSTRACTONTOLOGY *** entailed Concept assertions of Z by abstract ontoogy:");
+					PrintingHelper.printMap(entailedAbstractConceptAssertionsForZ);
+					logger.info(
+							"***DEBUG REASONING_ABSTRACTONTOLOGY *** entailed Concept assertions of Y by abstract ontoogy:");
+					PrintingHelper.printMap(entailedAbstractConceptAssertionsForY);
 				}
 
 			}
@@ -229,14 +250,20 @@ public abstract class MaterializerTemplate implements Materializer {
 			 * (6). Transfer assertions to the original ABox
 			 */
 			logger.info("Transferring the entailments ...");
-			AssertionTransporter assertionTransporter = getAssertionTransporter(entailedAbstractConceptAssertions,
+			AssertionTransporter assertionTransporter = getAssertionTransporter(entailedAbstractConceptAssertionsForX,
+					entailedAbstractConceptAssertionsForY, entailedAbstractConceptAssertionsForZ,
 					entailedAbstractRoleAssertion, entailedSameasMap);
 			assertionTransporter.updateOriginalABox();
+
+			this.hasStopSignal = !(assertionTransporter.isABoxExtendedViaY()
+					|| assertionTransporter.isABoxExtendedViaZ()
+					|| assertionTransporter.isABoxExtendedWithNewSameasAssertions()
+					|| assertionTransporter.isABoxExtendedWithNewSpecialRoleAssertions());
+
 			updated = assertionTransporter.isABoxExtended();
 			if (updated) {
 				IndexedRoleAssertionList newlyAddedRoleAssertions = assertionTransporter.getNewlyAddedRoleAssertions();
-				Set<Set<Integer>> newlyAddedSameasAssertions = assertionTransporter
-						.getNewlyAddedSameasAssertions();
+				Set<Set<Integer>> newlyAddedSameasAssertions = assertionTransporter.getNewlyAddedSameasAssertions();
 				/*
 				 * (7). Compute deductive closure
 				 */
@@ -246,6 +273,7 @@ public abstract class MaterializerTemplate implements Materializer {
 				ruleEngine.incrementalMaterialize();
 
 			}
+
 			logger.info("Finished loop: " + currentLoop);
 
 		}
@@ -257,7 +285,7 @@ public abstract class MaterializerTemplate implements Materializer {
 		// get reasoning time
 		long endTime = System.currentTimeMillis();
 		this.reasoningTimeInSeconds = (endTime - startTime) / 1000;
-		this.reasoningTimeInSeconds-=this.loadingTimeOfInnerReasoner;
+		this.reasoningTimeInSeconds -= this.loadingTimeOfInnerReasoner;
 		/*
 		 * logging
 		 */
@@ -266,8 +294,9 @@ public abstract class MaterializerTemplate implements Materializer {
 		}
 
 		if (config.getLogInfos().contains(LogInfo.STATISTIC)) {
-//			int numberOfMaterializedConceptAssertions = this.normalizedORAROntology
-//					.getOWLAPIConceptAssertionsWHITOUTNormalizationSymbols().size();
+			// int numberOfMaterializedConceptAssertions =
+			// this.normalizedORAROntology
+			// .getOWLAPIConceptAssertionsWHITOUTNormalizationSymbols().size();
 			int numberOfMaterializedConceptAssertions = this.normalizedORAROntology
 					.getOWLAPIConceptAssertionsWithNormalizationSymbols().size();
 			int numberOfMaterializedRoleAssertions = this.normalizedORAROntology.getNumberOfRoleAssertions();
@@ -289,11 +318,12 @@ public abstract class MaterializerTemplate implements Materializer {
 		// typesLoop3.equals(typesLoop4));
 	}
 
-	protected abstract List<OWLOntology> getAbstractions(
-			Map<IndividualType, Set<Integer>> typeMap2Individuals);
+	protected abstract List<OWLOntology> getAbstractions(Map<IndividualType, Set<Integer>> typeMap2Individuals);
 
 	protected abstract AssertionTransporter getAssertionTransporter(
-			Map<OWLNamedIndividual, Set<OWLClass>> entailedAbstractConceptAssertions,
+			Map<OWLNamedIndividual, Set<OWLClass>> entailedAbstractConceptAssertionsForX,
+			Map<OWLNamedIndividual, Set<OWLClass>> entailedAbstractConceptAssertionsForY,
+			Map<OWLNamedIndividual, Set<OWLClass>> entailedAbstractConceptAssertionsForZ,
 			AbstractRoleAssertionBox entailedAbstractRoleAssertion,
 			Map<OWLNamedIndividual, Set<OWLNamedIndividual>> entailedSameasMap);
 
@@ -305,8 +335,8 @@ public abstract class MaterializerTemplate implements Materializer {
 		this.metaDataOfOntology.getTransitiveRoles().addAll(roleReasoner.getTransitiveRoles());
 		// this.metaDataOfOntology.getInverseRoleMap().putAll(roleReasoner.getInverseRoleMap());
 		this.metaDataOfOntology.getSubRoleMap().putAll(roleReasoner.getRoleHierarchyAsMap());
-//		logger.info("role hierarchy");
-//		PrintingHelper.printMap(roleReasoner.getRoleHierarchyAsMap());
+		// logger.info("role hierarchy");
+		// PrintingHelper.printMap(roleReasoner.getRoleHierarchyAsMap());
 	}
 
 	protected abstract InnerReasoner getInnerReasoner(OWLOntology abstraction);

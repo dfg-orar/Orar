@@ -133,7 +133,7 @@ public abstract class DLLiteExtension_MaterializerTemplate implements Materializ
 			}
 
 			// logging
-			if (config.getDebuglevels().contains(DebugLevel.TYPE_COMPUTING)) {
+			if (config.getDebuglevels().contains(DebugLevel.PRINT_TYPES)) {
 				logger.info("***DEBUG*** Types:");
 				PrintingHelper.printMap(typeMap2Individuals);
 			}

@@ -14,14 +14,27 @@ public class MapOperator {
 	 * @param key
 	 * @param addedValues
 	 */
-	public static <T1, T2> void addValuesToMap(Map<T1, Set<T2>> map, T1 key,
-			Set<T2> addedValues) {
+	public static <T1, T2> void addValuesToMap(Map<T1, Set<T2>> map, T1 key, Set<T2> addedValues) {
 		Set<T2> existingValues = map.get(key);
 		if (existingValues == null) {
 			existingValues = new HashSet<T2>();
 		}
-		existingValues.addAll(addedValues);
-		map.put(key, existingValues);
+		boolean hasNewElements = existingValues.addAll(addedValues);
+		if (hasNewElements) {
+			map.put(key, existingValues);
+		}
+
+	}
+
+	public static <T1, T2> void addValueToMap(Map<T1, Set<T2>> map, T1 key, T2 addedValue) {
+		Set<T2> existingValues = map.get(key);
+		if (existingValues == null) {
+			existingValues = new HashSet<T2>();
+		}
+		boolean hasNewElement = existingValues.add(addedValue);
+		if (hasNewElement) {
+			map.put(key, existingValues);
+		}
 
 	}
 }

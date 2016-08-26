@@ -44,6 +44,7 @@ import orar.materializer.HornSHIF.HornSHIF_Materializer_Pellet;
 import orar.materializer.HornSHOIF.HornSHOIF_Materializer_Fact;
 import orar.materializer.HornSHOIF.HornSHOIF_Materializer_Hermit;
 import orar.materializer.HornSHOIF.HornSHOIF_Materializer_Konclude;
+import orar.materializer.HornSHOIF.HornSHOIF_Materializer_KoncludeOptimized;
 import orar.materializer.HornSHOIF.HornSHOIF_Materializer_Pellet;
 import orar.modeling.ontology.OrarOntology;
 import orar.modeling.ontology2.MapbasedOrarOntology2;
@@ -302,7 +303,7 @@ public class OrarCLI {
 				materializer = new HornSHIF_Materializer_Konclude(orarOntology, intPort);
 				break;
 			case HORN_SHOIF_STRATEGY:
-				materializer = new HornSHOIF_Materializer_Konclude(orarOntology, intPort);
+				materializer = new HornSHOIF_Materializer_KoncludeOptimized(orarOntology, intPort);
 				break;
 			}
 			// if

@@ -107,7 +107,7 @@ public class Configuration {
 	}
 
 	public void addAllDebugInfos() {
-		addDebugLevels(DebugLevel.ABSTRACTION_CREATION, DebugLevel.TYPE_COMPUTING,
+		addDebugLevels(DebugLevel.ABSTRACTION_CREATION, DebugLevel.PRINT_TYPES,
 				DebugLevel.UPDATING_CONCEPT_ASSERTION, DebugLevel.REASONING, DebugLevel.MERGING_INDIVIDUALS_DIRECTLY,
 				DebugLevel.MERGING_INDIVIDUALS_BYABSTRACTION);
 	}

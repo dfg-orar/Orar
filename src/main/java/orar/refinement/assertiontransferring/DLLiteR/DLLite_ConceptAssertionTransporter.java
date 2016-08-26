@@ -126,4 +126,34 @@ public class DLLite_ConceptAssertionTransporter implements AssertionTransporter 
 	public Set<Set<Integer>> getNewlyAddedSameasAssertions() {
 		return new HashSet<Set<Integer>>();
 	}
+
+	@Override
+	public boolean isABoxExtendedViaX() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isABoxExtendedViaY() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isABoxExtendedViaZ() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isABoxExtendedWithNewSpecialRoleAssertions() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isABoxExtendedWithNewSameasAssertions() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

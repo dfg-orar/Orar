@@ -19,22 +19,29 @@ import orar.modeling.ontology2.OrarOntology2;
 import orar.refinement.abstractroleassertion.AbstractRoleAssertionBox;
 import orar.refinement.abstractroleassertion.RoleAssertionList;
 import orar.refinement.assertiontransferring.AssertionTransporterTemplate;
+import orar.refinement.assertiontransferring.AssertionTransporterTemplateOptimized;
 import orar.util.PrintingHelper;
 
-public class HornSHOIF_AssertionTransporter extends AssertionTransporterTemplate {
-	private Logger logger = Logger.getLogger(HornSHOIF_AssertionTransporter.class);
+public class HornSHOIF_AssertionTransporterOptimized extends AssertionTransporterTemplateOptimized {
+	private Logger logger = Logger.getLogger(HornSHOIF_AssertionTransporterOptimized.class);
 	private final IndividualIndexer indexer;
 	private MetaDataOfOntology metaDataOfOntology;
-	public HornSHOIF_AssertionTransporter(OrarOntology2 orarOntoloy,
-			Map<OWLNamedIndividual, Set<OWLClass>> abstractConceptAssertionsAsMap,
-			AbstractRoleAssertionBox abstractRoleAssertionBox,
-			Map<OWLNamedIndividual, Set<OWLNamedIndividual>> abstractSameasMap) {
+
+	public HornSHOIF_AssertionTransporterOptimized(OrarOntology2 orarOntoloy,
+			Map<OWLNamedIndividual, Set<OWLClass>> xAstractConceptAssertionsAsMapInput,
+			Map<OWLNamedIndividual, Set<OWLClass>> yAstractConceptAssertionsAsMapInput,
+			Map<OWLNamedIndividual, Set<OWLClass>> zAstractConceptAssertionsAsMapInput,
+			AbstractRoleAssertionBox abstractRoleAssertionBoxInput,
+			Map<OWLNamedIndividual, Set<OWLNamedIndividual>> abstractSameasMapInput) {
 		super(orarOntoloy);
-		this.abstractConceptAssertionsAsMap = abstractConceptAssertionsAsMap;
-		this.abstractRoleAssertionBox = abstractRoleAssertionBox;
-		this.abstractSameasMap = abstractSameasMap;
-		this.indexer= IndividualIndexer.getInstance();
-		this.metaDataOfOntology=MetaDataOfOntology.getInstance();
+		this.xAbstractConceptAssertionsAsMap=xAstractConceptAssertionsAsMapInput;
+		this.yAbstractConceptAssertionsAsMap=yAstractConceptAssertionsAsMapInput;
+		this.zAbstractConceptAssertionsAsMap=zAstractConceptAssertionsAsMapInput;
+		this.abstractRoleAssertionBox=abstractRoleAssertionBoxInput;
+		this.abstractSameasMap=abstractSameasMapInput;
+
+		this.indexer = IndividualIndexer.getInstance();
+		this.metaDataOfOntology = MetaDataOfOntology.getInstance();
 	}
 
 	@Override
@@ -59,8 +66,8 @@ public class HornSHOIF_AssertionTransporter extends AssertionTransporterTemplate
 			if (equivalentOriginalInds.size() > 1) {
 				if (this.orarOntology.addSameasAssertion(equivalentOriginalInds)) {
 					this.isABoxExtended = true;
-					
-					this.isABoxExtendedWithNewSameasAssertions=true;
+
+					this.isABoxExtendedWithNewSameasAssertions = true;
 					if (this.config.getDebuglevels().contains(DebugLevel.TRANSFER_SAMEAS)) {
 						logger.info("***DEBUG***TRANSFER_SAMEAS:");
 						PrintingHelper.printSet(equivalentOriginalInds);
@@ -89,16 +96,16 @@ public class HornSHOIF_AssertionTransporter extends AssertionTransporterTemplate
 			OWLObjectProperty role = roleAssertionList.getRole(index);
 			OWLNamedIndividual abstractObject = roleAssertionList.getObject(index);
 
-			Set<Integer> originalSubjects = this.dataForTransferingEntailments
-					.getOriginalIndividuals(abstractSubject);
-			Set<Integer> originalObjects = this.dataForTransferingEntailments
-					.getOriginalIndividuals(abstractObject);
+			Set<Integer> originalSubjects = this.dataForTransferingEntailments.getOriginalIndividuals(abstractSubject);
+			Set<Integer> originalObjects = this.dataForTransferingEntailments.getOriginalIndividuals(abstractObject);
 
 			for (Integer originalSubject : originalSubjects) {
 				for (Integer originalObject : originalObjects) {
 					if (this.orarOntology.addRoleAssertion(originalSubject, role, originalObject)) {
 						this.isABoxExtended = true;
-						
+						if (isSpecialRole(role)) {
+							this.isABoxExtendedWithNewSpecialRoleAssertions = true;
+						}
 						this.newRoleAssertions.addRoleAssertion(originalSubject, role, originalObject);
 
 						if (this.config.getDebuglevels().contains(DebugLevel.TRANSFER_ROLEASSERTION)) {
@@ -113,6 +120,12 @@ public class HornSHOIF_AssertionTransporter extends AssertionTransporterTemplate
 		}
 	}
 
+	private boolean isSpecialRole(OWLObjectProperty role) {
+		return (this.metaDataOfOntology.getFunctionalRoles().contains(role)
+				|| this.metaDataOfOntology.getInverseFunctionalRoles().contains(role)
+				|| this.metaDataOfOntology.getTransitiveRoles().contains(role));
+	}
+
 	private void transferRoleAssertionBetweenUAndNominals() {
 		RoleAssertionList roleAssertionList = this.abstractRoleAssertionBox.get_UandNominal_RoleAssertions();
 		int size = roleAssertionList.getSize();
@@ -122,15 +135,17 @@ public class HornSHOIF_AssertionTransporter extends AssertionTransporterTemplate
 			OWLNamedIndividual nominal = roleAssertionList.getObject(index);
 			Integer nominalInteger = indexer.getIndexOfOWLIndividual(nominal);
 
-			Set<Integer> originalSubjects = this.dataForTransferingEntailments
-					.getOriginalIndividuals(abstractSubject);
+			Set<Integer> originalSubjects = this.dataForTransferingEntailments.getOriginalIndividuals(abstractSubject);
 
 			for (Integer originalSubject : originalSubjects) {
 
 				if (this.orarOntology.addRoleAssertion(originalSubject, role, nominalInteger)) {
 					this.isABoxExtended = true;
+					if (isSpecialRole(role)) {
+						this.isABoxExtendedWithNewSpecialRoleAssertions = true;
+					}
 					this.newRoleAssertions.addRoleAssertion(originalSubject, role, nominalInteger);
-					
+
 					if (this.config.getDebuglevels().contains(DebugLevel.TRANSFER_ROLEASSERTION)) {
 						logger.info("***DEBUG***TRANSFER_ROLEASSERTION:");
 						logger.info(originalSubject + ", " + role + ", " + nominal);
@@ -151,15 +166,17 @@ public class HornSHOIF_AssertionTransporter extends AssertionTransporterTemplate
 			OWLObjectProperty role = roleAssertionList.getRole(index);
 			OWLNamedIndividual abstractObject = roleAssertionList.getObject(index);
 
-			Set<Integer> originalObjects = this.dataForTransferingEntailments
-					.getOriginalIndividuals(abstractObject);
+			Set<Integer> originalObjects = this.dataForTransferingEntailments.getOriginalIndividuals(abstractObject);
 
 			for (Integer eachOriginalObject : originalObjects) {
 
 				if (this.orarOntology.addRoleAssertion(nominalInteger, role, eachOriginalObject)) {
 					this.isABoxExtended = true;
+					if (isSpecialRole(role)) {
+						this.isABoxExtendedWithNewSpecialRoleAssertions = true;
+					}
 					this.newRoleAssertions.addRoleAssertion(nominalInteger, role, eachOriginalObject);
-					
+
 					if (this.config.getDebuglevels().contains(DebugLevel.TRANSFER_ROLEASSERTION)) {
 						logger.info("***DEBUG***TRANSFER_ROLEASSERTION:");
 						logger.info(nominal + ", " + role + ", " + eachOriginalObject);

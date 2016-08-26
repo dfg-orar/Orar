@@ -24,11 +24,15 @@ import orar.data.MetaDataOfOntology;
 import orar.refinement.abstractroleassertion.AbstractRoleAssertionBox;
 import orar.util.PrintingHelper;
 
-public abstract class InnerReasonerTemplate implements InnerReasoner {
+public abstract class InnerReasonerTemplateOptimized implements InnerReasoner {
 	/*
 	 * data
 	 */
-	protected final Map<OWLNamedIndividual, Set<OWLClass>> conceptAssertionsMap;
+//	protected final Map<OWLNamedIndividual, Set<OWLClass>> conceptAssertionsMap;
+	protected final Map<OWLNamedIndividual, Set<OWLClass>> xConceptAssertionsMap;
+	protected final Map<OWLNamedIndividual, Set<OWLClass>> yConceptAssertionsMap;
+	protected final Map<OWLNamedIndividual, Set<OWLClass>> zConceptAssertionsMap;
+
 	protected final Map<OWLNamedIndividual, Set<OWLNamedIndividual>> sameAsMap;
 	protected final AbstractRoleAssertionBox roleAssertionList;
 	protected long reasoningTime;
@@ -40,7 +44,7 @@ public abstract class InnerReasonerTemplate implements InnerReasoner {
 	/*
 	 * others
 	 */
-	private Logger logger = Logger.getLogger(InnerReasonerTemplate.class);
+	private Logger logger = Logger.getLogger(InnerReasonerTemplateOptimized.class);
 
 	protected final OWLOntology owlOntology;
 	protected OWLReasoner reasoner;
@@ -67,11 +71,14 @@ public abstract class InnerReasonerTemplate implements InnerReasoner {
 
 	protected final Map<OWLClass, Set<OWLNamedIndividual>> successorOfNominalMap2Instances;
 
-	public InnerReasonerTemplate(OWLOntology owlOntology) {
+	public InnerReasonerTemplateOptimized(OWLOntology owlOntology) {
 		/*
 		 * init data
 		 */
-		this.conceptAssertionsMap = new HashMap<OWLNamedIndividual, Set<OWLClass>>();
+//		this.conceptAssertionsMap = new HashMap<OWLNamedIndividual, Set<OWLClass>>();
+		this.xConceptAssertionsMap = new HashMap<OWLNamedIndividual, Set<OWLClass>>();
+		this.yConceptAssertionsMap = new HashMap<OWLNamedIndividual, Set<OWLClass>>();
+		this.zConceptAssertionsMap = new HashMap<OWLNamedIndividual, Set<OWLClass>>();
 		this.sameAsMap = new HashMap<OWLNamedIndividual, Set<OWLNamedIndividual>>();
 		this.roleAssertionList = new AbstractRoleAssertionBox();
 
@@ -101,9 +108,19 @@ public abstract class InnerReasonerTemplate implements InnerReasoner {
 	}
 
 	@Override
-	public Map<OWLNamedIndividual, Set<OWLClass>> getEntailedConceptAssertionsAsMap() {
+	public Map<OWLNamedIndividual, Set<OWLClass>> getXEntailedConceptAssertionsAsMap() {
 
-		return this.conceptAssertionsMap;
+		return this.xConceptAssertionsMap;
+	}
+	@Override
+	public Map<OWLNamedIndividual, Set<OWLClass>> getYEntailedConceptAssertionsAsMap() {
+
+		return this.yConceptAssertionsMap;
+	}
+	@Override
+	public Map<OWLNamedIndividual, Set<OWLClass>> getZEntailedConceptAssertionsAsMap() {
+
+		return this.zConceptAssertionsMap;
 	}
 
 	@Override
@@ -290,12 +307,11 @@ public abstract class InnerReasonerTemplate implements InnerReasoner {
 
 		for (OWLClass eachConceptName : allConceptsNames) {
 			Set<OWLNamedIndividual> instances = this.reasoner.getInstances(eachConceptName, false).getFlattened();
-		
+
 			/*
 			 * mark special instances possibly have new role assertions
 			 */
-			
-			
+
 			if (config.getDebuglevels().contains(DebugLevel.REASONING_ABSTRACTONTOLOGY)) {
 				logger.info("***DEBUG*** all instances of: " + eachConceptName);
 				PrintingHelper.printSet(instances);
@@ -337,7 +353,7 @@ public abstract class InnerReasonerTemplate implements InnerReasoner {
 				 * filter out U-individuals (in case of Horn-SHOIF)
 				 */
 				instances.removeAll(this.abstractDataFactory.getUAbstractIndividuals());
-				putIndividual2ConceptMap(instances, eachConceptName);
+				putToConceptAssertionsOfXYZ(instances, eachConceptName);
 			}
 		}
 		// logging
@@ -376,18 +392,38 @@ public abstract class InnerReasonerTemplate implements InnerReasoner {
 	 * @param concept
 	 * @param individual2ItsConcepts
 	 */
-	private void putIndividual2ConceptMap(Set<OWLNamedIndividual> instances, OWLClass concept) {
+	private void putToConceptAssertionsOfXYZ(Set<OWLNamedIndividual> instances, OWLClass concept) {
 		for (OWLNamedIndividual ind : instances) {
-			Set<OWLClass> existingConcepts = this.conceptAssertionsMap.get(ind);
-			if (existingConcepts == null) {
-				existingConcepts = new HashSet<OWLClass>();
-			}
-			boolean hasNewElement = existingConcepts.add(concept);
-			if (hasNewElement) {
-				this.conceptAssertionsMap.put(ind, existingConcepts);
+			if (this.abstractDataFactory.getXAbstractIndividuals().contains(ind)) {
+				putIndividual2ConceptMap(ind, concept, this.xConceptAssertionsMap);
+			} else if (this.abstractDataFactory.getYAbstractIndividuals().contains(ind)){
+				putIndividual2ConceptMap(ind, concept, this.yConceptAssertionsMap);
+			} else if (this.abstractDataFactory.getZAbstractIndividuals().contains(ind)){
+				putIndividual2ConceptMap(ind, concept, this.zConceptAssertionsMap);
 			}
 
 		}
+	}
+
+	/**
+	 * Put instances of a concept to the map: individual --> its concepts.
+	 * 
+	 * @param instances
+	 * @param concept
+	 * @param individual2ItsConcepts
+	 */
+	private void putIndividual2ConceptMap(OWLNamedIndividual ind, OWLClass concept,
+			Map<OWLNamedIndividual, Set<OWLClass>> assertionMap) {
+
+		Set<OWLClass> existingConcepts = assertionMap.get(ind);
+		if (existingConcepts == null) {
+			existingConcepts = new HashSet<OWLClass>();
+		}
+		boolean hasNewElement = existingConcepts.add(concept);
+		if (hasNewElement) {
+			assertionMap.put(ind, existingConcepts);
+		}
+
 	}
 
 	@Override
@@ -426,26 +462,5 @@ public abstract class InnerReasonerTemplate implements InnerReasoner {
 		this.reasoningTime = (endTime - startTime) / 1000; // get seconds
 		dispose();
 		return true;
-	}
-	@SuppressWarnings("Don't use, this method is only for being compatiable with the optimized version")
-	public Map<OWLNamedIndividual, Set<OWLClass>> getXEntailedConceptAssertionsAsMap(){
-		/*
-		 * just to be comparable with the new interface
-		 */
-		return new HashMap<>();
-	}
-	@SuppressWarnings("Don't use, this method is only for being compatiable with the optimized version")
-	public Map<OWLNamedIndividual, Set<OWLClass>> getYEntailedConceptAssertionsAsMap(){
-		/*
-		 * just to be comparable with the new interface
-		 */
-		return new HashMap<>();
-	}
-	@SuppressWarnings("Don't use, this method is only for being compatiable with the optimized version")
-	public Map<OWLNamedIndividual, Set<OWLClass>> getZEntailedConceptAssertionsAsMap(){
-		/*
-		 * just to be comparable with the new interface
-		 */
-		return new HashMap<>();
 	}
 }

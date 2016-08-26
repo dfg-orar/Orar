@@ -97,7 +97,7 @@ public abstract class ConsistencyCheckerTemplate implements ConsistencyChecker {
 			logger.info(StatisticVocabulary.NUMBER_OF_TYPES + typeMap2Individuals.size());
 		}
 
-		if (config.getDebuglevels().contains(DebugLevel.TYPE_COMPUTING)) {
+		if (config.getDebuglevels().contains(DebugLevel.PRINT_TYPES)) {
 			logger.info("***DEBUG*** Types:");
 			PrintingHelper.printMap(typeMap2Individuals);
 		}

@@ -116,7 +116,7 @@ public abstract class DLLite_ConceptMaterializerTemplate implements Materializer
 			}
 	
 			// logging
-			if (config.getDebuglevels().contains(DebugLevel.TYPE_COMPUTING)) {
+			if (config.getDebuglevels().contains(DebugLevel.PRINT_TYPES)) {
 				logger.info("***DEBUG*** Types:");
 				PrintingHelper.printMap(typeMap2Individuals);
 			}
@@ -248,7 +248,7 @@ public abstract class DLLite_ConceptMaterializerTemplate implements Materializer
 		}
 
 		// logging
-		if (config.getDebuglevels().contains(DebugLevel.TYPE_COMPUTING)) {
+		if (config.getDebuglevels().contains(DebugLevel.PRINT_TYPES)) {
 			logger.info("***DEBUG*** Types:");
 			PrintingHelper.printMap(typeMap2Individuals);
 		}

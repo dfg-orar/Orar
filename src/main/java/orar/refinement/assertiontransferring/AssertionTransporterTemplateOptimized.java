@@ -17,42 +17,55 @@ import orar.config.DebugLevel;
 import orar.config.LogInfo;
 import orar.data.DataForTransferingEntailments;
 import orar.indexing.IndividualIndexer;
-import orar.modeling.ontology.OrarOntology;
 import orar.modeling.ontology2.OrarOntology2;
 import orar.modeling.roleassertion2.IndexedRoleAssertionList;
 import orar.refinement.abstractroleassertion.AbstractRoleAssertionBox;
 import orar.refinement.abstractroleassertion.RoleAssertionList;
 import orar.util.PrintingHelper;
 
-public abstract class AssertionTransporterTemplate implements AssertionTransporter {
+public abstract class AssertionTransporterTemplateOptimized implements AssertionTransporter {
 	// original ontology
 	protected final OrarOntology2 orarOntology;
 	// entailments of the abstraction
-	protected Map<OWLNamedIndividual, Set<OWLClass>> abstractConceptAssertionsAsMap;
+	protected Map<OWLNamedIndividual, Set<OWLClass>> xAbstractConceptAssertionsAsMap;
+	protected Map<OWLNamedIndividual, Set<OWLClass>> yAbstractConceptAssertionsAsMap;
+	protected Map<OWLNamedIndividual, Set<OWLClass>> zAbstractConceptAssertionsAsMap;
 	protected AbstractRoleAssertionBox abstractRoleAssertionBox;
 	protected Map<OWLNamedIndividual, Set<OWLNamedIndividual>> abstractSameasMap;
 	// flag for abox updating
 	protected boolean isABoxExtended;
+	protected boolean isABoxExtendedViaX;
+	protected boolean isABoxExtendedViaY;
+	protected boolean isABoxExtendedViaZ;
+	protected boolean isABoxExtendedWithNewSpecialRoleAssertions;
+	protected boolean isABoxExtendedWithNewSameasAssertions;
 	// debugging
 	protected final Configuration config;
-	private static final Logger logger = Logger.getLogger(AssertionTransporterTemplate.class);
+	private static final Logger logger = Logger.getLogger(AssertionTransporterTemplateOptimized.class);
 	// map/data for transferring assertions
 	protected final DataForTransferingEntailments dataForTransferingEntailments;
 	// output
 	protected final IndexedRoleAssertionList newRoleAssertions;
 	protected final Set<Set<Integer>> newSameasAssertions;
-	
-	protected boolean isABoxExtendedWithNewSpecialRoleAssertions;
-	protected boolean isABoxExtendedWithNewSameasAssertions;
 
-	public AssertionTransporterTemplate(OrarOntology2 orarOntoloy) {
+	public AssertionTransporterTemplateOptimized(OrarOntology2 orarOntoloy) {
 		this.orarOntology = orarOntoloy;
+
 		// this.abstractConceptAssertionsAsMap = new HashMap<>();
 		// this.abstractRoleAssertionBox = new AbstractRoleAssertionBox();
 		// this.abstractSameasMap = new HashMap<>();
+		/*
+		 * initialize flags of updating
+		 */
 		this.isABoxExtended = false;
-		this.isABoxExtendedWithNewSpecialRoleAssertions=false;
-		this.isABoxExtendedWithNewSpecialRoleAssertions=false;
+		this.isABoxExtendedViaX = false;
+		this.isABoxExtendedViaY = false;
+		this.isABoxExtendedViaZ = false;
+		this.isABoxExtendedWithNewSpecialRoleAssertions = false;
+		this.isABoxExtendedWithNewSameasAssertions = false;
+		/*
+		 * others
+		 */
 		this.config = Configuration.getInstance();
 		this.dataForTransferingEntailments = DataForTransferingEntailments.getInstance();
 		this.newRoleAssertions = new IndexedRoleAssertionList();
@@ -64,9 +77,10 @@ public abstract class AssertionTransporterTemplate implements AssertionTransport
 		long startUpdateConceptAssertion = System.currentTimeMillis();
 		transferConceptAssertions();// not change
 		long endUpdateConceptAssertion = System.currentTimeMillis();
-		if (this.config.getLogInfos().contains(LogInfo.PERFORMANCE)){
-			long updateingConceptAsesrtionTime = (endUpdateConceptAssertion-startUpdateConceptAssertion)/1000;
-			logger.info("Time for updating concep assertions in the original ABox in seconds: "+updateingConceptAsesrtionTime);
+		if (this.config.getLogInfos().contains(LogInfo.PERFORMANCE)) {
+			long updateingConceptAsesrtionTime = (endUpdateConceptAssertion - startUpdateConceptAssertion) / 1000;
+			logger.info("Time for updating concep assertions in the original ABox in seconds: "
+					+ updateingConceptAsesrtionTime);
 		}
 		transferRoleAssertions();// not change
 		transferSameasAssertions();// varies
@@ -113,11 +127,11 @@ public abstract class AssertionTransporterTemplate implements AssertionTransport
 			Set<Integer> originalIndsCorrespondingToX = this.dataForTransferingEntailments
 					.getOriginalIndividuals(xAbstractIndiv);
 			for (Integer eachOriginalIndiv : originalIndsCorrespondingToX) {
-				Set<Integer> allSubjects = this.orarOntology.getPredecessors(eachOriginalIndiv,
-						roleConnectsZandX);
+				Set<Integer> allSubjects = this.orarOntology.getPredecessors(eachOriginalIndiv, roleConnectsZandX);
 				for (Integer eachSubject : allSubjects) {
 					if (this.orarOntology.addRoleAssertion(eachSubject, roleInEntailedAssertion, eachOriginalIndiv)) {
 						this.isABoxExtended = true;
+						this.isABoxExtendedWithNewSpecialRoleAssertions = true;
 						this.newRoleAssertions.addRoleAssertion(eachSubject, roleInEntailedAssertion,
 								eachOriginalIndiv);
 					}
@@ -159,11 +173,11 @@ public abstract class AssertionTransporterTemplate implements AssertionTransport
 			Set<Integer> originalIndsCorrespondingToX = this.dataForTransferingEntailments
 					.getOriginalIndividuals(xAbstractIndiv);
 			for (Integer eachOriginalIndiv : originalIndsCorrespondingToX) {
-				Set<Integer> allObjects = this.orarOntology.getSuccessors(eachOriginalIndiv,
-						roleConnectsXandY);
+				Set<Integer> allObjects = this.orarOntology.getSuccessors(eachOriginalIndiv, roleConnectsXandY);
 				for (Integer eachObject : allObjects) {
 					if (this.orarOntology.addRoleAssertion(eachOriginalIndiv, roleInEntailedAssertion, eachObject)) {
 						this.isABoxExtended = true;
+						this.isABoxExtendedWithNewSpecialRoleAssertions = true;
 						this.newRoleAssertions.addRoleAssertion(eachOriginalIndiv, roleInEntailedAssertion, eachObject);
 					}
 				}
@@ -190,26 +204,36 @@ public abstract class AssertionTransporterTemplate implements AssertionTransport
 			for (Integer eachOriginalInd : allOriginalInds) {
 				if (this.orarOntology.addRoleAssertion(eachOriginalInd, role, eachOriginalInd)) {
 					this.isABoxExtended = true;
+					this.isABoxExtendedWithNewSpecialRoleAssertions = true;
 					this.newRoleAssertions.addRoleAssertion(eachOriginalInd, role, eachOriginalInd);
 				}
 			}
 		}
 	}
 
+	protected void transferConceptAssertions() {
+		this.isABoxExtendedViaX = transferConceptAssertions(this.xAbstractConceptAssertionsAsMap,
+				this.dataForTransferingEntailments.getMap_XAbstractIndiv_2_OriginalIndivs());
+		this.isABoxExtendedViaY = transferConceptAssertions(this.yAbstractConceptAssertionsAsMap,
+				this.dataForTransferingEntailments.getMap_YAbstractIndiv_2_OriginalIndivs());
+		this.isABoxExtendedViaZ = transferConceptAssertions(this.zAbstractConceptAssertionsAsMap,
+				this.dataForTransferingEntailments.getMap_ZAbstractIndiv_2_OriginalIndivs());
+	}
+
 	/**
 	 * add concept assertions based on concept assertions of representatives
 	 * (X,Y,Z) for combined-types.
 	 */
-	protected void transferConceptAssertions() {
-		Iterator<Entry<OWLNamedIndividual, Set<OWLClass>>> iterator = this.abstractConceptAssertionsAsMap.entrySet()
-				.iterator();
+	protected boolean transferConceptAssertions(Map<OWLNamedIndividual, Set<OWLClass>> assertionMap,
+			Map<OWLNamedIndividual, Set<Integer>> mapFromAbstractIndividual2OriginalIndividual) {
+		Iterator<Entry<OWLNamedIndividual, Set<OWLClass>>> iterator = assertionMap.entrySet().iterator();
+		boolean hasNewAssertionsFromThisMap = false;
 		while (iterator.hasNext()) {
 			Entry<OWLNamedIndividual, Set<OWLClass>> entry = iterator.next();
 			OWLNamedIndividual abstractInd = entry.getKey();
 			Set<OWLClass> concepts = entry.getValue();
 			if (concepts != null) {
-				Set<Integer> originalIndividuals = this.dataForTransferingEntailments
-						.getOriginalIndividuals(abstractInd);
+				Set<Integer> originalIndividuals = mapFromAbstractIndividual2OriginalIndividual.get(abstractInd);
 				for (Integer originalInd : originalIndividuals) {
 
 					// /*
@@ -241,10 +265,12 @@ public abstract class AssertionTransporterTemplate implements AssertionTransport
 						existingAssertedConcept.addAll(this.orarOntology.getAssertedConcepts(originalInd));
 					}
 					if (this.orarOntology.addManyConceptAssertions(originalInd, concepts)) {
+						hasNewAssertionsFromThisMap = true;
 						this.isABoxExtended = true;
 						if (this.config.getDebuglevels().contains(DebugLevel.TRANSFER_CONCEPTASSERTION)) {
 							logger.info("***DEBUG***TRANSFER_CONCEPTASSERTION:");
-							logger.info("For individual:" + IndividualIndexer.getInstance().getIndividualString(originalInd));
+							logger.info("For individual:"
+									+ IndividualIndexer.getInstance().getIndividualString(originalInd));
 							logger.info("Existing asserted concepts:");
 							PrintingHelper.printSet(existingAssertedConcept);
 							logger.info("Newly added asserted concepts:" + concepts);
@@ -254,13 +280,33 @@ public abstract class AssertionTransporterTemplate implements AssertionTransport
 				}
 			}
 		}
-
+		return hasNewAssertionsFromThisMap;
 	}
 
 	@Override
 	public boolean isABoxExtended() {
 
 		return this.isABoxExtended;
+	}
+
+	public boolean isABoxExtendedViaX() {
+		return this.isABoxExtendedViaX;
+	}
+
+	public boolean isABoxExtendedViaY() {
+		return this.isABoxExtendedViaY;
+	}
+
+	public boolean isABoxExtendedViaZ() {
+		return this.isABoxExtendedViaZ;
+	}
+
+	public boolean isABoxExtendedWithNewSameasAssertions() {
+		return this.isABoxExtendedWithNewSameasAssertions;
+	}
+
+	public boolean isABoxExtendedWithNewSpecialRoleAssertions() {
+		return this.isABoxExtendedWithNewSpecialRoleAssertions;
 	}
 
 	@Override
@@ -271,25 +317,5 @@ public abstract class AssertionTransporterTemplate implements AssertionTransport
 	@Override
 	public Set<Set<Integer>> getNewlyAddedSameasAssertions() {
 		return this.newSameasAssertions;
-	}
-	@SuppressWarnings("Don't use, this method is only for being compatiable with the optimized version")
-	public boolean isABoxExtendedViaX(){
-		return false; 
-	}
-	@SuppressWarnings("Don't use, this method is only for being compatiable with the optimized version")
-	public boolean isABoxExtendedViaY(){
-		return false;
-	}
-	@SuppressWarnings("Don't use, this method is only for being compatiable with the optimized version")
-	public boolean isABoxExtendedViaZ(){
-		return false;
-	}
-	@SuppressWarnings("Don't use, this method is only for being compatiable with the optimized version")
-	public boolean isABoxExtendedWithNewSpecialRoleAssertions(){
-		return false;
-	}
-	@SuppressWarnings("Don't use, this method is only for being compatiable with the optimized version")
-	public boolean isABoxExtendedWithNewSameasAssertions(){
-		return false;
 	}
 }

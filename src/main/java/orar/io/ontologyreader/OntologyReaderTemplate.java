@@ -219,7 +219,7 @@ public abstract class OntologyReaderTemplate implements OntologyReader {
 		/*
 		 * Debug
 		 */
-		if (config.getDebuglevels().contains(DebugLevel.NORMALIZATION)) {
+		if (config.getDebuglevels().contains(DebugLevel.PRINT_NORMALIZATION)) {
 			logger.info("");
 			logger.info("***DEBUG: Normalized Ontology");
 
