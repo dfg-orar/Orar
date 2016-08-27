@@ -332,6 +332,12 @@ public class MapbasedOrarOntology2 implements OrarOntology2 {
 
 	}
 
+	
+//	@Override
+//	public boolean addManyRoleAssertions(int subject, OWLObjectProperty role, Set<Integer> objects) {
+//		return this.roleAssertionBox.addManyRoleAssertions(subject, role, objects);
+//
+//	}
 	@Override
 	public boolean addSameAsAssertion(int individual, int equalIndividual) {
 		return this.sameasBox.addSameAsAssertion(individual, equalIndividual);

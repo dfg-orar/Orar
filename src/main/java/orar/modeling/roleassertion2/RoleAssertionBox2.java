@@ -29,7 +29,7 @@ public interface RoleAssertionBox2 {
 	 * @return true if the assertion is NEWLY added, false otherwise
 	 */
 	public boolean addRoleAssertion(Integer subject, OWLObjectProperty role, Integer object);
-
+//	public boolean addManyRoleAssertions(int subject, OWLObjectProperty role, Set<Integer> objects);
 	/**
 	 * @return the number of role assertions when the ontology is first created.
 	 *         This number is computed directly from the up-to-date maps storing
@@ -80,4 +80,6 @@ public interface RoleAssertionBox2 {
 	 */
 	public Map<OWLObjectProperty, Set<Integer>> getPredecessorRoleAssertionsAsMap(
 			Integer objectIndividual);
+
+	
 }

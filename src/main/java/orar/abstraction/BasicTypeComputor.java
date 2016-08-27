@@ -2,7 +2,9 @@ package orar.abstraction;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import org.semanticweb.owlapi.model.OWLClass;
@@ -60,21 +62,21 @@ public class BasicTypeComputor implements TypeComputor {
 				processedIndividuals.addAll(sameIndsOfCurrentIndividual);
 				// get element of accumulate type
 				Set<OWLClass> concepts = getConcepts(sameIndsOfCurrentIndividual, orarOntology);
-				Set<OWLObjectProperty> preRoles = getPreRoles(sameIndsOfCurrentIndividual, orarOntology);
-				Set<OWLObjectProperty> sucRoles = getSuccRoles(sameIndsOfCurrentIndividual, orarOntology);
+				Set<OWLObjectProperty> preRoles = getPreRoles(sameIndsOfCurrentIndividual, currentIndividual, orarOntology);
+				Set<OWLObjectProperty> sucRoles = getSuccRoles(sameIndsOfCurrentIndividual, currentIndividual,orarOntology);
 
 				// /*
 				// * small optimization: update also concept for all same
 				// insividuals. It will reduce number of refinement steps
 				// */
-//				 for (Integer eachInd : sameIndsOfCurrentIndividual) {
-//				 orarOntology.addManyConceptAssertions(eachInd, concepts);
-//				 }
-//				 
-//				 for (Integer eachInd : sameIndsOfCurrentIndividual) {
-//					 orarOntology.addManyConceptAssertions(eachInd, concepts);
-//					 }
-				 orarOntology.addManyConceptAssertions(currentIndividual, concepts);
+				// for (Integer eachInd : sameIndsOfCurrentIndividual) {
+				// orarOntology.addManyConceptAssertions(eachInd, concepts);
+				// }
+				//
+				// for (Integer eachInd : sameIndsOfCurrentIndividual) {
+				// orarOntology.addManyConceptAssertions(eachInd, concepts);
+				// }
+				orarOntology.addManyConceptAssertions(currentIndividual, concepts);
 				// create type and add to the resulting map
 				IndividualType type = new BasicIndividualType(concepts, preRoles, sucRoles);
 
@@ -83,7 +85,9 @@ public class BasicTypeComputor implements TypeComputor {
 				// MapOperator.addValuesToMap(typeMap2Individuals, type,
 				// sameIndsOfCurrentIndividual);
 				MapOperator.addValueToMap(typeMap2Individuals, type, currentIndividual);
-				// Map individual to its type
+				/*
+				 * Map individual to its type, only need for computing over-approximation
+				 */
 				mapIndividual2Type(sameIndsOfCurrentIndividual, type);
 			}
 		}
@@ -141,11 +145,24 @@ public class BasicTypeComputor implements TypeComputor {
 	 * @param orarOntology
 	 * @return a set of successor roles of all individual in {@code individuals}
 	 */
-	private Set<OWLObjectProperty> getSuccRoles(Set<Integer> individuals, OrarOntology2 orarOntology) {
+	private Set<OWLObjectProperty> getSuccRoles(Set<Integer> individuals, int representative, OrarOntology2 orarOntology) {
 		Set<OWLObjectProperty> accumulatedRoles = new HashSet<OWLObjectProperty>();
 		for (Integer ind : individuals) {
-
-			Set<OWLObjectProperty> sucRoles = orarOntology.getSuccessorRoleAssertionsAsMap(ind).keySet();
+			Map<OWLObjectProperty, Set<Integer>> sucAssertionMap = orarOntology.getSuccessorRoleAssertionsAsMap(ind);
+			Set<OWLObjectProperty> sucRoles = sucAssertionMap.keySet();
+			
+			/*
+			 * add role assertion for the representative ind. THis will reduce refinement steps.
+			 */
+			Iterator<Entry<OWLObjectProperty, Set<Integer>>> iterator = sucAssertionMap.entrySet().iterator();
+			while (iterator.hasNext()){
+				Entry<OWLObjectProperty, Set<Integer>> entry = iterator.next();
+				OWLObjectProperty sucRole = entry.getKey();
+				Set<Integer> succInds = entry.getValue();
+				for (Integer eachSucc:succInds){
+					orarOntology.addRoleAssertion(representative, sucRole, eachSucc);
+				}
+			}
 
 			accumulatedRoles.addAll(sucRoles);
 		}
@@ -160,13 +177,27 @@ public class BasicTypeComputor implements TypeComputor {
 	 * @return a set of predecessor roles of all individual in
 	 *         {@code individuals}
 	 */
-	private Set<OWLObjectProperty> getPreRoles(Set<Integer> individuals, OrarOntology2 orarOntology) {
+	private Set<OWLObjectProperty> getPreRoles(Set<Integer> individuals, Integer representative, OrarOntology2 orarOntology) {
 		Set<OWLObjectProperty> accumulatedRoles = new HashSet<OWLObjectProperty>();
 		for (Integer ind : individuals) {
 
-			Set<OWLObjectProperty> sucRoles = orarOntology.getPredecessorRoleAssertionsAsMap(ind).keySet();
-
-			accumulatedRoles.addAll(sucRoles);
+			Map<OWLObjectProperty, Set<Integer>> predecessorAssertionMap = orarOntology.getPredecessorRoleAssertionsAsMap(ind);
+			Set<OWLObjectProperty> preRoles = predecessorAssertionMap.keySet();
+			
+			/*
+			 * add role assertions of same individual for the representative one. This will reduce refinements
+			 */
+			Iterator<Entry<OWLObjectProperty, Set<Integer>>> iterator = predecessorAssertionMap.entrySet().iterator();
+			while (iterator.hasNext()){
+				Entry<OWLObjectProperty, Set<Integer>> entry = iterator.next();
+				Set<Integer> predecessors = entry.getValue();
+				OWLObjectProperty preRole = entry.getKey();
+				for (Integer eachPredecessors:predecessors){
+					orarOntology.addRoleAssertion(eachPredecessors, preRole, representative);
+				}
+			}
+			
+			accumulatedRoles.addAll(preRoles);
 		}
 		return accumulatedRoles;
 

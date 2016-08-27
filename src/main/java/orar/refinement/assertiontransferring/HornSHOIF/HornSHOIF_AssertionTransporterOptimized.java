@@ -70,7 +70,7 @@ public class HornSHOIF_AssertionTransporterOptimized extends AssertionTransporte
 					this.isABoxExtendedWithNewSameasAssertions = true;
 					if (this.config.getDebuglevels().contains(DebugLevel.TRANSFER_SAMEAS)) {
 						logger.info("***DEBUG***TRANSFER_SAMEAS:");
-						PrintingHelper.printSet(equivalentOriginalInds);
+						PrintingHelper.printSet(IndividualIndexer.getInstance().getOWLIndividuals(equivalentOriginalInds));
 						logger.info("updated=true");
 					}
 					this.newSameasAssertions.add(equivalentOriginalInds);
@@ -103,9 +103,9 @@ public class HornSHOIF_AssertionTransporterOptimized extends AssertionTransporte
 				for (Integer originalObject : originalObjects) {
 					if (this.orarOntology.addRoleAssertion(originalSubject, role, originalObject)) {
 						this.isABoxExtended = true;
-						if (isSpecialRole(role)) {
+//						if (isSpecialRole(role)) {
 							this.isABoxExtendedWithNewSpecialRoleAssertions = true;
-						}
+//						}
 						this.newRoleAssertions.addRoleAssertion(originalSubject, role, originalObject);
 
 						if (this.config.getDebuglevels().contains(DebugLevel.TRANSFER_ROLEASSERTION)) {
@@ -135,20 +135,23 @@ public class HornSHOIF_AssertionTransporterOptimized extends AssertionTransporte
 			OWLNamedIndividual nominal = roleAssertionList.getObject(index);
 			Integer nominalInteger = indexer.getIndexOfOWLIndividual(nominal);
 
-			Set<Integer> originalSubjects = this.dataForTransferingEntailments.getOriginalIndividuals(abstractSubject);
-
+			Set<Integer> originalSubjects = this.dataForTransferingEntailments.getMap_UAbstractIndiv_2_OriginalIndivs().get(abstractSubject);
+//			Set<Integer> originalSubjects = this.dataForTransferingEntailments.getOriginalIndividuals(abstractSubject);
+			if (originalSubjects==null) {
+				originalSubjects= new HashSet<>();
+			}
 			for (Integer originalSubject : originalSubjects) {
 
 				if (this.orarOntology.addRoleAssertion(originalSubject, role, nominalInteger)) {
 					this.isABoxExtended = true;
-					if (isSpecialRole(role)) {
+//					if (isSpecialRole(role)) {
 						this.isABoxExtendedWithNewSpecialRoleAssertions = true;
-					}
+//					}
 					this.newRoleAssertions.addRoleAssertion(originalSubject, role, nominalInteger);
 
 					if (this.config.getDebuglevels().contains(DebugLevel.TRANSFER_ROLEASSERTION)) {
 						logger.info("***DEBUG***TRANSFER_ROLEASSERTION:");
-						logger.info(originalSubject + ", " + role + ", " + nominal);
+						logger.info(IndividualIndexer.getInstance().getIndividualString(originalSubject )+ ", " + role + ", " + nominal);
 						logger.info("updated=true");
 					}
 				}
@@ -172,9 +175,9 @@ public class HornSHOIF_AssertionTransporterOptimized extends AssertionTransporte
 
 				if (this.orarOntology.addRoleAssertion(nominalInteger, role, eachOriginalObject)) {
 					this.isABoxExtended = true;
-					if (isSpecialRole(role)) {
+//					if (isSpecialRole(role)) {
 						this.isABoxExtendedWithNewSpecialRoleAssertions = true;
-					}
+//					}
 					this.newRoleAssertions.addRoleAssertion(nominalInteger, role, eachOriginalObject);
 
 					if (this.config.getDebuglevels().contains(DebugLevel.TRANSFER_ROLEASSERTION)) {

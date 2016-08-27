@@ -124,6 +124,8 @@ public class IndividualIndexer {
 		}
 		return owlIndividuals;
 	}
+	
+	
 
 	public Integer getSize() {
 		return this.index;

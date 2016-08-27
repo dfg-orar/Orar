@@ -26,6 +26,9 @@ public class MaterializeUobm1 {
 //		Configuration.getInstance().addDebugLevels(DebugLevel.UPDATING_CONCEPT_ASSERTION, DebugLevel.TRANSFER_CONCEPTASSERTION);
 		Configuration.getInstance().clearLogInfoLevels();
 		Configuration.getInstance().addLoginfoLevels(LogInfo.STATISTIC, LogInfo.LOADING_TIME, LogInfo.REASONING_TIME);
+//		Configuration.getInstance().addDebugLevels(DebugLevel.UPDATING_CONCEPT_ASSERTION, DebugLevel.TRANSFER_ROLEASSERTION);
+//		Configuration.getInstance().addDebugLevels(DebugLevel.TRANSFER_ROLEASSERTION, DebugLevel.SAVE_NORMALIZED_ONTOLOGY);
+		Configuration.getInstance().addDebugLevels(DebugLevel.UPDATING_CONCEPT_ASSERTION,DebugLevel.TRANSFER_ROLEASSERTION,DebugLevel.TRANSFER_SAMEAS);
 		runWithCombinedTBoxAndABoxes();
 
 	}

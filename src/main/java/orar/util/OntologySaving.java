@@ -4,6 +4,7 @@ import java.io.File;
 
 import org.apache.log4j.Logger;
 import org.semanticweb.owlapi.apibinding.OWLManager;
+import org.semanticweb.owlapi.formats.RDFXMLOntologyFormat;
 import org.semanticweb.owlapi.io.OWLFunctionalSyntaxOntologyFormat;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLOntology;
@@ -17,7 +18,8 @@ public class OntologySaving {
 
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 		logger.info("Saving ontology to a file ..." + fileName);
-		OWLFunctionalSyntaxOntologyFormat functionalFormat = new OWLFunctionalSyntaxOntologyFormat();
+//		OWLFunctionalSyntaxOntologyFormat functionalFormat = new OWLFunctionalSyntaxOntologyFormat();
+		RDFXMLOntologyFormat functionalFormat = new RDFXMLOntologyFormat();
 		// OWLXMLOntologyFormat functionalFormat = new
 		// OWLXMLOntologyFormat();
 		File file = new File(fileName);

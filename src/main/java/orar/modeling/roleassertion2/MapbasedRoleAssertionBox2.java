@@ -80,7 +80,23 @@ public class MapbasedRoleAssertionBox2 implements RoleAssertionBox2 {
 		return hasNewElement;
 
 	}
-
+//	public boolean addManyRoleAssertions(int subject, OWLObjectProperty role, Set<Integer> objects);
+//	@Override
+//	public boolean addManyRoleAssertions(int subject, OWLObjectProperty role, Set<Integer> objects) {
+//		for (eachObject: objects){
+//			
+//		}
+//		boolean hasNewElement = addManyRoleAssertionsToMapWithIndividualAsKey(subject, role, objects,
+//				this.roleAssertionMapWithSubjectAsKey);
+//		if (hasNewElement) {
+//			addRoleAssertionToMapWithIndividualAsKey(object, role, subject, this.roleAssertionMapWithObjectAsKey);
+//			addRoleAssertionToMapWithRoleAsKey(role, subject, this.roleAssertionMapWithRoleAsKeyAndSubjectAsValue);
+//			addRoleAssertionToMapWithRoleAsKey(role, object, this.roleAssertionMapWithRoleAsKeyAndObjectAsValue);
+//		}
+//		return hasNewElement;
+//
+//	}
+//	
 	private void addRoleAssertionToMapWithRoleAsKey(OWLObjectProperty role, Integer individual,
 			Map<OWLObjectProperty, Set<Integer>> roleAssertionMapWithRoleAsKey) {
 
@@ -120,7 +136,24 @@ public class MapbasedRoleAssertionBox2 implements RoleAssertionBox2 {
 		}
 		return addingSuccess;
 	}
+	boolean addManyRoleAssertionsToMapWithIndividualAsKey(Integer ind1, OWLObjectProperty property, Set<Integer> manyInds2,
+			Map<Integer, Map<OWLObjectProperty, Set<Integer>>> map) {
 
+		Map<OWLObjectProperty, Set<Integer>> subMap = map.get(ind1);
+		if (subMap == null) {
+			subMap = new HashMap<OWLObjectProperty, Set<Integer>>();
+		}
+		Set<Integer> neighbours = subMap.get(property);
+		if (neighbours == null) {
+			neighbours = new HashSet<Integer>();
+		}
+		boolean addingSuccess = neighbours.addAll(manyInds2);
+		if (addingSuccess) {
+			subMap.put(property, neighbours);
+			map.put(ind1, subMap);
+		}
+		return addingSuccess;
+	}
 	// /**
 	// * @param ind1
 	// * @param property

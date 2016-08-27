@@ -107,7 +107,8 @@ public abstract class MaterializerTemplateOptimized implements Materializer {
 		// HashSet<Object> typesLoop3 = new HashSet<>();
 		// HashSet<Object> typesLoop4 = new HashSet<>();
 
-		while (updated & !hasStopSignal) {
+//		while (updated & !hasStopSignal) {
+			while (updated ) {
 			currentLoop = this.currentLoop + 1;
 			logger.info("Current loop: " + currentLoop);
 			/*

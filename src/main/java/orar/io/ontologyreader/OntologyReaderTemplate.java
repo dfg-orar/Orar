@@ -1,6 +1,9 @@
 package orar.io.ontologyreader;
 
 import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.apache.log4j.Logger;
 import org.semanticweb.owlapi.apibinding.OWLManager;
@@ -20,6 +23,7 @@ import orar.normalization.Normalizer;
 import orar.normalization.transitivity.TransitivityNormalizer;
 import orar.normalization.transitivity.TransitivityNormalizerWithHermit;
 import orar.util.OntologyInfo;
+import orar.util.OntologySaving;
 import orar.util.OntologyStatistic;
 import orar.util.PrintingHelper;
 
@@ -38,10 +42,10 @@ public abstract class OntologyReaderTemplate implements OntologyReader {
 	public OrarOntology2 getNormalizedOrarOntology(String ontologyFileName) {
 
 		long startParsing = System.currentTimeMillis();
-//		/*
-//		 * clear old indexing if there is
-//		 */
-//		IndividualIndexer.getInstance().clear();
+		// /*
+		// * clear old indexing if there is
+		// */
+		// IndividualIndexer.getInstance().clear();
 		/*
 		 * Get a normalized OWLAPI ontology
 		 */
@@ -119,6 +123,7 @@ public abstract class OntologyReaderTemplate implements OntologyReader {
 		}
 		return null;
 	}
+
 	private OWLOntology getValidatedOWLAPIOntology(String fileNameToOWLAPIOntology) {
 		try {
 			long startParsing = System.currentTimeMillis();
@@ -133,7 +138,6 @@ public abstract class OntologyReaderTemplate implements OntologyReader {
 
 			OWLOntology ontologyInDesiredDLFragment = getOntologyInTargetDLFragment(inputOntology);
 
-			
 			long endParsing = System.currentTimeMillis();
 			long parsingTimeInSecond = (endParsing - startParsing) / 1000;
 			if (config.getLogInfos().contains(LogInfo.LOADING_TIME)) {
@@ -147,6 +151,7 @@ public abstract class OntologyReaderTemplate implements OntologyReader {
 		}
 		return null;
 	}
+
 	/**
 	 * @param owlOntologyFileName
 	 * @return an OWLAPI Ontology
@@ -241,10 +246,10 @@ public abstract class OntologyReaderTemplate implements OntologyReader {
 	public OrarOntology2 getNormalizedOrarOntology(String tboxFileName, String aboxListFileName) {
 
 		long startParsing = System.currentTimeMillis();
-//		/*
-//		 * clear old indexing if there is
-//		 */
-//		IndividualIndexer.getInstance().clear();
+		// /*
+		// * clear old indexing if there is
+		// */
+		// IndividualIndexer.getInstance().clear();
 		/*
 		 * get a normalized owlapi ontology
 		 */
@@ -266,6 +271,16 @@ public abstract class OntologyReaderTemplate implements OntologyReader {
 					.printSet(ontologyInNormalFormAndAddedAuxiliaryAxiomsForTransitivity.getClassesInSignature(true));
 
 		}
+		if (config.getDebuglevels().contains(DebugLevel.SAVE_NORMALIZED_ONTOLOGY)) {
+			DateFormat dateFormat = new SimpleDateFormat("dd_MMM@HH_mm");
+			// get current date time with Date()
+			Date date = new Date();
+
+			String savedFileName = "normalizedTBox"+dateFormat.format(date)+".owl";
+			OntologySaving.saveOntologyToFile(ontologyInNormalFormAndAddedAuxiliaryAxiomsForTransitivity,
+					savedFileName);
+		}
+
 		/*
 		 * Read aboxes in stream mannner
 		 */
@@ -300,10 +315,10 @@ public abstract class OntologyReaderTemplate implements OntologyReader {
 	public OWLOntology getOWLAPIOntology(String ontologyFileName) {
 		try {
 			long startParsing = System.currentTimeMillis();
-//			/*
-//			 * clear old indexing if there is
-//			 */
-//			IndividualIndexer.getInstance().clear();
+			// /*
+			// * clear old indexing if there is
+			// */
+			// IndividualIndexer.getInstance().clear();
 			/*
 			 * Read the ontologyFile
 			 */
@@ -338,10 +353,10 @@ public abstract class OntologyReaderTemplate implements OntologyReader {
 	public OWLOntology getOWLAPIOntology(String tboxFile, String aboxListFile) {
 		try {
 			long startParsing = System.currentTimeMillis();
-//			/*
-//			 * clear old indexing if there is
-//			 */
-//			IndividualIndexer.getInstance().clear();
+			// /*
+			// * clear old indexing if there is
+			// */
+			// IndividualIndexer.getInstance().clear();
 			/*
 			 * Read the ontologyFile
 			 */
@@ -385,15 +400,14 @@ public abstract class OntologyReaderTemplate implements OntologyReader {
 
 	public OrarOntology2 getNOTNormalizedOrarOntology(String tboxFileName, String aboxListFileName) {
 		long startParsing = System.currentTimeMillis();
-//		/*
-//		 * clear old indexing if there is
-//		 */
-//		IndividualIndexer.getInstance().clear();
+		// /*
+		// * clear old indexing if there is
+		// */
+		// IndividualIndexer.getInstance().clear();
 		/*
 		 * get a normalized owlapi ontology
 		 */
-		OWLOntology validatedOWLAPIOntology = getValidatedOWLAPIOntology(
-				tboxFileName);
+		OWLOntology validatedOWLAPIOntology = getValidatedOWLAPIOntology(tboxFileName);
 		if (config.getLogInfos().contains(LogInfo.STATISTIC)) {
 			logger.info("Information of the validated normalized ontology.");
 			logger.info("Extracted from ontology input file:" + tboxFileName);
@@ -406,8 +420,7 @@ public abstract class OntologyReaderTemplate implements OntologyReader {
 			logger.info("***DEBUG***TBox axioms:");
 			PrintingHelper.printSet(validatedOWLAPIOntology.getTBoxAxioms(true));
 			logger.info("***DEBUG***concept names in signature:");
-			PrintingHelper
-					.printSet(validatedOWLAPIOntology.getClassesInSignature(true));
+			PrintingHelper.printSet(validatedOWLAPIOntology.getClassesInSignature(true));
 
 		}
 		/*
@@ -442,10 +455,10 @@ public abstract class OntologyReaderTemplate implements OntologyReader {
 
 	public OrarOntology2 getNOTNormalizedOrarOntology(String ontologyFileName) {
 		long startParsing = System.currentTimeMillis();
-//		/*
-//		 * clear old indexing if there is
-//		 */
-//		IndividualIndexer.getInstance().clear();
+		// /*
+		// * clear old indexing if there is
+		// */
+		// IndividualIndexer.getInstance().clear();
 		/*
 		 * Get a normalized OWLAPI ontology
 		 */

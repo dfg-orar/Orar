@@ -177,6 +177,8 @@ public interface OrarOntology2 {
 	 * @return true if new assertion has been added, false otherwise.
 	 */
 	public boolean addRoleAssertion(int subject, OWLObjectProperty role, int object);
+	
+//	public boolean addManyRoleAssertions(int subject, OWLObjectProperty role, Set<Integer> objects);
 
 	/*
 	 * Methods for sameas assertions
