@@ -97,5 +97,18 @@ public class OrarOntologyTest {
 		Assert.assertEquals(set_a2, orarOntology.getSameIndividuals(a1));
 
 	}
+//	
+//	@Test
+//	public void testCountingRoleAssertion() {
+//		OrarOntology orarOntology = new MapbasedOrarOntology();
+//
+//		orarOntology.addSameAsAssertion(a1, a2);
+//
+//		Set<OWLNamedIndividual> set_a2 = testData.getSetOfIndividuals(a2);
+//
+//		Assert.assertEquals(set_a2, orarOntology.getSameIndividuals(a1));
+//
+//	}
+//	
 
 }

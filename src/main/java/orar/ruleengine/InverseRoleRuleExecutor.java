@@ -55,7 +55,7 @@ public class InverseRoleRuleExecutor implements RuleExecutor {
 
 	@Override
 	public void materialize() {
-		long startTime = System.currentTimeMillis();
+//		long startTime = System.currentTimeMillis();
 		/*
 		 * For each role R and each inverese role S of R: R(a,b) ---> add
 		 * S(b,a). Be careful as S can also be an inverse of an atomic role.
@@ -91,9 +91,9 @@ public class InverseRoleRuleExecutor implements RuleExecutor {
 				}
 			}
 		}
-		long endObtainingNewRoles = System.currentTimeMillis();
-		logger.info("Time for obtaining role assertions wrt the invesr role axioms: "
-				+ (endObtainingNewRoles - startTime) / 1000);
+//		long endObtainingNewRoles = System.currentTimeMillis();
+//		logger.info("Time for obtaining role assertions wrt the invesr role axioms: "
+//				+ (endObtainingNewRoles - startTime) / 1000);
 		/*
 		 * Add entailed role assertions got from inverse role assertion
 		 */
@@ -103,13 +103,13 @@ public class InverseRoleRuleExecutor implements RuleExecutor {
 					this.entailedRoleAssertionFromInverseAxioms.getRole(i),
 					this.entailedRoleAssertionFromInverseAxioms.getObject(i));
 		}
-		long insertingTimeNow = System.currentTimeMillis();
-		logger.info("Time for inserting new role assertions wrt the role hierarchy: "
-				+ (insertingTimeNow - endObtainingNewRoles) / 1000);
-		long endTime = System.currentTimeMillis();
-		long time = (endTime-startTime)/1000;
-		logger.info("number of new role assertions "+this.newRoleAssertions.size());
-		logger.info("time in materializer step: "+ time);
+//		long insertingTimeNow = System.currentTimeMillis();
+//		logger.info("Time for inserting new role assertions wrt the role hierarchy: "
+//				+ (insertingTimeNow - endObtainingNewRoles) / 1000);
+//		long endTime = System.currentTimeMillis();
+//		long time = (endTime-startTime)/1000;
+//		logger.info("number of new role assertions "+this.newRoleAssertions.size());
+//		logger.info("time in materializer step: "+ time);
 	}
 
 	private void addRoleAssertion(Integer subject, OWLObjectProperty eacAtomicSuperRoleOf_R,

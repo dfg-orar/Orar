@@ -16,6 +16,9 @@ import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 
+import com.google.common.collect.Sets;
+import com.google.common.collect.Sets.SetView;
+
 import orar.data.NormalizationDataFactory;
 import orar.dlfragmentvalidator.ValidatorDataFactory;
 import orar.indexing.IndividualIndexer;
@@ -26,11 +29,13 @@ public class MapbasedConceptAssertionBox2 implements ConceptAssertionBox2 {
 	private final Map<Integer, Set<OWLClass>> conceptAssertionMap;
 	private IndividualIndexer indexer;
 	private OWLDataFactory owlDataFactory;
+	private final NormalizationDataFactory normalizationDataFactory;
 
 	public MapbasedConceptAssertionBox2() {
 		this.conceptAssertionMap = new HashMap<Integer, Set<OWLClass>>();
 		this.indexer = IndividualIndexer.getInstance();
 		this.owlDataFactory = OWLManager.getOWLDataFactory();
+		this.normalizationDataFactory = NormalizationDataFactory.getInstance();
 	}
 
 	@Override
@@ -101,6 +106,20 @@ public class MapbasedConceptAssertionBox2 implements ConceptAssertionBox2 {
 		while (iterator.hasNext()) {
 			Entry<Integer, Set<OWLClass>> entry = iterator.next();
 			numberOfCocneptAssertions += entry.getValue().size();
+		}
+		return numberOfCocneptAssertions;
+	}
+
+	@Override
+	public int getNumberOfConceptAssertionsWithoutNormalizationSymbols() {
+		int numberOfCocneptAssertions = 0;
+		Iterator<Entry<Integer, Set<OWLClass>>> iterator = conceptAssertionMap.entrySet().iterator();
+		while (iterator.hasNext()) {
+			Entry<Integer, Set<OWLClass>> entry = iterator.next();
+			Set<OWLClass> assertedConcept = entry.getValue();
+			SetView<OWLClass> intersection = Sets.intersection(assertedConcept,
+					this.normalizationDataFactory.getConceptsByNormalization());
+			numberOfCocneptAssertions = numberOfCocneptAssertions + assertedConcept.size() - intersection.size();
 		}
 		return numberOfCocneptAssertions;
 	}

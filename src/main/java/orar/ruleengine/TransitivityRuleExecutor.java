@@ -33,7 +33,7 @@ public class TransitivityRuleExecutor implements RuleExecutor {
 
 	@Override
 	public void materialize() {
-		long startTime = System.currentTimeMillis();
+//		long startTime = System.currentTimeMillis();
 		
 		// get all transitive role assertions.
 		Queue<IndexedRoleAssertion> todoTranRoleAssertions = getAllTransitiveRoleAssertions();
@@ -53,9 +53,9 @@ public class TransitivityRuleExecutor implements RuleExecutor {
 				}
 			}
 		}
-		long endTime = System.currentTimeMillis();
-		long time = (endTime-startTime)/1000;
-		logger.info("time in materializer step: "+ time);
+//		long endTime = System.currentTimeMillis();
+//		long time = (endTime-startTime)/1000;
+//		logger.info("time in materializer step: "+ time);
 	}
 
 	private Queue<IndexedRoleAssertion> getAllTransitiveRoleAssertions() {

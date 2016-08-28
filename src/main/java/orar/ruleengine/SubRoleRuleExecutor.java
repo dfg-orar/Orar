@@ -8,6 +8,8 @@ import org.semanticweb.owlapi.model.OWLObjectInverseOf;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.semanticweb.owlapi.model.OWLObjectPropertyExpression;
 
+import orar.config.Configuration;
+import orar.config.LogInfo;
 import orar.data.MetaDataOfOntology;
 import orar.modeling.ontology2.OrarOntology2;
 import orar.modeling.roleassertion2.IndexedRoleAssertion;
@@ -37,10 +39,10 @@ public class SubRoleRuleExecutor implements RuleExecutor {
 	public void materialize() {
 		long startTime = System.currentTimeMillis();
 		Set<OWLObjectProperty> allRolesHavingSuperRoles = this.metaDataOfOntology.getSubRoleMap().keySet();
-		
-//		logger.info("Role hierarchy:");
-//		PrintingHelper.printMap(this.metaDataOfOntology.getSubRoleMap());
-//		
+
+		// logger.info("Role hierarchy:");
+		// PrintingHelper.printMap(this.metaDataOfOntology.getSubRoleMap());
+		//
 		for (OWLObjectProperty R : allRolesHavingSuperRoles) {
 			// logger.info("***DEBUG*** R "+ R);
 			// Pause.pause();
@@ -81,21 +83,27 @@ public class SubRoleRuleExecutor implements RuleExecutor {
 			}
 		}
 		long expandingRoleHierarcyTimeNow = System.currentTimeMillis();
-		logger.info("Time for obtaining role assertions wrt the role hierarchy: "
-				+ (expandingRoleHierarcyTimeNow - startTime) / 1000);
+		if (Configuration.getInstance().getLogInfos().contains(LogInfo.TIME_IN_EACH_METHOD_OR_OPERATION)) {
+			logger.info("Time for obtaining role assertions wrt the role hierarchy: "
+					+ (expandingRoleHierarcyTimeNow - startTime) / 1000);
+
+			logger.info(
+					"number of possibly new role assertions " + this.entailedRoleAssertionFromRoleHierarchy.getSize());
+		}
 		/*
 		 * Add entailed role assertions got from role hierarchy to the ontology
 		 */
-		logger.info("number of possibly new role assertions "+this.entailedRoleAssertionFromRoleHierarchy.getSize());
 		for (int i = 0; i < entailedRoleAssertionFromRoleHierarchy.getSize(); i++) {
 			addRoleAssertion(entailedRoleAssertionFromRoleHierarchy.getSubject(i),
 					entailedRoleAssertionFromRoleHierarchy.getRole(i),
 					entailedRoleAssertionFromRoleHierarchy.getObject(i));
 		}
-		logger.info("number of new role assertions for incremental steps "+this.newRoleAssertions.size());
-		long insertingTimeNow = System.currentTimeMillis();
-		logger.info("Time for inserting new role assertions wrt the role hierarchy: "
-				+ (insertingTimeNow - expandingRoleHierarcyTimeNow) / 1000);
+		if (Configuration.getInstance().getLogInfos().contains(LogInfo.TIME_IN_EACH_METHOD_OR_OPERATION)) {
+			logger.info("number of new role assertions for incremental steps " + this.newRoleAssertions.size());
+			long insertingTimeNow = System.currentTimeMillis();
+			logger.info("Time for inserting new role assertions wrt the role hierarchy: "
+					+ (insertingTimeNow - expandingRoleHierarcyTimeNow) / 1000);
+		}
 	}
 
 	private void addRoleAssertion(Integer eachSubjectOf_R, OWLObjectProperty eacAtomicSuperRoleOf_R,

@@ -54,12 +54,25 @@ public interface OrarOntology2 {
 	 */
 	public int getNumberOfInputConceptAssertions();
 
+	/**
+	 * @return  number of concept assertions currently in the ontology. It
+	 *         could contain normalization symbols.
+	 */
 	public int getNumberOfConceptAssertions();
+
+	/**
+	 * @return number of concept assertions currently in the ontology without the nomalization symbols.
+	 */
+	public int getNumberOfConceptAssertionsWithoutNormalizationSymbols();
 
 	public int getNumberOfEqualityAssertions();
 
 	public int getNumberOfInputRoleAssertions();
 
+	/**
+	 * @return number of role assertions currently in the ontology. We don't
+	 *         have any normalization symbols for roles.
+	 */
 	public int getNumberOfRoleAssertions();
 
 	public Set<OWLAxiom> getOWLAPIMaterializedAssertions();
@@ -99,7 +112,9 @@ public interface OrarOntology2 {
 	 *         normalization and profile validation phase.
 	 */
 	public Set<OWLClassAssertionAxiom> getOWLAPIConceptAssertionsWHITOUTNormalizationSymbols();
+
 	public Map<OWLClass, Set<OWLNamedIndividual>> getOWLAPIConcepAssertionMapWITHOUTNormalizationSymbols();
+
 	/**
 	 * Get all OWLAPI role assertions, <b> INCLUDING </b> those for
 	 * individuals/concepts generated during NORMALIZATION and DL-PROFILE
@@ -177,8 +192,9 @@ public interface OrarOntology2 {
 	 * @return true if new assertion has been added, false otherwise.
 	 */
 	public boolean addRoleAssertion(int subject, OWLObjectProperty role, int object);
-	
-//	public boolean addManyRoleAssertions(int subject, OWLObjectProperty role, Set<Integer> objects);
+
+	// public boolean addManyRoleAssertions(int subject, OWLObjectProperty role,
+	// Set<Integer> objects);
 
 	/*
 	 * Methods for sameas assertions
@@ -233,7 +249,6 @@ public interface OrarOntology2 {
 	 */
 	public Set<Integer> getSuccessorsTakingEqualityIntoAccount(int subject, OWLObjectProperty role);
 
-	
 	/**
 	 * @return entailed sameas assertion as a map. Note that this include (a
 	 *         equivalent a) for every individuals a. And note that in the
@@ -263,7 +278,10 @@ public interface OrarOntology2 {
 	public void increaseNumberOfInputConceptAssertions(int addedNumber);
 
 	public void increaseNumberOfInputRoleAssertions(int addedNumber);
+
 	public ConceptAssertionBox2 getConceptAssertionBox();
+
 	public RoleAssertionBox2 getRoleAssertionBox();
+
 	public SameAsBox2 getSameasBox();
 }

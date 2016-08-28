@@ -77,7 +77,7 @@ public abstract class AssertionTransporterTemplateOptimized implements Assertion
 		long startUpdateConceptAssertion = System.currentTimeMillis();
 		transferConceptAssertions();// not change
 		long endUpdateConceptAssertion = System.currentTimeMillis();
-		if (this.config.getLogInfos().contains(LogInfo.PERFORMANCE)) {
+		if (this.config.getLogInfos().contains(LogInfo.TIME_IN_EACH_METHOD_OR_OPERATION)) {
 			long updateingConceptAsesrtionTime = (endUpdateConceptAssertion - startUpdateConceptAssertion) / 1000;
 			logger.info("Time for updating concep assertions in the original ABox in seconds: "
 					+ updateingConceptAsesrtionTime);

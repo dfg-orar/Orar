@@ -332,12 +332,13 @@ public class MapbasedOrarOntology2 implements OrarOntology2 {
 
 	}
 
-	
-//	@Override
-//	public boolean addManyRoleAssertions(int subject, OWLObjectProperty role, Set<Integer> objects) {
-//		return this.roleAssertionBox.addManyRoleAssertions(subject, role, objects);
-//
-//	}
+	// @Override
+	// public boolean addManyRoleAssertions(int subject, OWLObjectProperty role,
+	// Set<Integer> objects) {
+	// return this.roleAssertionBox.addManyRoleAssertions(subject, role,
+	// objects);
+	//
+	// }
 	@Override
 	public boolean addSameAsAssertion(int individual, int equalIndividual) {
 		return this.sameasBox.addSameAsAssertion(individual, equalIndividual);
@@ -396,8 +397,6 @@ public class MapbasedOrarOntology2 implements OrarOntology2 {
 		return setOfSuccessors;
 	}
 
-	
-
 	@Override
 	public Set<Integer> getSubjectsInRoleAssertions(OWLObjectProperty role) {
 
@@ -444,9 +443,12 @@ public class MapbasedOrarOntology2 implements OrarOntology2 {
 		return this.conceptAssertionBox.getNumberOfConceptAssertions();
 	}
 
+	public int getNumberOfConceptAssertionsWithoutNormalizationSymbols() {
+		return this.conceptAssertionBox.getNumberOfConceptAssertionsWithoutNormalizationSymbols();
+	}
+
 	@Override
 	public int getNumberOfRoleAssertions() {
-
 		return this.roleAssertionBox.getNumberOfRoleAssertions();
 	}
 
@@ -501,7 +503,7 @@ public class MapbasedOrarOntology2 implements OrarOntology2 {
 
 	@Override
 	public ConceptAssertionBox2 getConceptAssertionBox() {
-	
+
 		return this.conceptAssertionBox;
 	}
 
@@ -510,6 +512,7 @@ public class MapbasedOrarOntology2 implements OrarOntology2 {
 
 		return this.roleAssertionBox;
 	}
+
 	@Override
 	public SameAsBox2 getSameasBox() {
 
@@ -520,12 +523,12 @@ public class MapbasedOrarOntology2 implements OrarOntology2 {
 	public Map<OWLClass, Set<OWLNamedIndividual>> getOWLAPIConcepAssertionMapWITHOUTNormalizationSymbols() {
 		Map<OWLClass, Set<OWLNamedIndividual>> map = new HashMap<>();
 		Set<OWLClassAssertionAxiom> conceptAssertions = getOWLAPIConceptAssertionsWHITOUTNormalizationSymbols();
-		for (OWLClassAssertionAxiom assertion:conceptAssertions){
+		for (OWLClassAssertionAxiom assertion : conceptAssertions) {
 			OWLClass concept = assertion.getClassExpression().asOWLClass();
-			OWLNamedIndividual ind=assertion.getIndividual().asOWLNamedIndividual();
-			
+			OWLNamedIndividual ind = assertion.getIndividual().asOWLNamedIndividual();
+
 			Set<OWLNamedIndividual> existingInds = map.get(concept);
-			if (existingInds==null){
+			if (existingInds == null) {
 				existingInds = new HashSet<>();
 			}
 			existingInds.add(ind);

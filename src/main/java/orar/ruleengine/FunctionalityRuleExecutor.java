@@ -30,13 +30,13 @@ public class FunctionalityRuleExecutor implements RuleExecutor {
 
 	@Override
 	public void materialize() {
-		long startTime = System.currentTimeMillis();
+//		long startTime = System.currentTimeMillis();
 		// for functional roles
 		mergeSuccessorsOfFunctionalRole();
 		mergePredecessorsOfInvFunctionalRole();
-		long endTime = System.currentTimeMillis();
-		long time = (endTime - startTime) / 1000;
-		logger.info("time in materializer step: " + time);
+//		long endTime = System.currentTimeMillis();
+//		long time = (endTime - startTime) / 1000;
+//		logger.info("time in materializer step: " + time);
 	}
 
 	private void mergePredecessorsOfInvFunctionalRole() {

@@ -211,8 +211,8 @@ public abstract class NormalizerTemplate implements Normalizer {
 		if (config.getLogInfos().contains(LogInfo.NORMALIZATION_INFO)) {
 			logger.info("Input ontology size:");
 			printSize(inputOntology);
+			logger.info("Normalizing the input ontology...");
 		}
-		logger.info("Normalizing the input ontology...");
 		putAllSubClassAxiomsInToStack();
 		normalizeSubClassAxioms();
 		/*
@@ -222,9 +222,9 @@ public abstract class NormalizerTemplate implements Normalizer {
 		normalizeNominalsInTBox();
 		nomalizeNominalsInABox();
 		createNormalizedOntology();
-		logger.info("Finished normalizing TBox of the input ontology.");
 
 		if (config.getLogInfos().contains(LogInfo.NORMALIZATION_INFO)) {
+			logger.info("Finished normalizing TBox of the input ontology.");
 			logger.info("Normalized Ontology size:");
 			printSize(normalizedOntology);
 			logger.info("Number of normalized axioms:" + numberOfNormalizedAxioms);

@@ -80,12 +80,10 @@ public class MapbasedRoleAssertionBox2 implements RoleAssertionBox2 {
 		return hasNewElement;
 
 	}
-//	public boolean addManyRoleAssertions(int subject, OWLObjectProperty role, Set<Integer> objects);
+
 //	@Override
 //	public boolean addManyRoleAssertions(int subject, OWLObjectProperty role, Set<Integer> objects) {
-//		for (eachObject: objects){
-//			
-//		}
+//	
 //		boolean hasNewElement = addManyRoleAssertionsToMapWithIndividualAsKey(subject, role, objects,
 //				this.roleAssertionMapWithSubjectAsKey);
 //		if (hasNewElement) {

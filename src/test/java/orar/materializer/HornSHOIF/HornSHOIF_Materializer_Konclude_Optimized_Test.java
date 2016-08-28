@@ -26,6 +26,9 @@ public class HornSHOIF_Materializer_Konclude_Optimized_Test {
 	@Before
 	public void init() {
 		IndividualIndexer.getInstance().clear();
+		NormalizationDataFactory.getInstance().clear();
+		AbstractDataFactory.getInstance().clear();
+		DataForTransferingEntailments.getInstance().clear();
 	}
 
 	@Test
@@ -216,6 +219,17 @@ public class HornSHOIF_Materializer_Konclude_Optimized_Test {
 		haveTheSameResults(ontologyPath);
 	}
 
+
+	@Test
+	public void testHandlingSameas1() {
+		Configuration.getInstance().addAllDebugInfos();
+		String ontologyPath = "src/test/resources/main/testSameasHandling1.owl";
+
+		haveTheSameResults(ontologyPath);
+	}
+
+	
+	
 	@Test
 	public void testUOBM_OXSmall() {
 
@@ -251,6 +265,38 @@ public class HornSHOIF_Materializer_Konclude_Optimized_Test {
 	// haveTheSameResults(ontologyTbox, aboxList);
 	// }
 
+	@Test
+	public void testCountingRoleAssertion(){
+		NormalizationDataFactory.getInstance().clear();
+		AbstractDataFactory.getInstance().clear();
+		NormalizationDataFactory.getInstance().clear();
+		MetaDataOfOntology.getInstance().clear();
+		DataForTransferingEntailments.getInstance().clear();
+		String ontologyTbox = "src/test/resources/modeling/testCountingRoleAssertion.owl";
+		OntologyReader reader= new HornSHOIF_OntologyReader();
+		OrarOntology2 orarOntology = reader.getNormalizedOrarOntology(ontologyTbox);
+		Configuration.getInstance().addLoginfoLevels(LogInfo.STATISTIC);
+		Materializer materializer = new HornSHOIF_Materializer_KoncludeOptimized(orarOntology);
+		materializer.materialize();
+		Assert.assertTrue(orarOntology.getNumberOfRoleAssertions()==4);
+	}
+	@Test
+	public void testCountingConceptAssertion(){
+		NormalizationDataFactory.getInstance().clear();
+		AbstractDataFactory.getInstance().clear();
+		NormalizationDataFactory.getInstance().clear();
+		MetaDataOfOntology.getInstance().clear();
+		DataForTransferingEntailments.getInstance().clear();
+		String ontologyTbox = "src/test/resources/modeling/testCountingConceptAssertion.owl";
+		OntologyReader reader= new HornSHOIF_OntologyReader();
+		OrarOntology2 orarOntology = reader.getNormalizedOrarOntology(ontologyTbox);
+		Configuration.getInstance().addLoginfoLevels(LogInfo.STATISTIC);
+		Materializer materializer = new HornSHOIF_Materializer_KoncludeOptimized(orarOntology);
+		materializer.materialize();
+		System.out.println("Number of concept assertions including normalization symbols: "+orarOntology.getNumberOfConceptAssertions());
+		Assert.assertTrue(orarOntology.getNumberOfConceptAssertions()==4);
+		Assert.assertTrue(orarOntology.getNumberOfConceptAssertionsWithoutNormalizationSymbols()==3);
+	}
 	/**
 	 * Compare result by Abstraction and by OWLReasoner; assert that they have
 	 * the same result.

@@ -271,7 +271,7 @@ public class OrarCLI {
 		// + orarOntology.getActualDLConstructors());
 		StrategyIdentifier strategyIdentifier = new StrategyIdentifierImpl(orarOntology.getTBoxAxioms());
 		StrategyName strategyName = strategyIdentifier.getStrategyName();
-		if (config.getLogInfos().contains(LogInfo.PERFORMANCE)) {
+		if (config.getLogInfos().contains(LogInfo.TIME_IN_EACH_METHOD_OR_OPERATION)) {
 			logger.info("Strategy:" + strategyName);
 		}
 		if (reasonerName.equals(Argument.HERMIT)) {
@@ -411,7 +411,7 @@ public class OrarCLI {
 		}
 
 		if (commandLine.hasOption(Argument.PERFORMANCE)) {
-			config.addLoginfoLevels(LogInfo.PERFORMANCE);
+			config.addLoginfoLevels(LogInfo.TIME_IN_EACH_METHOD_OR_OPERATION);
 		}
 
 		if (commandLine.hasOption(Argument.SPLITTING)) {

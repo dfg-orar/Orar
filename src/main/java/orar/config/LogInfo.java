@@ -2,7 +2,28 @@ package orar.config;
 
 public enum LogInfo {
 	NORMALIZATION_INFO, LANGUAGE_VALIDATION_INFO, ABSTRACT_ONT_INFO, ABSTRACTION_INFO, //
-	INPUTONTOLOGY_INFO, TYPE_COMPUTING_INFO, LOADING_TIME, REASONING_TIME, TOTAL_TIME, //
-	TYPE_INFO, COMPARED_RESULT_INFO, STATISTIC, ABSTRACT_EXPLANATION, PERFORMANCE,
-	PRINT_RESULT;
+	INPUTONTOLOGY_INFO, TYPE_COMPUTING_INFO,
+	/*
+	 * loading time
+	 */
+	LOADING_TIME,
+	/*
+	 * reasoning time
+	 */
+	REASONING_TIME, TOTAL_TIME, //
+	TYPE_INFO, COMPARED_RESULT_INFO,
+	/*
+	 * STATISTIC: size of abstraction, number of loops, number of types, number
+	 * of individuals, size of ontology.
+	 */
+	STATISTIC,
+
+	/*
+	 *detailed information about the size of ontology, abstraction, number of types, individuals,.... 
+	 */
+	DETAILED_STATISTIC, ABSTRACT_EXPLANATION,
+	/*
+	 * Print detail time in each steps
+	 */
+	TIME_IN_EACH_METHOD_OR_OPERATION, PRINT_RESULT;
 }

@@ -1,7 +1,10 @@
 package orar.util;
 
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 public class MapOperator {
@@ -14,7 +17,7 @@ public class MapOperator {
 	 * @param key
 	 * @param addedValues
 	 */
-	public static <T1, T2> void addValuesToMap(Map<T1, Set<T2>> map, T1 key, Set<T2> addedValues) {
+	public static <T1, T2> boolean addValuesToMap(Map<T1, Set<T2>> map, T1 key, Set<T2> addedValues) {
 		Set<T2> existingValues = map.get(key);
 		if (existingValues == null) {
 			existingValues = new HashSet<T2>();
@@ -23,10 +26,10 @@ public class MapOperator {
 		if (hasNewElements) {
 			map.put(key, existingValues);
 		}
-
+		return hasNewElements;
 	}
 
-	public static <T1, T2> void addValueToMap(Map<T1, Set<T2>> map, T1 key, T2 addedValue) {
+	public static <T1, T2> boolean addValueToMap(Map<T1, Set<T2>> map, T1 key, T2 addedValue) {
 		Set<T2> existingValues = map.get(key);
 		if (existingValues == null) {
 			existingValues = new HashSet<T2>();
@@ -35,6 +38,28 @@ public class MapOperator {
 		if (hasNewElement) {
 			map.put(key, existingValues);
 		}
-
+		return hasNewElement;
 	}
+
+	/**
+	 * Add a map
+	 * 
+	 * @param map
+	 * @param addedMap
+	 *            will be added to {@code map}
+	 */
+	public static <T1, T2> boolean addAnotherMap(Map<T1, Set<T2>> map, Map<T1, Set<T2>> addedMap) {
+		Iterator<Entry<T1, Set<T2>>> iterator = addedMap.entrySet().iterator();
+		boolean hasNewElements = false;
+		while (iterator.hasNext()) {
+			Entry<T1, Set<T2>> entry = iterator.next();
+			T1 key = entry.getKey();
+			Set<T2> values = entry.getValue();
+			if (addValuesToMap(map, key, values)) {
+				hasNewElements = true;
+			}
+		}
+		return hasNewElements;
+	}
+
 }

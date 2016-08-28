@@ -27,7 +27,7 @@ public class StatisticVocabulary {
 	 */
 	public static String NUMBER_OF_MATERIALIZED_CONCEPTASSERTIONS = "Statistic: Number_of_materialized_concept_assertions = ";
 	public static String NUMBER_OF_MATERIALIZED_ROLEASSERTIONS = "Statistic: Number_of_materialized_role_assertions = ";
-	public static String NUMBER_OF_MATERIALIZED_ASSERTIONS = "Statistic: Number_of_materialized_concept_and_role_assertions = ";
+	public static String NUMBER_OF_MATERIALIZED_ASSERTIONS = "Statistic: Number_of_materialized_assertions = ";
 	public static String NUMBER_OF_MATERIALIZED_EQUALITY_ASSERTIONS = "Statistic: Number_of_materialized_equality_assertions = ";
 	public static String ONTOLOGY_CONSISTENCY = "Statistic: ontology consistency = ";
 	public static String CONSISTENT = "CONSISTENT";
@@ -53,7 +53,10 @@ public class StatisticVocabulary {
 	 */
 	public static String NUMBER_OF_REFINEMENTS = "Statistic: Number_of_refinement_steps = ";
 	public static String CURRENT_LOOP="Statistic: Current_loop = ";
-	public static String TIME_LOADING_INPUT = "Statistic: Time_loading_input_ontology_in_seconds = ";
+	public static String TIME_LOADING_INPUT_ABOX = "Statistic: Time_loading_input_abox_in_seconds = ";
+	public static String TIME_LOADING_INPUT_TBOX_AND_ABOX = "Statistic: Time_loading_input_tbox_and_abox_in_seconds = ";
+	public static String TIME_LOADING_INPUT_TBOX = "Statistic: Time_loading_input_tbox_in_seconds = ";
+	public static String TIME_NORMALIZATION_OF_TBOX = "Statistic: Time_normalization_of_input_tbox_in_seconds = ";
 	public static String TIME_REASONING_USING_ABSRTACTION = "Statistic: Time_reasoning_using_abstraction_in_seconds = ";
 	public static String TIME_REASONING_USING_DLREASONER = "Statistic: Time_reasoning_using_dlreasoner_in_seconds = ";
 	public static String TIME_REASONING_RULE_ENGINE = "Statistic: Time_reasoning_using_rule_engine_in_seconds = ";

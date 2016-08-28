@@ -27,7 +27,7 @@ public class SameasRuleExecutor implements RuleExecutor {
 
 	@Override
 	public void materialize() {
-		long startTime = System.currentTimeMillis();
+//		long startTime = System.currentTimeMillis();
 		// compute connect components
 		List<Set<Integer>> components = computeConnectedComponents();
 		// put components to the map.
@@ -38,9 +38,9 @@ public class SameasRuleExecutor implements RuleExecutor {
 				}
 			}
 		}
-		long endTime = System.currentTimeMillis();
-		long time = (endTime-startTime)/1000;
-		logger.info("time in materializer step: "+ time);
+//		long endTime = System.currentTimeMillis();
+//		long time = (endTime-startTime)/1000;
+//		logger.info("time in materializer step: "+ time);
 	}
 
 	private List<Set<Integer>> computeConnectedComponents() {

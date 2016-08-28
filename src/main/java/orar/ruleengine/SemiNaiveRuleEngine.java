@@ -8,6 +8,9 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
+import orar.config.Configuration;
+import orar.config.DebugLevel;
+import orar.config.LogInfo;
 import orar.modeling.ontology2.OrarOntology2;
 import orar.modeling.roleassertion2.IndexedRoleAssertion;
 
@@ -33,14 +36,14 @@ public class SemiNaiveRuleEngine implements RuleEngine {
 		this.funcRule = new FunctionalityRuleExecutor(orarOntology);
 		this.tranRule = new TransitivityRuleExecutor(orarOntology);
 		this.subroRule = new SubRoleRuleExecutor(orarOntology);
-//		this.inverseRule = new InverseRoleRuleExecutor(orarOntology);
+		// this.inverseRule = new InverseRoleRuleExecutor(orarOntology);
 
 		this.ruleExecutors = new ArrayList<RuleExecutor>();
 		this.ruleExecutors.add(sameasRule);
 		this.ruleExecutors.add(subroRule);
 		this.ruleExecutors.add(tranRule);
 		this.ruleExecutors.add(funcRule);
-//		this.ruleExecutors.add(inverseRule);
+		// this.ruleExecutors.add(inverseRule);
 	}
 
 	@Override
@@ -48,23 +51,29 @@ public class SemiNaiveRuleEngine implements RuleEngine {
 		long starTime = System.currentTimeMillis();
 		for (RuleExecutor ruleEx : this.ruleExecutors) {
 			ruleEx.materialize();
-			logger.info("Size of new role assertion from"+ ruleEx.getClass().getName()+": "+ruleEx.getNewRoleAssertions().size());
-			logger.info("Size of new sameas assertion from"+ ruleEx.getClass().getName()+": "+ruleEx.getNewSameasAssertions().size());
+			if (Configuration.getInstance().getLogInfos().contains(DebugLevel.PRINT_ASSERTION_IN_RULE_ENGINE)) {
+				logger.info("Size of new role assertion from" + ruleEx.getClass().getName() + ": "
+						+ ruleEx.getNewRoleAssertions().size());
+				logger.info("Size of new sameas assertion from" + ruleEx.getClass().getName() + ": "
+						+ ruleEx.getNewSameasAssertions().size());
+			}
 			this.todoRoleAssertions.addAll(ruleEx.getNewRoleAssertions());
 			this.todoSameasAssertions.addAll(ruleEx.getNewSameasAssertions());
 		}
-		long startTimeOfIncrementalReasoning=System.currentTimeMillis();
+		long startTimeOfIncrementalReasoning = System.currentTimeMillis();
 		incrementalMaterialize();
-		long endTime = System.currentTimeMillis();
-		this.reasoningTime = (endTime - starTime) / 1000;
-		long incrementalReasoningTime = (endTime-startTimeOfIncrementalReasoning)/1000;
-		logger.info("Reasoning time for incremental rule reasoning step: " + incrementalReasoningTime);
-		logger.info("Reasoning time for deductive closure computing in this step: " + this.reasoningTime);
+		if (Configuration.getInstance().getLogInfos().contains(LogInfo.TIME_IN_EACH_METHOD_OR_OPERATION)) {
+			long endTime = System.currentTimeMillis();
+			this.reasoningTime = (endTime - starTime) / 1000;
+			long incrementalReasoningTime = (endTime - startTimeOfIncrementalReasoning) / 1000;
+			logger.info("Reasoning time for incremental rule reasoning step: " + incrementalReasoningTime);
+			logger.info("Reasoning time for deductive closure computing in this step: " + this.reasoningTime);
+		}
 	}
 
 	@Override
 	public void incrementalMaterialize() {
-		boolean hasNewElement=false;
+		boolean hasNewElement = false;
 		while (!this.todoRoleAssertions.isEmpty() || !this.todoSameasAssertions.isEmpty()) {
 			while (!this.todoSameasAssertions.isEmpty()) {
 				Set<Integer> setOfSameasIndividuals = this.todoSameasAssertions.poll();

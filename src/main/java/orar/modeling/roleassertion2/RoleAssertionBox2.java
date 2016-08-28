@@ -82,4 +82,6 @@ public interface RoleAssertionBox2 {
 			Integer objectIndividual);
 
 	
+
+	
 }

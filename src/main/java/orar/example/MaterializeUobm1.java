@@ -16,7 +16,7 @@ import orar.materializer.HornSHOIF.HornSHOIF_Materializer_KoncludeOptimized;
 import orar.modeling.ontology2.OrarOntology2;
 
 public class MaterializeUobm1 {
-	static Logger logger = Logger.getLogger(DemoSameTypesInDifferentLoops.class);
+	static Logger logger = Logger.getLogger(MaterializeUobm1.class);
 //	static String tbox="/Users/kien/benchmarks/uobm_ox/uobm_origin_minus.owl";
 //	static String tbox="/Users/kien/benchmarks/aaai17/uobm_original_tiny2.owl";
 	static String tbox="/Users/kien/benchmarks/uobm_ox/uobmtbox_origin_workwith_oxford_generator.owl";
@@ -26,9 +26,10 @@ public class MaterializeUobm1 {
 //		Configuration.getInstance().addDebugLevels(DebugLevel.UPDATING_CONCEPT_ASSERTION, DebugLevel.TRANSFER_CONCEPTASSERTION);
 		Configuration.getInstance().clearLogInfoLevels();
 		Configuration.getInstance().addLoginfoLevels(LogInfo.STATISTIC, LogInfo.LOADING_TIME, LogInfo.REASONING_TIME);
+//		Configuration.getInstance().addLoginfoLevels(LogInfo.STATISTIC, LogInfo.LOADING_TIME, LogInfo.REASONING_TIME, LogInfo.TIME_IN_EACH_METHOD_OR_OPERATION);
 //		Configuration.getInstance().addDebugLevels(DebugLevel.UPDATING_CONCEPT_ASSERTION, DebugLevel.TRANSFER_ROLEASSERTION);
 //		Configuration.getInstance().addDebugLevels(DebugLevel.TRANSFER_ROLEASSERTION, DebugLevel.SAVE_NORMALIZED_ONTOLOGY);
-		Configuration.getInstance().addDebugLevels(DebugLevel.UPDATING_CONCEPT_ASSERTION,DebugLevel.TRANSFER_ROLEASSERTION,DebugLevel.TRANSFER_SAMEAS);
+//		Configuration.getInstance().addDebugLevels(DebugLevel.UPDATING_CONCEPT_ASSERTION,DebugLevel.TRANSFER_ROLEASSERTION,DebugLevel.TRANSFER_SAMEAS);
 		runWithCombinedTBoxAndABoxes();
 
 	}

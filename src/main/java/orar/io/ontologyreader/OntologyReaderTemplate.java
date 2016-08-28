@@ -16,8 +16,6 @@ import orar.config.DebugLevel;
 import orar.config.LogInfo;
 import orar.config.StatisticVocabulary;
 import orar.dlfragmentvalidator.OWLOntologyValidator;
-import orar.indexing.IndividualIndexer;
-import orar.modeling.ontology.OrarOntology;
 import orar.modeling.ontology2.OrarOntology2;
 import orar.normalization.Normalizer;
 import orar.normalization.transitivity.TransitivityNormalizer;
@@ -71,7 +69,7 @@ public abstract class OntologyReaderTemplate implements OntologyReader {
 		long parsingTimeInSecond = (endParsing - startParsing) / 1000;
 
 		if (config.getLogInfos().contains(LogInfo.LOADING_TIME)) {
-			logger.info(StatisticVocabulary.TIME_LOADING_INPUT + parsingTimeInSecond);
+			logger.info(StatisticVocabulary.TIME_LOADING_INPUT_TBOX_AND_ABOX + parsingTimeInSecond);
 		}
 		return internalOntology;
 
@@ -97,11 +95,15 @@ public abstract class OntologyReaderTemplate implements OntologyReader {
 			 */
 
 			OWLOntology ontologyInDesiredDLFragment = getOntologyInTargetDLFragment(inputOntology);
-
+			if (config.getLogInfos().contains(LogInfo.STATISTIC)) {
+				logger.info(
+						"Information of the validated ontology, e.g. after removing axioms not in the considered language:");
+				OntologyStatistic.printOWLOntologyInfo(ontologyInDesiredDLFragment);
+			}
 			/*
 			 * Normalize the ontology into normal form
 			 */
-
+			long startNormalization = System.currentTimeMillis();
 			OWLOntology ontologyInNormalForm = getOntologyInTheNormalForm(ontologyInDesiredDLFragment);
 
 			/*
@@ -111,9 +113,13 @@ public abstract class OntologyReaderTemplate implements OntologyReader {
 			OWLOntology ontologyInNormalFormWithAddedAuxiliaryAxiomsForTransitivity = getOntologyWithAuxiliaryAxiomsForTransitivity(
 					ontologyInNormalForm);
 			long endParsing = System.currentTimeMillis();
-			long parsingTimeInSecond = (endParsing - startParsing) / 1000;
+			long normalizationTime = (endParsing - startNormalization) / 1000;
 			if (config.getLogInfos().contains(LogInfo.LOADING_TIME)) {
-				logger.info(StatisticVocabulary.TIME_LOADING_INPUT + parsingTimeInSecond);
+				logger.info(StatisticVocabulary.TIME_NORMALIZATION_OF_TBOX + normalizationTime);
+			}
+			long parsingTimeInSecond = (endParsing - startParsing) / 1000 - normalizationTime;
+			if (config.getLogInfos().contains(LogInfo.LOADING_TIME)) {
+				logger.info(StatisticVocabulary.TIME_LOADING_INPUT_TBOX + parsingTimeInSecond);
 			}
 
 			return ontologyInNormalFormWithAddedAuxiliaryAxiomsForTransitivity;
@@ -141,7 +147,7 @@ public abstract class OntologyReaderTemplate implements OntologyReader {
 			long endParsing = System.currentTimeMillis();
 			long parsingTimeInSecond = (endParsing - startParsing) / 1000;
 			if (config.getLogInfos().contains(LogInfo.LOADING_TIME)) {
-				logger.info(StatisticVocabulary.TIME_LOADING_INPUT + parsingTimeInSecond);
+				logger.info(StatisticVocabulary.TIME_LOADING_INPUT_TBOX_AND_ABOX + parsingTimeInSecond);
 			}
 
 			return ontologyInDesiredDLFragment;
@@ -255,10 +261,8 @@ public abstract class OntologyReaderTemplate implements OntologyReader {
 		 */
 		OWLOntology ontologyInNormalFormAndAddedAuxiliaryAxiomsForTransitivity = getNormalizedOWLAPIOntology(
 				tboxFileName);
-		if (config.getLogInfos().contains(LogInfo.STATISTIC)) {
+		if (config.getLogInfos().contains(LogInfo.DETAILED_STATISTIC)) {
 			logger.info("Information of the validated normalized ontology.");
-			logger.info("Extracted from ontology input file:" + tboxFileName);
-
 			OntologyStatistic.printOWLOntologyInfo(ontologyInNormalFormAndAddedAuxiliaryAxiomsForTransitivity);
 
 		}
@@ -276,7 +280,7 @@ public abstract class OntologyReaderTemplate implements OntologyReader {
 			// get current date time with Date()
 			Date date = new Date();
 
-			String savedFileName = "normalizedTBox"+dateFormat.format(date)+".owl";
+			String savedFileName = "normalizedTBox" + dateFormat.format(date) + ".owl";
 			OntologySaving.saveOntologyToFile(ontologyInNormalFormAndAddedAuxiliaryAxiomsForTransitivity,
 					savedFileName);
 		}
@@ -305,7 +309,7 @@ public abstract class OntologyReaderTemplate implements OntologyReader {
 		long parsingTimeInSecond = (endParsing - startParsing) / 1000;
 
 		if (config.getLogInfos().contains(LogInfo.LOADING_TIME)) {
-			logger.info(StatisticVocabulary.TIME_LOADING_INPUT + parsingTimeInSecond);
+			logger.info(StatisticVocabulary.TIME_LOADING_INPUT_TBOX_AND_ABOX + parsingTimeInSecond);
 		}
 		return internalOntology;
 
@@ -338,7 +342,7 @@ public abstract class OntologyReaderTemplate implements OntologyReader {
 			long parsingTimeInSecond = (endParsing - startParsing) / 1000;
 
 			if (config.getLogInfos().contains(LogInfo.LOADING_TIME)) {
-				logger.info(StatisticVocabulary.TIME_LOADING_INPUT + parsingTimeInSecond);
+				logger.info(StatisticVocabulary.TIME_LOADING_INPUT_TBOX_AND_ABOX + parsingTimeInSecond);
 			}
 
 			return profiledOntology;
@@ -387,7 +391,7 @@ public abstract class OntologyReaderTemplate implements OntologyReader {
 			long parsingTimeInSecond = (endParsing - startParsing) / 1000;
 
 			if (config.getLogInfos().contains(LogInfo.LOADING_TIME)) {
-				logger.info(StatisticVocabulary.TIME_LOADING_INPUT + parsingTimeInSecond);
+				logger.info(StatisticVocabulary.TIME_LOADING_INPUT_TBOX_AND_ABOX + parsingTimeInSecond);
 			}
 
 			return owlOntology;
@@ -447,7 +451,7 @@ public abstract class OntologyReaderTemplate implements OntologyReader {
 		long parsingTimeInSecond = (endParsing - startParsing) / 1000;
 
 		if (config.getLogInfos().contains(LogInfo.LOADING_TIME)) {
-			logger.info(StatisticVocabulary.TIME_LOADING_INPUT + parsingTimeInSecond);
+			logger.info(StatisticVocabulary.TIME_LOADING_INPUT_TBOX_AND_ABOX + parsingTimeInSecond);
 		}
 		return internalOntology;
 
@@ -484,7 +488,7 @@ public abstract class OntologyReaderTemplate implements OntologyReader {
 		long parsingTimeInSecond = (endParsing - startParsing) / 1000;
 
 		if (config.getLogInfos().contains(LogInfo.LOADING_TIME)) {
-			logger.info(StatisticVocabulary.TIME_LOADING_INPUT + parsingTimeInSecond);
+			logger.info(StatisticVocabulary.TIME_LOADING_INPUT_TBOX_AND_ABOX + parsingTimeInSecond);
 		}
 		return internalOntology;
 	}
