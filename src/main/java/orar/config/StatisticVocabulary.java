@@ -56,6 +56,7 @@ public class StatisticVocabulary {
 	public static String TIME_LOADING_INPUT_ABOX = "Statistic: Time_loading_input_abox_in_seconds = ";
 	public static String TIME_LOADING_INPUT_TBOX_AND_ABOX = "Statistic: Time_loading_input_tbox_and_abox_in_seconds = ";
 	public static String TIME_LOADING_INPUT_TBOX = "Statistic: Time_loading_input_tbox_in_seconds = ";
+	public static String TIME_LOADING_ABSTRACTION_ONTOLOGY = "Statistic: Time_loading_abstraction_ontology_in_seconds = ";
 	public static String TIME_NORMALIZATION_OF_TBOX = "Statistic: Time_normalization_of_input_tbox_in_seconds = ";
 	public static String TIME_REASONING_USING_ABSRTACTION = "Statistic: Time_reasoning_using_abstraction_in_seconds = ";
 	public static String TIME_REASONING_USING_DLREASONER = "Statistic: Time_reasoning_using_dlreasoner_in_seconds = ";

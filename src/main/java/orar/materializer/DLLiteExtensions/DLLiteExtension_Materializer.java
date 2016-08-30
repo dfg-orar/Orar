@@ -13,6 +13,7 @@ import orar.abstraction.AbstractionGenerator;
 import orar.abstraction.DLLiteExtension.DLLiteExtension_AbstractionGenerator;
 import orar.innerreasoner.InnerReasoner;
 import orar.materializer.DLLiteExtension_MaterializerTemplate;
+import orar.materializer.MaterializerTemplateOptimized;
 import orar.modeling.ontology2.OrarOntology2;
 import orar.refinement.abstractroleassertion.AbstractRoleAssertionBox;
 import orar.refinement.assertiontransferring.AssertionTransporter;
@@ -20,7 +21,7 @@ import orar.refinement.assertiontransferring.DLLiteExtensions.DLLiteExtension_As
 import orar.refinement.assertiontransferring.HornSHOIF.HornSHOIF_AssertionTransporter;
 import orar.type.IndividualType;
 
-public abstract class DLLiteExtension_Materializer extends DLLiteExtension_MaterializerTemplate {
+public abstract class DLLiteExtension_Materializer extends MaterializerTemplateOptimized {
 	public DLLiteExtension_Materializer(OrarOntology2 normalizedOrarOntology) {
 		super(normalizedOrarOntology);
 
@@ -37,11 +38,13 @@ public abstract class DLLiteExtension_Materializer extends DLLiteExtension_Mater
 
 	@Override
 	protected AssertionTransporter getAssertionTransporter(
-			Map<OWLNamedIndividual, Set<OWLClass>> entailedAbstractConceptAssertions,
+			Map<OWLNamedIndividual, Set<OWLClass>> entailedAbstractConceptAssertionsForX,
+			Map<OWLNamedIndividual, Set<OWLClass>> entailedAbstractConceptAssertionsForY,
+			Map<OWLNamedIndividual, Set<OWLClass>> entailedAbstractConceptAssertionsForZ,
 			AbstractRoleAssertionBox entailedAbstractRoleAssertion,
-			Map<OWLNamedIndividual, Set<OWLNamedIndividual>> entailedSameasMap) {
+			Map<OWLNamedIndividual, Set<OWLNamedIndividual>> entailedSameasMap)  {
 		AssertionTransporter assertionTransporter = new DLLiteExtension_AssertionTransporter(normalizedORAROntology,
-				entailedAbstractConceptAssertions, entailedAbstractRoleAssertion, entailedSameasMap);
+				entailedAbstractConceptAssertionsForX, entailedAbstractRoleAssertion, entailedSameasMap);
 		return assertionTransporter;
 	}
 

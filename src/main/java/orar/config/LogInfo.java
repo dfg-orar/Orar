@@ -19,11 +19,13 @@ public enum LogInfo {
 	STATISTIC,
 
 	/*
-	 *detailed information about the size of ontology, abstraction, number of types, individuals,.... 
+	 * detailed information about the size of ontology, abstraction, number of
+	 * types, individuals,....
 	 */
 	DETAILED_STATISTIC, ABSTRACT_EXPLANATION,
 	/*
-	 * Print detail time in each steps
+	 * Print detail time in each steps. It corresponds to <performance> option in
+	 * the command line
 	 */
 	TIME_IN_EACH_METHOD_OR_OPERATION, PRINT_RESULT;
 }

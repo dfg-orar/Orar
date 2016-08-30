@@ -4,8 +4,16 @@ import org.semanticweb.owlapi.model.OWLOntology;
 
 import orar.innerreasoner.InnerReasoner;
 import orar.innerreasoner.HornSHOIF.Konclude_HornSHOIF_InnerReasoner;
+import orar.materializer.HornSHOIF.HornSHOIF_MaterializerOptimized;
 import orar.modeling.ontology2.OrarOntology2;
 
+/**
+ * We extend strategy of HornSHOIF. The differences for the case of
+ * DLLiteExtention is not to take care of y and z.
+ * 
+ * @author kien
+ *
+ */
 public class DLLiteExtension_Materializer_Konclude extends DLLiteExtension_Materializer {
 	private int port = 8080;
 

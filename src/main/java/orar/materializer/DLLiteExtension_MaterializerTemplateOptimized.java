@@ -2,20 +2,15 @@ package orar.materializer;
 
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.semanticweb.owlapi.model.AxiomType;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
-import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.semanticweb.owlapi.model.OWLOntology;
-
-import com.hp.hpl.jena.sparql.mgt.Explain.InfoLevel;
 
 import orar.abstraction.AbstractionGenerator;
 import orar.abstraction.BasicTypeComputor;
@@ -28,9 +23,11 @@ import orar.data.AbstractDataFactory;
 import orar.data.DataForTransferingEntailments;
 import orar.data.MetaDataOfOntology;
 import orar.innerreasoner.InnerReasoner;
+import orar.modeling.ontology.OrarOntology;
 import orar.modeling.ontology2.OrarOntology2;
 import orar.modeling.roleassertion2.IndexedRoleAssertionList;
 import orar.refinement.abstractroleassertion.AbstractRoleAssertionBox;
+import orar.refinement.abstractroleassertion.RoleAssertionList;
 import orar.refinement.assertiontransferring.AssertionTransporter;
 import orar.rolereasoning.HermitRoleReasoner;
 import orar.rolereasoning.RoleReasoner;
@@ -38,17 +35,16 @@ import orar.ruleengine.RuleEngine;
 import orar.ruleengine.SemiNaiveRuleEngine;
 import orar.type.BasicIndividualTypeFactory_UsingWeakHashMap;
 import orar.type.IndividualType;
-import orar.util.MapOperator;
 import orar.util.PrintingHelper;
 
-public abstract class MaterializerTemplateOptimized implements Materializer {
+public abstract class DLLiteExtension_MaterializerTemplateOptimized implements Materializer {
 	// input & output
 	protected final OrarOntology2 normalizedORAROntology;
 	private int currentLoop;
 	private long reasoningTimeInSeconds;
 	protected final Configuration config;
 	// logging
-	private static final Logger logger = Logger.getLogger(MaterializerTemplateOptimized.class);
+	private static final Logger logger = Logger.getLogger(DLLiteExtension_MaterializerTemplateOptimized.class);
 	// shared data
 	protected final DataForTransferingEntailments dataForTransferringEntailments;
 	protected final MetaDataOfOntology metaDataOfOntology;
@@ -59,15 +55,8 @@ public abstract class MaterializerTemplateOptimized implements Materializer {
 	protected final TypeComputor typeComputor;
 	protected Set<OWLOntology> abstractOntologies;
 	protected final RuleEngine ruleEngine;
-
-	/*
-	 * Stop signal will be true if we don't obtain any new assertions that will
-	 * triggers new entailments in the next refinement step
-	 */
-	private boolean hasStopSignal;
 	private long loadingTimeOfInnerReasoner;
-
-	public MaterializerTemplateOptimized(OrarOntology2 normalizedOrarOntology) {
+	public DLLiteExtension_MaterializerTemplateOptimized(OrarOntology2 normalizedOrarOntology) {
 		// input & output
 		this.normalizedORAROntology = normalizedOrarOntology;
 		this.currentLoop = 0;
@@ -81,8 +70,7 @@ public abstract class MaterializerTemplateOptimized implements Materializer {
 		this.abstractOntologies = new HashSet<OWLOntology>();
 		this.ruleEngine = new SemiNaiveRuleEngine(normalizedOrarOntology);
 		this.typeComputor = new BasicTypeComputor();
-		this.loadingTimeOfInnerReasoner = 0;
-		this.hasStopSignal = false;
+		this.loadingTimeOfInnerReasoner=0;
 	}
 
 	@Override
@@ -99,7 +87,7 @@ public abstract class MaterializerTemplateOptimized implements Materializer {
 		 * (2). Compute deductive closure of equality, trans, functionality, and
 		 * role subsumsion.
 		 */
-		logger.info("Computing deductive closure...");
+		logger.info("First time computing deductive closure...");
 		ruleEngine.materialize();
 		/*
 		 * Start loop from (3)--()
@@ -111,18 +99,16 @@ public abstract class MaterializerTemplateOptimized implements Materializer {
 		// HashSet<Object> typesLoop3 = new HashSet<>();
 		// HashSet<Object> typesLoop4 = new HashSet<>();
 
-		while (updated & !hasStopSignal) {
-			// while (updated) {
+		while (updated) {
 			currentLoop = this.currentLoop + 1;
 			logger.info("Current loop: " + currentLoop);
-
 			/*
 			 * clear temporarily data for abstract individuals, mapping,
 			 * types...
 			 * 
 			 */
 			this.dataForTransferringEntailments.clear();
-			this.abstractDataFactory.clear();
+			AbstractDataFactory.getInstance().clear();
 			BasicIndividualTypeFactory_UsingWeakHashMap.getInstance().clear();
 			/*
 			 * (3). Compute types
@@ -141,8 +127,7 @@ public abstract class MaterializerTemplateOptimized implements Materializer {
 			// }
 
 			// logging
-			if (config.getLogInfos().contains(LogInfo.STATISTIC)
-					|| config.getLogInfos().contains(LogInfo.DETAILED_STATISTIC)) {
+			if (config.getLogInfos().contains(LogInfo.STATISTIC)) {
 				logger.info(StatisticVocabulary.CURRENT_LOOP + currentLoop + ";" + StatisticVocabulary.NUMBER_OF_TYPES
 						+ typeMap2Individuals.size());
 			}
@@ -157,9 +142,9 @@ public abstract class MaterializerTemplateOptimized implements Materializer {
 			 */
 			logger.info("Generating abstractions ...");
 			List<OWLOntology> abstractions = getAbstractions(typeMap2Individuals);
+			logger.info("Info:Number of abstraction ontolog(ies):" + abstractions.size());
 			// logging debug
 			if (config.getDebuglevels().contains(DebugLevel.ABSTRACTION_CREATION)) {
-				logger.info("Info:Number of abstraction ontolog(ies):" + abstractions.size());
 				logger.info("*** DEBUG*** Number of abstraction ontologies: " + abstractions.size());
 				for (OWLOntology abs : abstractions) {
 					logger.info("=== Abstraction ontolog(ies):====");
@@ -168,20 +153,16 @@ public abstract class MaterializerTemplateOptimized implements Materializer {
 			}
 
 			// logging statistic
-			if (config.getLogInfos().contains(LogInfo.STATISTIC)
-					|| config.getLogInfos().contains(LogInfo.DETAILED_STATISTIC)) {
+			if (config.getLogInfos().contains(LogInfo.STATISTIC)) {
 				// logging abstract individuals
-
+				logger.info(StatisticVocabulary.CURRENT_LOOP + currentLoop + ";" + StatisticVocabulary.NUMBER_OF_X
+						+ this.abstractDataFactory.getxCounter());
+				logger.info(StatisticVocabulary.CURRENT_LOOP + currentLoop + ";" + StatisticVocabulary.NUMBER_OF_U
+						+ this.abstractDataFactory.getuCounter());
 				long yandz = this.abstractDataFactory.getyCounter() + this.abstractDataFactory.getzCounter();
+				logger.info(StatisticVocabulary.CURRENT_LOOP + currentLoop + ";" + StatisticVocabulary.NUMBER_OF_YZ
+						+ yandz);
 
-				if (config.getLogInfos().contains(LogInfo.DETAILED_STATISTIC)) {
-					logger.info(StatisticVocabulary.CURRENT_LOOP + currentLoop + ";" + StatisticVocabulary.NUMBER_OF_X
-							+ this.abstractDataFactory.getxCounter());
-					logger.info(StatisticVocabulary.CURRENT_LOOP + currentLoop + ";" + StatisticVocabulary.NUMBER_OF_U
-							+ this.abstractDataFactory.getuCounter());
-					logger.info(StatisticVocabulary.CURRENT_LOOP + currentLoop + ";" + StatisticVocabulary.NUMBER_OF_YZ
-							+ yandz);
-				}
 				long numberOfAbstractIndividuals = this.abstractDataFactory.getxCounter()
 						+ this.abstractDataFactory.getuCounter() + yandz;
 				logger.info(StatisticVocabulary.CURRENT_LOOP + currentLoop + ";"
@@ -197,12 +178,10 @@ public abstract class MaterializerTemplateOptimized implements Materializer {
 					abstractRoleAssertions += abs.getAxiomCount(AxiomType.OBJECT_PROPERTY_ASSERTION, true);
 				}
 				abstractAssertions = abstractConceptAssertions + abstractRoleAssertions;
-				if (config.getLogInfos().contains(LogInfo.DETAILED_STATISTIC)) {
-					logger.info(StatisticVocabulary.CURRENT_LOOP + currentLoop + ";"
-							+ StatisticVocabulary.NUMBER_OF_ABSTRACT_CONCEPTASSERTIONS + abstractConceptAssertions);
-					logger.info(StatisticVocabulary.CURRENT_LOOP + currentLoop + ";"
-							+ StatisticVocabulary.NUMBER_OF_ABSTRACT_ROLEASSERTIONS + abstractRoleAssertions);
-				}
+				logger.info(StatisticVocabulary.CURRENT_LOOP + currentLoop + ";"
+						+ StatisticVocabulary.NUMBER_OF_ABSTRACT_CONCEPTASSERTIONS + abstractConceptAssertions);
+				logger.info(StatisticVocabulary.CURRENT_LOOP + currentLoop + ";"
+						+ StatisticVocabulary.NUMBER_OF_ABSTRACT_ROLEASSERTIONS + abstractRoleAssertions);
 				logger.info(StatisticVocabulary.CURRENT_LOOP + currentLoop + ";"
 						+ StatisticVocabulary.NUMBER_OF_ABSTRACT_ASSERTIONS + abstractAssertions);
 			}
@@ -211,73 +190,47 @@ public abstract class MaterializerTemplateOptimized implements Materializer {
 			 * (5). Materialize abstractions
 			 */
 			logger.info("Materializing the abstractions ...");
-//			Map<OWLNamedIndividual, Set<OWLClass>> entailedAbstractConceptAssertionsForX = new HashMap<OWLNamedIndividual, Set<OWLClass>>();
-//			Map<OWLNamedIndividual, Set<OWLClass>> entailedAbstractConceptAssertionsForY = new HashMap<OWLNamedIndividual, Set<OWLClass>>();
-//			Map<OWLNamedIndividual, Set<OWLClass>> entailedAbstractConceptAssertionsForZ = new HashMap<OWLNamedIndividual, Set<OWLClass>>();
-			Map<OWLNamedIndividual, Set<OWLClass>> entailedAbstractConceptAssertionsForX ;
-			Map<OWLNamedIndividual, Set<OWLClass>> entailedAbstractConceptAssertionsForY ;
-			Map<OWLNamedIndividual, Set<OWLClass>> entailedAbstractConceptAssertionsForZ ;
-			AbstractRoleAssertionBox entailedAbstractRoleAssertion ;
-			Map<OWLNamedIndividual, Set<OWLNamedIndividual>> entailedSameasMap;
-
-			// int countMaterializedOntology = 0;// for monitoring only.
-//			for (OWLOntology abstraction : abstractions) {
-				OWLOntology abstraction = abstractions.get(0);
+			Map<OWLNamedIndividual, Set<OWLClass>> entailedAbstractConceptAssertions = new HashMap<OWLNamedIndividual, Set<OWLClass>>();
+			AbstractRoleAssertionBox entailedAbstractRoleAssertion = new AbstractRoleAssertionBox();
+			Map<OWLNamedIndividual, Set<OWLNamedIndividual>> entailedSameasMap = new HashMap<OWLNamedIndividual, Set<OWLNamedIndividual>>();
+			int countMaterializedOntology = 0;// for monitoring only.
+			for (OWLOntology abstraction : abstractions) {
 				if (config.getDebuglevels().contains(DebugLevel.REASONING_ABSTRACTONTOLOGY)) {
 					logger.info("***DEBUG*** Abstraction ontology:");
 					PrintingHelper.printSet(abstraction.getAxioms());
 				}
-				// countMaterializedOntology++;
-				// logger.info("Info:Materializing (splitted) abstract ontology:
-				// " + countMaterializedOntology);
-				// logger.info("Info:Size of the (splitted) abstract ontology: "
-				// + abstraction.getAxiomCount());
+				countMaterializedOntology++;
+				logger.info("Info:Materializing (splitted) abstract ontology: " + countMaterializedOntology);
+				logger.info("Info:Size of the (splitted) abstract ontology: " + abstraction.getAxiomCount());
 				InnerReasoner innerReasoner = getInnerReasoner(abstraction);
 				innerReasoner.computeEntailments();
-				this.loadingTimeOfInnerReasoner += innerReasoner.getOverheadTimeToSetupReasoner();
-				// we can use putAll since individuals in different abstractsion
-				// are
-				// disjointed.
-
-				entailedAbstractConceptAssertionsForX=innerReasoner.getXEntailedConceptAssertionsAsMap();
-				entailedAbstractConceptAssertionsForY=innerReasoner.getYEntailedConceptAssertionsAsMap();
-				entailedAbstractConceptAssertionsForZ=innerReasoner.getZEntailedConceptAssertionsAsMap();
-
-				entailedAbstractRoleAssertion=innerReasoner.getEntailedRoleAssertions();
-
-				entailedSameasMap=innerReasoner.getSameAsMap();
-
+				this.loadingTimeOfInnerReasoner+=innerReasoner.getOverheadTimeToSetupReasoner();
+				/*
+				 * in the next loop, only role assertions need to be transferred
+				 */
+				if (this.currentLoop == 1) {
+					entailedAbstractConceptAssertions.putAll(innerReasoner.getEntailedConceptAssertionsAsMap());
+				}
+				entailedAbstractRoleAssertion.addAll(innerReasoner.getEntailedRoleAssertions());
+				entailedSameasMap.putAll(innerReasoner.getSameAsMap());
 				if (config.getDebuglevels().contains(DebugLevel.REASONING_ABSTRACTONTOLOGY)) {
 					logger.info(
 							"***DEBUG REASONING_ABSTRACTONTOLOGY *** entailed Role assertions by abstract ontoogy:");
 					PrintingHelper.printSet(entailedAbstractRoleAssertion.getSetOfRoleAssertions());
 
 					logger.info(
-							"***DEBUG REASONING_ABSTRACTONTOLOGY *** entailed Concept assertions of X by abstract ontoogy:");
-					PrintingHelper.printMap(entailedAbstractConceptAssertionsForX);
-					logger.info(
-							"***DEBUG REASONING_ABSTRACTONTOLOGY *** entailed Concept assertions of Z by abstract ontoogy:");
-					PrintingHelper.printMap(entailedAbstractConceptAssertionsForZ);
-					logger.info(
-							"***DEBUG REASONING_ABSTRACTONTOLOGY *** entailed Concept assertions of Y by abstract ontoogy:");
-					PrintingHelper.printMap(entailedAbstractConceptAssertionsForY);
+							"***DEBUG REASONING_ABSTRACTONTOLOGY *** entailed Concept assertions by abstract ontoogy:");
+					PrintingHelper.printMap(entailedAbstractConceptAssertions);
 				}
 
-//			}
+			}
 			/*
 			 * (6). Transfer assertions to the original ABox
 			 */
 			logger.info("Transferring the entailments ...");
-			AssertionTransporter assertionTransporter = getAssertionTransporter(entailedAbstractConceptAssertionsForX,
-					entailedAbstractConceptAssertionsForY, entailedAbstractConceptAssertionsForZ,
+			AssertionTransporter assertionTransporter = getAssertionTransporter(entailedAbstractConceptAssertions,
 					entailedAbstractRoleAssertion, entailedSameasMap);
 			assertionTransporter.updateOriginalABox();
-
-			this.hasStopSignal = !(assertionTransporter.isABoxExtendedViaY()
-					|| assertionTransporter.isABoxExtendedViaZ()
-					|| assertionTransporter.isABoxExtendedWithNewSameasAssertions()
-					|| assertionTransporter.isABoxExtendedWithNewSpecialRoleAssertions());
-
 			updated = assertionTransporter.isABoxExtended();
 			if (updated) {
 				IndexedRoleAssertionList newlyAddedRoleAssertions = assertionTransporter.getNewlyAddedRoleAssertions();
@@ -286,12 +239,14 @@ public abstract class MaterializerTemplateOptimized implements Materializer {
 				 * (7). Compute deductive closure
 				 */
 				logger.info("Computing the deductive closure wrt new entailments ...");
+//				if (newlyAddedRoleAssertions.getSize()==0 && newlyAddedSameasAssertions.isEmpty()) {
+//					break;
+//				}
 				ruleEngine.addTodoRoleAsesrtions(newlyAddedRoleAssertions.getSetOfIndexedRoleAssertions());
 				ruleEngine.addTodoSameasAssertions(newlyAddedSameasAssertions);
 				ruleEngine.incrementalMaterialize();
 
 			}
-
 			logger.info("Finished loop: " + currentLoop);
 
 		}
@@ -300,21 +255,10 @@ public abstract class MaterializerTemplateOptimized implements Materializer {
 			int numberOfRefinements = currentLoop - 1;
 			logger.info(StatisticVocabulary.NUMBER_OF_REFINEMENTS + numberOfRefinements);
 		}
-
-		/*
-		 * complete ABox wrt sameas assertions
-		 */
-		completeABoxWrtSameas();
-		/*
-		 * get reasoning time
-		 * 
-		 */
+		// get reasoning time
 		long endTime = System.currentTimeMillis();
 		this.reasoningTimeInSeconds = (endTime - startTime) / 1000;
-//		this.reasoningTimeInSeconds -= this.loadingTimeOfInnerReasoner;
-		if (config.getLogInfos().contains(LogInfo.LOADING_TIME)){
-			logger.info(StatisticVocabulary.TIME_LOADING_ABSTRACTION_ONTOLOGY+this.loadingTimeOfInnerReasoner);
-		}
+		this.reasoningTimeInSeconds-=this.loadingTimeOfInnerReasoner;
 		/*
 		 * logging
 		 */
@@ -322,26 +266,23 @@ public abstract class MaterializerTemplateOptimized implements Materializer {
 			logger.info(StatisticVocabulary.TIME_REASONING_USING_ABSRTACTION + this.reasoningTimeInSeconds);
 		}
 
-		if (config.getLogInfos().contains(LogInfo.STATISTIC)
-				|| config.getLogInfos().contains(LogInfo.DETAILED_STATISTIC)) {
+		if (config.getLogInfos().contains(LogInfo.STATISTIC)) {
 			// int numberOfMaterializedConceptAssertions =
 			// this.normalizedORAROntology
 			// .getOWLAPIConceptAssertionsWHITOUTNormalizationSymbols().size();
 			int numberOfMaterializedConceptAssertions = this.normalizedORAROntology
-					.getNumberOfConceptAssertionsWithoutNormalizationSymbols();
+					.getOWLAPIConceptAssertionsWithNormalizationSymbols().size();
 			int numberOfMaterializedRoleAssertions = this.normalizedORAROntology.getNumberOfRoleAssertions();
 			int numberOfMaterializedEqualityAssertions = this.normalizedORAROntology.getOWLAPISameasAssertions().size();
 			int numberOfMaterializedAssertions = numberOfMaterializedConceptAssertions
 					+ numberOfMaterializedRoleAssertions + numberOfMaterializedEqualityAssertions;
-			if (config.getLogInfos().contains(LogInfo.DETAILED_STATISTIC)) {
-				logger.info(StatisticVocabulary.NUMBER_OF_MATERIALIZED_CONCEPTASSERTIONS
-						+ numberOfMaterializedConceptAssertions);
-				logger.info(
-						StatisticVocabulary.NUMBER_OF_MATERIALIZED_ROLEASSERTIONS + numberOfMaterializedRoleAssertions);
-				logger.info(StatisticVocabulary.NUMBER_OF_MATERIALIZED_EQUALITY_ASSERTIONS
-						+ numberOfMaterializedEqualityAssertions);
-			}
-			logger.info(StatisticVocabulary.NUMBER_OF_MATERIALIZED_ASSERTIONS + numberOfMaterializedAssertions);
+			logger.info(StatisticVocabulary.NUMBER_OF_MATERIALIZED_CONCEPTASSERTIONS
+					+ numberOfMaterializedConceptAssertions);
+			logger.info(StatisticVocabulary.NUMBER_OF_MATERIALIZED_ROLEASSERTIONS + numberOfMaterializedRoleAssertions);
+			logger.info(StatisticVocabulary.NUMBER_OF_MATERIALIZED_EQUALITY_ASSERTIONS
+					+ numberOfMaterializedEqualityAssertions);
+			// logger.info(StatisticVocabulary.NUMBER_OF_MATERIALIZED_ASSERTIONS
+			// + numberOfMaterializedAssertions);
 			// logger.info(StatisticVocabulary.NUMBER_OF_MATERIALIZED_ASSERTIONS
 			// + numberOfMaterializedAssertions);
 
@@ -350,123 +291,10 @@ public abstract class MaterializerTemplateOptimized implements Materializer {
 		// typesLoop3.equals(typesLoop4));
 	}
 
-	/**
-	 * Complete ABox wrt sameas
-	 */
-	private void completeABoxWrtSameas() {
-		long startTime = System.currentTimeMillis();
-		Set<Integer> allIndividualInAllSameasAssertion = this.normalizedORAROntology.getSameasBox().getAllIndividuals();
-		Set<Integer> processedIndividuals = new HashSet<>();
-		for (Integer eachInd : allIndividualInAllSameasAssertion) {
-			if (!processedIndividuals.contains(eachInd)) {
-				completeConceptAssertionWrtSameas(eachInd);
-				completePreRoleAssertionWrtSameas(eachInd);
-				completeSuccRoleAsesrtionWrtSameas(eachInd);
-
-				/*
-				 * put this individual and its sameas to the set of processed
-				 * individuals
-				 */
-				Set<Integer> sameIndividuals = this.normalizedORAROntology.getSameIndividuals(eachInd);
-				sameIndividuals.add(eachInd);
-				processedIndividuals.addAll(sameIndividuals);
-			}
-		}
-		long endTime = System.currentTimeMillis();
-		long time = (endTime - startTime) / 1000;
-		if (this.config.getLogInfos().contains(LogInfo.TIME_IN_EACH_METHOD_OR_OPERATION)) {
-			logger.info(
-					"Time for completing ABox wrt sameas after abstraction procedure terminated (seconds): " + time);
-		}
-	}
-
-	private void completeConceptAssertionWrtSameas(int individual) {
-		Set<Integer> sameIndividuals = this.normalizedORAROntology.getSameIndividuals(individual);
-		sameIndividuals.add(individual);
-		if (sameIndividuals.size() > 1) {
-			/*
-			 * accumulate asserted concepts
-			 */
-			Set<OWLClass> accumulatedConcepts = new HashSet<>();
-			for (Integer eachInd : sameIndividuals) {
-				accumulatedConcepts.addAll(this.normalizedORAROntology.getAssertedConcepts(eachInd));
-			}
-			/*
-			 * add accumulated concepts for each individual
-			 */
-			for (Integer eachInd : sameIndividuals) {
-				this.normalizedORAROntology.addManyConceptAssertions(eachInd, accumulatedConcepts);
-			}
-		}
-	}
-
-	private void completePreRoleAssertionWrtSameas(int individual) {
-		Set<Integer> sameIndividuals = this.normalizedORAROntology.getSameIndividuals(individual);
-		sameIndividuals.add(individual);
-		/*
-		 * accumulate role asesrtions
-		 */
-		Map<OWLObjectProperty, Set<Integer>> predecessorMap = new HashMap<>();
-		for (Integer eachInd : sameIndividuals) {
-			MapOperator.addAnotherMap(predecessorMap,
-					this.normalizedORAROntology.getPredecessorRoleAssertionsAsMap(eachInd));
-		}
-
-		/*
-		 * add preRoleAsesrtion for each individual
-		 */
-		if (sameIndividuals.size() > 1) {
-			for (Integer eachInd : sameIndividuals) {
-				Iterator<Entry<OWLObjectProperty, Set<Integer>>> iterator = predecessorMap.entrySet().iterator();
-				while (iterator.hasNext()) {
-					Entry<OWLObjectProperty, Set<Integer>> entry = iterator.next();
-					OWLObjectProperty preRole = entry.getKey();
-					Set<Integer> preInds = entry.getValue();
-					for (Integer eachPreInd : preInds) {
-						this.normalizedORAROntology.addRoleAssertion(eachPreInd, preRole, eachInd);
-					}
-				}
-			}
-		}
-	}
-
-	private void completeSuccRoleAsesrtionWrtSameas(int individual) {
-		Set<Integer> sameIndividuals = this.normalizedORAROntology.getSameIndividuals(individual);
-		sameIndividuals.add(individual);
-		/*
-		 * accumulate role asesrtions
-		 */
-		Map<OWLObjectProperty, Set<Integer>> succRoleMap = new HashMap<>();
-		for (Integer eachInd : sameIndividuals) {
-			MapOperator.addAnotherMap(succRoleMap,
-					this.normalizedORAROntology.getSuccessorRoleAssertionsAsMap(eachInd));
-		}
-
-		/*
-		 * add succRole assertions for each individual
-		 */
-		if (sameIndividuals.size() > 1) {
-			for (Integer eachInd : sameIndividuals) {
-				Iterator<Entry<OWLObjectProperty, Set<Integer>>> iterator = succRoleMap.entrySet().iterator();
-				while (iterator.hasNext()) {
-					Entry<OWLObjectProperty, Set<Integer>> entry = iterator.next();
-					OWLObjectProperty succRole = entry.getKey();
-					Set<Integer> succInds = entry.getValue();
-					for (Integer eachSuccInd : succInds) {
-						this.normalizedORAROntology.addRoleAssertion(eachInd, succRole, eachSuccInd);
-					}
-				}
-			}
-		}
-
-	}
-
 	protected abstract List<OWLOntology> getAbstractions(Map<IndividualType, Set<Integer>> typeMap2Individuals);
 
 	protected abstract AssertionTransporter getAssertionTransporter(
-			Map<OWLNamedIndividual, Set<OWLClass>> entailedAbstractConceptAssertionsForX,
-			Map<OWLNamedIndividual, Set<OWLClass>> entailedAbstractConceptAssertionsForY,
-			Map<OWLNamedIndividual, Set<OWLClass>> entailedAbstractConceptAssertionsForZ,
+			Map<OWLNamedIndividual, Set<OWLClass>> entailedAbstractConceptAssertions,
 			AbstractRoleAssertionBox entailedAbstractRoleAssertion,
 			Map<OWLNamedIndividual, Set<OWLNamedIndividual>> entailedSameasMap);
 

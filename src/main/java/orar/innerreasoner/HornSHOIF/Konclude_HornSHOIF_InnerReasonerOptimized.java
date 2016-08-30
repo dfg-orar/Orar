@@ -121,7 +121,7 @@ public class Konclude_HornSHOIF_InnerReasonerOptimized extends HornSHOIF_InnerRe
 				Thread.sleep(POOLING_INTERVAL);
 				String result = stdout.toString();
 				if (result.toLowerCase().contains(KONCLUDE_READY.toLowerCase())) {
-					logger.info("Orar Info: Konclude is started.");
+//					logger.info("Orar Info: Konclude is started.");
 					logger.info(result);
 					break;
 				}
