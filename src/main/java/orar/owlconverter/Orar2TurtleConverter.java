@@ -48,6 +48,37 @@ public abstract class Orar2TurtleConverter {
 
 	}
 
+	
+	/**
+	 * Read an ontology (tboxFileName + aboxListFile); validate that TBox and
+	 * return its HornSHOIF fragment; and convert the ABox assertions into
+	 * Turtle syntax.
+	 * 
+	 * @param tboxFileName
+	 *            inputTBox
+	 * @param aboxListFile
+	 *            list of input aboxes file names
+	 * @param validatedTBoxFileName
+	 *            output TBox in HornSHOIF and in RDFXML format
+	 * @param aboxInTurtle
+	 *            output ABox in Turtle
+	 */
+	public void convertCombinedOntologyToSaparatedFiles(String tboxAndABoxFile,  String validatedTBoxFileName, String aboxInTurtle) {
+		indexer.clear();
+		this.model = ModelFactory.createDefaultModel();
+
+		OntologyReader ontologyReader = getOntologyReader();
+		OrarOntology2 orarOntology = ontologyReader.getNOTNormalizedOrarOntology(tboxAndABoxFile);
+
+		logger.info("obtaining the TBox in desired fragment...");
+		saveTBoxInRDFXML(orarOntology, validatedTBoxFileName);
+		logger.info("done! saved a validated TBox to: " + validatedTBoxFileName);
+
+		logger.info("converting assertions into Turtle syntax...");
+		saveABoxInTurtle(orarOntology, aboxInTurtle);
+		logger.info("done! saved all assertions to: " + aboxInTurtle);
+	}
+	
 	/**
 	 * Read an ontology (tboxFileName + aboxListFile); validate that TBox and
 	 * return its HornSHOIF fragment; and convert the ABox assertions into

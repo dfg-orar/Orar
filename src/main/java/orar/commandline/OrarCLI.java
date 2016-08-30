@@ -40,6 +40,7 @@ import orar.materializer.DLLiteExtensions.DLLiteExtension_Materializer_Konclude;
 import orar.materializer.HornSHIF.HornSHIF_Materializer_Fact;
 import orar.materializer.HornSHIF.HornSHIF_Materializer_Hermit;
 import orar.materializer.HornSHIF.HornSHIF_Materializer_Konclude;
+import orar.materializer.HornSHIF.HornSHIF_Materializer_KoncludeOptimized;
 import orar.materializer.HornSHIF.HornSHIF_Materializer_Pellet;
 import orar.materializer.HornSHOIF.HornSHOIF_Materializer_Fact;
 import orar.materializer.HornSHOIF.HornSHOIF_Materializer_Hermit;
@@ -300,7 +301,7 @@ public class OrarCLI {
 				materializer = new DLLiteExtension_Materializer_Konclude(orarOntology, intPort);
 				break;
 			case HORN_SHIF_STRATEGY:
-				materializer = new HornSHIF_Materializer_Konclude(orarOntology, intPort);
+				materializer = new HornSHIF_Materializer_KoncludeOptimized(orarOntology, intPort);
 				break;
 			case HORN_SHOIF_STRATEGY:
 				materializer = new HornSHOIF_Materializer_KoncludeOptimized(orarOntology, intPort);
