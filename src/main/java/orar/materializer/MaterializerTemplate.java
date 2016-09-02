@@ -252,7 +252,7 @@ public abstract class MaterializerTemplate implements Materializer {
 		// logging statistics
 		if (this.config.getLogInfos().contains(LogInfo.STATISTIC)) {
 			int numberOfRefinements = currentLoop - 1;
-			logger.info(StatisticVocabulary.NUMBER_OF_REFINEMENTS + numberOfRefinements);
+			logger.info(StatisticVocabulary.NUMBER_OF_ABSTRACTIONS + numberOfRefinements);
 		}
 		// get reasoning time
 		long endTime = System.currentTimeMillis();
@@ -332,5 +332,8 @@ public abstract class MaterializerTemplate implements Materializer {
 	public long getReasoningTimeInSeconds() {
 		return this.reasoningTimeInSeconds;
 	}
-
+	@Override
+	public long getAbstractOntologyLoadingTime() {
+		return this.loadingTimeOfInnerReasoner;
+	}
 }

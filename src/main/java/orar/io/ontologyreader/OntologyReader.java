@@ -65,5 +65,7 @@ public interface OntologyReader {
 	 * @return a non-normalized OWLAPI ontology in the target DL fragment.
 	 */
 	public OWLOntology getOWLAPIOntology(String tboxFile, String aboxListFile);
+	
+	public long getLoadingTime();
 
 }

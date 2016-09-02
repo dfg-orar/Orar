@@ -10,6 +10,7 @@ import org.apache.commons.cli.ParseException;
 import org.apache.log4j.Logger;
 
 import orar.owlconverter.DLLiteHOD_OWLOntologyConverter;
+import orar.owlconverter.HornSHOIF_OWLOntologyConverter;
 import orar.owlconverter.OWLOntologyConverter;
 
 public class OntologyConverterCLI {
@@ -71,7 +72,7 @@ public class OntologyConverterCLI {
 
 	private static OWLOntologyConverter getOWLOntologyConverter() {
 
-		return new DLLiteHOD_OWLOntologyConverter();
+		return new HornSHOIF_OWLOntologyConverter();
 	}
 
 	static private boolean argumentsAreValid(CommandLine commandLine) {

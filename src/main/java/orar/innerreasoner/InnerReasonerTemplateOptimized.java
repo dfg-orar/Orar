@@ -18,6 +18,8 @@ import org.semanticweb.owlapi.reasoner.OWLReasoner;
 
 import orar.config.Configuration;
 import orar.config.DebugLevel;
+import orar.config.LogInfo;
+import orar.config.StatisticVocabulary;
 import orar.data.AbstractDataFactory;
 import orar.data.DataForTransferingEntailments;
 import orar.data.MetaDataOfOntology;
@@ -28,7 +30,8 @@ public abstract class InnerReasonerTemplateOptimized implements InnerReasoner {
 	/*
 	 * data
 	 */
-//	protected final Map<OWLNamedIndividual, Set<OWLClass>> conceptAssertionsMap;
+	// protected final Map<OWLNamedIndividual, Set<OWLClass>>
+	// conceptAssertionsMap;
 	protected final Map<OWLNamedIndividual, Set<OWLClass>> xConceptAssertionsMap;
 	protected final Map<OWLNamedIndividual, Set<OWLClass>> yConceptAssertionsMap;
 	protected final Map<OWLNamedIndividual, Set<OWLClass>> zConceptAssertionsMap;
@@ -75,7 +78,8 @@ public abstract class InnerReasonerTemplateOptimized implements InnerReasoner {
 		/*
 		 * init data
 		 */
-//		this.conceptAssertionsMap = new HashMap<OWLNamedIndividual, Set<OWLClass>>();
+		// this.conceptAssertionsMap = new HashMap<OWLNamedIndividual,
+		// Set<OWLClass>>();
 		this.xConceptAssertionsMap = new HashMap<OWLNamedIndividual, Set<OWLClass>>();
 		this.yConceptAssertionsMap = new HashMap<OWLNamedIndividual, Set<OWLClass>>();
 		this.zConceptAssertionsMap = new HashMap<OWLNamedIndividual, Set<OWLClass>>();
@@ -112,11 +116,13 @@ public abstract class InnerReasonerTemplateOptimized implements InnerReasoner {
 
 		return this.xConceptAssertionsMap;
 	}
+
 	@Override
 	public Map<OWLNamedIndividual, Set<OWLClass>> getYEntailedConceptAssertionsAsMap() {
 
 		return this.yConceptAssertionsMap;
 	}
+
 	@Override
 	public Map<OWLNamedIndividual, Set<OWLClass>> getZEntailedConceptAssertionsAsMap() {
 
@@ -188,6 +194,9 @@ public abstract class InnerReasonerTemplateOptimized implements InnerReasoner {
 		this.reasoner = getOWLReasoner(owlOntology);
 		long endTimeOverhead = System.currentTimeMillis();
 		this.overheadTimeToSetupReasoner = (endTimeOverhead - starTimeOverhead) / 1000;
+		if (this.config.getLogInfos().contains(LogInfo.LOADING_TIME)) {
+			logger.info(StatisticVocabulary.TIME_LOADING_ABSTRACT_ONTOLOGY + this.overheadTimeToSetupReasoner);
+		}
 		/*
 		 * compute entailments
 		 */
@@ -396,9 +405,9 @@ public abstract class InnerReasonerTemplateOptimized implements InnerReasoner {
 		for (OWLNamedIndividual ind : instances) {
 			if (this.abstractDataFactory.getXAbstractIndividuals().contains(ind)) {
 				putIndividual2ConceptMap(ind, concept, this.xConceptAssertionsMap);
-			} else if (this.abstractDataFactory.getYAbstractIndividuals().contains(ind)){
+			} else if (this.abstractDataFactory.getYAbstractIndividuals().contains(ind)) {
 				putIndividual2ConceptMap(ind, concept, this.yConceptAssertionsMap);
-			} else if (this.abstractDataFactory.getZAbstractIndividuals().contains(ind)){
+			} else if (this.abstractDataFactory.getZAbstractIndividuals().contains(ind)) {
 				putIndividual2ConceptMap(ind, concept, this.zConceptAssertionsMap);
 			}
 

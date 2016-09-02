@@ -211,59 +211,64 @@ public abstract class MaterializerTemplateOptimized implements Materializer {
 			 * (5). Materialize abstractions
 			 */
 			logger.info("Materializing the abstractions ...");
-//			Map<OWLNamedIndividual, Set<OWLClass>> entailedAbstractConceptAssertionsForX = new HashMap<OWLNamedIndividual, Set<OWLClass>>();
-//			Map<OWLNamedIndividual, Set<OWLClass>> entailedAbstractConceptAssertionsForY = new HashMap<OWLNamedIndividual, Set<OWLClass>>();
-//			Map<OWLNamedIndividual, Set<OWLClass>> entailedAbstractConceptAssertionsForZ = new HashMap<OWLNamedIndividual, Set<OWLClass>>();
-			Map<OWLNamedIndividual, Set<OWLClass>> entailedAbstractConceptAssertionsForX ;
-			Map<OWLNamedIndividual, Set<OWLClass>> entailedAbstractConceptAssertionsForY ;
-			Map<OWLNamedIndividual, Set<OWLClass>> entailedAbstractConceptAssertionsForZ ;
-			AbstractRoleAssertionBox entailedAbstractRoleAssertion ;
+			// Map<OWLNamedIndividual, Set<OWLClass>>
+			// entailedAbstractConceptAssertionsForX = new
+			// HashMap<OWLNamedIndividual, Set<OWLClass>>();
+			// Map<OWLNamedIndividual, Set<OWLClass>>
+			// entailedAbstractConceptAssertionsForY = new
+			// HashMap<OWLNamedIndividual, Set<OWLClass>>();
+			// Map<OWLNamedIndividual, Set<OWLClass>>
+			// entailedAbstractConceptAssertionsForZ = new
+			// HashMap<OWLNamedIndividual, Set<OWLClass>>();
+			Map<OWLNamedIndividual, Set<OWLClass>> entailedAbstractConceptAssertionsForX;
+			Map<OWLNamedIndividual, Set<OWLClass>> entailedAbstractConceptAssertionsForY;
+			Map<OWLNamedIndividual, Set<OWLClass>> entailedAbstractConceptAssertionsForZ;
+			AbstractRoleAssertionBox entailedAbstractRoleAssertion;
 			Map<OWLNamedIndividual, Set<OWLNamedIndividual>> entailedSameasMap;
 
 			// int countMaterializedOntology = 0;// for monitoring only.
-//			for (OWLOntology abstraction : abstractions) {
-				OWLOntology abstraction = abstractions.get(0);
-				if (config.getDebuglevels().contains(DebugLevel.REASONING_ABSTRACTONTOLOGY)) {
-					logger.info("***DEBUG*** Abstraction ontology:");
-					PrintingHelper.printSet(abstraction.getAxioms());
-				}
-				// countMaterializedOntology++;
-				// logger.info("Info:Materializing (splitted) abstract ontology:
-				// " + countMaterializedOntology);
-				// logger.info("Info:Size of the (splitted) abstract ontology: "
-				// + abstraction.getAxiomCount());
-				InnerReasoner innerReasoner = getInnerReasoner(abstraction);
-				innerReasoner.computeEntailments();
-				this.loadingTimeOfInnerReasoner += innerReasoner.getOverheadTimeToSetupReasoner();
-				// we can use putAll since individuals in different abstractsion
-				// are
-				// disjointed.
+			// for (OWLOntology abstraction : abstractions) {
+			OWLOntology abstraction = abstractions.get(0);
+			if (config.getDebuglevels().contains(DebugLevel.REASONING_ABSTRACTONTOLOGY)) {
+				logger.info("***DEBUG*** Abstraction ontology:");
+				PrintingHelper.printSet(abstraction.getAxioms());
+			}
+			// countMaterializedOntology++;
+			// logger.info("Info:Materializing (splitted) abstract ontology:
+			// " + countMaterializedOntology);
+			// logger.info("Info:Size of the (splitted) abstract ontology: "
+			// + abstraction.getAxiomCount());
+			InnerReasoner innerReasoner = getInnerReasoner(abstraction);
+			innerReasoner.computeEntailments();
+			this.loadingTimeOfInnerReasoner += innerReasoner.getOverheadTimeToSetupReasoner();
+			// we can use putAll since individuals in different abstractsion
+			// are
+			// disjointed.
 
-				entailedAbstractConceptAssertionsForX=innerReasoner.getXEntailedConceptAssertionsAsMap();
-				entailedAbstractConceptAssertionsForY=innerReasoner.getYEntailedConceptAssertionsAsMap();
-				entailedAbstractConceptAssertionsForZ=innerReasoner.getZEntailedConceptAssertionsAsMap();
+			entailedAbstractConceptAssertionsForX = innerReasoner.getXEntailedConceptAssertionsAsMap();
+			entailedAbstractConceptAssertionsForY = innerReasoner.getYEntailedConceptAssertionsAsMap();
+			entailedAbstractConceptAssertionsForZ = innerReasoner.getZEntailedConceptAssertionsAsMap();
 
-				entailedAbstractRoleAssertion=innerReasoner.getEntailedRoleAssertions();
+			entailedAbstractRoleAssertion = innerReasoner.getEntailedRoleAssertions();
 
-				entailedSameasMap=innerReasoner.getSameAsMap();
+			entailedSameasMap = innerReasoner.getSameAsMap();
 
-				if (config.getDebuglevels().contains(DebugLevel.REASONING_ABSTRACTONTOLOGY)) {
-					logger.info(
-							"***DEBUG REASONING_ABSTRACTONTOLOGY *** entailed Role assertions by abstract ontoogy:");
-					PrintingHelper.printSet(entailedAbstractRoleAssertion.getSetOfRoleAssertions());
+			if (config.getDebuglevels().contains(DebugLevel.REASONING_ABSTRACTONTOLOGY)) {
+				logger.info("***DEBUG REASONING_ABSTRACTONTOLOGY *** entailed Role assertions by abstract ontoogy:");
+				PrintingHelper.printSet(entailedAbstractRoleAssertion.getSetOfRoleAssertions());
 
-					logger.info(
-							"***DEBUG REASONING_ABSTRACTONTOLOGY *** entailed Concept assertions of X by abstract ontoogy:");
-					PrintingHelper.printMap(entailedAbstractConceptAssertionsForX);
-					logger.info(
-							"***DEBUG REASONING_ABSTRACTONTOLOGY *** entailed Concept assertions of Z by abstract ontoogy:");
-					PrintingHelper.printMap(entailedAbstractConceptAssertionsForZ);
-					logger.info(
-							"***DEBUG REASONING_ABSTRACTONTOLOGY *** entailed Concept assertions of Y by abstract ontoogy:");
-					PrintingHelper.printMap(entailedAbstractConceptAssertionsForY);
-				}
+				logger.info(
+						"***DEBUG REASONING_ABSTRACTONTOLOGY *** entailed Concept assertions of X by abstract ontoogy:");
+				PrintingHelper.printMap(entailedAbstractConceptAssertionsForX);
+				logger.info(
+						"***DEBUG REASONING_ABSTRACTONTOLOGY *** entailed Concept assertions of Z by abstract ontoogy:");
+				PrintingHelper.printMap(entailedAbstractConceptAssertionsForZ);
+				logger.info(
+						"***DEBUG REASONING_ABSTRACTONTOLOGY *** entailed Concept assertions of Y by abstract ontoogy:");
+				PrintingHelper.printMap(entailedAbstractConceptAssertionsForY);
+			}
 
-//			}
+			// }
 			/*
 			 * (6). Transfer assertions to the original ABox
 			 */
@@ -297,8 +302,8 @@ public abstract class MaterializerTemplateOptimized implements Materializer {
 		}
 		// logging statistics
 		if (this.config.getLogInfos().contains(LogInfo.STATISTIC)) {
-			int numberOfRefinements = currentLoop - 1;
-			logger.info(StatisticVocabulary.NUMBER_OF_REFINEMENTS + numberOfRefinements);
+			int numberOfRefinements = currentLoop ;
+			logger.info(StatisticVocabulary.NUMBER_OF_ABSTRACTIONS + numberOfRefinements);
 		}
 
 		/*
@@ -311,16 +316,16 @@ public abstract class MaterializerTemplateOptimized implements Materializer {
 		 */
 		long endTime = System.currentTimeMillis();
 		this.reasoningTimeInSeconds = (endTime - startTime) / 1000;
-//		this.reasoningTimeInSeconds -= this.loadingTimeOfInnerReasoner;
-		if (config.getLogInfos().contains(LogInfo.LOADING_TIME)){
-			logger.info(StatisticVocabulary.TIME_LOADING_ABSTRACTION_ONTOLOGY+this.loadingTimeOfInnerReasoner);
-		}
+		this.reasoningTimeInSeconds -= this.loadingTimeOfInnerReasoner;
+//		if (config.getLogInfos().contains(LogInfo.LOADING_TIME)) {
+//			logger.info(StatisticVocabulary.TIME_LOADING_ABSTRACT_ONTOLOGY + this.loadingTimeOfInnerReasoner);
+//		}
 		/*
 		 * logging
 		 */
-		if (config.getLogInfos().contains(LogInfo.REASONING_TIME)) {
-			logger.info(StatisticVocabulary.TIME_REASONING_USING_ABSRTACTION + this.reasoningTimeInSeconds);
-		}
+//		if (config.getLogInfos().contains(LogInfo.REASONING_TIME)) {
+//			logger.info(StatisticVocabulary.TIME_REASONING_USING_ABSRTACTION + this.reasoningTimeInSeconds);
+//		}
 
 		if (config.getLogInfos().contains(LogInfo.STATISTIC)
 				|| config.getLogInfos().contains(LogInfo.DETAILED_STATISTIC)) {
@@ -506,4 +511,8 @@ public abstract class MaterializerTemplateOptimized implements Materializer {
 		return this.reasoningTimeInSeconds;
 	}
 
+	@Override
+	public long getAbstractOntologyLoadingTime() {
+		return this.loadingTimeOfInnerReasoner;
+	}
 }

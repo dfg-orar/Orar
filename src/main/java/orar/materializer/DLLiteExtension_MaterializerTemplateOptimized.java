@@ -252,8 +252,8 @@ public abstract class DLLiteExtension_MaterializerTemplateOptimized implements M
 		}
 		// logging statistics
 		if (this.config.getLogInfos().contains(LogInfo.STATISTIC)) {
-			int numberOfRefinements = currentLoop - 1;
-			logger.info(StatisticVocabulary.NUMBER_OF_REFINEMENTS + numberOfRefinements);
+			int numberOfRefinements = currentLoop ;
+			logger.info(StatisticVocabulary.NUMBER_OF_ABSTRACTIONS + numberOfRefinements);
 		}
 		// get reasoning time
 		long endTime = System.currentTimeMillis();
@@ -262,9 +262,12 @@ public abstract class DLLiteExtension_MaterializerTemplateOptimized implements M
 		/*
 		 * logging
 		 */
-		if (config.getLogInfos().contains(LogInfo.REASONING_TIME)) {
-			logger.info(StatisticVocabulary.TIME_REASONING_USING_ABSRTACTION + this.reasoningTimeInSeconds);
-		}
+//		if (config.getLogInfos().contains(LogInfo.LOADING_TIME)){
+//			logger.info(StatisticVocabulary.TIME_LOADING_ABSTRACT_ONTOLOGY+this.loadingTimeOfInnerReasoner);
+//		}
+//		if (config.getLogInfos().contains(LogInfo.REASONING_TIME)) {
+//			logger.info(StatisticVocabulary.TIME_REASONING_USING_ABSRTACTION + this.reasoningTimeInSeconds);
+//		}
 
 		if (config.getLogInfos().contains(LogInfo.STATISTIC)) {
 			// int numberOfMaterializedConceptAssertions =
@@ -333,5 +336,8 @@ public abstract class DLLiteExtension_MaterializerTemplateOptimized implements M
 	public long getReasoningTimeInSeconds() {
 		return this.reasoningTimeInSeconds;
 	}
-
+	@Override
+	public long getAbstractOntologyLoadingTime() {
+		return this.loadingTimeOfInnerReasoner;
+	}
 }

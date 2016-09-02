@@ -31,6 +31,7 @@ public abstract class OntologyReaderTemplate implements OntologyReader {
 	private Logger logger = Logger.getLogger(OntologyReaderTemplate.class);
 	private Configuration config = Configuration.getInstance();
 	private OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
+	private long loadingTime = 0;
 
 	protected abstract OWLOntologyValidator getOntologyValidator(OWLOntology owlOntology);
 
@@ -307,7 +308,7 @@ public abstract class OntologyReaderTemplate implements OntologyReader {
 
 		long endParsing = System.currentTimeMillis();
 		long parsingTimeInSecond = (endParsing - startParsing) / 1000;
-
+		this.loadingTime = parsingTimeInSecond;
 		if (config.getLogInfos().contains(LogInfo.LOADING_TIME)) {
 			logger.info(StatisticVocabulary.TIME_LOADING_INPUT_TBOX_AND_ABOX + parsingTimeInSecond);
 		}
@@ -491,5 +492,9 @@ public abstract class OntologyReaderTemplate implements OntologyReader {
 			logger.info(StatisticVocabulary.TIME_LOADING_INPUT_TBOX_AND_ABOX + parsingTimeInSecond);
 		}
 		return internalOntology;
+	}
+	@Override
+	public long getLoadingTime() {
+		return this.loadingTime;
 	}
 }

@@ -31,6 +31,7 @@ import com.google.common.base.CaseFormat;
 
 import orar.config.Configuration;
 import orar.config.LogInfo;
+import orar.config.StatisticVocabulary;
 import orar.dlfragmentvalidator.DLConstructor;
 import orar.io.ontologyreader.HornSHOIF_OntologyReader;
 import orar.io.ontologyreader.OntologyReader;
@@ -57,6 +58,7 @@ import orar.strategyindentifying.StrategyName;
 public class OrarCLI {
 	private static Configuration config = Configuration.getInstance();
 	private static Logger logger = Logger.getLogger(OrarCLI.class);
+	private static long totalLoadingTime = 0;
 
 	public static void main(String[] args) {
 		// PropertyConfigurator.configure("src/main/resources/log4j.properties");
@@ -173,6 +175,14 @@ public class OrarCLI {
 			Materializer materializer = getMaterializer(commandLine, orarOntology);
 			logger.info("Run " + materializer.getClass());
 			runMaterializer(materializer, commandLine);
+			if (config.getLogInfos().contains(LogInfo.LOADING_TIME)) {
+				logger.info(StatisticVocabulary.TIME_LOADING_IN_ALL_STEPS + totalLoadingTime);
+			}
+
+			if (config.getLogInfos().contains(LogInfo.REASONING_TIME)) {
+				logger.info(StatisticVocabulary.TIME_REASONING_USING_ABSRTACTION
+						+ materializer.getReasoningTimeInSeconds());
+			}
 		} catch (ParseException exp) {
 			// oops, something went wrong
 			System.err.println("Parsing failed.  Reason: " + exp.getMessage());
@@ -222,6 +232,7 @@ public class OrarCLI {
 			Set<OWLAxiom> entailedAssertions = materializer.getOrarOntology().getOWLAPIMaterializedAssertions();
 			saveAssertionsToFile(entailedAssertions, aboxFile);
 		}
+		totalLoadingTime += materializer.getAbstractOntologyLoadingTime();
 		return materializer.getReasoningTimeInSeconds();
 
 	}
@@ -440,7 +451,7 @@ public class OrarCLI {
 			String aboxList = commandLine.getOptionValue(Argument.ABOX);
 			orarOntology = ontReader.getNormalizedOrarOntology(tboxFile, aboxList);
 		}
-
+		totalLoadingTime += ontReader.getLoadingTime();
 		return orarOntology;
 	}
 }

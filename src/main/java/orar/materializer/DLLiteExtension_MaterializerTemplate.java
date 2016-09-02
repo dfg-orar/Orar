@@ -253,7 +253,7 @@ public abstract class DLLiteExtension_MaterializerTemplate implements Materializ
 		// logging statistics
 		if (this.config.getLogInfos().contains(LogInfo.STATISTIC)) {
 			int numberOfRefinements = currentLoop - 1;
-			logger.info(StatisticVocabulary.NUMBER_OF_REFINEMENTS + numberOfRefinements);
+			logger.info(StatisticVocabulary.NUMBER_OF_ABSTRACTIONS + numberOfRefinements);
 		}
 		// get reasoning time
 		long endTime = System.currentTimeMillis();

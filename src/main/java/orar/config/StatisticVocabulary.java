@@ -51,16 +51,17 @@ public class StatisticVocabulary {
 	/*
 	 * performance
 	 */
-	public static String NUMBER_OF_REFINEMENTS = "Statistic: Number_of_refinement_steps = ";
+	public static String NUMBER_OF_ABSTRACTIONS = "Statistic: Number_of_abstraction_steps = ";
 	public static String CURRENT_LOOP="Statistic: Current_loop = ";
 	public static String TIME_LOADING_INPUT_ABOX = "Statistic: Time_loading_input_abox_in_seconds = ";
 	public static String TIME_LOADING_INPUT_TBOX_AND_ABOX = "Statistic: Time_loading_input_tbox_and_abox_in_seconds = ";
 	public static String TIME_LOADING_INPUT_TBOX = "Statistic: Time_loading_input_tbox_in_seconds = ";
-	public static String TIME_LOADING_ABSTRACTION_ONTOLOGY = "Statistic: Time_loading_abstraction_ontology_in_seconds = ";
+	public static String TIME_LOADING_ABSTRACT_ONTOLOGY = "Statistic: Time_loading_abstract_ontology_in_seconds = ";
 	public static String TIME_NORMALIZATION_OF_TBOX = "Statistic: Time_normalization_of_input_tbox_in_seconds = ";
-	public static String TIME_REASONING_USING_ABSRTACTION = "Statistic: Time_reasoning_using_abstraction_in_seconds = ";
+	public static String TIME_REASONING_USING_ABSRTACTION = "Statistic: Time_reasoning_in_seconds = ";
 	public static String TIME_REASONING_USING_DLREASONER = "Statistic: Time_reasoning_using_dlreasoner_in_seconds = ";
 	public static String TIME_REASONING_RULE_ENGINE = "Statistic: Time_reasoning_using_rule_engine_in_seconds = ";
 	public static String TIME_REASONING_ON_ABSTRACTION_ONTOLOGY = "Statistic: Time_reasoning_on_abstraction_ontology = ";
+	public static String TIME_LOADING_IN_ALL_STEPS = "Statistic: Time_loading_in_seconds = ";
 
 }
