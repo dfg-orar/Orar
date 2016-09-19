@@ -79,6 +79,7 @@ public class ALCHOI_SuperClassNormalizer implements SuperClassNormalizer {
 			}
 
 		}
+		//TODO: check if there is only one normalized operand, then don't use object intersection of
 		return owlDataFactory.getOWLObjectIntersectionOf(normalizedOperands);
 	}
 

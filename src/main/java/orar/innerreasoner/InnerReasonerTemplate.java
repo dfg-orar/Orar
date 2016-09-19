@@ -432,20 +432,20 @@ public abstract class InnerReasonerTemplate implements InnerReasoner {
 		/*
 		 * just to be comparable with the new interface
 		 */
-		return new HashMap<>();
+		return new HashMap<OWLNamedIndividual, Set<OWLClass>>();
 	}
 	@SuppressWarnings("Don't use, this method is only for being compatiable with the optimized version")
 	public Map<OWLNamedIndividual, Set<OWLClass>> getYEntailedConceptAssertionsAsMap(){
 		/*
 		 * just to be comparable with the new interface
 		 */
-		return new HashMap<>();
+		return new HashMap<OWLNamedIndividual, Set<OWLClass>>();
 	}
 	@SuppressWarnings("Don't use, this method is only for being compatiable with the optimized version")
 	public Map<OWLNamedIndividual, Set<OWLClass>> getZEntailedConceptAssertionsAsMap(){
 		/*
 		 * just to be comparable with the new interface
 		 */
-		return new HashMap<>();
+		return new HashMap<OWLNamedIndividual, Set<OWLClass>>();
 	}
 }

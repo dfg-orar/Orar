@@ -25,8 +25,8 @@ public class IndividualIndexerOld {
 	private OWLDataFactory owlDataFactory;
 
 	private IndividualIndexerOld() {
-		this.mapIndividualString2Number = new HashMap<>();
-		this.mapNumber2IndividualString = new HashMap<>();
+		this.mapIndividualString2Number = new HashMap<String, Integer>();
+		this.mapNumber2IndividualString = new HashMap<Integer, String>();
 		index = 0;
 		this.owlDataFactory = OWLManager.getOWLDataFactory();
 	}
@@ -61,7 +61,7 @@ public class IndividualIndexerOld {
 	 * @return their indexes
 	 */
 	public Set<Integer> getIndexesOfIndividualString(Set<String> individualStrings) {
-		Set<Integer> indexes = new HashSet<>();
+		Set<Integer> indexes = new HashSet<Integer>();
 		for (String eachString : individualStrings) {
 			indexes.add(getIndexOfIndividualString(eachString));
 		}
@@ -74,7 +74,7 @@ public class IndividualIndexerOld {
 	 * @return their indexes
 	 */
 	public Set<Integer> getIndexesOfOWLIndividuals(Set<OWLNamedIndividual> individuals) {
-		Set<Integer> indexes = new HashSet<>();
+		Set<Integer> indexes = new HashSet<Integer>();
 		for (OWLNamedIndividual eachIndividual : individuals) {
 			indexes.add(getIndexOfIndividualString(eachIndividual.getIRI().toString()));
 		}
@@ -113,7 +113,7 @@ public class IndividualIndexerOld {
 	 * @return a set of OWLNamedIndividual corresponding to the given indexes
 	 */
 	public Set<OWLNamedIndividual> getOWLIndividuals(Set<Integer> indexOfIndividuals) {
-		Set<OWLNamedIndividual> owlIndividuals = new HashSet<>();
+		Set<OWLNamedIndividual> owlIndividuals = new HashSet<OWLNamedIndividual>();
 		for (Integer eachInd : indexOfIndividuals) {
 			String eachIndString = this.mapNumber2IndividualString.get(eachInd);
 			OWLNamedIndividual owlInd = this.owlDataFactory.getOWLNamedIndividual(IRI.create(eachIndString));

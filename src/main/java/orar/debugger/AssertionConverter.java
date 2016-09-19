@@ -40,7 +40,7 @@ public class AssertionConverter {
 	}
 
 	public Set<OWLAxiom> getOriginalAxioms(Set<OWLAxiom> abstractAxioms) {
-		Set<OWLAxiom> originalAxioms = new HashSet<>();
+		Set<OWLAxiom> originalAxioms = new HashSet<OWLAxiom>();
 		for (OWLAxiom axiom : abstractAxioms) {
 			if (axiom.isOfType(AxiomType.CLASS_ASSERTION)) {
 				originalAxioms.addAll(getOriginalAssertions((OWLClassAssertionAxiom) axiom));
@@ -55,7 +55,7 @@ public class AssertionConverter {
 	}
 
 	private Set<OWLAxiom> getOriginalAssertions(OWLClassAssertionAxiom abstractConceptAssertion) {
-		Set<OWLAxiom> originalConceptAssertions = new HashSet<>();
+		Set<OWLAxiom> originalConceptAssertions = new HashSet<OWLAxiom>();
 		OWLClass concept = abstractConceptAssertion.getClassExpression().asOWLClass();
 		OWLNamedIndividual abstractInd = abstractConceptAssertion.getIndividual().asOWLNamedIndividual();
 		Set<Integer> originalIndivisualIndexes = this.mappings.getOriginalIndividuals(abstractInd);
@@ -70,7 +70,7 @@ public class AssertionConverter {
 	}
 
 	private Set<OWLAxiom> getOriginalAssertions(OWLObjectPropertyAssertionAxiom abstractRoleAssertion) {
-		Set<OWLAxiom> originalRoleAssertions = new HashSet<>();
+		Set<OWLAxiom> originalRoleAssertions = new HashSet<OWLAxiom>();
 		OWLObjectProperty role = abstractRoleAssertion.getProperty().asOWLObjectProperty();
 		OWLNamedIndividual abstractSubject = abstractRoleAssertion.getSubject().asOWLNamedIndividual();
 		OWLNamedIndividual abstractObject = abstractRoleAssertion.getObject().asOWLNamedIndividual();
@@ -87,7 +87,7 @@ public class AssertionConverter {
 
 	private Set<OWLObjectPropertyAssertionAxiom> getOriginalSuccessors(OWLNamedIndividual xAbstract,
 			OWLObjectProperty sucRole) {
-		Set<OWLObjectPropertyAssertionAxiom> originalRoleAssertions = new HashSet<>();
+		Set<OWLObjectPropertyAssertionAxiom> originalRoleAssertions = new HashSet<OWLObjectPropertyAssertionAxiom>();
 		Set<Integer> originalIndexedIndividualOfX = this.mappings.getOriginalIndividuals(xAbstract);
 	
 		
@@ -107,7 +107,7 @@ public class AssertionConverter {
 
 	private Set<OWLObjectPropertyAssertionAxiom> getOriginalPredecessors(OWLObjectProperty preRole,
 			OWLNamedIndividual xAbstract) {
-		Set<OWLObjectPropertyAssertionAxiom> originalRoleAssertions = new HashSet<>();
+		Set<OWLObjectPropertyAssertionAxiom> originalRoleAssertions = new HashSet<OWLObjectPropertyAssertionAxiom>();
 		Set<Integer> originalIndexedIndividualOfX = this.mappings.getOriginalIndividuals(xAbstract);
 	
 		// Set<OWLNamedIndividual> originalIndividualsOfX =

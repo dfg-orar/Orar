@@ -30,7 +30,22 @@ public class HornSHOIF_Materializer_Konclude_Optimized_Test {
 		AbstractDataFactory.getInstance().clear();
 		DataForTransferingEntailments.getInstance().clear();
 	}
+	@Test
+	public void testExample3InPaper() {
+		Configuration.getInstance().addAllDebugInfos();
+		String ontologyPath = "src/test/resources/main/example3Paper.owl";
 
+		haveTheSameResults(ontologyPath);
+	}
+	
+	@Test
+	public void testExample4InPaper() {
+		Configuration.getInstance().addAllDebugInfos();
+		String ontologyPath = "src/test/resources/main/example4Paper.owl";
+
+		haveTheSameResults(ontologyPath);
+	}
+	
 	@Test
 	public void testHasValue1() {
 		Configuration.getInstance().addAllDebugInfos();

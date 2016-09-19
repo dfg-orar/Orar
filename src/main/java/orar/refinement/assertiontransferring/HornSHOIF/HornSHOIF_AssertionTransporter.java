@@ -44,7 +44,7 @@ public class HornSHOIF_AssertionTransporter extends AssertionTransporterTemplate
 		while (iterator.hasNext()) {
 			Entry<OWLNamedIndividual, Set<OWLNamedIndividual>> entry = iterator.next();
 			// compute a set of equivalent individuals in the original ABox
-			Set<Integer> equivalentOriginalInds = new HashSet<>();
+			Set<Integer> equivalentOriginalInds = new HashSet<Integer>();
 			// for the key
 			OWLNamedIndividual u = entry.getKey();
 			Set<Integer> originalInds_of_u = this.dataForTransferingEntailments.getOriginalIndividuals(u);

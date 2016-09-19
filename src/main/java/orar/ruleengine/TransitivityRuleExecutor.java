@@ -25,7 +25,7 @@ public class TransitivityRuleExecutor implements RuleExecutor {
 
 	public TransitivityRuleExecutor(OrarOntology2 orarOntology) {
 		this.orarOntology = orarOntology;
-		this.newRoleAssertions = new HashSet<>();
+		this.newRoleAssertions = new HashSet<IndexedRoleAssertion>();
 		this.metaDataOfOntology = MetaDataOfOntology.getInstance();
 		this.dataFactory = OWLManager.getOWLDataFactory();
 		this.isABoxExtended = false;

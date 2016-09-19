@@ -455,7 +455,7 @@ public class MapbasedOrarOntology implements OrarOntology {
 
 	@Override
 	public Set<OWLAxiom> getOWLAPIMaterializedAssertions() {
-		Set<OWLAxiom> materializedABox = new HashSet<>();
+		Set<OWLAxiom> materializedABox = new HashSet<OWLAxiom>();
 		materializedABox.addAll(this.getOWLAPIConceptAssertionsWHITOUTNormalizationSymbols());
 		materializedABox.addAll(this.getOWLAPIRoleAssertionsWITHOUTNormalizationSymbols());
 		materializedABox.addAll(this.getOWLAPISameasAssertions());

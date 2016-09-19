@@ -69,7 +69,7 @@ public class ConstructorCollectorAxiomVisitor implements OWLAxiomVisitorEx<Set<D
 
 	@Override
 	public Set<DLConstructor> visit(OWLSubClassOfAxiom axiom) {
-		Set<DLConstructor> constructors = new HashSet<>();
+		Set<DLConstructor> constructors = new HashSet<DLConstructor>();
 		OWLClassExpression subClass = axiom.getSubClass();
 		ConstructorCollectorInSubClass collectorInSubClass = new ConstructorCollectorInSubClass();
 		DLConstructor constructorInSubClass = subClass.accept(collectorInSubClass);
@@ -119,14 +119,14 @@ public class ConstructorCollectorAxiomVisitor implements OWLAxiomVisitorEx<Set<D
 
 	@Override
 	public Set<DLConstructor> visit(OWLObjectPropertyDomainAxiom axiom) {
-		Set<DLConstructor> constructors = new HashSet<>();
+		Set<DLConstructor> constructors = new HashSet<DLConstructor>();
 		constructors.add(DLConstructor.DOMAIN_CONSTRAIN_OF_ROLE);
 		return constructors;
 	}
 
 	@Override
 	public Set<DLConstructor> visit(OWLEquivalentObjectPropertiesAxiom axiom) {
-		Set<DLConstructor> constructors = new HashSet<>();
+		Set<DLConstructor> constructors = new HashSet<DLConstructor>();
 		constructors.add(DLConstructor.EQUIVALENT_ROLE);
 		return constructors;
 	}
@@ -157,7 +157,7 @@ public class ConstructorCollectorAxiomVisitor implements OWLAxiomVisitorEx<Set<D
 
 	@Override
 	public Set<DLConstructor> visit(OWLObjectPropertyRangeAxiom axiom) {
-		Set<DLConstructor> constructors = new HashSet<>();
+		Set<DLConstructor> constructors = new HashSet<DLConstructor>();
 		constructors.add(DLConstructor.RANGE_CONSTRAIN_OF_ROLE);
 		return constructors;
 
@@ -171,7 +171,7 @@ public class ConstructorCollectorAxiomVisitor implements OWLAxiomVisitorEx<Set<D
 
 	@Override
 	public Set<DLConstructor> visit(OWLFunctionalObjectPropertyAxiom axiom) {
-		Set<DLConstructor> constructors = new HashSet<>();
+		Set<DLConstructor> constructors = new HashSet<DLConstructor>();
 		constructors.add(DLConstructor.FUNCTIONALITY);
 		return constructors;
 
@@ -180,7 +180,7 @@ public class ConstructorCollectorAxiomVisitor implements OWLAxiomVisitorEx<Set<D
 	@Override
 	public Set<DLConstructor> visit(OWLSubObjectPropertyOfAxiom axiom) {
 
-		Set<DLConstructor> constructors = new HashSet<>();
+		Set<DLConstructor> constructors = new HashSet<DLConstructor>();
 		constructors.add(DLConstructor.SUB_ROLE);
 		return constructors;
 	}
@@ -205,7 +205,7 @@ public class ConstructorCollectorAxiomVisitor implements OWLAxiomVisitorEx<Set<D
 
 	@Override
 	public Set<DLConstructor> visit(OWLSymmetricObjectPropertyAxiom axiom) {
-		Set<DLConstructor> constructors = new HashSet<>();
+		Set<DLConstructor> constructors = new HashSet<DLConstructor>();
 		constructors.add(DLConstructor.SYMMETRIC_ROLE);
 		return constructors;
 	}
@@ -248,7 +248,7 @@ public class ConstructorCollectorAxiomVisitor implements OWLAxiomVisitorEx<Set<D
 
 	@Override
 	public Set<DLConstructor> visit(OWLTransitiveObjectPropertyAxiom axiom) {
-		Set<DLConstructor> constructors = new HashSet<>();
+		Set<DLConstructor> constructors = new HashSet<DLConstructor>();
 		constructors.add(DLConstructor.TRANSITIVITY);
 		return constructors;
 	}
@@ -267,7 +267,7 @@ public class ConstructorCollectorAxiomVisitor implements OWLAxiomVisitorEx<Set<D
 
 	@Override
 	public Set<DLConstructor> visit(OWLInverseFunctionalObjectPropertyAxiom axiom) {
-		Set<DLConstructor> constructors = new HashSet<>();
+		Set<DLConstructor> constructors = new HashSet<DLConstructor>();
 		constructors.add(DLConstructor.INVERSE_FUNCTIONALITY);
 		return constructors;
 	}
@@ -286,7 +286,7 @@ public class ConstructorCollectorAxiomVisitor implements OWLAxiomVisitorEx<Set<D
 
 	@Override
 	public Set<DLConstructor> visit(OWLInverseObjectPropertiesAxiom axiom) {
-		Set<DLConstructor> constructors = new HashSet<>();
+		Set<DLConstructor> constructors = new HashSet<DLConstructor>();
 		constructors.add(DLConstructor.INVERSE_ROLE);
 		return constructors;
 	}

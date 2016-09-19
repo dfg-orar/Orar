@@ -76,7 +76,7 @@ public class SameasRuleExecutor implements RuleExecutor {
 	@Override
 	public Set<IndexedRoleAssertion> getNewRoleAssertions() {
 		// return empty set in this rule
-		return new HashSet<>();
+		return new HashSet<IndexedRoleAssertion>();
 	}
 
 	@Override

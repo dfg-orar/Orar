@@ -60,7 +60,7 @@ public class FunctionalityRuleExecutor implements RuleExecutor {
 	}
 
 	private void addConceptNamesWrtNewSameIndividuals(Set<Integer> sameIndividuals) {
-		Set<OWLClass> allConcepts = new HashSet<>();
+		Set<OWLClass> allConcepts = new HashSet<OWLClass>();
 		/*
 		 * collect all concepts
 		 */
@@ -166,7 +166,7 @@ public class FunctionalityRuleExecutor implements RuleExecutor {
 	@Override
 	public Set<IndexedRoleAssertion> getNewRoleAssertions() {
 		// return nothings
-		return (new HashSet<>());
+		return (new HashSet<IndexedRoleAssertion>());
 	}
 
 	@Override

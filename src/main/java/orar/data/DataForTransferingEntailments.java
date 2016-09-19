@@ -55,11 +55,11 @@ public class DataForTransferingEntailments {
 
 	private DataForTransferingEntailments() {
 
-		this.xAbstract2OriginalIndividualsMap = new HashMap<>();
-		this.yAbstract2OriginalIndividualsMap = new HashMap<>();
-		this.zAbstract2OriginalIndividualsMap = new HashMap<>();
+		this.xAbstract2OriginalIndividualsMap = new HashMap<OWLNamedIndividual, Set<Integer>>();
+		this.yAbstract2OriginalIndividualsMap = new HashMap<OWLNamedIndividual, Set<Integer>>();
+		this.zAbstract2OriginalIndividualsMap = new HashMap<OWLNamedIndividual, Set<Integer>>();
 
-		this.uAbstract2OriginalIndividualsMap = new HashMap<>();
+		this.uAbstract2OriginalIndividualsMap = new HashMap<OWLNamedIndividual, Set<Integer>>();
 
 		this.xyMap2Role = new HashMap<PairOfSubjectAndObject, OWLObjectProperty>();
 		this.zxMap2Role = new HashMap<PairOfSubjectAndObject, OWLObjectProperty>();
@@ -67,7 +67,7 @@ public class DataForTransferingEntailments {
 		this.xAbstractHavingFunctionalRole = new HashSet<OWLNamedIndividual>();
 		this.zAbstractHavingInverseFunctionalRole = new HashSet<OWLNamedIndividual>();
 
-		this.mapIndividual2XAbstract = new HashMap<>();
+		this.mapIndividual2XAbstract = new HashMap<Integer, OWLNamedIndividual>();
 
 	}
 
@@ -139,7 +139,7 @@ public class DataForTransferingEntailments {
 			return this.yAbstract2OriginalIndividualsMap.get(abstractInd);
 		} else if (abstractDataFactory.getZAbstractIndividuals().contains(abstractInd)) {
 			return this.zAbstract2OriginalIndividualsMap.get(abstractInd);
-		} else return new HashSet<>();
+		} else return new HashSet<Integer>();
 		
 	}
 

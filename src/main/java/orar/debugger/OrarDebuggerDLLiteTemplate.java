@@ -71,8 +71,8 @@ public abstract class OrarDebuggerDLLiteTemplate implements OrarDebugger {
 		this.abstractOntologies = new HashSet<OWLOntology>();
 		this.ruleEngine = new SemiNaiveRuleEngine(normalizedOrarOntology);
 		this.typeComputor = new BasicTypeComputor();
-		this.abstractInconsistencyExplanations = new HashSet<>();
-		this.originalInconsistencyExplanations = new HashSet<>();
+		this.abstractInconsistencyExplanations = new HashSet<Set<OWLAxiom>>();
+		this.originalInconsistencyExplanations = new HashSet<Set<OWLAxiom>>();
 		this.isConsistent = true;
 	}
 

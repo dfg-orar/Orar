@@ -24,7 +24,7 @@ public class DLLiteExtension_AssertionTransporter extends HornSHOIF_AssertionTra
 		/*
 		 * We just need to input the empty map for concept assertions of y,z
 		 */
-		super(orarOntoloy, abstractConceptAssertionsAsMapForX, new HashMap<>(), new HashMap<>(),
+		super(orarOntoloy, abstractConceptAssertionsAsMapForX, new HashMap<OWLNamedIndividual, Set<OWLClass>>(), new HashMap<OWLNamedIndividual, Set<OWLClass>>(),
 				abstractRoleAssertionBox, abstractSameasMap);
 
 	}

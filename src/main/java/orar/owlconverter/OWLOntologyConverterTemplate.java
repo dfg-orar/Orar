@@ -9,6 +9,7 @@ import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.formats.RDFXMLOntologyFormat;
 import org.semanticweb.owlapi.formats.TurtleOntologyFormat;
 import org.semanticweb.owlapi.io.OWLFunctionalSyntaxOntologyFormat;
+import org.semanticweb.owlapi.io.OWLXMLOntologyFormat;
 import org.semanticweb.owlapi.model.AxiomType;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLAxiom;
@@ -46,8 +47,9 @@ public abstract class OWLOntologyConverterTemplate implements OWLOntologyConvert
 		OWLOntologyManager manager = ontology.getOWLOntologyManager();
 		logger.info("Saving ontology to the file: " + owlFunctionalSyntaxFile + "...");
 		OWLFunctionalSyntaxOntologyFormat functionalFormat = new OWLFunctionalSyntaxOntologyFormat();
-		// OWLXMLOntologyFormat functionalFormat = new
-		// OWLXMLOntologyFormat();
+
+//		 OWLXMLOntologyFormat functionalFormat = new OWLXMLOntologyFormat();
+	
 		File file = new File(owlFunctionalSyntaxFile);
 		IRI iriDocument = IRI.create(file.toURI());
 		try {
@@ -213,7 +215,7 @@ public abstract class OWLOntologyConverterTemplate implements OWLOntologyConvert
 			/*
 			 * save TBox
 			 */
-			Set<OWLAxiom> tboxAxioms = new HashSet<>();
+			Set<OWLAxiom> tboxAxioms = new HashSet<OWLAxiom>();
 			tboxAxioms.addAll(allInOneOntology.getTBoxAxioms(true));
 			tboxAxioms.addAll(allInOneOntology.getRBoxAxioms(true));
 
@@ -222,7 +224,7 @@ public abstract class OWLOntologyConverterTemplate implements OWLOntologyConvert
 			/*
 			 * save ABox
 			 */
-			Set<OWLAxiom> aboxAssertions = new HashSet<>();
+			Set<OWLAxiom> aboxAssertions = new HashSet<OWLAxiom>();
 			aboxAssertions.addAll(allInOneOntology.getABoxAxioms(true));
 			saveAxiomsToAnOntologyInRDFXML(aboxAssertions, aboxFileInRDFXML, iri);
 			logger.info("TBox axioms have been saved to: " + tboxFile);

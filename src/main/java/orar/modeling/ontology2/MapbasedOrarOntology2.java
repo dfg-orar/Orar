@@ -489,7 +489,7 @@ public class MapbasedOrarOntology2 implements OrarOntology2 {
 
 	@Override
 	public Set<OWLAxiom> getOWLAPIMaterializedAssertions() {
-		Set<OWLAxiom> materializedABox = new HashSet<>();
+		Set<OWLAxiom> materializedABox = new HashSet<OWLAxiom>();
 		materializedABox.addAll(this.getOWLAPIConceptAssertionsWHITOUTNormalizationSymbols());
 		materializedABox.addAll(this.getOWLAPIRoleAssertionsWITHOUTNormalizationSymbols());
 		materializedABox.addAll(this.getOWLAPISameasAssertions());
@@ -521,7 +521,7 @@ public class MapbasedOrarOntology2 implements OrarOntology2 {
 
 	@Override
 	public Map<OWLClass, Set<OWLNamedIndividual>> getOWLAPIConcepAssertionMapWITHOUTNormalizationSymbols() {
-		Map<OWLClass, Set<OWLNamedIndividual>> map = new HashMap<>();
+		Map<OWLClass, Set<OWLNamedIndividual>> map = new HashMap<OWLClass, Set<OWLNamedIndividual>>();
 		Set<OWLClassAssertionAxiom> conceptAssertions = getOWLAPIConceptAssertionsWHITOUTNormalizationSymbols();
 		for (OWLClassAssertionAxiom assertion : conceptAssertions) {
 			OWLClass concept = assertion.getClassExpression().asOWLClass();
@@ -529,7 +529,7 @@ public class MapbasedOrarOntology2 implements OrarOntology2 {
 
 			Set<OWLNamedIndividual> existingInds = map.get(concept);
 			if (existingInds == null) {
-				existingInds = new HashSet<>();
+				existingInds = new HashSet<OWLNamedIndividual>();
 			}
 			existingInds.add(ind);
 			map.put(concept, existingInds);

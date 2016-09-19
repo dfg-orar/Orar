@@ -22,7 +22,7 @@ public abstract class InnerInconsistencyExplanationTemplate implements InnerInco
 
 	@Override
 	public Set<Set<OWLAxiom>> getExplanations(OWLOntology ontology, int maxNumberOfExplanations, long timeout) {
-		Set<Set<OWLAxiom>> explanationSet = new HashSet<>();
+		Set<Set<OWLAxiom>> explanationSet = new HashSet<Set<OWLAxiom>>();
 		OWLReasonerFactory reasonerFactory = getOWLReasonerFactory();
 		
 		/*

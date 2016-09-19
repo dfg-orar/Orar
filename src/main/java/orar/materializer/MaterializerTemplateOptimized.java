@@ -46,6 +46,8 @@ public abstract class MaterializerTemplateOptimized implements Materializer {
 	protected final OrarOntology2 normalizedORAROntology;
 	private int currentLoop;
 	private long reasoningTimeInSeconds;
+	private long reasoningTimeByInnerReasoner;
+	private long reasoningTimeByDeductiveRules;
 	protected final Configuration config;
 	// logging
 	private static final Logger logger = Logger.getLogger(MaterializerTemplateOptimized.class);
@@ -59,7 +61,7 @@ public abstract class MaterializerTemplateOptimized implements Materializer {
 	protected final TypeComputor typeComputor;
 	protected Set<OWLOntology> abstractOntologies;
 	protected final RuleEngine ruleEngine;
-
+	
 	/*
 	 * Stop signal will be true if we don't obtain any new assertions that will
 	 * triggers new entailments in the next refinement step
@@ -82,6 +84,8 @@ public abstract class MaterializerTemplateOptimized implements Materializer {
 		this.ruleEngine = new SemiNaiveRuleEngine(normalizedOrarOntology);
 		this.typeComputor = new BasicTypeComputor();
 		this.loadingTimeOfInnerReasoner = 0;
+		this.reasoningTimeByInnerReasoner=0;
+		this.reasoningTimeByDeductiveRules=0;
 		this.hasStopSignal = false;
 	}
 
@@ -101,6 +105,9 @@ public abstract class MaterializerTemplateOptimized implements Materializer {
 		 */
 		logger.info("Computing deductive closure...");
 		ruleEngine.materialize();
+		long endTimeForFirstDeductiveClosure=System.currentTimeMillis();
+		long timeForTheFirstDeductiveClosure=(endTimeForFirstDeductiveClosure-startTime)/1000;
+		this.reasoningTimeByDeductiveRules+=timeForTheFirstDeductiveClosure;
 		/*
 		 * Start loop from (3)--()
 		 */
@@ -239,8 +246,15 @@ public abstract class MaterializerTemplateOptimized implements Materializer {
 			// logger.info("Info:Size of the (splitted) abstract ontology: "
 			// + abstraction.getAxiomCount());
 			InnerReasoner innerReasoner = getInnerReasoner(abstraction);
+			long startInnerReasoning=System.currentTimeMillis();
 			innerReasoner.computeEntailments();
+			long endInnerReasoning=System.currentTimeMillis();
+			long reasoningTimeOfInnerReasonerInThisStep=(endInnerReasoning-startInnerReasoning)/1000;
+			reasoningTimeOfInnerReasonerInThisStep-=innerReasoner.getOverheadTimeToSetupReasoner();
+			this.reasoningTimeByInnerReasoner+=reasoningTimeOfInnerReasonerInThisStep;
 			this.loadingTimeOfInnerReasoner += innerReasoner.getOverheadTimeToSetupReasoner();
+			
+			
 			// we can use putAll since individuals in different abstractsion
 			// are
 			// disjointed.
@@ -291,10 +305,13 @@ public abstract class MaterializerTemplateOptimized implements Materializer {
 				 * (7). Compute deductive closure
 				 */
 				logger.info("Computing the deductive closure wrt new entailments ...");
+				long startComputingDCwrtNewEntailments=System.currentTimeMillis();
 				ruleEngine.addTodoRoleAsesrtions(newlyAddedRoleAssertions.getSetOfIndexedRoleAssertions());
 				ruleEngine.addTodoSameasAssertions(newlyAddedSameasAssertions);
 				ruleEngine.incrementalMaterialize();
-
+				long endComputingDCwrtNewEntailments=System.currentTimeMillis();
+				long timeForDeductiveClosureInThisLoop=(endComputingDCwrtNewEntailments-startComputingDCwrtNewEntailments)/1000;
+				this.reasoningTimeByDeductiveRules+=timeForDeductiveClosureInThisLoop;
 			}
 
 			logger.info("Finished loop: " + currentLoop);
@@ -361,7 +378,7 @@ public abstract class MaterializerTemplateOptimized implements Materializer {
 	private void completeABoxWrtSameas() {
 		long startTime = System.currentTimeMillis();
 		Set<Integer> allIndividualInAllSameasAssertion = this.normalizedORAROntology.getSameasBox().getAllIndividuals();
-		Set<Integer> processedIndividuals = new HashSet<>();
+		Set<Integer> processedIndividuals = new HashSet<Integer>();
 		for (Integer eachInd : allIndividualInAllSameasAssertion) {
 			if (!processedIndividuals.contains(eachInd)) {
 				completeConceptAssertionWrtSameas(eachInd);
@@ -392,7 +409,7 @@ public abstract class MaterializerTemplateOptimized implements Materializer {
 			/*
 			 * accumulate asserted concepts
 			 */
-			Set<OWLClass> accumulatedConcepts = new HashSet<>();
+			Set<OWLClass> accumulatedConcepts = new HashSet<OWLClass>();
 			for (Integer eachInd : sameIndividuals) {
 				accumulatedConcepts.addAll(this.normalizedORAROntology.getAssertedConcepts(eachInd));
 			}
@@ -411,7 +428,7 @@ public abstract class MaterializerTemplateOptimized implements Materializer {
 		/*
 		 * accumulate role asesrtions
 		 */
-		Map<OWLObjectProperty, Set<Integer>> predecessorMap = new HashMap<>();
+		Map<OWLObjectProperty, Set<Integer>> predecessorMap = new HashMap<OWLObjectProperty, Set<Integer>>();
 		for (Integer eachInd : sameIndividuals) {
 			MapOperator.addAnotherMap(predecessorMap,
 					this.normalizedORAROntology.getPredecessorRoleAssertionsAsMap(eachInd));
@@ -441,7 +458,7 @@ public abstract class MaterializerTemplateOptimized implements Materializer {
 		/*
 		 * accumulate role asesrtions
 		 */
-		Map<OWLObjectProperty, Set<Integer>> succRoleMap = new HashMap<>();
+		Map<OWLObjectProperty, Set<Integer>> succRoleMap = new HashMap<OWLObjectProperty, Set<Integer>>();
 		for (Integer eachInd : sameIndividuals) {
 			MapOperator.addAnotherMap(succRoleMap,
 					this.normalizedORAROntology.getSuccessorRoleAssertionsAsMap(eachInd));
@@ -514,5 +531,13 @@ public abstract class MaterializerTemplateOptimized implements Materializer {
 	@Override
 	public long getAbstractOntologyLoadingTime() {
 		return this.loadingTimeOfInnerReasoner;
+	}
+	@Override
+	public long getReasoningTimeOfInnerReasonerInSeconds(){
+		return this.reasoningTimeByInnerReasoner;
+	}
+	@Override
+	public long getReasoningTimeOfDeductiveRules(){
+		return this.reasoningTimeByDeductiveRules;
 	}
 }

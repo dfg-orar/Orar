@@ -68,7 +68,7 @@ public class AssertionDecoder {
 	 * @return OWLAPI sameas assertions of individuals whose index numbers are {@code individualsInLong}
 	 */
 	public static OWLSameIndividualAxiom getOWLAPISameasAssertion(Set<Integer> individualsInLong) {
-		Set<OWLNamedIndividual> allOWLAPIIndividuals = new HashSet<>();
+		Set<OWLNamedIndividual> allOWLAPIIndividuals = new HashSet<OWLNamedIndividual>();
 		for (Integer ind : individualsInLong) {
 			String indString = indexer.getIndividualString(ind);
 			OWLNamedIndividual owlapiInd = owlDataFactory.getOWLNamedIndividual(IRI.create(indString));
@@ -78,7 +78,7 @@ public class AssertionDecoder {
 	}
 
 	public static Map<OWLNamedIndividual, Set<OWLNamedIndividual>> getSameasMapInOWLAPI(Map<Integer, Set<Integer>> encodedSameasMap){
-		HashMap<OWLNamedIndividual, Set<OWLNamedIndividual>> sameasMap = new HashMap<>();
+		HashMap<OWLNamedIndividual, Set<OWLNamedIndividual>> sameasMap = new HashMap<OWLNamedIndividual, Set<OWLNamedIndividual>>();
 		Iterator<Entry<Integer, Set<Integer>>> iterator = encodedSameasMap.entrySet().iterator();
 		while (iterator.hasNext()){
 			Entry<Integer, Set<Integer>> entry = iterator.next();

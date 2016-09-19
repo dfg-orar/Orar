@@ -15,8 +15,6 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.log4j.Logger;
 import org.semanticweb.owlapi.apibinding.OWLManager;
-
-import org.semanticweb.owlapi.io.OWLFunctionalSyntaxOntologyFormat;
 import org.semanticweb.owlapi.io.OWLXMLOntologyFormat;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLAxiom;
@@ -27,28 +25,18 @@ import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 
-import com.google.common.base.CaseFormat;
-
 import orar.config.Configuration;
 import orar.config.LogInfo;
 import orar.config.StatisticVocabulary;
-import orar.dlfragmentvalidator.DLConstructor;
 import orar.io.ontologyreader.HornSHOIF_OntologyReader;
 import orar.io.ontologyreader.OntologyReader;
 import orar.materializer.Materializer;
 import orar.materializer.DLLiteExtensions.DLLiteExtension_Materializer_Hermit;
 import orar.materializer.DLLiteExtensions.DLLiteExtension_Materializer_Konclude;
-import orar.materializer.HornSHIF.HornSHIF_Materializer_Fact;
 import orar.materializer.HornSHIF.HornSHIF_Materializer_Hermit;
-import orar.materializer.HornSHIF.HornSHIF_Materializer_Konclude;
 import orar.materializer.HornSHIF.HornSHIF_Materializer_KoncludeOptimized;
-import orar.materializer.HornSHIF.HornSHIF_Materializer_Pellet;
-import orar.materializer.HornSHOIF.HornSHOIF_Materializer_Fact;
 import orar.materializer.HornSHOIF.HornSHOIF_Materializer_Hermit;
-import orar.materializer.HornSHOIF.HornSHOIF_Materializer_Konclude;
 import orar.materializer.HornSHOIF.HornSHOIF_Materializer_KoncludeOptimized;
-import orar.materializer.HornSHOIF.HornSHOIF_Materializer_Pellet;
-import orar.modeling.ontology.OrarOntology;
 import orar.modeling.ontology2.MapbasedOrarOntology2;
 import orar.modeling.ontology2.OrarOntology2;
 import orar.strategyindentifying.StrategyIdentifier;
@@ -180,6 +168,12 @@ public class OrarCLI {
 			}
 
 			if (config.getLogInfos().contains(LogInfo.REASONING_TIME)) {
+				logger.info(StatisticVocabulary.TIME_REASONING_BY_INNER_REASONER
+						+ materializer.getReasoningTimeOfInnerReasonerInSeconds());
+				
+				logger.info(StatisticVocabulary.TIME_REASONING_BY_DEDUCTIVE_RULES
+						+ materializer.getReasoningTimeOfDeductiveRules());
+				
 				logger.info(StatisticVocabulary.TIME_REASONING_USING_ABSRTACTION
 						+ materializer.getReasoningTimeInSeconds());
 			}
@@ -327,23 +321,6 @@ public class OrarCLI {
 			// materializer = new HornSHIF_Materializer_Konclude(orarOntology,
 			// intPort);
 			// }
-		}
-
-		if (reasonerName.equals(Argument.FACT)) {
-
-			if (orarOntology.getActualDLConstructors().contains(DLConstructor.NOMINAL)) {
-				materializer = new HornSHOIF_Materializer_Fact(orarOntology);
-			} else {
-				materializer = new HornSHIF_Materializer_Fact(orarOntology);
-			}
-		}
-
-		if (reasonerName.equals(Argument.PELLET)) {
-			if (orarOntology.getActualDLConstructors().contains(DLConstructor.NOMINAL)) {
-				materializer = new HornSHOIF_Materializer_Pellet(orarOntology);
-			} else {
-				materializer = new HornSHIF_Materializer_Pellet(orarOntology);
-			}
 		}
 
 		return materializer;

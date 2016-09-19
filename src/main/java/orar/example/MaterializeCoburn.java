@@ -11,7 +11,6 @@ import orar.io.ontologyreader.HornSHOIF_OntologyReader;
 import orar.io.ontologyreader.OntologyReader;
 import orar.materializer.Materializer;
 import orar.materializer.HornSHOIF.HornSHOIF_Materializer_Hermit;
-import orar.materializer.HornSHOIF.HornSHOIF_Materializer_Konclude;
 import orar.modeling.ontology2.OrarOntology2;
 
 public class MaterializeCoburn {

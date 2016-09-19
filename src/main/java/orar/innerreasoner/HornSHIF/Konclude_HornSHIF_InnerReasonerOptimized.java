@@ -61,6 +61,8 @@ public class Konclude_HornSHIF_InnerReasonerOptimized extends HornSHIF_InnerReas
 		cmdLine.addArgument("owllinkserver");
 		cmdLine.addArgument("-p");
 		cmdLine.addArgument(Integer.toString(portNumber));
+		cmdLine.addArgument("-w");
+		cmdLine.addArgument("AUTO");
 
 		/*
 		 * +=Konclude.Logging.MinLoggingLevel=100 for stopping log info printed

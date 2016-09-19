@@ -7,7 +7,7 @@ import orar.innerreasoner.HornSHOIF.Hermit_HornSHOIF_InnerReasoner;
 import orar.modeling.ontology.OrarOntology;
 import orar.modeling.ontology2.OrarOntology2;
 
-public class HornSHOIF_Materializer_Hermit extends HornSHOIF_Materializer {
+public class HornSHOIF_Materializer_Hermit extends HornSHOIF_MaterializerOptimized {
 
 	public HornSHOIF_Materializer_Hermit(OrarOntology2 normalizedOrarOntology) {
 		super(normalizedOrarOntology);

@@ -180,7 +180,7 @@ public abstract class InnerReasonerTemplateOptimized implements InnerReasoner {
 		/*
 		 * add axioms to mark singleton concepts
 		 */
-
+		
 		this.axiomsAdder.addMarkingAxioms();
 		if (this.config.getDebuglevels().contains(DebugLevel.ADDING_MARKING_AXIOMS)) {
 			logger.info("***DEBUG*** Ontololgy after adding marking axioms:");
@@ -200,10 +200,11 @@ public abstract class InnerReasonerTemplateOptimized implements InnerReasoner {
 		/*
 		 * compute entailments
 		 */
-		logger.info("Computing concept assertions.... ");
 		long startTime = System.currentTimeMillis();
-		this.reasoner.precomputeInferences(InferenceType.CLASS_ASSERTIONS, InferenceType.OBJECT_PROPERTY_ASSERTIONS,
-				InferenceType.SAME_INDIVIDUAL);
+		logger.info("Computing concept assertions.... ");
+	
+//		this.reasoner.precomputeInferences(InferenceType.CLASS_ASSERTIONS, InferenceType.OBJECT_PROPERTY_ASSERTIONS,
+//				InferenceType.SAME_INDIVIDUAL);
 		if (!reasoner.isConsistent()) {
 			logger.error("Ontology inconsistent!");
 		}
@@ -214,7 +215,8 @@ public abstract class InnerReasonerTemplateOptimized implements InnerReasoner {
 		computeEntailedSameasAssertions();// varies in Horn-SHIF and Horn-SHOIF
 		long endTime = System.currentTimeMillis();
 		this.entailmentComputed = true;
-		this.reasoningTime = (endTime - startTime) / 1000; // get seconds
+		this.reasoningTime = (endTime - startTime) / 1000 ;
+		this.reasoningTime-= this.overheadTimeToSetupReasoner; 
 		dispose();
 	}
 

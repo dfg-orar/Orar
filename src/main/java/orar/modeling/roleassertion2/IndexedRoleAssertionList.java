@@ -92,7 +92,7 @@ public class IndexedRoleAssertionList {
 	 */
 	public Set<IndexedRoleAssertion> getSetOfIndexedRoleAssertions() {
 	
-		Set<IndexedRoleAssertion> roleAssertions = new HashSet<>();
+		Set<IndexedRoleAssertion> roleAssertions = new HashSet<IndexedRoleAssertion>();
 		for (int i = 0; i < getSize(); i++) {
 			
 			roleAssertions.add(new IndexedRoleAssertion(getSubject(i), getRole(i), getObject(i)));

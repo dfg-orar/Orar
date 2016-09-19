@@ -24,6 +24,9 @@ public interface Materializer {
 
 	public long getReasoningTimeInSeconds();
 	
+	public long getReasoningTimeOfInnerReasonerInSeconds();
+	public long getReasoningTimeOfDeductiveRules();
+	
 	public long getAbstractOntologyLoadingTime();
 //	public boolean isOntologyConsistent();
 }

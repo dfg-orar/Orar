@@ -113,7 +113,7 @@ public class IndividualIndexer {
 	 * @return a set of OWLNamedIndividual corresponding to the given indexes
 	 */
 	public Set<OWLNamedIndividual> getOWLIndividuals(Set<Integer> indexOfIndividuals) {
-		Set<OWLNamedIndividual> owlIndividuals = new HashSet<>();
+		Set<OWLNamedIndividual> owlIndividuals = new HashSet<OWLNamedIndividual>();
 		for (Integer eachInd : indexOfIndividuals) {
 			String eachIndString = this.mapNumber2IndividualString.get(eachInd);
 			OWLNamedIndividual owlInd = this.owlDataFactory.getOWLNamedIndividual(IRI.create(eachIndString));

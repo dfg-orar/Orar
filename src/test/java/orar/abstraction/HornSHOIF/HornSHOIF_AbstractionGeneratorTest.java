@@ -50,11 +50,11 @@ public class HornSHOIF_AbstractionGeneratorTest {
 	Integer b2 = indexer.getIndexOfOWLIndividual(testData.getIndividual("b2"));
 
 	Integer c = indexer.getIndexOfOWLIndividual(testData.getIndividual("c"));
-	Set<Integer> a1a2 = new HashSet<>();
-	Set<Integer> b1b2 = new HashSet<>();
-	Set<Integer> a1a2b1b2 = new HashSet<>();
-	Set<Integer> b1Set = new HashSet<>();
-	Set<Integer> a1Set = new HashSet<>();
+	Set<Integer> a1a2 = new HashSet<Integer>();
+	Set<Integer> b1b2 = new HashSet<Integer>();
+	Set<Integer> a1a2b1b2 = new HashSet<Integer>();
+	Set<Integer> b1Set = new HashSet<Integer>();
+	Set<Integer> a1Set = new HashSet<Integer>();
 
 
 	

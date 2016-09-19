@@ -20,6 +20,7 @@ import org.apache.commons.exec.PumpStreamHandler;
 import org.apache.log4j.Logger;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.io.OWLFunctionalSyntaxOntologyFormat;
+import org.semanticweb.owlapi.io.OWLXMLOntologyFormat;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLClassAssertionAxiom;
@@ -118,9 +119,9 @@ public class KoncludeDLReasonerFileBased implements DLReasoner {
 		if (!savingDone) {
 			OWLOntologyManager manager = this.ontology.getOWLOntologyManager();
 			logger.info("Saving ontology to a file ...");
-			OWLFunctionalSyntaxOntologyFormat functionalFormat = new OWLFunctionalSyntaxOntologyFormat();
-			// OWLXMLOntologyFormat functionalFormat = new
-			// OWLXMLOntologyFormat();
+//			OWLFunctionalSyntaxOntologyFormat functionalFormat = new OWLFunctionalSyntaxOntologyFormat();
+			 OWLXMLOntologyFormat functionalFormat = new
+			 OWLXMLOntologyFormat();
 			File file = new File(this.savedOntologyFileName);
 			IRI iriDocument = IRI.create(file.toURI());
 			try {
@@ -257,9 +258,9 @@ public class KoncludeDLReasonerFileBased implements DLReasoner {
 	public void computeEntailments() {
 
 		startKoncludeServer();
+		initReasoner();
 		logger.info("Computing entailments...");
 		long startTime = System.currentTimeMillis();
-		initReasoner();
 		/*
 		 * Compute concept assertions
 		 */
@@ -287,11 +288,11 @@ public class KoncludeDLReasonerFileBased implements DLReasoner {
 			}
 			stdout.reset();
 		}
-		logger.info("computing role assertions just for just some individuals....");
-		// askRoleAssertionForJustOneIndividual();
-		askRoleAssertionForJustSomeIndividuals();
-		logger.info("computing samease assertions just for one individuals....");
-		askOneQueryOfSameas();
+//		logger.info("computing role assertions just for just some individuals....");
+//		// askRoleAssertionForJustOneIndividual();
+//		askRoleAssertionForJustSomeIndividuals();
+//		logger.info("computing samease assertions just for one individuals....");
+//		askOneQueryOfSameas();
 		long endTime = System.currentTimeMillis();
 		this.reasoningTimeInSecond = (endTime - startTime) / 1000;
 		reasoner.dispose();

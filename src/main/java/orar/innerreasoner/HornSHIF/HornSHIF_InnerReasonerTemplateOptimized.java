@@ -64,7 +64,7 @@ public abstract class HornSHIF_InnerReasonerTemplateOptimized extends InnerReaso
 	@SuppressWarnings("Do not use, onlty for compatiablity")
 	public Map<OWLNamedIndividual, Set<OWLClass>> getEntailedConceptAssertionsAsMap() {
 
-		return new HashMap<>();
+		return new HashMap<OWLNamedIndividual, Set<OWLClass>>();
 	}
 
 }

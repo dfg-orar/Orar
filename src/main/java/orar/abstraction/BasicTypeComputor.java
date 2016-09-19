@@ -44,7 +44,7 @@ public class BasicTypeComputor implements TypeComputor {
 	public Map<IndividualType, Set<Integer>> computeTypes(OrarOntology2 orarOntology) {
 		Map<IndividualType, Set<Integer>> typeMap2Individuals = new HashMap<IndividualType, Set<Integer>>();
 		Set<Integer> todoIndividuals = orarOntology.getIndividualsInSignature();
-		Set<Integer> processedIndividuals = new HashSet<>();
+		Set<Integer> processedIndividuals = new HashSet<Integer>();
 		/*
 		 * compute type for each individual, taking into account other equal
 		 * individuals

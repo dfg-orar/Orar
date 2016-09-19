@@ -9,7 +9,6 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.log4j.Logger;
 
-import orar.owlconverter.DLLiteHOD_OWLOntologyConverter;
 import orar.owlconverter.HornSHOIF_OWLOntologyConverter;
 import orar.owlconverter.OWLOntologyConverter;
 

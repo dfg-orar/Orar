@@ -95,7 +95,7 @@ public class MapbasedSameAsBox implements SameAsBox {
 
 	@Override
 	public Set<OWLAxiom> getEntailedSameasOWLAxioms() {
-		Set<OWLAxiom> sameasOWLAxioms = new HashSet<>();
+		Set<OWLAxiom> sameasOWLAxioms = new HashSet<OWLAxiom>();
 
 		Iterator<Entry<OWLNamedIndividual, Set<OWLNamedIndividual>>> iterator = this.sameAsMap.entrySet().iterator();
 
@@ -104,7 +104,7 @@ public class MapbasedSameAsBox implements SameAsBox {
 			OWLNamedIndividual key = entry.getKey();
 			Set<OWLNamedIndividual> value = entry.getValue();
 
-			Set<OWLNamedIndividual> allIndividuals = new HashSet<>();
+			Set<OWLNamedIndividual> allIndividuals = new HashSet<OWLNamedIndividual>();
 			allIndividuals.add(key);
 			if (value != null) {
 				allIndividuals.addAll(value);

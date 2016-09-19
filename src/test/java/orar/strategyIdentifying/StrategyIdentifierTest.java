@@ -76,7 +76,7 @@ public class StrategyIdentifierTest {
 	private StrategyName getStrategyName(String tboxFileName) throws OWLOntologyCreationException{
 		OWLOntologyManager manager=OWLManager.createOWLOntologyManager();
 		OWLOntology owlOntology=manager.loadOntologyFromOntologyDocument(new File(tboxFileName));
-		Set<OWLAxiom> tboxAxioms= new HashSet<>();
+		Set<OWLAxiom> tboxAxioms= new HashSet<OWLAxiom>();
 		tboxAxioms.addAll(owlOntology.getTBoxAxioms(true));
 		tboxAxioms.addAll(owlOntology.getRBoxAxioms(true));
 		StrategyIdentifier strategyIdentifier= new StrategyIdentifierImpl(tboxAxioms);

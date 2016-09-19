@@ -10,10 +10,7 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.semanticweb.owlapi.apibinding.OWLManager;
-import org.semanticweb.owlapi.formats.OWLXMLDocumentFormat;
-import org.semanticweb.owlapi.formats.OWLXMLOntologyFormat;
 import org.semanticweb.owlapi.formats.RDFXMLOntologyFormat;
-import org.semanticweb.owlapi.io.OWLFunctionalSyntaxOntologyFormat;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
@@ -48,7 +45,6 @@ public abstract class Orar2TurtleConverter {
 
 	}
 
-	
 	/**
 	 * Read an ontology (tboxFileName + aboxListFile); validate that TBox and
 	 * return its HornSHOIF fragment; and convert the ABox assertions into
@@ -63,7 +59,8 @@ public abstract class Orar2TurtleConverter {
 	 * @param aboxInTurtle
 	 *            output ABox in Turtle
 	 */
-	public void convertCombinedOntologyToSaparatedFiles(String tboxAndABoxFile,  String validatedTBoxFileName, String aboxInTurtle) {
+	public void convertCombinedOntologyToSaparatedFiles(String tboxAndABoxFile, String validatedTBoxFileName,
+			String aboxInTurtle) {
 		indexer.clear();
 		this.model = ModelFactory.createDefaultModel();
 
@@ -78,7 +75,7 @@ public abstract class Orar2TurtleConverter {
 		saveABoxInTurtle(orarOntology, aboxInTurtle);
 		logger.info("done! saved all assertions to: " + aboxInTurtle);
 	}
-	
+
 	/**
 	 * Read an ontology (tboxFileName + aboxListFile); validate that TBox and
 	 * return its HornSHOIF fragment; and convert the ABox assertions into
@@ -109,7 +106,6 @@ public abstract class Orar2TurtleConverter {
 		logger.info("done! saved all assertions to: " + aboxInTurtle);
 	}
 
-	
 	/**
 	 * Read an ontology (tboxFileName + aboxListFile); validate that TBox and
 	 * return its HornSHOIF fragment; and convert the ABox assertions into
@@ -119,25 +115,22 @@ public abstract class Orar2TurtleConverter {
 	 *            inputTBox
 	 * @param aboxListFile
 	 *            list of input aboxes file names
-	
+	 * 
 	 * @param aboxInTurtle
 	 *            output ABox in Turtle
 	 */
-	public void convert(String tboxFileName, String aboxListFile,  String aboxInTurtle) {
+	public void convert(String tboxFileName, String aboxListFile, String aboxInTurtle) {
 		indexer.clear();
 		this.model = ModelFactory.createDefaultModel();
 
 		OntologyReader ontologyReader = getOntologyReader();
 		OrarOntology2 orarOntology = ontologyReader.getNOTNormalizedOrarOntology(tboxFileName, aboxListFile);
 
-		
-
 		logger.info("converting assertions into Turtle syntax...");
 		saveABoxInTurtle(orarOntology, aboxInTurtle);
 		logger.info("done! saved all assertions to: " + aboxInTurtle);
 	}
 
-	
 	private void saveABoxInTurtle(OrarOntology2 orarOntology, String aboxInTurtle) {
 		putConceptAssertionsIntoJenaModel(orarOntology);
 		putRoleAssertionsIntoJenaModel(orarOntology);
@@ -275,8 +268,10 @@ public abstract class Orar2TurtleConverter {
 			ontology = manager.createOntology();
 			manager.addAxioms(ontology, orarOntology.getTBoxAxioms());
 
-//			OWLXMLDocumentFormat functionalFormat = new OWLXMLDocumentFormat();
-//			OWLFunctionalSyntaxOntologyFormat functionalFormat = new OWLFunctionalSyntaxOntologyFormat();
+			// OWLXMLDocumentFormat functionalFormat = new
+			// OWLXMLDocumentFormat();
+			// OWLFunctionalSyntaxOntologyFormat functionalFormat = new
+			// OWLFunctionalSyntaxOntologyFormat();
 			RDFXMLOntologyFormat functionalFormat = new RDFXMLOntologyFormat();
 			File file = new File(validatedTBoxFileName);
 			IRI iriDocument = IRI.create(file.toURI());

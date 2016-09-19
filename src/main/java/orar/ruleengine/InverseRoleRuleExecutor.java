@@ -42,7 +42,7 @@ public class InverseRoleRuleExecutor implements RuleExecutor {
 
 	public InverseRoleRuleExecutor(OrarOntology2 orarOntology) {
 		this.orarOntology = orarOntology;
-		this.newRoleAssertions = new HashSet<>();
+		this.newRoleAssertions = new HashSet<IndexedRoleAssertion>();
 		this.dataFactory = OWLManager.getOWLDataFactory();
 		this.isABoxExtended = false;
 		this.inverseRoleMap = new HashMap<OWLObjectProperty, Set<OWLObjectPropertyExpression>>();

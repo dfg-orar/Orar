@@ -63,7 +63,7 @@ public class IndividualIndexerWithGuava {
 	 * @return their indexes
 	 */
 	public Set<Integer> getIndexesOfIndividualString(Set<String> individualStrings) {
-		Set<Integer> indexes = new HashSet<>();
+		Set<Integer> indexes = new HashSet<Integer>();
 		for (String eachString : individualStrings) {
 			indexes.add(getIndexOfIndividualString(eachString));
 		}
@@ -76,7 +76,7 @@ public class IndividualIndexerWithGuava {
 	 * @return their indexes
 	 */
 	public Set<Integer> getIndexesOfOWLIndividuals(Set<OWLNamedIndividual> individuals) {
-		Set<Integer> indexes = new HashSet<>();
+		Set<Integer> indexes = new HashSet<Integer>();
 		for (OWLNamedIndividual eachIndividual : individuals) {
 			indexes.add(getIndexOfIndividualString(eachIndividual.getIRI().toString()));
 		}
@@ -116,7 +116,7 @@ public class IndividualIndexerWithGuava {
 	 * @return a set of OWLNamedIndividual corresponding to the given indexes
 	 */
 	public Set<OWLNamedIndividual> getOWLIndividuals(Set<Integer> indexOfIndividuals) {
-		Set<OWLNamedIndividual> owlIndividuals = new HashSet<>();
+		Set<OWLNamedIndividual> owlIndividuals = new HashSet<OWLNamedIndividual>();
 		for (Integer eachInd : indexOfIndividuals) {
 			String eachIndString = getIndividualString(eachInd);
 			OWLNamedIndividual owlInd = this.owlDataFactory.getOWLNamedIndividual(IRI.create(eachIndString));

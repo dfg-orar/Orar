@@ -113,7 +113,7 @@ public abstract class DLReasonerTemplate implements DLReasoner {
 		this.reasoner = getOWLReasoner(owlOntology);
 		// logger.info("***DEBUG*** 1");
 		long startTime = System.currentTimeMillis();
-
+		logger.info("precomputing...");
 		this.reasoner.precomputeInferences(InferenceType.CLASS_ASSERTIONS, InferenceType.OBJECT_PROPERTY_ASSERTIONS,
 				InferenceType.SAME_INDIVIDUAL);
 		// logger.info("***DEBUG*** 2");
@@ -145,10 +145,10 @@ public abstract class DLReasonerTemplate implements DLReasoner {
 		// logger.info("***DEBUG*** individuals in signatures:"+allIndividuals);
 		for (OWLNamedIndividual indiv : allIndividuals) {
 			Set<OWLNamedIndividual> equivalentIndividuals = reasoner.getSameIndividuals(indiv).getEntities();
-
+			
 			this.sameasAssertionAsMap.put(indiv, equivalentIndividuals);
 		}
-
+		logger.info("number of sameas Assertions =" + this.sameasAssertionAsMap.size());
 	}
 
 	/**
@@ -168,7 +168,7 @@ public abstract class DLReasonerTemplate implements DLReasoner {
 				}
 			}
 		}
-
+		logger.info("number of entailed role assertions = "+ this.roleAssertions.size());
 	}
 
 	/**
@@ -177,16 +177,18 @@ public abstract class DLReasonerTemplate implements DLReasoner {
 	private void computeEntailedConceptAssertions() {
 		Set<OWLClass> allConceptsNames = this.owlOntology.getClassesInSignature(true);
 		allConceptsNames.remove(OWLManager.getOWLDataFactory().getOWLThing());
+		
 		for (OWLClass eachConceptName : allConceptsNames) {
 			Set<OWLNamedIndividual> instances = this.reasoner.getInstances(eachConceptName, false).getFlattened();
 			for (OWLNamedIndividual eachInstance : instances) {
 				OWLClassAssertionAxiom newConceptAssertion = this.dataFactory.getOWLClassAssertionAxiom(eachConceptName,
 						eachInstance);
 				this.conceptAssertions.add(newConceptAssertion);
-
+				
 			}
 
 		}
+		logger.info("number of entailed concept assertions = "+ this.conceptAssertions.size());
 	}
 
 	// private void owlapi(){

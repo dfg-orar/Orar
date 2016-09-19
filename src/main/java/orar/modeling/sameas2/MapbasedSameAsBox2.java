@@ -100,7 +100,7 @@ public class MapbasedSameAsBox2 implements SameAsBox2 {
 
 	@Override
 	public Set<OWLAxiom> getEntailedSameasOWLAxioms() {
-		Set<OWLAxiom> sameasOWLAxioms = new HashSet<>();
+		Set<OWLAxiom> sameasOWLAxioms = new HashSet<OWLAxiom>();
 
 		Iterator<Entry<Integer, Set<Integer>>> iterator = this.sameAsMap.entrySet().iterator();
 
@@ -109,7 +109,7 @@ public class MapbasedSameAsBox2 implements SameAsBox2 {
 			Integer key = entry.getKey();
 			Set<Integer> value = entry.getValue();
 
-			Set<Integer> allIndividuals = new HashSet<>();
+			Set<Integer> allIndividuals = new HashSet<Integer>();
 			allIndividuals.add(key);
 			if (value != null) {
 				allIndividuals.addAll(value);

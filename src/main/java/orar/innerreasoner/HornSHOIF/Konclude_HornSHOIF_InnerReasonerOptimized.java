@@ -87,7 +87,8 @@ public class Konclude_HornSHOIF_InnerReasonerOptimized extends HornSHOIF_InnerRe
 		cmdLine.addArgument("owllinkserver");
 		cmdLine.addArgument("-p");
 		cmdLine.addArgument(Integer.toString(portNumber));
-
+//		cmdLine.addArgument("-w");
+//		cmdLine.addArgument("AUTO");
 		/*
 		 * +=Konclude.Logging.MinLoggingLevel=100 for stopping log info printed
 		 * on the screen
@@ -395,7 +396,7 @@ public class Konclude_HornSHOIF_InnerReasonerOptimized extends HornSHOIF_InnerRe
 	@SuppressWarnings("Do not use, onlty for compatiablity")
 	public Map<OWLNamedIndividual, Set<OWLClass>> getEntailedConceptAssertionsAsMap() {
 
-		return new HashMap<>();
+		return new HashMap<OWLNamedIndividual, Set<OWLClass>>();
 	}
 
 //	@Override

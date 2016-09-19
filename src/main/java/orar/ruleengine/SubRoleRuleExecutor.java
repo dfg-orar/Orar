@@ -27,7 +27,7 @@ public class SubRoleRuleExecutor implements RuleExecutor {
 
 	public SubRoleRuleExecutor(OrarOntology2 orarOntology) {
 		this.orarOntology = orarOntology;
-		this.newRoleAssertions = new HashSet<>();
+		this.newRoleAssertions = new HashSet<IndexedRoleAssertion>();
 		this.entailedRoleAssertionFromRoleHierarchy = new IndexedRoleAssertionList();
 
 		this.metaDataOfOntology = MetaDataOfOntology.getInstance();

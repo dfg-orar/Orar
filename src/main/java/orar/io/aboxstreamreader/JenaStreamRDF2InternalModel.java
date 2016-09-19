@@ -71,8 +71,8 @@ public class JenaStreamRDF2InternalModel extends StreamRDFBase {
 
 		// this.definedRoleNames = definedRoleNames;
 		// this.definedConceptNames = definedConceptNames;
-		this.definedConceptStrings = new HashSet<>();
-		this.definedRoleStrings = new HashSet<>();
+		this.definedConceptStrings = new HashSet<String>();
+		this.definedRoleStrings = new HashSet<String>();
 		this.orarOntology = resultingOntology;
 		this.owlDataFactory = OWLManager.getOWLDataFactory();
 		this.numberOfAllTriples = 0;

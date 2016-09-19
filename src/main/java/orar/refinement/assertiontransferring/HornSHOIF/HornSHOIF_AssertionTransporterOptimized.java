@@ -51,7 +51,7 @@ public class HornSHOIF_AssertionTransporterOptimized extends AssertionTransporte
 		while (iterator.hasNext()) {
 			Entry<OWLNamedIndividual, Set<OWLNamedIndividual>> entry = iterator.next();
 			// compute a set of equivalent individuals in the original ABox
-			Set<Integer> equivalentOriginalInds = new HashSet<>();
+			Set<Integer> equivalentOriginalInds = new HashSet<Integer>();
 			// for the key
 			OWLNamedIndividual u = entry.getKey();
 			Set<Integer> originalInds_of_u = this.dataForTransferingEntailments.getOriginalIndividuals(u);
@@ -138,7 +138,7 @@ public class HornSHOIF_AssertionTransporterOptimized extends AssertionTransporte
 			Set<Integer> originalSubjects = this.dataForTransferingEntailments.getMap_UAbstractIndiv_2_OriginalIndivs().get(abstractSubject);
 //			Set<Integer> originalSubjects = this.dataForTransferingEntailments.getOriginalIndividuals(abstractSubject);
 			if (originalSubjects==null) {
-				originalSubjects= new HashSet<>();
+				originalSubjects= new HashSet<Integer>();
 			}
 			for (Integer originalSubject : originalSubjects) {
 

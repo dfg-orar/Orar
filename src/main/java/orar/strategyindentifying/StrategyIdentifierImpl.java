@@ -17,7 +17,7 @@ public class StrategyIdentifierImpl implements StrategyIdentifier {
 	public StrategyIdentifierImpl(Set<OWLAxiom> allAxiomsIntheNormalizedOntology) {
 		this.allAxioms = allAxiomsIntheNormalizedOntology;
 		this.strategyHasBenIdentified = false;
-		this.dlConstructors = new HashSet<>();
+		this.dlConstructors = new HashSet<DLConstructor>();
 	}
 
 	private void collectConstructos() {
