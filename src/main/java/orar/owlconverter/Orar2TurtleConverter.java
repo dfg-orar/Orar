@@ -29,11 +29,11 @@ import com.hp.hpl.jena.vocabulary.OWL;
 import com.hp.hpl.jena.vocabulary.RDF;
 
 import orar.indexing.IndividualIndexer;
-import orar.io.ontologyreader.OntologyReader;
 import orar.modeling.conceptassertion2.ConceptAssertionBox2;
 import orar.modeling.ontology2.OrarOntology2;
 import orar.modeling.roleassertion2.RoleAssertionBox2;
 import orar.modeling.sameas2.SameAsBox2;
+import x.io.ontologyreader.OntologyReader;
 
 public abstract class Orar2TurtleConverter {
 	private final Logger logger = Logger.getLogger(Orar2TurtleConverter.class);

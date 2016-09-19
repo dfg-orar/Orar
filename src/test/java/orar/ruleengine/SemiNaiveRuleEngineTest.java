@@ -11,14 +11,14 @@ import org.semanticweb.owlapi.model.OWLObjectProperty;
 import orar.data.DataForTransferingEntailments;
 import orar.data.MetaDataOfOntology;
 import orar.indexing.IndividualIndexer;
-import orar.io.ontologyreader.HornSHOIF_OntologyReader;
-import orar.io.ontologyreader.OntologyReader;
 import orar.modeling.ontology2.MapbasedOrarOntology2;
 import orar.modeling.ontology2.OrarOntology2;
 import orar.rolereasoning.HermitRoleReasoner;
 import orar.rolereasoning.RoleReasoner;
-import orar.util.DefaultTestDataFactory;
-import orar.util.PrintingHelper;
+import x.io.ontologyreader.HornSHOIF_OntologyReader;
+import x.io.ontologyreader.OntologyReader;
+import x.util.DefaultTestDataFactory;
+import x.util.PrintingHelper;
 
 public class SemiNaiveRuleEngineTest {
 	DefaultTestDataFactory testData = DefaultTestDataFactory.getInsatnce();

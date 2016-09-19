@@ -14,11 +14,11 @@ import orar.data.MetaDataOfOntology;
 import orar.data.NormalizationDataFactory;
 import orar.dlreasoner.DLReasoner;
 import orar.dlreasoner.HermitDLReasoner;
-import orar.io.ontologyreader.HornSHOIF_OntologyReader;
-import orar.io.ontologyreader.OntologyReader;
-import orar.materializer.Materializer;
 import orar.modeling.ontology.OrarOntology;
 import orar.modeling.ontology2.OrarOntology2;
+import x.io.ontologyreader.HornSHOIF_OntologyReader;
+import x.io.ontologyreader.OntologyReader;
+import x.materializer.Materializer;
 
 public class HornSHIF_Materializer_HermitTest {
 

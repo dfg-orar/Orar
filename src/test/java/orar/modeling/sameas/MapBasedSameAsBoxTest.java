@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 
-import orar.util.DefaultTestDataFactory;
+import x.util.DefaultTestDataFactory;
 
 public class MapBasedSameAsBoxTest {
 	DefaultTestDataFactory testData = DefaultTestDataFactory.getInsatnce();

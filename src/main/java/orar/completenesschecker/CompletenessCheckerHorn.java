@@ -17,11 +17,11 @@ import com.google.common.collect.Sets.SetView;
 import orar.config.Configuration;
 import orar.config.LogInfo;
 import orar.dlreasoner.DLReasoner;
-import orar.materializer.Materializer;
 import orar.modeling.ontology.OrarOntology;
 import orar.modeling.ontology2.AssertionDecoder;
 import orar.modeling.ontology2.OrarOntology2;
-import orar.util.PrintingHelper;
+import x.materializer.Materializer;
+import x.util.PrintingHelper;
 
 public class CompletenessCheckerHorn implements CompletenessChecker {
 	private static Logger logger = Logger.getLogger(CompletenessCheckerHorn.class);

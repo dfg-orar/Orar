@@ -21,7 +21,7 @@ import orar.modeling.ontology2.OrarOntology2;
 import orar.modeling.roleassertion2.IndexedRoleAssertionList;
 import orar.refinement.abstractroleassertion.AbstractRoleAssertionBox;
 import orar.refinement.abstractroleassertion.RoleAssertionList;
-import orar.util.PrintingHelper;
+import x.util.PrintingHelper;
 
 public abstract class AssertionTransporterTemplateOptimized implements AssertionTransporter {
 	// original ontology
@@ -77,7 +77,7 @@ public abstract class AssertionTransporterTemplateOptimized implements Assertion
 		long startUpdateConceptAssertion = System.currentTimeMillis();
 		transferConceptAssertions();// not change
 		long endUpdateConceptAssertion = System.currentTimeMillis();
-		if (this.config.getLogInfos().contains(LogInfo.TIME_IN_EACH_METHOD_OR_OPERATION)) {
+		if (this.config.getLogInfos().contains(LogInfo.TIME_STAMP_FOR_EACH_STEP)) {
 			long updateingConceptAsesrtionTime = (endUpdateConceptAssertion - startUpdateConceptAssertion) / 1000;
 			logger.info("Time for updating concep assertions in the original ABox in seconds: "
 					+ updateingConceptAsesrtionTime);

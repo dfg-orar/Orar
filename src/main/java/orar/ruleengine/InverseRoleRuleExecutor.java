@@ -23,8 +23,8 @@ import orar.modeling.roleassertion2.IndexedRoleAssertion;
 import orar.modeling.roleassertion2.IndexedRoleAssertionList;
 import orar.refinement.abstractroleassertion.RoleAssertionList;
 import orar.rolereasoning.AxiomOfSpecificTypeGetter;
-import orar.util.Pause;
-import orar.util.PrintingHelper;
+import x.util.Pause;
+import x.util.PrintingHelper;
 
 public class InverseRoleRuleExecutor implements RuleExecutor {
 	private static final Logger logger = Logger.getLogger(InverseRoleRuleExecutor.class);

@@ -2,10 +2,10 @@ package orar.materializer.HornSHIF;
 
 import org.semanticweb.owlapi.model.OWLOntology;
 
-import orar.innerreasoner.InnerReasoner;
-import orar.innerreasoner.HornSHIF.Hermit_HornSHIF_InnerReasoner;
 import orar.modeling.ontology.OrarOntology;
 import orar.modeling.ontology2.OrarOntology2;
+import x.innerreasoner.InnerReasoner;
+import x.innerreasoner.HornSHIF.Hermit_HornSHIF_InnerReasoner;
 
 public class HornSHIF_Materializer_Hermit extends HornSHIF_MaterializerOptimized {
 

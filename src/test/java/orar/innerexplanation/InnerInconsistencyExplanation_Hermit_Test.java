@@ -14,7 +14,7 @@ import org.semanticweb.owlapi.model.OWLOntologyManager;
 
 import orar.innerconsistencychecking.InnerConsistencyChecker;
 import orar.innerconsistencychecking.InnerConsistencyChecker_Hermit;
-import orar.util.PrintingHelper;
+import x.util.PrintingHelper;
 
 public class InnerInconsistencyExplanation_Hermit_Test {
 	@Test

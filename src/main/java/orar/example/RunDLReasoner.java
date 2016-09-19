@@ -7,8 +7,8 @@ import orar.config.Configuration;
 import orar.config.LogInfo;
 import orar.dlreasoner.DLReasoner;
 import orar.dlreasoner.HermitDLReasoner;
-import orar.io.ontologyreader.HornSHOIF_OntologyReader;
-import orar.io.ontologyreader.OntologyReader;
+import x.io.ontologyreader.HornSHOIF_OntologyReader;
+import x.io.ontologyreader.OntologyReader;
 
 public class RunDLReasoner {
 

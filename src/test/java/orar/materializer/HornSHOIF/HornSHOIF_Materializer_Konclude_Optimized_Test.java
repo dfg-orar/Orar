@@ -16,11 +16,11 @@ import orar.data.NormalizationDataFactory;
 import orar.dlreasoner.DLReasoner;
 import orar.dlreasoner.HermitDLReasoner;
 import orar.indexing.IndividualIndexer;
-import orar.io.ontologyreader.HornSHOIF_OntologyReader;
-import orar.io.ontologyreader.OntologyReader;
-import orar.materializer.Materializer;
 import orar.modeling.ontology2.OrarOntology2;
-import orar.util.PrintingHelper;
+import x.io.ontologyreader.HornSHOIF_OntologyReader;
+import x.io.ontologyreader.OntologyReader;
+import x.materializer.Materializer;
+import x.util.PrintingHelper;
 
 public class HornSHOIF_Materializer_Konclude_Optimized_Test {
 	@Before

@@ -17,8 +17,8 @@ import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.model.OWLTransitiveObjectPropertyAxiom;
 
 import junit.framework.Assert;
-import orar.util.DefaultTestDataFactory;
-import orar.util.PrintingHelper;
+import x.util.DefaultTestDataFactory;
+import x.util.PrintingHelper;
 
 public class FunctionalRoleIdentifierHermitTest {
 	DefaultTestDataFactory testData = DefaultTestDataFactory.getInsatnce();

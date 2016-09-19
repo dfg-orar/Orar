@@ -17,7 +17,7 @@ import orar.type.BasicIndividualType;
 import orar.type.BasicIndividualTypeFactory;
 import orar.type.BasicIndividualTypeFactory_UsingWeakHashMap;
 import orar.type.IndividualType;
-import orar.util.MapOperator;
+import x.util.MapOperator;
 
 /**
  * Computing types for all individuals, taking equivalent individuals into

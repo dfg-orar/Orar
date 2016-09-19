@@ -2,9 +2,9 @@ package orar.materializer.HornSHIF;
 
 import org.semanticweb.owlapi.model.OWLOntology;
 
-import orar.innerreasoner.InnerReasoner;
-import orar.innerreasoner.HornSHIF.Konclude_HornSHIF_InnerReasonerOptimized;
 import orar.modeling.ontology2.OrarOntology2;
+import x.innerreasoner.InnerReasoner;
+import x.innerreasoner.HornSHIF.Konclude_HornSHIF_InnerReasoner2;
 
 public class HornSHIF_Materializer_KoncludeOptimized extends HornSHIF_MaterializerOptimized {
 	private int port = 8080;
@@ -23,9 +23,9 @@ public class HornSHIF_Materializer_KoncludeOptimized extends HornSHIF_Materializ
 	protected InnerReasoner getInnerReasoner(OWLOntology abstraction) {
 		InnerReasoner reasoner;
 		if (port == 8080) {
-			reasoner = new Konclude_HornSHIF_InnerReasonerOptimized(abstraction);
+			reasoner = new Konclude_HornSHIF_InnerReasoner2(abstraction);
 		} else {
-			reasoner = new Konclude_HornSHIF_InnerReasonerOptimized(abstraction, this.port);
+			reasoner = new Konclude_HornSHIF_InnerReasoner2(abstraction, this.port);
 		}
 		return reasoner;
 	}

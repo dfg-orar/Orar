@@ -31,8 +31,8 @@ import orar.modeling.ontology.OrarOntology;
 import orar.modeling.ontology2.MapbasedOrarOntology2;
 import orar.modeling.ontology2.OrarOntology2;
 import orar.type.IndividualType;
-import orar.util.DefaultTestDataFactory;
-import orar.util.PrintingHelper;
+import x.util.DefaultTestDataFactory;
+import x.util.PrintingHelper;
 
 public class HornSHOIF_AbstractionGeneratorTest {
 	DefaultTestDataFactory testData = DefaultTestDataFactory.getInsatnce();

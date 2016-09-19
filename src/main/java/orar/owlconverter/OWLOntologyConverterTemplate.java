@@ -18,8 +18,8 @@ import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 
-import orar.io.ontologyreader.OntologyReader;
 import orar.modeling.ontology.OrarOntology;
+import x.io.ontologyreader.OntologyReader;
 
 public abstract class OWLOntologyConverterTemplate implements OWLOntologyConverter {
 	private static Logger logger = Logger.getLogger(OWLOntologyConverterTemplate.class);

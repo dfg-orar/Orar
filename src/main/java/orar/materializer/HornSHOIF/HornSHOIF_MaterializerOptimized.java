@@ -11,15 +11,15 @@ import org.semanticweb.owlapi.model.OWLOntology;
 
 import orar.abstraction.AbstractionGenerator;
 import orar.abstraction.HornSHOIF.HornSHOIF_AbstractionGenerator;
-import orar.innerreasoner.InnerReasoner;
-import orar.materializer.MaterializerTemplateOptimized;
 import orar.modeling.ontology2.OrarOntology2;
 import orar.refinement.abstractroleassertion.AbstractRoleAssertionBox;
 import orar.refinement.assertiontransferring.AssertionTransporter;
 import orar.refinement.assertiontransferring.HornSHOIF.HornSHOIF_AssertionTransporterOptimized;
 import orar.type.IndividualType;
+import x.innerreasoner.InnerReasoner;
+import x.materializer.MaterializerTemplate2;
 
-public abstract class HornSHOIF_MaterializerOptimized extends MaterializerTemplateOptimized {
+public abstract class HornSHOIF_MaterializerOptimized extends MaterializerTemplate2 {
 
 	public HornSHOIF_MaterializerOptimized(OrarOntology2 normalizedOrarOntology) {
 		super(normalizedOrarOntology);

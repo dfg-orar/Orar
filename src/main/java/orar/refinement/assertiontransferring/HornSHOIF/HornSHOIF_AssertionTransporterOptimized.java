@@ -20,7 +20,7 @@ import orar.refinement.abstractroleassertion.AbstractRoleAssertionBox;
 import orar.refinement.abstractroleassertion.RoleAssertionList;
 import orar.refinement.assertiontransferring.AssertionTransporterTemplate;
 import orar.refinement.assertiontransferring.AssertionTransporterTemplateOptimized;
-import orar.util.PrintingHelper;
+import x.util.PrintingHelper;
 
 public class HornSHOIF_AssertionTransporterOptimized extends AssertionTransporterTemplateOptimized {
 	private Logger logger = Logger.getLogger(HornSHOIF_AssertionTransporterOptimized.class);

@@ -2,10 +2,10 @@ package orar.materializer.DLLiteExtensions;
 
 import org.semanticweb.owlapi.model.OWLOntology;
 
-import orar.innerreasoner.InnerReasoner;
-import orar.innerreasoner.HornSHOIF.Konclude_HornSHOIF_InnerReasoner;
 import orar.materializer.HornSHOIF.HornSHOIF_MaterializerOptimized;
 import orar.modeling.ontology2.OrarOntology2;
+import x.innerreasoner.InnerReasoner;
+import x.innerreasoner.HornSHOIF.Konclude_HornSHOIF_InnerReasoner;
 
 /**
  * We extend strategy of HornSHOIF. The differences for the case of

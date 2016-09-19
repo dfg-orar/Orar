@@ -6,11 +6,11 @@ import org.junit.Test;
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 
-import orar.io.ontologyreader.DLLiteHOD_OntologyReader;
-import orar.io.ontologyreader.OntologyReader;
 import orar.modeling.ontology.OrarOntology;
 import orar.modeling.ontology2.OrarOntology2;
-import orar.util.PrintingHelper;
+import x.io.ontologyreader.DLLiteHOD_OntologyReader;
+import x.io.ontologyreader.OntologyReader;
+import x.util.PrintingHelper;
 
 public class OrarDebuggerDLLiteTest {
 

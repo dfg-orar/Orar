@@ -4,8 +4,8 @@ import org.junit.Test;
 import org.semanticweb.owlapi.model.OWLOntology;
 
 import orar.config.Configuration;
-import orar.io.ontologyreader.HornSHOIF_OntologyReader;
-import orar.io.ontologyreader.OntologyReader;
+import x.io.ontologyreader.HornSHOIF_OntologyReader;
+import x.io.ontologyreader.OntologyReader;
 
 public class KoncludeDLReasonerTest {
 	@Test

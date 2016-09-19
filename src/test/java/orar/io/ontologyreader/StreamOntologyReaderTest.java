@@ -14,6 +14,8 @@ import org.semanticweb.owlapi.model.OWLOntologyManager;
 
 
 import orar.modeling.ontology2.OrarOntology2;
+import x.io.ontologyreader.OWLAPI2OrarConverter;
+import x.io.ontologyreader.StreamOntologyReader2InternalModel;
 
 public class StreamOntologyReaderTest {
 

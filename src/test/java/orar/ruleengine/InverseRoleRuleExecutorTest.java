@@ -18,8 +18,8 @@ import orar.indexing.IndividualIndexer;
 import orar.modeling.ontology2.MapbasedOrarOntology2;
 import orar.modeling.ontology2.OrarOntology2;
 import orar.modeling.roleassertion2.IndexedRoleAssertion;
-import orar.util.DefaultTestDataFactory;
-import orar.util.PrintingHelper;
+import x.util.DefaultTestDataFactory;
+import x.util.PrintingHelper;
 
 public class InverseRoleRuleExecutorTest {
 	DefaultTestDataFactory testData = DefaultTestDataFactory.getInsatnce();

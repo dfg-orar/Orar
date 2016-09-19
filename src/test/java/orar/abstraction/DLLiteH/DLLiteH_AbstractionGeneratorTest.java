@@ -11,12 +11,12 @@ import orar.abstraction.AbstractionGenerator;
 import orar.abstraction.BasicTypeComputor;
 import orar.abstraction.TypeComputor;
 import orar.abstraction.DLLiteH.DLLiteR_AbstractionGenerator;
-import orar.io.ontologyreader.DLLiteH_OntologyReader;
-import orar.io.ontologyreader.OntologyReader;
 import orar.modeling.ontology.OrarOntology;
 import orar.modeling.ontology2.OrarOntology2;
 import orar.type.IndividualType;
-import orar.util.PrintingHelper;
+import x.io.ontologyreader.DLLiteH_OntologyReader;
+import x.io.ontologyreader.OntologyReader;
+import x.util.PrintingHelper;
 
 public class DLLiteH_AbstractionGeneratorTest {
 

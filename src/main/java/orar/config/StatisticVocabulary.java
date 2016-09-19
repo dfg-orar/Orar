@@ -39,7 +39,7 @@ public class StatisticVocabulary {
 	public static String NUMBER_OF_X = "Statistic: Number_of_x = ";
 	public static String NUMBER_OF_U = "Statistic: Number_of_u = ";
 	public static String NUMBER_OF_YZ = "Statistic: Number_of_yz = ";
-	public static String NUMBER_OF_ABSTRACT_INDIVIDUALS = "Statistic: Number_of_abstract_individuals_xuyz = ";
+	public static String NUMBER_OF_ABSTRACT_INDIVIDUALS = "Statistic: Number_of_abstract_individuals = ";
 
 	/*
 	 * size of abstraction
@@ -58,12 +58,12 @@ public class StatisticVocabulary {
 	public static String TIME_LOADING_INPUT_TBOX = "Statistic: Time_loading_input_tbox_in_seconds = ";
 	public static String TIME_LOADING_ABSTRACT_ONTOLOGY = "Statistic: Time_loading_abstract_ontology_in_seconds = ";
 	public static String TIME_NORMALIZATION_OF_TBOX = "Statistic: Time_normalization_of_input_tbox_in_seconds = ";
-	public static String TIME_REASONING_USING_ABSRTACTION = "Statistic: Total_time_reasoning_in_seconds = ";
-	public static String TIME_REASONING_BY_INNER_REASONER = "Statistic: Time_reasoning_by_inner_reasoner_in_seconds = ";
-	public static String TIME_REASONING_BY_DEDUCTIVE_RULES = "Statistic: Time_reasoning_by_deductive_rules_in_seconds = ";
+	public static String TOTAL_REASONING_TIME = "Statistic: Total_reasoning_time_in_seconds = ";
+	public static String TIME_REASONING_BY_INNER_REASONER = "Statistic: Reasoning_time_by_the_inner_reasoner_in_seconds = ";
+	public static String TIME_REASONING_BY_DEDUCTIVE_RULES = "Statistic: Reasoning_time_by_deductive_rules_in_seconds = ";
 	public static String TIME_REASONING_USING_DLREASONER = "Statistic: Time_reasoning_using_dlreasoner_in_seconds = ";
 	public static String TIME_REASONING_RULE_ENGINE = "Statistic: Time_reasoning_using_rule_engine_in_seconds = ";
-	public static String TIME_REASONING_ON_ABSTRACTION_ONTOLOGY = "Statistic: Time_reasoning_on_abstraction_ontology = ";
-	public static String TIME_LOADING_IN_ALL_STEPS = "Statistic: Time_loading_in_seconds = ";
+	public static String TIME_REASONING_ON_ABSTRACT_ONTOLOGIES = "Statistic: Reasoning_time_on_abstract_ontologies_in_seonds = ";
+	public static String TIME_LOADING_IN_ALL_STEPS = "Statistic: Total_loading_time_in_seconds = ";
 
 }

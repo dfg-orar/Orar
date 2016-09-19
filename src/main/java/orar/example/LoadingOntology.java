@@ -4,11 +4,11 @@ import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 
 import orar.config.Configuration;
 import orar.config.LogInfo;
-import orar.io.ontologyreader.HornSHOIF_OntologyReader;
-import orar.io.ontologyreader.OntologyReader;
 import orar.modeling.ontology.OrarOntology;
 import orar.modeling.ontology2.OrarOntology2;
-import orar.util.PrintingHelper;
+import x.io.ontologyreader.HornSHOIF_OntologyReader;
+import x.io.ontologyreader.OntologyReader;
+import x.util.PrintingHelper;
 
 public class LoadingOntology {
 	static String tboxFileName = "src/test/resources/uobm_origintbox_oxforddata/uobmtbox_origin_workwith_oxford_generator.owl";

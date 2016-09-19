@@ -12,7 +12,7 @@ import org.semanticweb.owlapi.model.OWLObjectProperty;
 import orar.type.BasicIndividualTypeFactory;
 import orar.type.BasicIndividualTypeFactory_UsingWeakHashMap;
 import orar.type.IndividualType;
-import orar.util.DefaultTestDataFactory;
+import x.util.DefaultTestDataFactory;
 
 public class BasicIndividualTypeFactory_UsingWeakHashMap_Test {
 

@@ -45,7 +45,8 @@ public class JenaMultipleABoxesStreamReader implements ABoxStreamReader {
 
 	private Set<String> getABoxList(String aboxListFile) {
 		Set<String> aboxList = new HashSet<String>();
-		logger.info("Get ABoxe files from: "+aboxListFile);
+//		
+//		logger.info("Get ABoxe files from: "+aboxListFile);
 		File file = new File(aboxListFile);
 		try {
 			FileInputStream inputStream = new FileInputStream(file);

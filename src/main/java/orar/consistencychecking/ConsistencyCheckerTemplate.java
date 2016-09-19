@@ -25,8 +25,6 @@ import orar.data.AbstractDataFactory;
 import orar.data.DataForTransferingEntailments;
 import orar.data.MetaDataOfOntology;
 import orar.innerconsistencychecking.InnerConsistencyChecker;
-import orar.innerreasoner.InnerReasoner;
-import orar.materializer.DLLite_ConceptMaterializerTemplate;
 import orar.modeling.ontology2.OrarOntology2;
 import orar.refinement.abstractroleassertion.AbstractRoleAssertionBox;
 import orar.refinement.assertiontransferring.AssertionTransporter;
@@ -35,7 +33,9 @@ import orar.ruleengine.RuleEngine;
 import orar.ruleengine.SemiNaiveRuleEngine;
 import orar.type.BasicIndividualTypeFactory_UsingWeakHashMap;
 import orar.type.IndividualType;
-import orar.util.PrintingHelper;
+import x.innerreasoner.InnerReasoner;
+import x.materializer.DLLite_ConceptMaterializerTemplate;
+import x.util.PrintingHelper;
 
 public abstract class ConsistencyCheckerTemplate implements ConsistencyChecker {
 
@@ -173,7 +173,7 @@ public abstract class ConsistencyCheckerTemplate implements ConsistencyChecker {
 		 * logging
 		 */
 		if (config.getLogInfos().contains(LogInfo.REASONING_TIME)) {
-			logger.info(StatisticVocabulary.TIME_REASONING_USING_ABSRTACTION + this.reasoningTimeInSeconds);
+			logger.info(StatisticVocabulary.TOTAL_REASONING_TIME + this.reasoningTimeInSeconds);
 		}
 
 		if (config.getLogInfos().contains(LogInfo.STATISTIC)) {

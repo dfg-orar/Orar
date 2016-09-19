@@ -5,11 +5,11 @@ import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 
 import orar.config.Configuration;
 import orar.config.LogInfo;
-import orar.io.ontologyreader.HornSHOIF_OntologyReader;
-import orar.io.ontologyreader.OntologyReader;
-import orar.materializer.Materializer;
 import orar.materializer.HornSHOIF.HornSHOIF_Materializer_KoncludeOptimized;
 import orar.modeling.ontology2.OrarOntology2;
+import x.io.ontologyreader.HornSHOIF_OntologyReader;
+import x.io.ontologyreader.OntologyReader;
+import x.materializer.Materializer;
 
 public class MaterializeUobm1 {
 	static Logger logger = Logger.getLogger(MaterializeUobm1.class);

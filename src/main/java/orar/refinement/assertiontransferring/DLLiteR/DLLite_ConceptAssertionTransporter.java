@@ -21,7 +21,7 @@ import orar.refinement.abstractroleassertion.AbstractRoleAssertionBox;
 import orar.refinement.abstractroleassertion.RoleAssertionList;
 import orar.refinement.assertiontransferring.AssertionTransporter;
 import orar.refinement.assertiontransferring.AssertionTransporterTemplate;
-import orar.util.PrintingHelper;
+import x.util.PrintingHelper;
 
 public class DLLite_ConceptAssertionTransporter implements AssertionTransporter {
 	// original ontology

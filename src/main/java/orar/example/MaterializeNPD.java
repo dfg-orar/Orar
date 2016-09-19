@@ -6,11 +6,11 @@ import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import orar.config.Configuration;
 import orar.config.LogInfo;
 import orar.config.StatisticVocabulary;
-import orar.io.ontologyreader.DLLiteH_OntologyReader;
-import orar.io.ontologyreader.OntologyReader;
-import orar.materializer.Materializer;
 import orar.materializer.DLLiteExtensions.DLLiteExtension_Materializer_Hermit;
 import orar.modeling.ontology2.OrarOntology2;
+import x.io.ontologyreader.DLLiteH_OntologyReader;
+import x.io.ontologyreader.OntologyReader;
+import x.materializer.Materializer;
 
 public class MaterializeNPD {
 	static String tboxFileName = "/Users/kien/benchmarks/npd-v2/npd.owl";
@@ -32,7 +32,7 @@ public class MaterializeNPD {
 		// long startAbstraction = System.currentTimeMillis();
 		Materializer materializer = new DLLiteExtension_Materializer_Hermit(normalizedOrarOntology);
 		materializer.materialize();
-		logger.info(StatisticVocabulary.TIME_REASONING_USING_ABSRTACTION + materializer.getReasoningTimeInSeconds());
+		logger.info(StatisticVocabulary.TOTAL_REASONING_TIME + materializer.getReasoningTimeInSeconds());
 
 	}
 

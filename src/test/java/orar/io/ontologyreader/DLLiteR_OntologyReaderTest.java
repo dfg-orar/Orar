@@ -17,7 +17,9 @@ import orar.data.DataForTransferingEntailments;
 import orar.data.MetaDataOfOntology;
 import orar.data.NormalizationDataFactory;
 import orar.modeling.ontology2.OrarOntology2;
-import orar.util.PrintingHelper;
+import x.io.ontologyreader.DLLiteH_OntologyReader;
+import x.io.ontologyreader.OntologyReader;
+import x.util.PrintingHelper;
 
 public class DLLiteR_OntologyReaderTest {
 

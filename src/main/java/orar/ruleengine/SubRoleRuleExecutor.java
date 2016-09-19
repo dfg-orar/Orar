@@ -14,7 +14,7 @@ import orar.data.MetaDataOfOntology;
 import orar.modeling.ontology2.OrarOntology2;
 import orar.modeling.roleassertion2.IndexedRoleAssertion;
 import orar.modeling.roleassertion2.IndexedRoleAssertionList;
-import orar.util.PrintingHelper;
+import x.util.PrintingHelper;
 
 public class SubRoleRuleExecutor implements RuleExecutor {
 	private final Logger logger = Logger.getLogger(SubRoleRuleExecutor.class);
@@ -83,7 +83,7 @@ public class SubRoleRuleExecutor implements RuleExecutor {
 			}
 		}
 		long expandingRoleHierarcyTimeNow = System.currentTimeMillis();
-		if (Configuration.getInstance().getLogInfos().contains(LogInfo.TIME_IN_EACH_METHOD_OR_OPERATION)) {
+		if (Configuration.getInstance().getLogInfos().contains(LogInfo.TIME_STAMP_FOR_EACH_STEP)) {
 			logger.info("Time for obtaining role assertions wrt the role hierarchy: "
 					+ (expandingRoleHierarcyTimeNow - startTime) / 1000);
 
@@ -98,7 +98,7 @@ public class SubRoleRuleExecutor implements RuleExecutor {
 					entailedRoleAssertionFromRoleHierarchy.getRole(i),
 					entailedRoleAssertionFromRoleHierarchy.getObject(i));
 		}
-		if (Configuration.getInstance().getLogInfos().contains(LogInfo.TIME_IN_EACH_METHOD_OR_OPERATION)) {
+		if (Configuration.getInstance().getLogInfos().contains(LogInfo.TIME_STAMP_FOR_EACH_STEP)) {
 			logger.info("number of new role assertions for incremental steps " + this.newRoleAssertions.size());
 			long insertingTimeNow = System.currentTimeMillis();
 			logger.info("Time for inserting new role assertions wrt the role hierarchy: "

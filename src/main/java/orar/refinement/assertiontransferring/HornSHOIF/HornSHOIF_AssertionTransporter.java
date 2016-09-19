@@ -19,7 +19,7 @@ import orar.modeling.ontology2.OrarOntology2;
 import orar.refinement.abstractroleassertion.AbstractRoleAssertionBox;
 import orar.refinement.abstractroleassertion.RoleAssertionList;
 import orar.refinement.assertiontransferring.AssertionTransporterTemplate;
-import orar.util.PrintingHelper;
+import x.util.PrintingHelper;
 
 public class HornSHOIF_AssertionTransporter extends AssertionTransporterTemplate {
 	private Logger logger = Logger.getLogger(HornSHOIF_AssertionTransporter.class);

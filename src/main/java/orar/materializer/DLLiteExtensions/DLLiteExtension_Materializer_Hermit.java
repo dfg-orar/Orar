@@ -2,9 +2,9 @@ package orar.materializer.DLLiteExtensions;
 
 import org.semanticweb.owlapi.model.OWLOntology;
 
-import orar.innerreasoner.InnerReasoner;
-import orar.innerreasoner.HornSHOIF.Hermit_HornSHOIF_InnerReasoner;
 import orar.modeling.ontology2.OrarOntology2;
+import x.innerreasoner.InnerReasoner;
+import x.innerreasoner.HornSHOIF.Hermit_HornSHOIF_InnerReasoner;
 
 public class DLLiteExtension_Materializer_Hermit extends DLLiteExtension_Materializer {
 

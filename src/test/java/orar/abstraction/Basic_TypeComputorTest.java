@@ -18,8 +18,8 @@ import orar.modeling.ontology2.OrarOntology2;
 import orar.type.BasicIndividualTypeFactory;
 import orar.type.BasicIndividualTypeFactory_UsingWeakHashMap;
 import orar.type.IndividualType;
-import orar.util.DefaultTestDataFactory;
-import orar.util.PrintingHelper;
+import x.util.DefaultTestDataFactory;
+import x.util.PrintingHelper;
 
 public class Basic_TypeComputorTest {
 	/*

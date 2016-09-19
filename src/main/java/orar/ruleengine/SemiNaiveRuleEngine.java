@@ -62,7 +62,7 @@ public class SemiNaiveRuleEngine implements RuleEngine {
 		}
 		long startTimeOfIncrementalReasoning = System.currentTimeMillis();
 		incrementalMaterialize();
-		if (Configuration.getInstance().getLogInfos().contains(LogInfo.TIME_IN_EACH_METHOD_OR_OPERATION)) {
+		if (Configuration.getInstance().getLogInfos().contains(LogInfo.TIME_STAMP_FOR_EACH_STEP)) {
 			long endTime = System.currentTimeMillis();
 			this.reasoningTime = (endTime - starTime) / 1000;
 			long incrementalReasoningTime = (endTime - startTimeOfIncrementalReasoning) / 1000;

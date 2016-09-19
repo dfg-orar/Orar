@@ -32,7 +32,7 @@ import orar.ruleengine.RuleEngine;
 import orar.ruleengine.SemiNaiveRuleEngine;
 import orar.type.BasicIndividualTypeFactory_UsingWeakHashMap;
 import orar.type.IndividualType;
-import orar.util.PrintingHelper;
+import x.util.PrintingHelper;
 
 public abstract class OrarDebuggerDLLiteTemplate implements OrarDebugger {
 	// input & output
@@ -184,7 +184,7 @@ public abstract class OrarDebuggerDLLiteTemplate implements OrarDebugger {
 		 * logging
 		 */
 		if (config.getLogInfos().contains(LogInfo.REASONING_TIME)) {
-			logger.info(StatisticVocabulary.TIME_REASONING_USING_ABSRTACTION + this.reasoningTimeInSeconds);
+			logger.info(StatisticVocabulary.TOTAL_REASONING_TIME + this.reasoningTimeInSeconds);
 		}
 
 //		if (config.getLogInfos().contains(LogInfo.STATISTIC)) {

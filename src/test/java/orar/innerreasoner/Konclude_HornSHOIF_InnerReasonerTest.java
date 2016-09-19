@@ -31,10 +31,11 @@ import orar.data.DataForTransferingEntailments;
 import orar.data.MetaDataOfOntology;
 import orar.dlreasoner.DLReasoner;
 import orar.dlreasoner.HermitDLReasoner;
-import orar.innerreasoner.HornSHOIF.Konclude_HornSHOIF_InnerReasoner;
 import orar.refinement.abstractroleassertion.AbstractRoleAssertionBox;
-import orar.util.DefaultTestDataFactory;
-import orar.util.PrintingHelper;
+import x.innerreasoner.InnerReasoner;
+import x.innerreasoner.HornSHOIF.Konclude_HornSHOIF_InnerReasoner;
+import x.util.DefaultTestDataFactory;
+import x.util.PrintingHelper;
 
 public class Konclude_HornSHOIF_InnerReasonerTest {
 	DefaultTestDataFactory testData = DefaultTestDataFactory.getInsatnce();

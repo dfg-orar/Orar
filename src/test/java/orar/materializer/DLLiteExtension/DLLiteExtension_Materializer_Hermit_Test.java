@@ -19,11 +19,11 @@ import orar.dlfragmentvalidator.ValidatorDataFactory;
 import orar.dlreasoner.DLReasoner;
 import orar.dlreasoner.HermitDLReasoner;
 import orar.indexing.IndividualIndexer;
-import orar.io.ontologyreader.HornSHOIF_OntologyReader;
-import orar.io.ontologyreader.OntologyReader;
-import orar.materializer.Materializer;
 import orar.materializer.DLLiteExtensions.DLLiteExtension_Materializer_Hermit;
 import orar.modeling.ontology2.OrarOntology2;
+import x.io.ontologyreader.HornSHOIF_OntologyReader;
+import x.io.ontologyreader.OntologyReader;
+import x.materializer.Materializer;
 
 public class DLLiteExtension_Materializer_Hermit_Test {
 
