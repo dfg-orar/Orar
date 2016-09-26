@@ -36,7 +36,7 @@ public interface SameAsBox2 {
 	 * @return true if new elements have been added, false otherwise.
 	 */
 	public boolean addManySameAsAssertions(Integer individual, Set<Integer> manyEqualIndividuals);
-
+	public boolean addNewManySameAsAssertions(Set<Integer> equalIndividuals);
 	public Set<Integer> getAllIndividuals();
 
 	
@@ -46,4 +46,5 @@ public interface SameAsBox2 {
 	 */
 	public Map<Integer,Set<Integer>> getSameasMap();
 	public Set<OWLAxiom> getEntailedSameasOWLAxioms();
+	public Integer getNumberOfEntailedSameasAssertions();
 }

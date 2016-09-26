@@ -13,6 +13,8 @@ import org.semanticweb.owlapi.model.OWLOntologyID;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.util.DLExpressivityChecker;
 
+
+
 public abstract class OWLOntologyValidator {
 
 	protected final OWLOntology inputOWLOntology;
@@ -69,15 +71,15 @@ public abstract class OWLOntologyValidator {
 
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 		OWLOntologyID oldID = this.inputOWLOntology.getOntologyID();
-		IRI iri = oldID.getOntologyIRI();
+		IRI iri =  oldID.getOntologyIRI();
 
 		IRI newIRI;
-		if (iri != null) {
-			newIRI = IRI.create(iri.toString() + "_in_" + this.targetedDLFrangment);
-
-		} else {
+//		if (iri != null) {
+//			newIRI = IRI.create(iri.get() + "_in_" + this.targetedDLFrangment);
+//
+//		} else {
 			newIRI = IRI.create("http://www.uniulm.ki/ontology/in_" + this.targetedDLFrangment);
-		}
+//		}
 
 		try {
 			OWLOntology ontologyInDLFragment = manager.createOntology(newIRI);

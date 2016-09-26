@@ -236,9 +236,9 @@ public class OrarCLI {
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 
 		logger.info("Saving entailed assertions to a file ...");
-		// OWLFunctionalSyntaxOntologyFormat format = new
-		// OWLFunctionalSyntaxOntologyFormat();
-		OWLXMLOntologyFormat format = new OWLXMLOntologyFormat();
+		
+		// OWLDocumentFormat format = new OWLXMLDocumentFormat();
+		OWLXMLOntologyFormat format=new OWLXMLOntologyFormat();
 		File file = new File(fileName);
 		IRI iriDocument = IRI.create(file.toURI());
 		try {

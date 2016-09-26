@@ -27,5 +27,6 @@ public enum LogInfo {
 	 * Print detail time in each steps. It corresponds to <performance> option in
 	 * the command line
 	 */
-	TIME_STAMP_FOR_EACH_STEP, TIME_FOR_EACH_STEP, PRINT_RESULT;
+	TIME_STAMP_FOR_EACH_STEP, TIME_FOR_EACH_STEP, PRINT_RESULT,
+	TUNING_SAMEAS;
 }

@@ -1,7 +1,9 @@
 package x.innerreasoner.HornSHIF;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -57,13 +59,18 @@ public class Konclude_HornSHIF_InnerReasoner2 extends HornSHIF_InnerReasonerTemp
 	}
 
 	private void startKoncludeServer() {
+		logger.info("Stop any existing Konclude/KoncludeMac/KoncludeLinux process");
+		executeCommand("killall -9 Konclude");
+		executeCommand("killall -9 KoncludeMac");
+		executeCommand("killall -9 KoncludeLinux");
+		
 		CommandLine cmdLine = new CommandLine(Configuration.getInstance().getKONCLUDE_BINARY_PATH());
 
 		cmdLine.addArgument("owllinkserver");
 		cmdLine.addArgument("-p");
 		cmdLine.addArgument(Integer.toString(portNumber));
-		cmdLine.addArgument("-w");
-		cmdLine.addArgument("AUTO");
+//		cmdLine.addArgument("-w");
+//		cmdLine.addArgument("AUTO");
 
 		/*
 		 * +=Konclude.Logging.MinLoggingLevel=100 for stopping log info printed
@@ -110,6 +117,34 @@ public class Konclude_HornSHIF_InnerReasoner2 extends HornSHIF_InnerReasonerTemp
 		logger.info("Konclude has been started.");
 	}
 
+	/**
+	 * simple code for killing process/run simple command
+	 * @param command
+	 * @return
+	 */
+	private static String executeCommand(String command) {
+
+		StringBuffer output = new StringBuffer();
+
+		Process p;
+		try {
+			p = Runtime.getRuntime().exec(command);
+			p.waitFor();
+			BufferedReader reader =
+                            new BufferedReader(new InputStreamReader(p.getInputStream()));
+
+                        String line = "";
+			while ((line = reader.readLine())!= null) {
+				output.append(line + "\n");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return output.toString();
+
+	}
 	private void stopKoncludeServer() {
 
 		watchdog.destroyProcess();

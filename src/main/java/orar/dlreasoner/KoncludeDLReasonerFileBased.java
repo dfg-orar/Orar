@@ -20,7 +20,6 @@ import org.apache.commons.exec.PumpStreamHandler;
 import org.apache.log4j.Logger;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.io.OWLFunctionalSyntaxOntologyFormat;
-import org.semanticweb.owlapi.io.OWLXMLOntologyFormat;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLClassAssertionAxiom;
@@ -119,14 +118,17 @@ public class KoncludeDLReasonerFileBased implements DLReasoner {
 		if (!savingDone) {
 			OWLOntologyManager manager = this.ontology.getOWLOntologyManager();
 			logger.info("Saving ontology to a file ...");
-//			OWLFunctionalSyntaxOntologyFormat functionalFormat = new OWLFunctionalSyntaxOntologyFormat();
-			 OWLXMLOntologyFormat functionalFormat = new
-			 OWLXMLOntologyFormat();
+			OWLFunctionalSyntaxOntologyFormat documentFormat = new OWLFunctionalSyntaxOntologyFormat();
+			// OWLXMLOntologyFormat functionalFormat = new
+			// OWLXMLOntologyFormat();
+			//
+			// OWLDocumentFormat documentFormat= new OWLXMLDocumentFormat();
+
 			File file = new File(this.savedOntologyFileName);
 			IRI iriDocument = IRI.create(file.toURI());
 			try {
 				long startSavingTime = System.currentTimeMillis();
-				manager.saveOntology(ontology, functionalFormat, iriDocument);
+				manager.saveOntology(ontology, documentFormat, iriDocument);
 				long endSavingTime = System.currentTimeMillis();
 				long savingTimeInSeconds = (endSavingTime - startSavingTime) / 1000;
 				if (config.getLogInfos().contains(LogInfo.LOADING_TIME)) {
@@ -288,11 +290,13 @@ public class KoncludeDLReasonerFileBased implements DLReasoner {
 			}
 			stdout.reset();
 		}
-//		logger.info("computing role assertions just for just some individuals....");
-//		// askRoleAssertionForJustOneIndividual();
-//		askRoleAssertionForJustSomeIndividuals();
-//		logger.info("computing samease assertions just for one individuals....");
-//		askOneQueryOfSameas();
+		// logger.info("computing role assertions just for just some
+		// individuals....");
+		// // askRoleAssertionForJustOneIndividual();
+		// askRoleAssertionForJustSomeIndividuals();
+		// logger.info("computing samease assertions just for one
+		// individuals....");
+		// askOneQueryOfSameas();
 		long endTime = System.currentTimeMillis();
 		this.reasoningTimeInSecond = (endTime - startTime) / 1000;
 		reasoner.dispose();

@@ -10,7 +10,10 @@ import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
+import org.apache.log4j.ConsoleAppender;
+import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import org.apache.log4j.PatternLayout;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.io.OWLXMLOntologyFormat;
 import org.semanticweb.owlapi.model.IRI;
@@ -26,7 +29,6 @@ import orar.config.StatisticVocabulary;
 import orar.materializer.DLLiteExtensions.DLLiteExtension_Materializer_Konclude;
 import orar.materializer.HornSHIF.HornSHIF_Materializer_KoncludeOptimized;
 import orar.materializer.HornSHOIF.HornSHOIF_Materializer_KoncludeOptimized;
-import orar.modeling.ontology2.MapbasedOrarOntology2;
 import orar.modeling.ontology2.OrarOntology2;
 import orar.strategyindentifying.StrategyIdentifier;
 import orar.strategyindentifying.StrategyIdentifierImpl;
@@ -40,8 +42,20 @@ public class XCLI {
 	private static Logger logger = Logger.getLogger(XCLI.class);
 	private static long totalLoadingTime = 0;
 
+	private static void initLogger() {
+		Logger rootLogger = Logger.getRootLogger();
+		rootLogger.setLevel(Level.INFO);
+		rootLogger.removeAllAppenders();
+
+		String PATTERN = "%-5p - %m%n";
+		PatternLayout patternLayout = new PatternLayout(PATTERN);
+		ConsoleAppender console = new ConsoleAppender(patternLayout);
+		rootLogger.addAppender(console);
+	}
+
 	public static void main(String[] args) {
 		// PropertyConfigurator.configure("src/main/resources/log4j.properties");
+		initLogger();
 
 		Options options = new Options();
 		/*
@@ -126,24 +140,24 @@ public class XCLI {
 			Materializer materializer = getMaterializer(commandLine, orarOntology);
 			// logger.info("Run " + materializer.getClass());
 			runMaterializer(materializer, commandLine);
+			logger.info("************** Total times **************");
 			if (config.getLogInfos().contains(LogInfo.LOADING_TIME)) {
 				logger.info(StatisticVocabulary.TIME_LOADING_IN_ALL_STEPS + totalLoadingTime);
 			}
 
 			if (config.getLogInfos().contains(LogInfo.REASONING_TIME)) {
-				logger.info(StatisticVocabulary.TIME_REASONING_ON_ABSTRACT_ONTOLOGIES
+				logger.info(StatisticVocabulary.TOTAL_TIME_REASONING_ON_ABSTRACT_ONTOLOGIES
 						+ materializer.getReasoningTimeOfInnerReasonerInSeconds());
 
-				logger.info(StatisticVocabulary.TOTAL_REASONING_TIME
-						+ materializer.getReasoningTimeInSeconds());
+				logger.info(StatisticVocabulary.TOTAL_REASONING_TIME + materializer.getReasoningTimeInSeconds());
 			}
-
+			logger.info("Finished.");
 		} catch (ParseException exp) {
 			// oops, something went wrong
-			System.err.println("Parsing failed.  Reason: " + exp.getMessage());
+			System.err.println("Parsing failed. " + exp.getMessage() + ". Or missing the argument of some option.");
 
 			printHelp(options);
-			printExampleRun();
+
 		}
 	}
 
@@ -155,9 +169,9 @@ public class XCLI {
 
 	private static void printExampleRun() {
 		System.out.println("");
-		System.out.println("Example run with Konclude as an inner reasoner:");
+		System.out.println("Example run:");
 		System.out.println(
-				"java -jar -Xmx2G Orar.jar -koncludepath ./Konclude -port 9090 -statistic -tbox ./tbox.owl -abox ./aboxList.txt");
+				"java -Xmx2G -jar x.jar -koncludepath ./Konclude -port 9090 -reasoningtime -tbox ./tbox.owl -abox ./aboxList.txt");
 	}
 
 	private static long runMaterializer(Materializer materializer, CommandLine commandLine) {
@@ -178,9 +192,10 @@ public class XCLI {
 
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 
-		logger.info("Saving entailed assertions to a file ...");
+		logger.info("Saving entailed assertions to the file " + fileName + " ...");
 		// OWLFunctionalSyntaxOntologyFormat format = new
 		// OWLFunctionalSyntaxOntologyFormat();
+		// OWLDocumentFormat format = new OWLXMLDocumentFormat();
 		OWLXMLOntologyFormat format = new OWLXMLOntologyFormat();
 		File file = new File(fileName);
 		IRI iriDocument = IRI.create(file.toURI());
@@ -195,7 +210,7 @@ public class XCLI {
 				logger.info("Time for saving the entailed assertions (in seconds):" + savingTimeInSeconds);
 
 			}
-			logger.info("                                     ...done!");
+			// logger.info(" ...done!");
 		} catch (OWLOntologyCreationException e) {
 
 			e.printStackTrace();

@@ -40,7 +40,7 @@ public class CompletenessCheckerHorn implements CompletenessChecker {
 
 	// sameas
 	private Map<OWLNamedIndividual, Set<OWLNamedIndividual>> entailedSameasMapByAbstraction;
-	
+
 	private Map<OWLNamedIndividual, Set<OWLNamedIndividual>> entailedSameasMapByDLReasoner;
 
 	public CompletenessCheckerHorn(Materializer materializer, DLReasoner owlRealizer) {
@@ -64,7 +64,8 @@ public class CompletenessCheckerHorn implements CompletenessChecker {
 		this.entailedConceptAssertionByAbstraction = orarOntology
 				.getOWLAPIConceptAssertionsWHITOUTNormalizationSymbols();
 		this.entailedRoleAssertionByAbstraction = orarOntology.getOWLAPIRoleAssertionsWITHOUTNormalizationSymbols();
-		this.entailedSameasMapByAbstraction = AssertionDecoder.getSameasMapInOWLAPI(orarOntology.getEntailedSameasAssertions());
+		this.entailedSameasMapByAbstraction = AssertionDecoder
+				.getSameasMapInOWLAPI(orarOntology.getEntailedSameasAssertions());
 		logger.info("Number of derived concept assertions by abstraction materializer:"
 				+ entailedConceptAssertionByAbstraction.size());
 		logger.info("Number of derived role assertions by abstraction materializer:"
@@ -79,6 +80,8 @@ public class CompletenessCheckerHorn implements CompletenessChecker {
 		logger.info("Time by a DL Reasoner (s):" + timeByDLReasoner);
 		this.entailedConceptAssertionByDLReasoner = owlRealizer.getEntailedConceptAssertions();
 		this.entailedRoleAssertionByDLReasoner = owlRealizer.getEntailedRoleAssertions();
+		// logger.info("Entialed role assertions by DL reasoner:");
+		// PrintingHelper.printSet(this.entailedRoleAssertionByDLReasoner);
 		this.entailedSameasMapByDLReasoner = owlRealizer.getEntailedSameasAssertions();
 
 		/*
@@ -87,57 +90,63 @@ public class CompletenessCheckerHorn implements CompletenessChecker {
 		this.isEntailmentsComputed = true;
 	}
 
-//	@Override
-//	public boolean isRoleAssertionComplete() {
-//		if (!isEntailmentsComputed) {
-//			computeEntailments();
-//		}
-//		logger.info("Number of derived role assertions by abstraction materializer:"
-//				+ entailedRoleAssertionByAbstraction.size());
-////		PrintingHelper.printSet(logger,this.entailedRoleAssertionByAbstraction);
-//		logger.info("Number of derived role assertions by OWL reasoner:" + entailedRoleAssertionByDLReasoner.size());
-////		PrintingHelper.printSet(logger,this.entailedRoleAssertionByDLReasoner);
-//		SetView<OWLObjectPropertyAssertionAxiom> difference = Sets.difference(this.entailedRoleAssertionByAbstraction,
-//				this.entailedRoleAssertionByDLReasoner);
-//
-//		if (config.getLogInfos().contains(LogInfo.COMPARED_RESULT_INFO)) {
-//			if (!difference.isEmpty()) {
-//
-//				logger.info("========Role asesrtions by abstraction but not by OWLRealizer=============");
-//				PrintingHelper.printSet(logger, Sets.intersection(difference, this.entailedRoleAssertionByAbstraction));
-//
-//				logger.info("========Role assertions by OWLRealizer but not by abstraction=============");
-//				PrintingHelper.printSet(logger, Sets.intersection(difference, this.entailedRoleAssertionByDLReasoner));
-//
-//			}
-//		}
-////		return difference.isEmpty();
-//	return this.entailedRoleAssertionByAbstraction.equals(this.entailedRoleAssertionByDLReasoner);
-//	}
-//	
+	// @Override
+	// public boolean isRoleAssertionComplete() {
+	// if (!isEntailmentsComputed) {
+	// computeEntailments();
+	// }
+	// logger.info("Number of derived role assertions by abstraction
+	// materializer:"
+	// + entailedRoleAssertionByAbstraction.size());
+	//// PrintingHelper.printSet(logger,this.entailedRoleAssertionByAbstraction);
+	// logger.info("Number of derived role assertions by OWL reasoner:" +
+	// entailedRoleAssertionByDLReasoner.size());
+	//// PrintingHelper.printSet(logger,this.entailedRoleAssertionByDLReasoner);
+	// SetView<OWLObjectPropertyAssertionAxiom> difference =
+	// Sets.difference(this.entailedRoleAssertionByAbstraction,
+	// this.entailedRoleAssertionByDLReasoner);
+	//
+	// if (config.getLogInfos().contains(LogInfo.COMPARED_RESULT_INFO)) {
+	// if (!difference.isEmpty()) {
+	//
+	// logger.info("========Role asesrtions by abstraction but not by
+	// OWLRealizer=============");
+	// PrintingHelper.printSet(logger, Sets.intersection(difference,
+	// this.entailedRoleAssertionByAbstraction));
+	//
+	// logger.info("========Role assertions by OWLRealizer but not by
+	// abstraction=============");
+	// PrintingHelper.printSet(logger, Sets.intersection(difference,
+	// this.entailedRoleAssertionByDLReasoner));
+	//
+	// }
+	// }
+	//// return difference.isEmpty();
+	// return
+	// this.entailedRoleAssertionByAbstraction.equals(this.entailedRoleAssertionByDLReasoner);
+	// }
+	//
 
 	@Override
 	public boolean isRoleAssertionComplete() {
 		if (!isEntailmentsComputed) {
 			computeEntailments();
 		}
-		boolean isComplete=this.entailedRoleAssertionByAbstraction.equals(this.entailedRoleAssertionByDLReasoner);
+		boolean isComplete = this.entailedRoleAssertionByAbstraction.equals(this.entailedRoleAssertionByDLReasoner);
 		logger.info("Number of derived role assertions by abstraction materializer:"
 				+ entailedRoleAssertionByAbstraction.size());
-//		PrintingHelper.printSet(logger,this.entailedRoleAssertionByAbstraction);
+		// PrintingHelper.printSet(logger,this.entailedRoleAssertionByAbstraction);
 		logger.info("Number of derived role assertions by OWL reasoner:" + entailedRoleAssertionByDLReasoner.size());
-//		PrintingHelper.printSet(logger,this.entailedRoleAssertionByDLReasoner);
-	
+		// PrintingHelper.printSet(logger,this.entailedRoleAssertionByDLReasoner);
+
 		if (config.getLogInfos().contains(LogInfo.COMPARED_RESULT_INFO)) {
 			if (!isComplete) {
 
-				 HashSet<OWLObjectPropertyAssertionAxiom> copyOfResultByAbstraction = new HashSet<OWLObjectPropertyAssertionAxiom>(
+				HashSet<OWLObjectPropertyAssertionAxiom> copyOfResultByAbstraction = new HashSet<OWLObjectPropertyAssertionAxiom>(
 						this.entailedRoleAssertionByAbstraction);
 
-				 HashSet<OWLObjectPropertyAssertionAxiom> copyOfResultByOWLRealizer = new HashSet<OWLObjectPropertyAssertionAxiom>(
-							this.entailedRoleAssertionByDLReasoner);
-
-					
+				HashSet<OWLObjectPropertyAssertionAxiom> copyOfResultByOWLRealizer = new HashSet<OWLObjectPropertyAssertionAxiom>(
+						this.entailedRoleAssertionByDLReasoner);
 
 				copyOfResultByAbstraction.removeAll(this.entailedRoleAssertionByDLReasoner);
 				copyOfResultByOWLRealizer.removeAll(this.entailedRoleAssertionByAbstraction);
@@ -149,37 +158,51 @@ public class CompletenessCheckerHorn implements CompletenessChecker {
 
 			}
 		}
-//		return difference.isEmpty();
-	return this.entailedRoleAssertionByAbstraction.equals(this.entailedRoleAssertionByDLReasoner);
+		// return difference.isEmpty();
+		return this.entailedRoleAssertionByAbstraction.equals(this.entailedRoleAssertionByDLReasoner);
 	}
-	
 
 	@Override
 	public boolean isSameasComplete() {
 		if (!isEntailmentsComputed) {
 			computeEntailments();
 		}
-		MapDifference<OWLNamedIndividual, Set<OWLNamedIndividual>> difference = Maps
-				.difference(this.entailedSameasMapByAbstraction, this.entailedSameasMapByDLReasoner);
-		
-		if (config.getLogInfos().contains(LogInfo.COMPARED_RESULT_INFO)) {
-			if (!difference.areEqual()) {
-				logger.info("===Sameas by abstraction===");
-				PrintingHelper.printMap(this.entailedSameasMapByAbstraction);
-				
-				logger.info("========Sameas asesrtions by abstraction but not by OWLRealizer=============");
-				PrintingHelper.printMap(logger,difference.entriesOnlyOnLeft());
-				
-				
-				logger.info("===Sameas by OWLReasoner===");
-				PrintingHelper.printMap(this.entailedSameasMapByDLReasoner);
-				
-				logger.info("========Sameas asesrtions by OWLRealizer but not by abstraction=============");
-				PrintingHelper.printMap(logger,difference.entriesOnlyOnRight());
-			}
+
+		boolean equal = this.entailedSameasMapByAbstraction.equals(this.entailedSameasMapByDLReasoner);
+
+		if (!equal) {
+			logger.info("sameas map by Abstraction:");
+			PrintingHelper.printMap(this.entailedSameasMapByAbstraction);
+			logger.info("sameas map by a DL reasoner:");
+			PrintingHelper.printMap(this.entailedSameasMapByDLReasoner);
 		}
-		return difference.areEqual();
+		return equal;
+		// MapDifference<OWLNamedIndividual, Set<OWLNamedIndividual>> difference
+		// = Maps
+		// .difference(this.entailedSameasMapByAbstraction,
+		// this.entailedSameasMapByDLReasoner);
+		//
+		// if (config.getLogInfos().contains(LogInfo.COMPARED_RESULT_INFO)) {
+		// if (!difference.areEqual()) {
+		// logger.info("===Sameas by abstraction===");
+		// PrintingHelper.printMap(this.entailedSameasMapByAbstraction);
+		//
+		// logger.info("========Sameas asesrtions by abstraction but not by
+		// OWLRealizer=============");
+		// PrintingHelper.printMap(logger,difference.entriesOnlyOnLeft());
+		//
+		//
+		// logger.info("===Sameas by OWLReasoner===");
+		// PrintingHelper.printMap(this.entailedSameasMapByDLReasoner);
+		//
+		// logger.info("========Sameas asesrtions by OWLRealizer but not by
+		// abstraction=============");
+		// PrintingHelper.printMap(logger,difference.entriesOnlyOnRight());
+		// }
+		// }
+		// return difference.areEqual();
 	}
+
 	@Override
 	public boolean isConceptAssertionComplete() {
 		if (!isEntailmentsComputed) {
@@ -191,8 +214,7 @@ public class CompletenessCheckerHorn implements CompletenessChecker {
 		logger.info(
 				"Number of derived concept assertions by OWL reasoner:" + entailedConceptAssertionByDLReasoner.size());
 
-		boolean iscomplete = entailedConceptAssertionByAbstraction.equals(
-				this.entailedConceptAssertionByDLReasoner);
+		boolean iscomplete = entailedConceptAssertionByAbstraction.equals(this.entailedConceptAssertionByDLReasoner);
 
 		if (config.getLogInfos().contains(LogInfo.COMPARED_RESULT_INFO)) {
 			if (!iscomplete) {
@@ -217,37 +239,43 @@ public class CompletenessCheckerHorn implements CompletenessChecker {
 		}
 		return iscomplete;
 	}
-	
 
-//	@Override
-//	public boolean isConceptAssertionComplete() {
-//		if (!isEntailmentsComputed) {
-//			computeEntailments();
-//		}
-//		logger.info("Number of derived concept assertions by abstraction materializer:"
-//				+ entailedConceptAssertionByAbstraction.size());
-//
-//		logger.info(
-//				"Number of derived concept assertions by OWL reasoner:" + entailedConceptAssertionByDLReasoner.size());
-//
-//		SetView<OWLClassAssertionAxiom> difference = Sets.difference(entailedConceptAssertionByAbstraction,
-//				this.entailedConceptAssertionByDLReasoner);
-//
-//		if (config.getLogInfos().contains(LogInfo.COMPARED_RESULT_INFO)) {
-//			if (!difference.isEmpty()) {
-//
-//				logger.info("========Concept asesrtions by abstraction but not by OWLRealizer=============");
-//				PrintingHelper.printSet(logger,
-//						Sets.intersection(difference, this.entailedConceptAssertionByAbstraction));
-//
-//				logger.info("========Concept assertions by OWLRealizer but not by abstraction=============");
-//				PrintingHelper.printSet(logger,
-//						Sets.intersection(difference, this.entailedConceptAssertionByDLReasoner));
-//
-//			}
-//
-//		}
-//		return difference.isEmpty();
-//	}
+	// @Override
+	// public boolean isConceptAssertionComplete() {
+	// if (!isEntailmentsComputed) {
+	// computeEntailments();
+	// }
+	// logger.info("Number of derived concept assertions by abstraction
+	// materializer:"
+	// + entailedConceptAssertionByAbstraction.size());
+	//
+	// logger.info(
+	// "Number of derived concept assertions by OWL reasoner:" +
+	// entailedConceptAssertionByDLReasoner.size());
+	//
+	// SetView<OWLClassAssertionAxiom> difference =
+	// Sets.difference(entailedConceptAssertionByAbstraction,
+	// this.entailedConceptAssertionByDLReasoner);
+	//
+	// if (config.getLogInfos().contains(LogInfo.COMPARED_RESULT_INFO)) {
+	// if (!difference.isEmpty()) {
+	//
+	// logger.info("========Concept asesrtions by abstraction but not by
+	// OWLRealizer=============");
+	// PrintingHelper.printSet(logger,
+	// Sets.intersection(difference,
+	// this.entailedConceptAssertionByAbstraction));
+	//
+	// logger.info("========Concept assertions by OWLRealizer but not by
+	// abstraction=============");
+	// PrintingHelper.printSet(logger,
+	// Sets.intersection(difference,
+	// this.entailedConceptAssertionByDLReasoner));
+	//
+	// }
+	//
+	// }
+	// return difference.isEmpty();
+	// }
 
 }

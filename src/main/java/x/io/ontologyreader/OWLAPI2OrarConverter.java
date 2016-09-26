@@ -6,7 +6,6 @@ import org.apache.log4j.Logger;
 import org.semanticweb.owlapi.model.AxiomType;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLClassAssertionAxiom;
-import org.semanticweb.owlapi.model.OWLIndividual;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLObjectInverseOf;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
@@ -17,8 +16,6 @@ import org.semanticweb.owlapi.model.OWLSameIndividualAxiom;
 
 import orar.dlfragmentvalidator.ValidatorDataFactory;
 import orar.indexing.IndividualIndexer;
-import orar.modeling.ontology.MapbasedOrarOntology;
-import orar.modeling.ontology.OrarOntology;
 import orar.modeling.ontology2.MapbasedOrarOntology2;
 import orar.modeling.ontology2.OrarOntology2;
 

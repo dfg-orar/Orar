@@ -536,4 +536,16 @@ public class MapbasedOrarOntology2 implements OrarOntology2 {
 		}
 		return map;
 	}
+
+	@Override
+	public Integer getNumberOfEntailedSameasAssertions() {
+
+		return this.sameasBox.getNumberOfEntailedSameasAssertions();
+	}
+
+	@Override
+	public boolean addNewManySameAsAssertions( Set<Integer> equalIndividuals) {
+	
+		return this.sameasBox.addNewManySameAsAssertions( equalIndividuals);
+	}
 }

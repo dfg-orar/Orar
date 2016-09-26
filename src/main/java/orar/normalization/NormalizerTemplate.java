@@ -4,11 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Stack;
 
-import orar.config.Configuration;
-import orar.config.LogInfo;
-import orar.data.NormalizationDataFactory;
-import orar.data.MetaDataOfOntology;
-
 import org.apache.log4j.Logger;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.AxiomType;
@@ -29,6 +24,11 @@ import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyID;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.model.OWLSubClassOfAxiom;
+
+import orar.config.Configuration;
+import orar.config.LogInfo;
+import orar.data.MetaDataOfOntology;
+import orar.data.NormalizationDataFactory;
 
 public abstract class NormalizerTemplate implements Normalizer {
 	protected Stack<OWLSubClassOfAxiom> subClassAxiomStack;
@@ -84,7 +84,8 @@ public abstract class NormalizerTemplate implements Normalizer {
 		logger.info("RBox size: " + ont.getRBoxAxioms(true).size());
 		logger.info("ABox size: " + ont.getABoxAxioms(true).size());
 		logger.info("ABox class assertions: " + ont.getAxioms(AxiomType.CLASS_ASSERTION, true).size());
-		logger.info("ABox property assertions: " + ont.getAxioms(AxiomType.OBJECT_PROPERTY_ASSERTION, true).size());
+		logger.info("ABox property assertions: "
+				+ ont.getAxioms(AxiomType.OBJECT_PROPERTY_ASSERTION, true).size());
 	}
 
 	/**

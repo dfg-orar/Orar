@@ -24,13 +24,13 @@ public class MapbasedSameAsBox2 implements SameAsBox2 {
 	 */
 	private final Map<Integer, Set<Integer>> sameAsMap;
 	// private final List<Set<Integer>> listOfSameasAssertions;
-	
+
 	private IndividualIndexer indexer;
 
 	public MapbasedSameAsBox2() {
 		this.sameAsMap = new HashMap<Integer, Set<Integer>>();
 		this.owlDataFactory = OWLManager.getOWLDataFactory();
-		this.indexer=IndividualIndexer.getInstance();
+		this.indexer = IndividualIndexer.getInstance();
 		// this.listOfSameasAssertions = new ArrayList<>();
 	}
 
@@ -49,21 +49,20 @@ public class MapbasedSameAsBox2 implements SameAsBox2 {
 		Set<Integer> existingEqualIndividuals = this.sameAsMap.get(individual);
 		if (existingEqualIndividuals == null) {
 			existingEqualIndividuals = new HashSet<Integer>();
+			this.sameAsMap.put(individual, existingEqualIndividuals);
 		}
 		boolean hasNewElement = existingEqualIndividuals.add(equalIndividual);
-		this.sameAsMap.put(individual, existingEqualIndividuals);
 		return hasNewElement;
 	}
 
 	@Override
-	public boolean addManySameAsAssertions(Integer individual,
-			Set<Integer> manyEqualIndividuals) {
+	public boolean addManySameAsAssertions(Integer individual, Set<Integer> manyEqualIndividuals) {
 		Set<Integer> existingEqualIndividuals = this.sameAsMap.get(individual);
 		if (existingEqualIndividuals == null) {
 			existingEqualIndividuals = new HashSet<Integer>();
+			this.sameAsMap.put(individual, existingEqualIndividuals);
 		}
 		boolean hasNewElement = existingEqualIndividuals.addAll(manyEqualIndividuals);
-		this.sameAsMap.put(individual, existingEqualIndividuals);
 		return hasNewElement;
 	}
 
@@ -84,11 +83,11 @@ public class MapbasedSameAsBox2 implements SameAsBox2 {
 			Set<Integer> existsingInds = this.sameAsMap.get(anIndividual);
 			if (existsingInds == null) {
 				existsingInds = new HashSet<Integer>();
+				this.sameAsMap.put(anIndividual, existsingInds);
 			}
 			if (existsingInds.addAll(setOfSameasIndividuals)) {
 				updated = true;
 			}
-			this.sameAsMap.put(anIndividual, existsingInds);
 		}
 		return updated;
 	}
@@ -115,20 +114,56 @@ public class MapbasedSameAsBox2 implements SameAsBox2 {
 				allIndividuals.addAll(value);
 			}
 
-//			OWLSameIndividualAxiom sameasAxiom = this.owlDataFactory.getOWLSameIndividualAxiom(allIndividuals);
+			// OWLSameIndividualAxiom sameasAxiom =
+			// this.owlDataFactory.getOWLSameIndividualAxiom(allIndividuals);
 			OWLSameIndividualAxiom sameasAxiom = AssertionDecoder.getOWLAPISameasAssertion(allIndividuals);
 			sameasOWLAxioms.add(sameasAxiom);
 		}
 
 		return sameasOWLAxioms;
 	}
-//	private OWLSameIndividualAxiom getOWLAPISameasAssertion(Set<Integer> individualsInInteger){
-//		Set<OWLNamedIndividual> allOWLAPIIndividuals= new HashSet<>();
-//		for (Integer ind:individualsInInteger){
-//			String indString = this.indexer.getIndividualString(ind);
-//			OWLNamedIndividual owlapiInd = this.owlDataFactory.getOWLNamedIndividual(IRI.create(indString));
-//			allOWLAPIIndividuals.add(owlapiInd);
-//		}
-//		return this.owlDataFactory.getOWLSameIndividualAxiom(allOWLAPIIndividuals);
-//	}
+	// private OWLSameIndividualAxiom getOWLAPISameasAssertion(Set<Integer>
+	// individualsInInteger){
+	// Set<OWLNamedIndividual> allOWLAPIIndividuals= new HashSet<>();
+	// for (Integer ind:individualsInInteger){
+	// String indString = this.indexer.getIndividualString(ind);
+	// OWLNamedIndividual owlapiInd =
+	// this.owlDataFactory.getOWLNamedIndividual(IRI.create(indString));
+	// allOWLAPIIndividuals.add(owlapiInd);
+	// }
+	// return
+	// this.owlDataFactory.getOWLSameIndividualAxiom(allOWLAPIIndividuals);
+	// }
+
+	@Override
+	public Integer getNumberOfEntailedSameasAssertions() {
+
+		Iterator<Entry<Integer, Set<Integer>>> iterator = this.sameAsMap.entrySet().iterator();
+		Set<Set<Integer>> uniqueSetOfSameasAssertions = new HashSet<>();
+
+		while (iterator.hasNext()) {
+			Entry<Integer, Set<Integer>> entry = iterator.next();
+			Integer key = entry.getKey();
+			Set<Integer> value = entry.getValue();
+
+			Set<Integer> allIndividuals = new HashSet<Integer>();
+			allIndividuals.add(key);
+			if (value != null) {
+				allIndividuals.addAll(value);
+			}
+
+			uniqueSetOfSameasAssertions.add(allIndividuals);
+		}
+
+		return uniqueSetOfSameasAssertions.size();
+	}
+
+	@Override
+	public boolean addNewManySameAsAssertions(Set<Integer> equalIndividuals) {
+		for (Integer eachIndiv : equalIndividuals) {
+
+			this.sameAsMap.put(eachIndiv, equalIndividuals);
+		}
+		return true;
+	}
 }

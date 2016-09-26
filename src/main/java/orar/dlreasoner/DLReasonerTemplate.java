@@ -168,7 +168,7 @@ public abstract class DLReasonerTemplate implements DLReasoner {
 				}
 			}
 		}
-		logger.info("number of entailed role assertions = "+ this.roleAssertions.size());
+		logger.info("number of entailed role assertions by a DL reasoner = "+ this.roleAssertions.size());
 	}
 
 	/**

@@ -7,7 +7,7 @@ import java.util.List;
 public class Argument {
 	static final String STATISTIC = "statistic";
 	static final String TASK = "task", CONSISTENCY="consistency", MATERIALIZATION="materialization" ;
-	static final String LOADING_TIME = "loadtime";
+	static final String LOADING_TIME = "loadingtime";
 	static final String REASONING_TIME = "reasoningtime";
 	static final String TOTAL_TIME = "totaltime";
 	static final String TBOX = "tbox", ABOX = "abox", ONTOLOGY = "ontology";
@@ -23,5 +23,10 @@ public class Argument {
 	static final String ABSTRACT_DEBUG="abstract_debug";
 	static final String PRINT_RESULT="result";
 	static final String PERFORMANCE="performance";
+	static final String FUNCTIONAL="functional";
+	static final String OWLXML="owlxml";
+	static final String RDFXML="rdfxml";
+	static final String FORMAT="format";
+	
 
 }

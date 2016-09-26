@@ -57,7 +57,7 @@ public class DLLiteR_OntologyReaderTest {
 		System.out.println("Number of assertions in OwlapiOntology: " + owlOntology.getABoxAxioms(true).size());
 		System.out.println("DEBUG*** Number of concept names:"+owlOntology.getClassesInSignature(true).size());
 		Set<OWLClass> owlapiOntoConceptNames = owlOntology.getClassesInSignature(true);
-		 Set<OWLObjectProperty> owlapiOntoRoleNames = owlOntology.getObjectPropertiesInSignature(true);
+		Set<OWLObjectProperty> owlapiOntoRoleNames = owlOntology.getObjectPropertiesInSignature(true);
 		Assert.assertEquals(orarConceptNames, owlapiOntoConceptNames);
 		Assert.assertEquals(orarRoleNames, owlapiOntoRoleNames);
 		

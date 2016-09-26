@@ -194,7 +194,7 @@ public abstract class DLLite_ConceptMaterializerTemplate implements Materializer
 				logger.info("***DEBUG REASONING_ABSTRACTONTOLOGY *** entailed Concept assertions by abstract ontoogy:");
 				PrintingHelper.printMap(entailedAbstractConceptAssertions);
 			}
-			logger.info(StatisticVocabulary.TIME_REASONING_ON_ABSTRACT_ONTOLOGIES + innerReasoner.getReasoningTime());
+			logger.info(StatisticVocabulary.TOTAL_TIME_REASONING_ON_ABSTRACT_ONTOLOGIES + innerReasoner.getReasoningTime());
 		}
 
 		/*
@@ -334,7 +334,7 @@ public abstract class DLLite_ConceptMaterializerTemplate implements Materializer
 
 			overHeadTime = innerReasoner.getOverheadTimeToSetupReasoner();
 
-			logger.info(StatisticVocabulary.TIME_REASONING_ON_ABSTRACT_ONTOLOGIES + innerReasoner.getReasoningTime());
+			logger.info(StatisticVocabulary.TOTAL_TIME_REASONING_ON_ABSTRACT_ONTOLOGIES + innerReasoner.getReasoningTime());
 		}
 
 		// get reasoning time

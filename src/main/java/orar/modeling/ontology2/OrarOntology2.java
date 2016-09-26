@@ -55,13 +55,14 @@ public interface OrarOntology2 {
 	public int getNumberOfInputConceptAssertions();
 
 	/**
-	 * @return  number of concept assertions currently in the ontology. It
-	 *         could contain normalization symbols.
+	 * @return number of concept assertions currently in the ontology. It could
+	 *         contain normalization symbols.
 	 */
 	public int getNumberOfConceptAssertions();
 
 	/**
-	 * @return number of concept assertions currently in the ontology without the nomalization symbols.
+	 * @return number of concept assertions currently in the ontology without
+	 *         the nomalization symbols.
 	 */
 	public int getNumberOfConceptAssertionsWithoutNormalizationSymbols();
 
@@ -202,6 +203,9 @@ public interface OrarOntology2 {
 	public boolean addSameAsAssertion(int individual, int equalIndividual);
 
 	public boolean addManySameAsAssertions(int individual, Set<Integer> equalIndividuals);
+	
+	public boolean addNewManySameAsAssertions( Set<Integer> equalIndividuals);
+	
 
 	/**
 	 * @param individual
@@ -258,6 +262,8 @@ public interface OrarOntology2 {
 	public Map<Integer, Set<Integer>> getEntailedSameasAssertions();
 
 	public Set<OWLAxiom> getOWLAPISameasAssertions();
+
+	public Integer getNumberOfEntailedSameasAssertions();
 
 	/**
 	 * @param role

@@ -126,8 +126,9 @@ public abstract class MaterializerTemplate2 implements Materializer {
 		while (updated & !hasStopSignal) {
 			// while (updated) {
 			currentLoop = this.currentLoop + 1;
-			logger.info("Current loop: " + currentLoop);
-
+			if (this.config.getLogInfos().contains(LogInfo.TIME_STAMP_FOR_EACH_STEP)) {
+				logger.info("Current loop: " + currentLoop);
+			}
 			/*
 			 * clear temporarily data for abstract individuals, mapping,
 			 * types...
@@ -227,7 +228,7 @@ public abstract class MaterializerTemplate2 implements Materializer {
 			 * (5). Materialize abstractions
 			 */
 
-			logger.info("Materializing the abstractions ...");
+			logger.info("Materializing abstraction " + currentLoop + " ...");
 			// Map<OWLNamedIndividual, Set<OWLClass>>
 			// entailedAbstractConceptAssertionsForX = new
 			// HashMap<OWLNamedIndividual, Set<OWLClass>>();
@@ -261,6 +262,11 @@ public abstract class MaterializerTemplate2 implements Materializer {
 			long endInnerReasoning = System.currentTimeMillis();
 			long reasoningTimeOfInnerReasonerInThisStep = (endInnerReasoning - startInnerReasoning) / 1000;
 			reasoningTimeOfInnerReasonerInThisStep -= innerReasoner.getOverheadTimeToSetupReasoner();
+			if (this.config.getLogInfos().contains(LogInfo.REASONING_TIME)) {
+				logger.info(StatisticVocabulary.TIME_REASONING_ON_AN_ABSTRACT_ONTOLOGY
+						+ reasoningTimeOfInnerReasonerInThisStep);
+			}
+
 			this.reasoningTimeByInnerReasoner += reasoningTimeOfInnerReasonerInThisStep;
 			this.loadingTimeOfInnerReasoner += innerReasoner.getOverheadTimeToSetupReasoner();
 
@@ -327,8 +333,9 @@ public abstract class MaterializerTemplate2 implements Materializer {
 						- startComputingDCwrtNewEntailments) / 1000;
 				this.reasoningTimeByDeductiveRules += timeForDeductiveClosureInThisLoop;
 			}
-
-			logger.info("Finished loop: " + currentLoop);
+			if (this.config.getLogInfos().contains(LogInfo.TIME_STAMP_FOR_EACH_STEP)) {
+				logger.info("Finished loop: " + currentLoop);
+			}
 
 		}
 		// logging statistics
@@ -340,6 +347,7 @@ public abstract class MaterializerTemplate2 implements Materializer {
 		/*
 		 * complete ABox wrt sameas assertions
 		 */
+		//TODO: removed this. 
 		completeABoxWrtSameas();
 		/*
 		 * get reasoning time
@@ -362,13 +370,15 @@ public abstract class MaterializerTemplate2 implements Materializer {
 
 		if (config.getLogInfos().contains(LogInfo.STATISTIC)
 				|| config.getLogInfos().contains(LogInfo.DETAILED_STATISTIC)) {
+			logger.info("********** Inferred assertions **********");
 			// int numberOfMaterializedConceptAssertions =
 			// this.normalizedORAROntology
 			// .getOWLAPIConceptAssertionsWHITOUTNormalizationSymbols().size();
 			int numberOfMaterializedConceptAssertions = this.normalizedORAROntology
 					.getNumberOfConceptAssertionsWithoutNormalizationSymbols();
 			int numberOfMaterializedRoleAssertions = this.normalizedORAROntology.getNumberOfRoleAssertions();
-			int numberOfMaterializedEqualityAssertions = this.normalizedORAROntology.getOWLAPISameasAssertions().size();
+			int numberOfMaterializedEqualityAssertions = this.normalizedORAROntology
+					.getNumberOfEntailedSameasAssertions();
 			int numberOfMaterializedAssertions = numberOfMaterializedConceptAssertions
 					+ numberOfMaterializedRoleAssertions + numberOfMaterializedEqualityAssertions;
 			if (config.getLogInfos().contains(LogInfo.DETAILED_STATISTIC)) {
@@ -387,6 +397,7 @@ public abstract class MaterializerTemplate2 implements Materializer {
 		// logger.info("Types in Loop3 is equal to Types in Loop4?"+
 		// typesLoop3.equals(typesLoop4));
 	}
+
 
 	/**
 	 * Complete ABox wrt sameas
@@ -412,7 +423,7 @@ public abstract class MaterializerTemplate2 implements Materializer {
 		}
 		long endTime = System.currentTimeMillis();
 		long time = (endTime - startTime) / 1000;
-		if (this.config.getLogInfos().contains(LogInfo.TIME_FOR_EACH_STEP)) {
+		if (this.config.getLogInfos().contains(LogInfo.TIME_STAMP_FOR_EACH_STEP)) {
 			logger.info(
 					"Time for completing ABox wrt sameas after abstraction procedure terminated (seconds): " + time);
 		}

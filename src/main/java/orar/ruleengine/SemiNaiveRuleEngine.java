@@ -13,6 +13,7 @@ import orar.config.DebugLevel;
 import orar.config.LogInfo;
 import orar.modeling.ontology2.OrarOntology2;
 import orar.modeling.roleassertion2.IndexedRoleAssertion;
+import x.util.PrintingHelper;
 
 public class SemiNaiveRuleEngine implements RuleEngine {
 	private Queue<Set<Integer>> todoSameasAssertions;
@@ -51,7 +52,13 @@ public class SemiNaiveRuleEngine implements RuleEngine {
 		long starTime = System.currentTimeMillis();
 		for (RuleExecutor ruleEx : this.ruleExecutors) {
 			ruleEx.materialize();
-			if (Configuration.getInstance().getLogInfos().contains(DebugLevel.PRINT_ASSERTION_IN_RULE_ENGINE)) {
+
+			if (Configuration.getInstance().getLogInfos().contains(LogInfo.TUNING_SAMEAS)) {
+				logger.info("after running " + ruleEx.getClass().getName() + " Sameas map:");
+				PrintingHelper.printMap(this.orarOntology.getSameasBox().getSameasMap());
+			}
+
+			if (Configuration.getInstance().getLogInfos().contains(LogInfo.TIME_STAMP_FOR_EACH_STEP)) {
 				logger.info("Size of new role assertion from" + ruleEx.getClass().getName() + ": "
 						+ ruleEx.getNewRoleAssertions().size());
 				logger.info("Size of new sameas assertion from" + ruleEx.getClass().getName() + ": "
@@ -82,6 +89,12 @@ public class SemiNaiveRuleEngine implements RuleEngine {
 					ruleEx.incrementalMaterialize(setOfSameasIndividuals);
 					this.todoRoleAssertions.addAll(ruleEx.getNewRoleAssertions());
 					this.todoSameasAssertions.addAll(ruleEx.getNewSameasAssertions());
+
+					if (Configuration.getInstance().getLogInfos().contains(LogInfo.TUNING_SAMEAS)
+							&& ruleEx instanceof SameasRuleExecutor) {
+						logger.info("after running incremental mode " + ruleEx.getClass().getName() + " Sameas map:");
+						PrintingHelper.printMap(this.orarOntology.getSameasBox().getSameasMap());
+					}
 				}
 			}
 
@@ -92,6 +105,11 @@ public class SemiNaiveRuleEngine implements RuleEngine {
 					ruleEx.incrementalMaterialize(aRoleAssertion);
 					this.todoRoleAssertions.addAll(ruleEx.getNewRoleAssertions());
 					this.todoSameasAssertions.addAll(ruleEx.getNewSameasAssertions());
+
+					if (Configuration.getInstance().getLogInfos().contains(LogInfo.TUNING_SAMEAS)) {
+						logger.info("after running incremental mode " + ruleEx.getClass().getName() + " Sameas map:");
+						PrintingHelper.printMap(this.orarOntology.getSameasBox().getSameasMap());
+					}
 				}
 			}
 		}

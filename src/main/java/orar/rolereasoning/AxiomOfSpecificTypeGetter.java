@@ -158,15 +158,14 @@ public class AxiomOfSpecificTypeGetter {
 
 	public static Set<OWLAxiom> getObjectPropertyAxiomsForComputingRoleHierarchy(OWLOntology owlOntology) {
 		Set<OWLAxiom> axioms = new HashSet<OWLAxiom>();
-		Set<OWLAxiom> tboxAndRboxAxioms=new HashSet<OWLAxiom>();
+		Set<OWLAxiom> tboxAndRboxAxioms = new HashSet<OWLAxiom>();
 		tboxAndRboxAxioms.addAll(owlOntology.getRBoxAxioms(true));
 		tboxAndRboxAxioms.addAll(owlOntology.getTBoxAxioms(true));
-		axioms=getObjectPropertyAxiomsForComputingRoleHierarchy(tboxAndRboxAxioms);
+		axioms = getObjectPropertyAxiomsForComputingRoleHierarchy(tboxAndRboxAxioms);
 
 		return axioms;
 	}
 
-	
 	public static Set<OWLAxiom> getObjectPropertyAxiomsForComputingRoleHierarchy(Set<OWLAxiom> tboxRboxAxioms) {
 		Set<OWLAxiom> resultingAxioms = new HashSet<OWLAxiom>();
 		for (OWLAxiom axiom : tboxRboxAxioms) {
@@ -190,6 +189,5 @@ public class AxiomOfSpecificTypeGetter {
 		}
 		return resultingAxioms;
 	}
-	
-	
+
 }

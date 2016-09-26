@@ -27,7 +27,7 @@ public class StatisticVocabulary {
 	 */
 	public static String NUMBER_OF_MATERIALIZED_CONCEPTASSERTIONS = "Statistic: Number_of_materialized_concept_assertions = ";
 	public static String NUMBER_OF_MATERIALIZED_ROLEASSERTIONS = "Statistic: Number_of_materialized_role_assertions = ";
-	public static String NUMBER_OF_MATERIALIZED_ASSERTIONS = "Statistic: Number_of_materialized_assertions = ";
+	public static String NUMBER_OF_MATERIALIZED_ASSERTIONS = "Statistic: Number_of_inferred_assertions = ";
 	public static String NUMBER_OF_MATERIALIZED_EQUALITY_ASSERTIONS = "Statistic: Number_of_materialized_equality_assertions = ";
 	public static String ONTOLOGY_CONSISTENCY = "Statistic: ontology consistency = ";
 	public static String CONSISTENT = "CONSISTENT";
@@ -63,7 +63,8 @@ public class StatisticVocabulary {
 	public static String TIME_REASONING_BY_DEDUCTIVE_RULES = "Statistic: Reasoning_time_by_deductive_rules_in_seconds = ";
 	public static String TIME_REASONING_USING_DLREASONER = "Statistic: Time_reasoning_using_dlreasoner_in_seconds = ";
 	public static String TIME_REASONING_RULE_ENGINE = "Statistic: Time_reasoning_using_rule_engine_in_seconds = ";
-	public static String TIME_REASONING_ON_ABSTRACT_ONTOLOGIES = "Statistic: Reasoning_time_on_abstract_ontologies_in_seonds = ";
+	public static String TOTAL_TIME_REASONING_ON_ABSTRACT_ONTOLOGIES = "Statistic: Total_reasoning_time_on_abstract_ontologies_in_seonds = ";
+	public static String TIME_REASONING_ON_AN_ABSTRACT_ONTOLOGY = "Statistic: Reasoning_time_on_this_abstraction_in_seonds = ";
 	public static String TIME_LOADING_IN_ALL_STEPS = "Statistic: Total_loading_time_in_seconds = ";
 
 }

@@ -9,12 +9,15 @@ import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.semanticweb.owlapi.model.OWLObjectPropertyAssertionAxiom;
 
 import orar.data.MetaDataOfOntology;
+import orar.graphutil.ConnectedComponent;
+import orar.graphutil.ConnectedComponentDFS;
 import orar.modeling.ontology2.OrarOntology2;
 import orar.modeling.roleassertion2.IndexedRoleAssertion;
 
 public class FunctionalityRuleExecutor implements RuleExecutor {
 
 	private final Set<Set<Integer>> newSameasAssertions;
+//	private final Set<Set<Integer>> flattednewSameasAssertions;
 	private final OrarOntology2 orarOntology;
 	private final MetaDataOfOntology metaDataOfOntology;
 	// private final Logger logger =
@@ -24,19 +27,21 @@ public class FunctionalityRuleExecutor implements RuleExecutor {
 	public FunctionalityRuleExecutor(OrarOntology2 orarOntology) {
 		this.orarOntology = orarOntology;
 		this.newSameasAssertions = new HashSet<Set<Integer>>();
+//		this.flattednewSameasAssertions = new HashSet<>();
 		this.metaDataOfOntology = MetaDataOfOntology.getInstance();
 
 	}
 
 	@Override
 	public void materialize() {
-//		long startTime = System.currentTimeMillis();
+		// long startTime = System.currentTimeMillis();
 		// for functional roles
 		mergeSuccessorsOfFunctionalRole();
 		mergePredecessorsOfInvFunctionalRole();
-//		long endTime = System.currentTimeMillis();
-//		long time = (endTime - startTime) / 1000;
-//		logger.info("time in materializer step: " + time);
+
+		// long endTime = System.currentTimeMillis();
+		// long time = (endTime - startTime) / 1000;
+		// logger.info("time in materializer step: " + time);
 	}
 
 	private void mergePredecessorsOfInvFunctionalRole() {
@@ -52,7 +57,7 @@ public class FunctionalityRuleExecutor implements RuleExecutor {
 				// logger.info("********DEBUG**** allSubjects: "+allSubjects);
 				if (allSubjects.size() > 1) {
 					this.newSameasAssertions.add(allSubjects);
-//					addConceptNamesWrtNewSameIndividuals(allSubjects);
+					// addConceptNamesWrtNewSameIndividuals(allSubjects);
 				}
 			}
 		}
@@ -89,7 +94,7 @@ public class FunctionalityRuleExecutor implements RuleExecutor {
 				// logger.info("all objects:" + allObjects);
 				if (allObjects.size() > 1) {
 					this.newSameasAssertions.add(allObjects);
-//					addConceptNamesWrtNewSameIndividuals(allObjects);
+					// addConceptNamesWrtNewSameIndividuals(allObjects);
 				}
 			}
 		}
@@ -114,7 +119,7 @@ public class FunctionalityRuleExecutor implements RuleExecutor {
 			}
 			if (allSubjects.size() > 1) {
 				this.newSameasAssertions.add(allSubjects);
-//				addConceptNamesWrtNewSameIndividuals(allSubjects);
+				// addConceptNamesWrtNewSameIndividuals(allSubjects);
 			}
 		}
 
@@ -131,7 +136,7 @@ public class FunctionalityRuleExecutor implements RuleExecutor {
 			}
 			if (allObjects.size() > 1) {
 				this.newSameasAssertions.add(allObjects);
-//				addConceptNamesWrtNewSameIndividuals(allObjects);
+				// addConceptNamesWrtNewSameIndividuals(allObjects);
 			}
 		}
 	}
@@ -152,15 +157,16 @@ public class FunctionalityRuleExecutor implements RuleExecutor {
 		allObjects.add(object);
 		if (allObjects.size() > 1) {
 			this.newSameasAssertions.add(allObjects);
-//			addConceptNamesWrtNewSameIndividuals(allObjects);
+			// addConceptNamesWrtNewSameIndividuals(allObjects);
 		}
 
 	}
 
 	@Override
 	public Set<Set<Integer>> getNewSameasAssertions() {
-
-		return this.newSameasAssertions;
+		// return this.newSameasAssertions;
+		ConnectedComponent<Integer> cc = new ConnectedComponentDFS<>();
+		return cc.getConnectedComponenets(newSameasAssertions);
 	}
 
 	@Override

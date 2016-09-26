@@ -287,6 +287,7 @@ public abstract class DLLiteExtension_MaterializerTemplate2 implements Materiali
 			// int numberOfMaterializedConceptAssertions =
 			// this.normalizedORAROntology
 			// .getOWLAPIConceptAssertionsWHITOUTNormalizationSymbols().size();
+			logger.info("********** Derived assertions **********");
 			int numberOfMaterializedConceptAssertions = this.normalizedORAROntology
 					.getOWLAPIConceptAssertionsWithNormalizationSymbols().size();
 			int numberOfMaterializedRoleAssertions = this.normalizedORAROntology.getNumberOfRoleAssertions();

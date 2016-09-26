@@ -63,7 +63,7 @@ public class TransitivityNormalizerWithHermit implements TransitivityNormalizer 
 			// this.inputOntology.getTBoxAxioms(true));
 			newOntologyManager.addAxioms(tboxOntology,
 					AxiomOfSpecificTypeGetter.getObjectPropertyAxiomsForComputingRoleHierarchy(this.inputOntology));
-//			logger.info("Size of Tbox:" + tboxOntology.getAxiomCount());
+			// logger.info("Size of Tbox:" + tboxOntology.getAxiomCount());
 
 			return tboxOntology;
 		} catch (OWLOntologyCreationException e) {
@@ -76,7 +76,7 @@ public class TransitivityNormalizerWithHermit implements TransitivityNormalizer 
 	// private
 	@Override
 	public void normalizeTransitivity() {
-//		logger.info("Normalizing transitivity...");
+		// logger.info("Normalizing transitivity...");
 		OWLOntologyManager ontologyManager = this.inputOntology.getOWLOntologyManager();
 
 		/*
@@ -88,7 +88,7 @@ public class TransitivityNormalizerWithHermit implements TransitivityNormalizer 
 		ontologyManager.addAxioms(this.inputOntology, axiomsSimulatingTransitivity);
 
 		this.eliminationIsDone = true;
-//		logger.info("Finished normalizing transitivity.");
+		// logger.info("Finished normalizing transitivity.");
 	}
 
 	private Set<OWLSubClassOfAxiom> generateAxiomsSimulatingTransitivity() {

@@ -7,6 +7,7 @@ import java.util.Date;
 
 import org.apache.log4j.Logger;
 import org.semanticweb.owlapi.apibinding.OWLManager;
+//import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
@@ -31,6 +32,7 @@ public abstract class OntologyReaderTemplate implements OntologyReader {
 	private Logger logger = Logger.getLogger(OntologyReaderTemplate.class);
 	private Configuration config = Configuration.getInstance();
 	private OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
+	
 	private long loadingTime = 0;
 
 	protected abstract OWLOntologyValidator getOntologyValidator(OWLOntology owlOntology);
@@ -165,7 +167,7 @@ public abstract class OntologyReaderTemplate implements OntologyReader {
 	 * @throws OWLOntologyCreationException
 	 */
 	private OWLOntology getInputOWLAPIOntology(String owlOntologyFileName) throws OWLOntologyCreationException {
-		logger.info("Using OWLAPI to read the ontology:" + owlOntologyFileName + " ...");
+		logger.info("Loading TBox:" + owlOntologyFileName + " ...");
 		OWLOntology inputOntology;
 		inputOntology = manager.loadOntologyFromOntologyDocument(new File(owlOntologyFileName));
 
@@ -289,6 +291,7 @@ public abstract class OntologyReaderTemplate implements OntologyReader {
 		/*
 		 * Read aboxes in stream mannner
 		 */
+		logger.info("Loading ABoxes/datasets: "+aboxListFileName+" ...");
 		StreamOntologyReader2InternalModel streamReader = new StreamOntologyReader2InternalModel(
 				ontologyInNormalFormAndAddedAuxiliaryAxiomsForTransitivity, aboxListFileName);
 
