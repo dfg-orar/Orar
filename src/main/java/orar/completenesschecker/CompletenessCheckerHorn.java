@@ -1,5 +1,6 @@
 package orar.completenesschecker;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -21,6 +22,7 @@ import orar.modeling.ontology.OrarOntology;
 import orar.modeling.ontology2.AssertionDecoder;
 import orar.modeling.ontology2.OrarOntology2;
 import x.materializer.Materializer;
+import x.util.MapComparator;
 import x.util.PrintingHelper;
 
 public class CompletenessCheckerHorn implements CompletenessChecker {
@@ -29,6 +31,12 @@ public class CompletenessCheckerHorn implements CompletenessChecker {
 	private final Materializer materializer;
 	private final DLReasoner owlRealizer;
 	private boolean isEntailmentsComputed;
+
+	private boolean isConceptCountCorrect;
+	private boolean isRoleCountCorrect;
+	private boolean isSameasCountCorrect; // should be correct as we don't
+											// really generate owlapi sameas
+											// assertions.
 
 	// concept assertions
 	private Set<OWLClassAssertionAxiom> entailedConceptAssertionByAbstraction;
@@ -60,12 +68,23 @@ public class CompletenessCheckerHorn implements CompletenessChecker {
 		long endTimeAbstraction = System.currentTimeMillis();
 		long timeByAbstraction = (endTimeAbstraction - startTimeAbstraction) / 1000;
 		logger.info("Time by abstraction refinement (s):" + timeByAbstraction);
+
 		OrarOntology2 orarOntology = materializer.getOrarOntology();
+
 		this.entailedConceptAssertionByAbstraction = orarOntology
-				.getOWLAPIConceptAssertionsWHITOUTNormalizationSymbols();
-		this.entailedRoleAssertionByAbstraction = orarOntology.getOWLAPIRoleAssertionsWITHOUTNormalizationSymbols();
+				.getOWLAPIConceptAssertionsWithoutNormalizationSymbolsTakingSAMEASIntoAccount();
+
+		this.isConceptCountCorrect = (this.entailedConceptAssertionByAbstraction.size() == orarOntology
+				.getNumberOfConceptAssertionsWithoutNormalizationSymbolsTakingSAMEASIntoAccount());
+
+		this.entailedRoleAssertionByAbstraction = orarOntology.getOWLAPIRoleAssertionsTakingSAMEASIntoAccount();
+
+		this.isRoleCountCorrect = (this.entailedRoleAssertionByAbstraction.size() == orarOntology
+				.getNumberOfRoleAssertionsTakingSAMEASIntoAccount());
+
 		this.entailedSameasMapByAbstraction = AssertionDecoder
 				.getSameasMapInOWLAPI(orarOntology.getEntailedSameasAssertions());
+
 		logger.info("Number of derived concept assertions by abstraction materializer:"
 				+ entailedConceptAssertionByAbstraction.size());
 		logger.info("Number of derived role assertions by abstraction materializer:"
@@ -168,6 +187,9 @@ public class CompletenessCheckerHorn implements CompletenessChecker {
 			computeEntailments();
 		}
 
+		// boolean equal =
+		// MapComparator.isEqual(this.entailedSameasMapByAbstraction,
+		// this.entailedSameasMapByDLReasoner);
 		boolean equal = this.entailedSameasMapByAbstraction.equals(this.entailedSameasMapByDLReasoner);
 
 		if (!equal) {
@@ -238,6 +260,12 @@ public class CompletenessCheckerHorn implements CompletenessChecker {
 
 		}
 		return iscomplete;
+	}
+
+	@Override
+	public boolean isCountingAssertionCorrect() {
+
+		return this.isConceptCountCorrect && this.isRoleCountCorrect;
 	}
 
 	// @Override

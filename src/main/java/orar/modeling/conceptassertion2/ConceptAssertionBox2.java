@@ -66,12 +66,19 @@ public interface ConceptAssertionBox2 {
 	 *         ontology.
 	 */
 	public int getNumberOfConceptAssertions();
+
+	/**
+	 * @return all number of concept assertions without normalization symbols
+	 *         and NOT taking SAMEAS into account.
+	 */
 	public int getNumberOfConceptAssertionsWithoutNormalizationSymbols();
+
+	
+
 	/**
 	 * @return a set (copy) of all individuals occurring in all concept
 	 *         assertions.
 	 */
 	public Set<Integer> getAllIndividuals();
-
 
 }

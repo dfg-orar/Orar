@@ -98,61 +98,45 @@ public class MapbasedSameAsBox2 implements SameAsBox2 {
 	}
 
 	@Override
-	public Set<OWLAxiom> getEntailedSameasOWLAxioms() {
+	public Set<OWLAxiom> getOWLAPISameasAssertions() {
 		Set<OWLAxiom> sameasOWLAxioms = new HashSet<OWLAxiom>();
+		Set<Integer> allKeyIndividualsInSameasMap = this.sameAsMap.keySet();
 
-		Iterator<Entry<Integer, Set<Integer>>> iterator = this.sameAsMap.entrySet().iterator();
+		Set<Integer> checkedIndividuals = new HashSet<>();
 
-		while (iterator.hasNext()) {
-			Entry<Integer, Set<Integer>> entry = iterator.next();
-			Integer key = entry.getKey();
-			Set<Integer> value = entry.getValue();
+		for (Integer eachIndividual : allKeyIndividualsInSameasMap) {
+			if (!checkedIndividuals.contains(eachIndividual)) {
 
-			Set<Integer> allIndividuals = new HashSet<Integer>();
-			allIndividuals.add(key);
-			if (value != null) {
-				allIndividuals.addAll(value);
+				Set<Integer> sameasOfEachIdividual = new HashSet<>();
+				sameasOfEachIdividual.add(eachIndividual);
+				sameasOfEachIdividual.addAll(getSameIndividuals(eachIndividual));
+				OWLSameIndividualAxiom sameasAxiom = AssertionDecoder.getOWLAPISameasAssertion(sameasOfEachIdividual);
+				sameasOWLAxioms.add(sameasAxiom);
+				checkedIndividuals.addAll(sameasOfEachIdividual);
 			}
 
-			// OWLSameIndividualAxiom sameasAxiom =
-			// this.owlDataFactory.getOWLSameIndividualAxiom(allIndividuals);
-			OWLSameIndividualAxiom sameasAxiom = AssertionDecoder.getOWLAPISameasAssertion(allIndividuals);
-			sameasOWLAxioms.add(sameasAxiom);
 		}
-
 		return sameasOWLAxioms;
 	}
-	// private OWLSameIndividualAxiom getOWLAPISameasAssertion(Set<Integer>
-	// individualsInInteger){
-	// Set<OWLNamedIndividual> allOWLAPIIndividuals= new HashSet<>();
-	// for (Integer ind:individualsInInteger){
-	// String indString = this.indexer.getIndividualString(ind);
-	// OWLNamedIndividual owlapiInd =
-	// this.owlDataFactory.getOWLNamedIndividual(IRI.create(indString));
-	// allOWLAPIIndividuals.add(owlapiInd);
-	// }
-	// return
-	// this.owlDataFactory.getOWLSameIndividualAxiom(allOWLAPIIndividuals);
-	// }
 
 	@Override
 	public Integer getNumberOfEntailedSameasAssertions() {
-
-		Iterator<Entry<Integer, Set<Integer>>> iterator = this.sameAsMap.entrySet().iterator();
 		Set<Set<Integer>> uniqueSetOfSameasAssertions = new HashSet<>();
+		Set<Integer> allKeyIndividualsInSameasMap = this.sameAsMap.keySet();
 
-		while (iterator.hasNext()) {
-			Entry<Integer, Set<Integer>> entry = iterator.next();
-			Integer key = entry.getKey();
-			Set<Integer> value = entry.getValue();
+		Set<Integer> checkedIndividuals = new HashSet<>();
 
-			Set<Integer> allIndividuals = new HashSet<Integer>();
-			allIndividuals.add(key);
-			if (value != null) {
-				allIndividuals.addAll(value);
+		for (Integer eachIndividual : allKeyIndividualsInSameasMap) {
+			if (!checkedIndividuals.contains(eachIndividual)) {
+
+				Set<Integer> sameasOfEachIdividual = new HashSet<>();
+				sameasOfEachIdividual.add(eachIndividual);
+				sameasOfEachIdividual.addAll(getSameIndividuals(eachIndividual));
+
+				checkedIndividuals.addAll(sameasOfEachIdividual);
+				uniqueSetOfSameasAssertions.add(sameasOfEachIdividual);
 			}
 
-			uniqueSetOfSameasAssertions.add(allIndividuals);
 		}
 
 		return uniqueSetOfSameasAssertions.size();

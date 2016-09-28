@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Queue;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
@@ -93,6 +94,21 @@ public class PrintingHelper {
 		if (!set.isEmpty()) {
 			loggerOfHelper.info("Element of the set:");
 			for (T element : set) {
+				loggerOfHelper.info(element);
+			}
+		} else {
+			loggerOfHelper.info("Empty set");
+		}
+	}
+	
+	public static <T> void printQueue(Queue<T> queue) {
+		if (queue == null) {
+			loggerOfHelper.info("null");
+			return;
+		}
+		if (!queue.isEmpty()) {
+			loggerOfHelper.info("Element of the set:");
+			for (T element : queue) {
 				loggerOfHelper.info(element);
 			}
 		} else {

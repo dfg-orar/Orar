@@ -113,8 +113,8 @@ public class MapbasedConceptAssertionBox2 implements ConceptAssertionBox2 {
 	@Override
 	public int getNumberOfConceptAssertionsWithoutNormalizationSymbols() {
 		int numberOfCocneptAssertions = 0;
-//		Set<Integer> processedIndividual= new HashSet<>();
-		
+		// Set<Integer> processedIndividual= new HashSet<>();
+
 		Iterator<Entry<Integer, Set<OWLClass>>> iterator = conceptAssertionMap.entrySet().iterator();
 		while (iterator.hasNext()) {
 			Entry<Integer, Set<OWLClass>> entry = iterator.next();
@@ -176,5 +176,7 @@ public class MapbasedConceptAssertionBox2 implements ConceptAssertionBox2 {
 	public Set<Integer> getAllIndividuals() {
 		return new HashSet<Integer>(this.conceptAssertionMap.keySet());
 	}
+
+	
 
 }

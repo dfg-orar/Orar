@@ -62,7 +62,7 @@ public interface OrarOntology2 {
 
 	/**
 	 * @return number of concept assertions currently in the ontology without
-	 *         the nomalization symbols.
+	 *         the nomalization symbols and not taking sameas into account
 	 */
 	public int getNumberOfConceptAssertionsWithoutNormalizationSymbols();
 
@@ -203,9 +203,8 @@ public interface OrarOntology2 {
 	public boolean addSameAsAssertion(int individual, int equalIndividual);
 
 	public boolean addManySameAsAssertions(int individual, Set<Integer> equalIndividuals);
-	
-	public boolean addNewManySameAsAssertions( Set<Integer> equalIndividuals);
-	
+
+	public boolean addNewManySameAsAssertions(Set<Integer> equalIndividuals);
 
 	/**
 	 * @param individual
@@ -290,4 +289,62 @@ public interface OrarOntology2 {
 	public RoleAssertionBox2 getRoleAssertionBox();
 
 	public SameAsBox2 getSameasBox();
+
+	// public Integer getNumberOfEntailedAssertionsWithoutNormalizedSymbols();
+	/**
+	 * @return all number of concept assertions without normalization symbols
+	 *         and TAKING SAMEAS into account. Note that universal concept
+	 *         (owl:thing) is ignored.
+	 */
+	public int getNumberOfConceptAssertionsWithoutNormalizationSymbolsTakingSAMEASIntoAccount();
+
+	/**
+	 * @param individual
+	 * @return number of concept assertions for the given individual, without
+	 *         normalization symbols and TAKING SAMEAS into account. Note that
+	 *         universal concept (owl:thing) is ignored.
+	 */
+	public int getNumberOfConceptAssertionsWithoutNormalizationSymbolsTakingSAMEASIntoAccount(int individual);
+
+	/**
+	 * @param givenIndividual
+	 * @return number of role assertions for the given individual, TAKING SAMEAS
+	 *         into account. Note that universal role is ignored.
+	 */
+	public int getNumberOfRoleAssertionsTakingSAMEASIntoAccount(int givenIndividual);
+
+	/**
+	 * @return number of ALL role assertions for ALL individuals, TAKING SAMEAS
+	 *         into account. Note that universal role is ignored.
+	 */
+	public int getNumberOfRoleAssertionsTakingSAMEASIntoAccount();
+
+	/**
+	 * @return all OWLAPI concept assertions without normalization symbols and
+	 *         TAKING SAMEAS into account. Note that universal concept
+	 *         (owl:thing) is ignored.
+	 */
+	public Set<OWLClassAssertionAxiom> getOWLAPIConceptAssertionsWithoutNormalizationSymbolsTakingSAMEASIntoAccount();
+
+	/**
+	 * @param individual
+	 * @return OWLAPI concept assertions for the given individual, without
+	 *         normalization symbols and TAKING SAMEAS into account. Note that
+	 *         universal concept (owl:thing) is ignored.
+	 */
+	public Set<OWLClassAssertionAxiom> getOWLAPIConceptAssertionsWithoutNormalizationSymbolsTakingSAMEASIntoAccount(
+			int individual);
+
+	/**
+	 * @param givenIndividual
+	 * @return OWLAPI role assertions for the given individual, TAKING SAMEAS
+	 *         into account. Note that universal role is ignored.
+	 */
+	public Set<OWLObjectPropertyAssertionAxiom> getOWLAPIRoleAssertionsTakingSAMEASIntoAccount(int givenIndividual);
+
+	/**
+	 * @return ALL OWLAPI role assertions for ALL individuals, TAKING SAMEAS
+	 *         into account. Note that universal role is ignored.
+	 */
+	public Set<OWLObjectPropertyAssertionAxiom> getOWLAPIRoleAssertionsTakingSAMEASIntoAccount();
 }

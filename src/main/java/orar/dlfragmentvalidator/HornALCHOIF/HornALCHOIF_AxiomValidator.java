@@ -142,19 +142,21 @@ public class HornALCHOIF_AxiomValidator implements AxiomValidator {
 	public OWLAxiom visit(OWLSubClassOfAxiom axiom) {
 		OWLClassExpression subClass = axiom.getSubClass();
 		OWLClassExpression superClass = axiom.getSuperClass();
-				OWLClassExpression profiledSupClass = subClass.accept(this.subClassValidator);
+		OWLClassExpression profiledSupClass = subClass.accept(this.subClassValidator);
 		OWLClassExpression profiledSuperClass = superClass.accept(this.superClassValidator);
 		if (profiledSupClass == null || profiledSuperClass == null) {
 			this.violatedAxioms.add(axiom);
 			return null;
 		}
-//		if (!subClass.isOWLThing()
-//				&& superClass.getClassExpressionType() == ClassExpressionType.OBJECT_ALL_VALUES_FROM) {
-//			OWLObjectAllValuesFrom superClassCopy = (OWLObjectAllValuesFrom) superClass;
-//			if (!superClassCopy.getFiller().isOWLThing()){
-//				this.constructorsInValidatedOntology.add(DLConstructor.)
-//			}
-//		}
+		// if (!subClass.isOWLThing()
+		// && superClass.getClassExpressionType() ==
+		// ClassExpressionType.OBJECT_ALL_VALUES_FROM) {
+		// OWLObjectAllValuesFrom superClassCopy = (OWLObjectAllValuesFrom)
+		// superClass;
+		// if (!superClassCopy.getFiller().isOWLThing()){
+		// this.constructorsInValidatedOntology.add(DLConstructor.)
+		// }
+		// }
 		return axiom;
 	}
 
@@ -213,7 +215,13 @@ public class HornALCHOIF_AxiomValidator implements AxiomValidator {
 	public OWLAxiom visit(OWLObjectPropertyDomainAxiom axiom) {
 		this.constructorsInInputOntology.add(DLConstructor.DOMAIN_CONSTRAIN_OF_ROLE);
 		this.constructorsInValidatedOntology.add(DLConstructor.DOMAIN_CONSTRAIN_OF_ROLE);
-		return axiom;
+		OWLClassExpression domain = axiom.getDomain();
+		OWLClassExpression validatedDomain = domain.accept(superClassValidator);
+		if (validatedDomain != null) {
+			return axiom;
+		} else {
+			return null;
+		}
 	}
 
 	@Override
@@ -248,9 +256,16 @@ public class HornALCHOIF_AxiomValidator implements AxiomValidator {
 
 	@Override
 	public OWLAxiom visit(OWLObjectPropertyRangeAxiom axiom) {
+
 		this.constructorsInInputOntology.add(DLConstructor.RANGE_CONSTRAIN_OF_ROLE);
 		this.constructorsInValidatedOntology.add(DLConstructor.RANGE_CONSTRAIN_OF_ROLE);
-		return axiom;
+		OWLClassExpression range = axiom.getRange();
+		OWLClassExpression validatedRange = range.accept(superClassValidator);
+		if (validatedRange != null) {
+			return axiom;
+		} else {
+			return null;
+		}
 	}
 
 	@Override

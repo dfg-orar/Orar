@@ -30,6 +30,7 @@ import orar.modeling.roleassertion2.MapbasedRoleAssertionBox2;
 import orar.modeling.roleassertion2.RoleAssertionBox2;
 import orar.modeling.sameas2.MapbasedSameAsBox2;
 import orar.modeling.sameas2.SameAsBox2;
+import x.util.MapOperator;
 
 public class MapbasedOrarOntology2 implements OrarOntology2 {
 	private static final Logger logger = Logger.getLogger(MapbasedOrarOntology2.class);
@@ -490,15 +491,15 @@ public class MapbasedOrarOntology2 implements OrarOntology2 {
 	@Override
 	public Set<OWLAxiom> getOWLAPIMaterializedAssertions() {
 		Set<OWLAxiom> materializedABox = new HashSet<OWLAxiom>();
-		materializedABox.addAll(this.getOWLAPIConceptAssertionsWHITOUTNormalizationSymbols());
-		materializedABox.addAll(this.getOWLAPIRoleAssertionsWITHOUTNormalizationSymbols());
+		materializedABox.addAll(this.getOWLAPIConceptAssertionsWithoutNormalizationSymbolsTakingSAMEASIntoAccount());
+		materializedABox.addAll(this.getOWLAPIRoleAssertionsTakingSAMEASIntoAccount());
 		materializedABox.addAll(this.getOWLAPISameasAssertions());
 		return materializedABox;
 	}
 
 	@Override
 	public Set<OWLAxiom> getOWLAPISameasAssertions() {
-		return this.sameasBox.getEntailedSameasOWLAxioms();
+		return this.sameasBox.getOWLAPISameasAssertions();
 	}
 
 	@Override
@@ -544,8 +545,239 @@ public class MapbasedOrarOntology2 implements OrarOntology2 {
 	}
 
 	@Override
-	public boolean addNewManySameAsAssertions( Set<Integer> equalIndividuals) {
-	
-		return this.sameasBox.addNewManySameAsAssertions( equalIndividuals);
+	public boolean addNewManySameAsAssertions(Set<Integer> equalIndividuals) {
+
+		return this.sameasBox.addNewManySameAsAssertions(equalIndividuals);
 	}
+
+	// @Override
+	public int getNumberOfConceptAssertionsWithoutNormalizationSymbolsTakingSAMEASIntoAccount() {
+
+		Set<Integer> allIndividuals = getIndividualsInSignature();
+		Set<Integer> checkedIndividuals = new HashSet<>();
+		Integer totalConceptAssertions = 0;
+		for (int eachIndividual : allIndividuals) {
+			if (!checkedIndividuals.contains(eachIndividual)) {
+				/*
+				 * get concept assertions for eachIndividual and for all sameas
+				 * individuals of eachIndividual.
+				 */
+				totalConceptAssertions += getNumberOfConceptAssertionsWithoutNormalizationSymbolsTakingSAMEASIntoAccount(
+						eachIndividual);
+				/*
+				 * keep track a set of individuals for which we already count
+				 * concept assertions.
+				 */
+				Set<Integer> sameasOfEachIndividual = getSameIndividuals(eachIndividual);
+				checkedIndividuals.addAll(sameasOfEachIndividual);
+			}
+		}
+
+		return totalConceptAssertions;
+	}
+
+	@Override
+	public int getNumberOfConceptAssertionsWithoutNormalizationSymbolsTakingSAMEASIntoAccount(int givenIndividual) {
+		/*
+		 * get all sameas individuals of the given individual
+		 */
+		Set<Integer> sameIndividuals = getSameIndividuals(givenIndividual);
+		sameIndividuals.add(givenIndividual);
+		/*
+		 * accumulate asserted concept assertions
+		 */
+		Set<OWLClass> accumulatedConcepts = new HashSet<>();
+		for (Integer eachInd : sameIndividuals) {
+			accumulatedConcepts.addAll(getAssertedConcepts(eachInd));
+		}
+		/*
+		 * remove all concepts generated during normalization
+		 */
+		accumulatedConcepts.removeAll(NormalizationDataFactory.getInstance().getConceptsByNormalization());
+		// accumulatedConcepts.remove(this.owlDataFactory.getOWLThing());
+		return sameIndividuals.size() * accumulatedConcepts.size();
+	}
+
+	@Override
+	public int getNumberOfRoleAssertionsTakingSAMEASIntoAccount(int givenIndividual) {
+		int numberOfRoleAssertions = 0;
+		Set<Integer> sameasOfGivenIndividual = getSameIndividuals(givenIndividual);
+		sameasOfGivenIndividual.add(givenIndividual);
+		/*
+		 * accumulate role assertions
+		 */
+		Map<OWLObjectProperty, Set<Integer>> succRoleMap = new HashMap<OWLObjectProperty, Set<Integer>>();
+		for (Integer eachInd : sameasOfGivenIndividual) {
+			MapOperator.addAnotherMap(succRoleMap, getSuccessorRoleAssertionsAsMap(eachInd));
+		}
+
+		/*
+		 * for each succRole, counts number of succIndividuals, taking SAMES
+		 * into account.
+		 */
+		Iterator<Entry<OWLObjectProperty, Set<Integer>>> iterator = succRoleMap.entrySet().iterator();
+		while (iterator.hasNext()) {
+			Entry<OWLObjectProperty, Set<Integer>> eachEntry = iterator.next();
+			// OWLObjectProperty eachSuccRole = eachEntry.getKey();
+			Set<Integer> succInds = eachEntry.getValue();
+			Set<Integer> sameasOfSuccInds = new HashSet<>();
+			sameasOfSuccInds.addAll(succInds);
+			for (Integer eachSuccInd : succInds) {
+				sameasOfSuccInds.addAll(getSameIndividuals(eachSuccInd));
+			}
+			numberOfRoleAssertions += sameasOfGivenIndividual.size() * sameasOfSuccInds.size();
+		}
+		return numberOfRoleAssertions;
+	}
+
+	@Override
+	public int getNumberOfRoleAssertionsTakingSAMEASIntoAccount() {
+		Set<Integer> allIndividuals = getIndividualsInSignature();
+		Set<Integer> checkedIndividuals = new HashSet<>();
+		Integer totalRoleAssertions = 0;
+		for (int eachIndividual : allIndividuals) {
+			if (!checkedIndividuals.contains(eachIndividual)) {
+				/*
+				 * get role assertions for eachIndividual and for all sameas
+				 * individuals of eachIndividual.
+				 */
+				totalRoleAssertions += getNumberOfRoleAssertionsTakingSAMEASIntoAccount(eachIndividual);
+				/*
+				 * keep track a set of individuals for which we already count
+				 * concept assertions.
+				 */
+				Set<Integer> sameasOfEachIndividual = getSameIndividuals(eachIndividual);
+				checkedIndividuals.addAll(sameasOfEachIndividual);
+			}
+		}
+		return totalRoleAssertions;
+	}
+
+	@Override
+	public Set<OWLClassAssertionAxiom> getOWLAPIConceptAssertionsWithoutNormalizationSymbolsTakingSAMEASIntoAccount() {
+		Set<Integer> allIndividuals = getIndividualsInSignature();
+		Set<Integer> checkedIndividuals = new HashSet<>();
+		Set<OWLClassAssertionAxiom> totalConceptAssertions = new HashSet<>();
+		for (int eachIndividual : allIndividuals) {
+			if (!checkedIndividuals.contains(eachIndividual)) {
+				/*
+				 * get concept assertions for eachIndividual and for all sameas
+				 * individuals of eachIndividual.
+				 */
+				totalConceptAssertions.addAll(
+						getOWLAPIConceptAssertionsWithoutNormalizationSymbolsTakingSAMEASIntoAccount(eachIndividual));
+				/*
+				 * keep track a set of individuals for which we already count
+				 * concept assertions.
+				 */
+				Set<Integer> sameasOfEachIndividual = getSameIndividuals(eachIndividual);
+				checkedIndividuals.addAll(sameasOfEachIndividual);
+			}
+		}
+
+		return totalConceptAssertions;
+	}
+
+	@Override
+	public Set<OWLClassAssertionAxiom> getOWLAPIConceptAssertionsWithoutNormalizationSymbolsTakingSAMEASIntoAccount(
+			int givenIndividual) {
+		Set<OWLClassAssertionAxiom> conceptAssertions = new HashSet<>();
+		/*
+		 * get all sameas individuals of the given individual
+		 */
+		Set<Integer> sameIndividuals = getSameIndividuals(givenIndividual);
+		sameIndividuals.add(givenIndividual);
+		/*
+		 * accumulate asserted concept assertions
+		 */
+		Set<OWLClass> accumulatedConcepts = new HashSet<>();
+		for (Integer eachInd : sameIndividuals) {
+			accumulatedConcepts.addAll(getAssertedConcepts(eachInd));
+		}
+		/*
+		 * remove all concepts generated during normalization
+		 */
+		accumulatedConcepts.removeAll(NormalizationDataFactory.getInstance().getConceptsByNormalization());
+		accumulatedConcepts.remove(this.owlDataFactory.getOWLThing());
+		for (Integer eachInd : sameIndividuals)
+			for (OWLClass eachConcept : accumulatedConcepts) {
+				OWLClassAssertionAxiom newConceptAssertion = this.owlDataFactory.getOWLClassAssertionAxiom(eachConcept,
+						this.indexer.getOWLIndividual(eachInd));
+				conceptAssertions.add(newConceptAssertion);
+			}
+
+		return conceptAssertions;
+	}
+
+	@Override
+	public Set<OWLObjectPropertyAssertionAxiom> getOWLAPIRoleAssertionsTakingSAMEASIntoAccount(int givenIndividual) {
+		Set<OWLObjectPropertyAssertionAxiom> roleAssertions = new HashSet<>();
+		Set<Integer> sameasOfGivenIndividual = getSameIndividuals(givenIndividual);
+		sameasOfGivenIndividual.add(givenIndividual);
+		/*
+		 * accumulate role assertions
+		 */
+		Map<OWLObjectProperty, Set<Integer>> succRoleMap = new HashMap<OWLObjectProperty, Set<Integer>>();
+		for (Integer eachInd : sameasOfGivenIndividual) {
+			MapOperator.addAnotherMap(succRoleMap, getSuccessorRoleAssertionsAsMap(eachInd));
+		}
+
+		/*
+		 * for each succRole, counts number of succIndividuals, taking SAMES
+		 * into account.
+		 */
+		Iterator<Entry<OWLObjectProperty, Set<Integer>>> iterator = succRoleMap.entrySet().iterator();
+		while (iterator.hasNext()) {
+			Entry<OWLObjectProperty, Set<Integer>> eachEntry = iterator.next();
+			/*
+			 * get all sameas of the successor individual.
+			 */
+			Set<Integer> succInds = eachEntry.getValue();
+			Set<Integer> sameasOfSuccIndividuals = new HashSet<>();
+			sameasOfSuccIndividuals.addAll(succInds);
+			for (Integer eachSuccInd : succInds) {
+				sameasOfSuccIndividuals.addAll(getSameIndividuals(eachSuccInd));
+			}
+			/*
+			 * create role assertions for each sameas of the givenIndividual and
+			 * each succ individual.
+			 */
+			OWLObjectProperty eachSuccRole = eachEntry.getKey();
+
+			for (int eachSameAsOfGivenIndividual : sameasOfGivenIndividual)
+				for (int eachSameasOfSuccIndividual : sameasOfSuccIndividuals) {
+					OWLNamedIndividual subject = this.indexer.getOWLIndividual(eachSameAsOfGivenIndividual);
+					OWLNamedIndividual object = this.indexer.getOWLIndividual(eachSameasOfSuccIndividual);
+					OWLObjectPropertyAssertionAxiom newRoleAssertion = this.owlDataFactory
+							.getOWLObjectPropertyAssertionAxiom(eachSuccRole, subject, object);
+					roleAssertions.add(newRoleAssertion);
+				}
+
+		}
+		return roleAssertions;
+	}
+
+	@Override
+	public Set<OWLObjectPropertyAssertionAxiom> getOWLAPIRoleAssertionsTakingSAMEASIntoAccount() {
+		Set<Integer> allIndividuals = getIndividualsInSignature();
+		Set<Integer> checkedIndividuals = new HashSet<>();
+		Set<OWLObjectPropertyAssertionAxiom> totalRoleAssertions = new HashSet<>();
+		for (int eachIndividual : allIndividuals) {
+			if (!checkedIndividuals.contains(eachIndividual)) {
+				/*
+				 * get role assertions for eachIndividual and for all sameas
+				 * individuals of eachIndividual.
+				 */
+				totalRoleAssertions.addAll(getOWLAPIRoleAssertionsTakingSAMEASIntoAccount(eachIndividual));
+				/*
+				 * keep track a set of individuals for which we already count
+				 * concept assertions.
+				 */
+				Set<Integer> sameasOfEachIndividual = getSameIndividuals(eachIndividual);
+				checkedIndividuals.addAll(sameasOfEachIndividual);
+			}
+		}
+		return totalRoleAssertions;
+	}
+
 }

@@ -45,6 +45,6 @@ public interface SameAsBox2 {
 	 * @return a copy of sameas map.
 	 */
 	public Map<Integer,Set<Integer>> getSameasMap();
-	public Set<OWLAxiom> getEntailedSameasOWLAxioms();
+	public Set<OWLAxiom> getOWLAPISameasAssertions();
 	public Integer getNumberOfEntailedSameasAssertions();
 }

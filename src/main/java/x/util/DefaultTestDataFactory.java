@@ -22,6 +22,7 @@ import org.semanticweb.owlapi.model.OWLObjectUnionOf;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
+import org.semanticweb.owlapi.model.OWLSameIndividualAxiom;
 import org.semanticweb.owlapi.model.OWLSubClassOfAxiom;
 import org.semanticweb.owlapi.model.OWLSubObjectPropertyOfAxiom;
 import org.semanticweb.owlapi.model.OWLTransitiveObjectPropertyAxiom;
@@ -50,6 +51,12 @@ public class DefaultTestDataFactory {
 	public void setIRI(String iri) {
 		this.IRIString = iri;
 	}
+
+//	public OWLAxiom getConceptAssertion(String C, String ind) {
+//		OWLClass owlC = getConcept(C);
+//		OWLNamedIndividual owlInd = getIndividual(ind);
+//		return this.dataFactory.getOWLClassAssertionAxiom(owlC, owlInd);
+//	}
 
 	/**
 	 * @param name
@@ -121,6 +128,13 @@ public class DefaultTestDataFactory {
 		return dataFactory.getOWLObjectPropertyAssertionAxiom(property, subject, object);
 	}
 
+	public OWLSameIndividualAxiom getSameaAsAssertion(String... individuals){
+		Set<OWLNamedIndividual> owlIndividuals= new HashSet<>();
+		for (String ind: individuals){
+			owlIndividuals.add(getIndividual(ind));
+		}
+		return this.dataFactory.getOWLSameIndividualAxiom(owlIndividuals);
+	}
 	public OWLObjectPropertyAssertionAxiom getRoleAssertion(String subject, String property, String object) {
 
 		OWLNamedIndividual subjectInd = getIndividual(subject);

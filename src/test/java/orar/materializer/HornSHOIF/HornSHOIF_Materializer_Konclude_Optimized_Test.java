@@ -39,6 +39,31 @@ public class HornSHOIF_Materializer_Konclude_Optimized_Test {
 		haveTheSameResults(ontologyPath);
 	}
 
+	@SuppressWarnings("NOTE THAT: HermiT has a bug on this ontology. e.g. it failed to return c1,c2 when query for sameas of c3")
+	@Test
+	public void testMerging3() {
+		Configuration.getInstance().addAllDebugInfos();
+		String ontologyPath = "src/test/resources/merigng/test3.owl";
+		haveTheSameResults(ontologyPath);
+	}
+
+	@SuppressWarnings("NOTE THAT: HermiT has a bug on this ontology. e.g. it failed to return c1,c2 when query for sameas of c3")
+	@Test
+	public void testMerging4() {
+		Configuration.getInstance().addAllDebugInfos();
+		String ontologyPath = "src/test/resources/merigng/test4.owl";
+		haveTheSameResults(ontologyPath);
+	}
+
+	@SuppressWarnings("NOTE THAT: HermiT has a bug on this ontology. e.g. it failed to return c1,c2 when query for sameas of c3")
+	@Test
+	public void testMerging5() {
+		Configuration.getInstance().addAllDebugInfos();
+
+		String ontologyPath = "src/test/resources/merigng/test5.owl";
+		haveTheSameResults(ontologyPath);
+	}
+
 	@Test
 	public void testExample3InPaper() {
 		Configuration.getInstance().addAllDebugInfos();
@@ -277,14 +302,8 @@ public class HornSHOIF_Materializer_Konclude_Optimized_Test {
 		String aboxList = "src/test/resources/uobm-origin/abox/aboxListOf2.txt";
 		haveTheSameResults(ontologyTbox, aboxList);
 	}
-	// @Test
-	// public void testUOBM_OriginU1() {
-	// String ontologyTbox =
-	// "src/test/resources/uobm-origin/tbox/uobmtbox_origin.owl";
-	// String aboxList =
-	// "/Users/kien/benchmarks/UOB/dl620/1/aboxListOriginU1.txt";
-	// haveTheSameResults(ontologyTbox, aboxList);
-	// }
+
+	
 
 	@Test
 	public void testCountingRoleAssertion() {
@@ -299,7 +318,7 @@ public class HornSHOIF_Materializer_Konclude_Optimized_Test {
 		Configuration.getInstance().addLoginfoLevels(LogInfo.STATISTIC);
 		Materializer materializer = new HornSHOIF_Materializer_KoncludeOptimized(orarOntology);
 		materializer.materialize();
-		Assert.assertTrue(orarOntology.getNumberOfRoleAssertions() == 4);
+		Assert.assertTrue(orarOntology.getNumberOfRoleAssertionsTakingSAMEASIntoAccount() == 4);
 	}
 
 	@Test
@@ -333,7 +352,8 @@ public class HornSHOIF_Materializer_Konclude_Optimized_Test {
 		MetaDataOfOntology.getInstance().clear();
 		DataForTransferingEntailments.getInstance().clear();
 
-		Configuration.getInstance().addLoginfoLevels(LogInfo.STATISTIC, LogInfo.REASONING_TIME);
+		Configuration.getInstance().addLoginfoLevels(LogInfo.STATISTIC, LogInfo.REASONING_TIME,
+				LogInfo.COMPARED_RESULT_INFO);
 		// Configuration.getInstance().addDebugLevels(DebugLevel.ADDING_MARKING_AXIOMS);
 		System.out.println("Loading ontology for abstraction materializer....");
 		OntologyReader ontoReader = new HornSHOIF_OntologyReader();
@@ -355,7 +375,7 @@ public class HornSHOIF_Materializer_Konclude_Optimized_Test {
 		Assert.assertTrue(checker.isConceptAssertionComplete());
 		Assert.assertTrue(checker.isSameasComplete());
 		Assert.assertTrue(checker.isRoleAssertionComplete());
-
+//		Assert.assertTrue(checker.isCountingAssertionCorrect());
 	}
 
 	/**
@@ -374,6 +394,7 @@ public class HornSHOIF_Materializer_Konclude_Optimized_Test {
 
 		Configuration.getInstance().addLoginfoLevels(LogInfo.STATISTIC, LogInfo.REASONING_TIME, LogInfo.LOADING_TIME,
 				LogInfo.DETAILED_STATISTIC);
+		// Configuration.getInstance().addLoginfoLevels(LogInfo.TUNING_SAMEAS);
 		// Configuration.getInstance().addDebugLevels(
 		// DebugLevel.PRINT_MARKING_INDIVIDUALS,
 		// DebugLevel.ADDING_MARKING_AXIOMS);
@@ -396,8 +417,8 @@ public class HornSHOIF_Materializer_Konclude_Optimized_Test {
 		checker.computeEntailments();
 
 		Assert.assertTrue(checker.isConceptAssertionComplete());
-		// Assert.assertTrue(checker.isSameasComplete());
+		Assert.assertTrue(checker.isSameasComplete());
 		Assert.assertTrue(checker.isRoleAssertionComplete());
-
+//		Assert.assertTrue(checker.isCountingAssertionCorrect());
 	}
 }

@@ -40,6 +40,9 @@ public class SemiNaiveRuleEngine implements RuleEngine {
 		// this.inverseRule = new InverseRoleRuleExecutor(orarOntology);
 
 		this.ruleExecutors = new ArrayList<RuleExecutor>();
+		/*
+		 * order matters here. sameasRule always need to be run before others.
+		 */
 		this.ruleExecutors.add(sameasRule);
 		this.ruleExecutors.add(subroRule);
 		this.ruleExecutors.add(tranRule);
@@ -54,19 +57,36 @@ public class SemiNaiveRuleEngine implements RuleEngine {
 			ruleEx.materialize();
 
 			if (Configuration.getInstance().getLogInfos().contains(LogInfo.TUNING_SAMEAS)) {
-				logger.info("after running " + ruleEx.getClass().getName() + " Sameas map:");
+				logger.info("after running " + ruleEx.getClass().getName() + " Sameas map in the ontology:");
 				PrintingHelper.printMap(this.orarOntology.getSameasBox().getSameasMap());
 			}
 
 			if (Configuration.getInstance().getLogInfos().contains(LogInfo.TIME_STAMP_FOR_EACH_STEP)) {
-				logger.info("Size of new role assertion from" + ruleEx.getClass().getName() + ": "
-						+ ruleEx.getNewRoleAssertions().size());
-				logger.info("Size of new sameas assertion from" + ruleEx.getClass().getName() + ": "
-						+ ruleEx.getNewSameasAssertions().size());
+				/*
+				 * log for new roleassertions
+				 */
+				int countNewRoleAssertions = ruleEx.getNewRoleAssertions().size();
+				if (countNewRoleAssertions > 0) {
+					logger.info("Size of new role assertion from" + ruleEx.getClass().getName() + ": "
+							+ countNewRoleAssertions);
+				}
+				/*
+				 * log for new sameas
+				 */
+				int countNewSameas = ruleEx.getNewSameasAssertions().size();
+				if (countNewSameas > 0) {
+					logger.info("Size of new sameas assertion from  " + ruleEx.getClass().getName() + ": "
+							+ countNewSameas);
+				}
 			}
 			this.todoRoleAssertions.addAll(ruleEx.getNewRoleAssertions());
 			this.todoSameasAssertions.addAll(ruleEx.getNewSameasAssertions());
+			if (Configuration.getInstance().getLogInfos().contains(LogInfo.TUNING_SAMEAS)) {
+				logger.info("after running " + ruleEx.getClass().getName() + " Sameas map in the todoQueue:");
+				PrintingHelper.printQueue(this.todoSameasAssertions);
+			}
 		}
+
 		long startTimeOfIncrementalReasoning = System.currentTimeMillis();
 		incrementalMaterialize();
 		if (Configuration.getInstance().getLogInfos().contains(LogInfo.TIME_STAMP_FOR_EACH_STEP)) {
@@ -84,16 +104,33 @@ public class SemiNaiveRuleEngine implements RuleEngine {
 		while (!this.todoRoleAssertions.isEmpty() || !this.todoSameasAssertions.isEmpty()) {
 			while (!this.todoSameasAssertions.isEmpty()) {
 				Set<Integer> setOfSameasIndividuals = this.todoSameasAssertions.poll();
+
 				for (RuleExecutor ruleEx : this.ruleExecutors) {
 					ruleEx.clearOldBuffer();
+
+					if (Configuration.getInstance().getLogInfos().contains(LogInfo.TUNING_SAMEAS)) {
+						logger.info("Considering :" + setOfSameasIndividuals);
+					}
+
 					ruleEx.incrementalMaterialize(setOfSameasIndividuals);
+					if (Configuration.getInstance().getLogInfos().contains(LogInfo.TIME_STAMP_FOR_EACH_STEP)) {
+						int countNewSameas = ruleEx.getNewSameasAssertions().size();
+						if (countNewSameas > 0) {
+							logger.info("Size of new sameas assertion from (incremental) " + ruleEx.getClass().getName()
+									+ ": " + countNewSameas);
+						}
+					}
 					this.todoRoleAssertions.addAll(ruleEx.getNewRoleAssertions());
 					this.todoSameasAssertions.addAll(ruleEx.getNewSameasAssertions());
 
-					if (Configuration.getInstance().getLogInfos().contains(LogInfo.TUNING_SAMEAS)
-							&& ruleEx instanceof SameasRuleExecutor) {
-						logger.info("after running incremental mode " + ruleEx.getClass().getName() + " Sameas map:");
+					if (Configuration.getInstance().getLogInfos().contains(LogInfo.TUNING_SAMEAS)) {
+						// && ruleEx instanceof SameasRuleExecutor) {
+						logger.info("after running incremental step " + ruleEx.getClass().getName() + " Sameas map:");
 						PrintingHelper.printMap(this.orarOntology.getSameasBox().getSameasMap());
+
+						logger.info("after running incremental step" + ruleEx.getClass().getName()
+								+ " Sameas map in the todoQueue:");
+						PrintingHelper.printQueue(this.todoSameasAssertions);
 					}
 				}
 			}
@@ -103,6 +140,13 @@ public class SemiNaiveRuleEngine implements RuleEngine {
 				for (RuleExecutor ruleEx : this.ruleExecutors) {
 					ruleEx.clearOldBuffer();
 					ruleEx.incrementalMaterialize(aRoleAssertion);
+					if (Configuration.getInstance().getLogInfos().contains(LogInfo.TIME_STAMP_FOR_EACH_STEP)) {
+						int countNewSameas = ruleEx.getNewSameasAssertions().size();
+						if (countNewSameas > 0) {
+							logger.info("Size of new sameas assertion from (incremental) " + ruleEx.getClass().getName()
+									+ ": " + countNewSameas);
+						}
+					}
 					this.todoRoleAssertions.addAll(ruleEx.getNewRoleAssertions());
 					this.todoSameasAssertions.addAll(ruleEx.getNewSameasAssertions());
 

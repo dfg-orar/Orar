@@ -16,18 +16,21 @@ import orar.modeling.roleassertion2.IndexedRoleAssertion;
 public class SameasRuleExecutor implements RuleExecutor {
 
 	private final OrarOntology2 orarOntology;
+	private final Set<Set<Integer>> newSameasAssertions;
 	private boolean isABoxExtended;
 	// private Queue<Set<OWLNamedIndividual>> localTodoSameas;
-	//	private final Logger logger = Logger.getLogger(SameasRuleExecutor.class);
-	Logger logger=Logger.getLogger(SameasRuleExecutor.class);
+	// private final Logger logger = Logger.getLogger(SameasRuleExecutor.class);
+	Logger logger = Logger.getLogger(SameasRuleExecutor.class);
+
 	public SameasRuleExecutor(OrarOntology2 orarOntology) {
 		this.orarOntology = orarOntology;
 		this.isABoxExtended = false;
+		this.newSameasAssertions = new HashSet<>();
 	}
 
 	@Override
 	public void materialize() {
-//		long startTime = System.currentTimeMillis();
+		// long startTime = System.currentTimeMillis();
 		// compute connect components
 		List<Set<Integer>> components = computeConnectedComponents();
 		// put components to the map.
@@ -38,9 +41,9 @@ public class SameasRuleExecutor implements RuleExecutor {
 				}
 			}
 		}
-//		long endTime = System.currentTimeMillis();
-//		long time = (endTime-startTime)/1000;
-//		logger.info("time in materializer step: "+ time);
+		// long endTime = System.currentTimeMillis();
+		// long time = (endTime-startTime)/1000;
+		// logger.info("time in materializer step: "+ time);
 	}
 
 	private List<Set<Integer>> computeConnectedComponents() {
@@ -69,8 +72,9 @@ public class SameasRuleExecutor implements RuleExecutor {
 
 	@Override
 	public Set<Set<Integer>> getNewSameasAssertions() {
-		// return empty set in this rule
-		return new HashSet<Set<Integer>>();
+
+		// return this.newSameasAssertions;
+		return new HashSet<>();
 	}
 
 	@Override
@@ -90,16 +94,35 @@ public class SameasRuleExecutor implements RuleExecutor {
 		// logger.info("SameasRuleExecutor.incrementalMaterialize");
 		// get union of equivalent individuals in the set.
 		Set<Integer> accumulatedSameasIndividuals = new HashSet<Integer>();
-		accumulatedSameasIndividuals.addAll(setOfSameasIndividuals);
 		for (Integer ind : setOfSameasIndividuals) {
 			accumulatedSameasIndividuals.addAll(this.orarOntology.getSameIndividuals(ind));
 		}
-		// update the map
-		for (Integer eachIndividual : accumulatedSameasIndividuals) {
-			if (this.orarOntology.addManySameAsAssertions(eachIndividual, accumulatedSameasIndividuals)) {
+		if (accumulatedSameasIndividuals.size() == 0) {
+			this.orarOntology.addNewManySameAsAssertions(setOfSameasIndividuals);
+			this.isABoxExtended = true;
+		} else {
+			accumulatedSameasIndividuals.addAll(setOfSameasIndividuals);
+			if (!setOfSameasIndividuals.containsAll(accumulatedSameasIndividuals)) {
+				this.orarOntology.addNewManySameAsAssertions(accumulatedSameasIndividuals);
 				this.isABoxExtended = true;
+				/*
+				 * We don't need to add new sameas assertions to todo because
+				 * when other rule consider setOfSameasIndividuals, obtained
+				 * from global toto, this new sameas is taken into account. The
+				 * reason is that while executing, other rules take
+				 * setOfSameasIndividuals sameas assertions currently in the
+				 * ontology.
+				 */
+				// this.newSameasAssertions.add(accumulatedSameasIndividuals);
 			}
 		}
+		// // update the map
+		// for (Integer eachIndividual : accumulatedSameasIndividuals) {
+		// if (this.orarOntology.addManySameAsAssertions(eachIndividual,
+		// accumulatedSameasIndividuals)) {
+		// this.isABoxExtended = true;
+		// }
+
 	}
 
 	@Override

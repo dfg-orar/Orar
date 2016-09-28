@@ -348,7 +348,7 @@ public abstract class MaterializerTemplate2 implements Materializer {
 		 * complete ABox wrt sameas assertions
 		 */
 		//TODO: removed this. 
-		completeABoxWrtSameas();
+//		completeABoxWrtSameas();
 		/*
 		 * get reasoning time
 		 * 
@@ -371,14 +371,15 @@ public abstract class MaterializerTemplate2 implements Materializer {
 		if (config.getLogInfos().contains(LogInfo.STATISTIC)
 				|| config.getLogInfos().contains(LogInfo.DETAILED_STATISTIC)) {
 			logger.info("********** Inferred assertions **********");
-			// int numberOfMaterializedConceptAssertions =
-			// this.normalizedORAROntology
-			// .getOWLAPIConceptAssertionsWHITOUTNormalizationSymbols().size();
+			
 			int numberOfMaterializedConceptAssertions = this.normalizedORAROntology
-					.getNumberOfConceptAssertionsWithoutNormalizationSymbols();
-			int numberOfMaterializedRoleAssertions = this.normalizedORAROntology.getNumberOfRoleAssertions();
+					.getNumberOfConceptAssertionsWithoutNormalizationSymbolsTakingSAMEASIntoAccount();
+			
+			int numberOfMaterializedRoleAssertions = this.normalizedORAROntology.getNumberOfRoleAssertionsTakingSAMEASIntoAccount();
+			
 			int numberOfMaterializedEqualityAssertions = this.normalizedORAROntology
 					.getNumberOfEntailedSameasAssertions();
+			
 			int numberOfMaterializedAssertions = numberOfMaterializedConceptAssertions
 					+ numberOfMaterializedRoleAssertions + numberOfMaterializedEqualityAssertions;
 			if (config.getLogInfos().contains(LogInfo.DETAILED_STATISTIC)) {

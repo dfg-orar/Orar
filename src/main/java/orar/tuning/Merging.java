@@ -14,7 +14,7 @@ import x.materializer.Materializer;
 
 public class Merging {
 
-	private static String ontologyPath = "src/test/resources/merigng/test1.owl";
+	private static String ontologyPath = "src/test/resources/merigng/test3.owl";
 
 	public static void main(String[] args) {
 		AbstractDataFactory.getInstance().clear();
@@ -25,7 +25,7 @@ public class Merging {
 		Configuration.getInstance().clearLogInfoLevels();
 
 		Configuration.getInstance().addLoginfoLevels(LogInfo.STATISTIC, LogInfo.REASONING_TIME, LogInfo.LOADING_TIME,
-				LogInfo.TUNING_SAMEAS);
+				LogInfo.TIME_STAMP_FOR_EACH_STEP);
 		// Configuration.getInstance().addDebugLevels(
 		// DebugLevel.PRINT_MARKING_INDIVIDUALS,
 		// DebugLevel.ADDING_MARKING_AXIOMS);

@@ -27,5 +27,7 @@ public interface CompletenessChecker {
 	 *         identical to the ones by OWLReasoner, false otherwise.
 	 */
 	public boolean isSameasComplete();
+	
+	public boolean isCountingAssertionCorrect();
 
 }
