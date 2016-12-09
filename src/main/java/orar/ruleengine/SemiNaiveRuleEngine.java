@@ -13,7 +13,7 @@ import orar.config.DebugLevel;
 import orar.config.LogInfo;
 import orar.modeling.ontology2.OrarOntology2;
 import orar.modeling.roleassertion2.IndexedRoleAssertion;
-import x.util.PrintingHelper;
+import orar.util.PrintingHelper;
 
 public class SemiNaiveRuleEngine implements RuleEngine {
 	private Queue<Set<Integer>> todoSameasAssertions;
@@ -41,7 +41,7 @@ public class SemiNaiveRuleEngine implements RuleEngine {
 
 		this.ruleExecutors = new ArrayList<RuleExecutor>();
 		/*
-		 * order matters here. sameasRule always need to be run before others.
+		 * order matters here. sameasRule and then subroleRule always need to be run before the others.
 		 */
 		this.ruleExecutors.add(sameasRule);
 		this.ruleExecutors.add(subroRule);
@@ -181,6 +181,14 @@ public class SemiNaiveRuleEngine implements RuleEngine {
 	public long getReasoningTime() {
 
 		return this.reasoningTime;
+	}
+
+	@Override
+	public void setIncrementalAfterFirstAbstraction() {
+	for (RuleExecutor ruleEx:this.ruleExecutors){
+		ruleEx.setIncrementalAfterFirstAbstraction();
+	}
+		
 	}
 
 }

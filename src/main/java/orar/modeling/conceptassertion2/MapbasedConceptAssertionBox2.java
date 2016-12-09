@@ -77,11 +77,9 @@ public class MapbasedConceptAssertionBox2 implements ConceptAssertionBox2 {
 		Set<OWLClass> existingClasses = this.conceptAssertionMap.get(individual);
 		if (existingClasses == null) {
 			existingClasses = new HashSet<OWLClass>();
-		}
-		boolean hasNewElement = existingClasses.addAll(concepts);
-		if (hasNewElement) {
 			this.conceptAssertionMap.put(individual, existingClasses);
 		}
+		boolean hasNewElement = existingClasses.addAll(concepts);
 		return hasNewElement;
 	}
 
@@ -90,13 +88,10 @@ public class MapbasedConceptAssertionBox2 implements ConceptAssertionBox2 {
 		Set<OWLClass> existingClasses = this.conceptAssertionMap.get(individual);
 		if (existingClasses == null) {
 			existingClasses = new HashSet<OWLClass>();
-		}
-		boolean hasNewElement = existingClasses.add(concept);
-		if (hasNewElement) {
 			this.conceptAssertionMap.put(individual, existingClasses);
 		}
+		boolean hasNewElement = existingClasses.add(concept);
 		return hasNewElement;
-
 	}
 
 	@Override
@@ -177,6 +172,11 @@ public class MapbasedConceptAssertionBox2 implements ConceptAssertionBox2 {
 		return new HashSet<Integer>(this.conceptAssertionMap.keySet());
 	}
 
-	
+	@Override
+	public void setAssertedConcepts(Integer individual, Set<OWLClass> assertedConcepts) {
+		
+		this.conceptAssertionMap.put(individual, assertedConcepts);
+		
+	}
 
 }

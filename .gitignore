@@ -14,3 +14,9 @@
 /logging.log.10
 /normalizedTBox27_Aug@17_01.owl
 /.DS_Store
+/pomOntologyConverter.xml
+/pomOntologyConverter_backup.xml
+/pomTurtle2OWLConverter.xml
+/samwiseOrar2Compile.sh
+/samwiseTurtle2OWLOntologyConverter.sh
+/samwiseXCompile.sh~

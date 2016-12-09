@@ -14,13 +14,14 @@ import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.semanticweb.owlapi.model.OWLObjectPropertyAssertionAxiom;
 
 import orar.data.DataForTransferingEntailments;
+import orar.data.DataForTransferringEntailmentInterface;
 import orar.modeling.ontology.OrarOntology;
 import orar.modeling.ontology2.OrarOntology2;
 
 public class RoleAssertionBetweenRepresentativesXGenerator {
 	// private final Logger logger =
 	// Logger.getLogger(DLiteR_AbstractionGenerator.class);
-	protected final DataForTransferingEntailments sharedMap;
+	protected final DataForTransferringEntailmentInterface sharedMap;
 
 	protected final OWLDataFactory owlDataFactory;
 	/*

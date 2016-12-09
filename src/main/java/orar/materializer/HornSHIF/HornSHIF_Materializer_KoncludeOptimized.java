@@ -2,9 +2,9 @@ package orar.materializer.HornSHIF;
 
 import org.semanticweb.owlapi.model.OWLOntology;
 
+import orar.innerreasoner.InnerReasoner;
+import orar.innerreasoner.HornSHIF.Konclude_HornSHIF_InnerReasoner2;
 import orar.modeling.ontology2.OrarOntology2;
-import x.innerreasoner.InnerReasoner;
-import x.innerreasoner.HornSHIF.Konclude_HornSHIF_InnerReasoner2;
 
 public class HornSHIF_Materializer_KoncludeOptimized extends HornSHIF_MaterializerOptimized {
 	private int port = 8080;

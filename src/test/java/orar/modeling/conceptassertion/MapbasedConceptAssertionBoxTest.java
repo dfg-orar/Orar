@@ -6,7 +6,7 @@ import java.util.Set;
 import junit.framework.Assert;
 import orar.modeling.conceptassertion.ConceptAssertionBox;
 import orar.modeling.conceptassertion.MapbasedConceptAssertionBox;
-import x.util.DefaultTestDataFactory;
+import orar.util.DefaultTestDataFactory;
 
 import org.junit.Before;
 import org.junit.Test;

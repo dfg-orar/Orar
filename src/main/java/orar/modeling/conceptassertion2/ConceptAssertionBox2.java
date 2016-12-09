@@ -73,12 +73,11 @@ public interface ConceptAssertionBox2 {
 	 */
 	public int getNumberOfConceptAssertionsWithoutNormalizationSymbols();
 
-	
-
 	/**
 	 * @return a set (copy) of all individuals occurring in all concept
 	 *         assertions.
 	 */
 	public Set<Integer> getAllIndividuals();
 
+	public void setAssertedConcepts(Integer individual, Set<OWLClass> assertedConcepts);
 }

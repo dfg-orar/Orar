@@ -9,7 +9,6 @@ import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 
 import orar.abstraction.AbstractionGeneratorTemplate;
-import orar.modeling.ontology.OrarOntology;
 import orar.modeling.ontology2.OrarOntology2;
 import orar.type.IndividualType;
 

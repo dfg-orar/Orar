@@ -24,6 +24,7 @@ import orar.abstraction.AbstractionGenerator;
 import orar.abstraction.RoleAssertionBetweenRepresentativesXGenerator;
 import orar.data.AbstractDataFactory;
 import orar.data.DataForTransferingEntailments;
+import orar.data.DataForTransferringEntailmentInterface;
 import orar.data.MetaDataOfOntology;
 import orar.modeling.ontology.OrarOntology;
 import orar.modeling.ontology2.OrarOntology2;
@@ -32,7 +33,7 @@ import orar.type.IndividualType;
 public class DLLiteR_AbstractionGenerator implements AbstractionGenerator {
 	// private final Logger logger =
 	// Logger.getLogger(DLiteR_AbstractionGenerator.class);
-	protected final DataForTransferingEntailments sharedMap;
+	protected final DataForTransferringEntailmentInterface sharedMap;
 	protected final MetaDataOfOntology metaDataOfOntology;
 
 	protected final OWLOntologyManager manager;

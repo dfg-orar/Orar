@@ -71,4 +71,6 @@ public interface AssertionTransporter {
 	 *         be used as an input for the rule engine.
 	 */
 	public Set<Set<Integer>> getNewlyAddedSameasAssertions();
+	
+	public Set<Integer> getIndividualsHavingNewAssertions();
 }

@@ -23,13 +23,13 @@ import orar.modeling.roleassertion2.IndexedRoleAssertion;
 import orar.modeling.roleassertion2.IndexedRoleAssertionList;
 import orar.refinement.abstractroleassertion.RoleAssertionList;
 import orar.rolereasoning.AxiomOfSpecificTypeGetter;
-import x.util.Pause;
-import x.util.PrintingHelper;
+import orar.util.Pause;
+import orar.util.PrintingHelper;
 
 public class InverseRoleRuleExecutor implements RuleExecutor {
 	private static final Logger logger = Logger.getLogger(InverseRoleRuleExecutor.class);
 	private final Set<IndexedRoleAssertion> newRoleAssertions;
-	
+	private boolean isIncrementalStepAfterFirstAbstraction=false;
 	private final OrarOntology2 orarOntology;
 	private final OWLDataFactory dataFactory;
 	private boolean isABoxExtended;
@@ -218,6 +218,12 @@ public class InverseRoleRuleExecutor implements RuleExecutor {
 	@Override
 	public void clearOldBuffer() {
 		this.newRoleAssertions.clear();
+	}
+
+	@Override
+	public void setIncrementalAfterFirstAbstraction() {
+		this.isIncrementalStepAfterFirstAbstraction=true;
+		
 	}
 
 }

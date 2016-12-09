@@ -9,16 +9,16 @@ import org.junit.Test;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 
-import orar.type.BasicIndividualTypeFactory;
-import orar.type.BasicIndividualTypeFactory_UsingWeakHashMap;
+import orar.type.IndividualTypeFactory;
+import orar.type.IndividualTypeFactory_UsingWeakHashMap;
 import orar.type.IndividualType;
-import x.util.DefaultTestDataFactory;
+import orar.util.DefaultTestDataFactory;
 
 public class BasicIndividualTypeFactory_UsingWeakHashMap_Test {
 
 	OWLClass A, B;
 	OWLObjectProperty R, S;
-	BasicIndividualTypeFactory typeFactory = BasicIndividualTypeFactory_UsingWeakHashMap.getInstance();
+	IndividualTypeFactory typeFactory = IndividualTypeFactory_UsingWeakHashMap.getInstance();
 	Set<OWLClass> conceptNamesA;
 	Set<OWLClass> conceptNamesAB;
 	Set<OWLClass> conceptNamesBA;

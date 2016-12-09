@@ -9,7 +9,7 @@ import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 
 import junit.framework.Assert;
-import x.util.DefaultTestDataFactory;
+import orar.util.DefaultTestDataFactory;
 
 public class OrarOntologyTest {
 	DefaultTestDataFactory testData = DefaultTestDataFactory.getInsatnce();

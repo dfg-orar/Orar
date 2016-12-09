@@ -28,14 +28,15 @@ import org.semanticweb.owlapi.model.OWLTransitiveObjectPropertyAxiom;
 import junit.framework.Assert;
 import orar.data.AbstractDataFactory;
 import orar.data.DataForTransferingEntailments;
+import orar.data.DataForTransferringEntailmentInterface;
 import orar.data.MetaDataOfOntology;
 import orar.dlreasoner.DLReasoner;
 import orar.dlreasoner.HermitDLReasoner;
+import orar.innerreasoner.InnerReasoner;
+import orar.innerreasoner.HornSHOIF.Konclude_HornSHOIF_InnerReasoner;
 import orar.refinement.abstractroleassertion.AbstractRoleAssertionBox;
-import x.innerreasoner.InnerReasoner;
-import x.innerreasoner.HornSHOIF.Konclude_HornSHOIF_InnerReasoner;
-import x.util.DefaultTestDataFactory;
-import x.util.PrintingHelper;
+import orar.util.DefaultTestDataFactory;
+import orar.util.PrintingHelper;
 
 public class Konclude_HornSHOIF_InnerReasonerTest {
 	DefaultTestDataFactory testData = DefaultTestDataFactory.getInsatnce();
@@ -86,7 +87,7 @@ public class Konclude_HornSHOIF_InnerReasonerTest {
 	OWLDataFactory dataFactory = OWLManager.getOWLDataFactory();
 	MetaDataOfOntology metaDataOfOntology = MetaDataOfOntology.getInstance();
 	AbstractDataFactory abstractDataFactory = AbstractDataFactory.getInstance();
-	DataForTransferingEntailments dataForTransferingEntailments = DataForTransferingEntailments.getInstance();
+	DataForTransferringEntailmentInterface dataForTransferingEntailments = DataForTransferingEntailments.getInstance();
 
 	/**
 	 * Should get assertion from R^2_t: N(a)-->T(a,a)

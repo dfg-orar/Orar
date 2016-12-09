@@ -6,11 +6,11 @@ import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import orar.config.Configuration;
 import orar.config.LogInfo;
 import orar.config.StatisticVocabulary;
+import orar.io.ontologyreader.DLLiteH_OntologyReader;
+import orar.io.ontologyreader.OntologyReader;
+import orar.materializer.Materializer;
 import orar.materializer.DLLiteExtensions.DLLiteExtension_Materializer_Hermit;
 import orar.modeling.ontology2.OrarOntology2;
-import x.io.ontologyreader.DLLiteH_OntologyReader;
-import x.io.ontologyreader.OntologyReader;
-import x.materializer.Materializer;
 
 public class MaterializeNPD {
 	static String tboxFileName = "/Users/kien/benchmarks/npd-v2/npd.owl";

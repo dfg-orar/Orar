@@ -4,16 +4,18 @@ import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 
 import orar.config.Configuration;
 import orar.config.LogInfo;
+import orar.io.ontologyreader.HornSHOIF_OntologyReader;
+import orar.io.ontologyreader.OntologyReader;
 import orar.modeling.ontology.OrarOntology;
 import orar.modeling.ontology2.OrarOntology2;
-import x.io.ontologyreader.HornSHOIF_OntologyReader;
-import x.io.ontologyreader.OntologyReader;
-import x.util.PrintingHelper;
+import orar.util.PrintingHelper;
 
 public class LoadingOntology {
+//	static String tboxFileName = "src/test/resources/uobm_origintbox_oxforddata/uobmtbox_origin_workwith_oxford_generator.owl";
+//	static String aboxListFileName = "src/test/resources/uobm_origintbox_oxforddata/aboxListOf2.txt";
+
 	static String tboxFileName = "src/test/resources/uobm_origintbox_oxforddata/uobmtbox_origin_workwith_oxford_generator.owl";
 	static String aboxListFileName = "src/test/resources/uobm_origintbox_oxforddata/aboxListOf2.txt";
-
 	public static void main(String[] args) throws OWLOntologyCreationException {
 		Configuration.getInstance().clearDebugLevels();
 		Configuration.getInstance().clearLogInfoLevels();

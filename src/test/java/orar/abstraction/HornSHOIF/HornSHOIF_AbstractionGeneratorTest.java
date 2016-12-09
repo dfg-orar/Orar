@@ -26,13 +26,14 @@ import orar.data.AbstractDataFactory;
 import orar.data.MetaDataOfOntology;
 import orar.indexing.IndividualIndexer;
 import orar.data.DataForTransferingEntailments;
+import orar.data.DataForTransferringEntailmentInterface;
 import orar.modeling.ontology.MapbasedOrarOntology;
 import orar.modeling.ontology.OrarOntology;
 import orar.modeling.ontology2.MapbasedOrarOntology2;
 import orar.modeling.ontology2.OrarOntology2;
 import orar.type.IndividualType;
-import x.util.DefaultTestDataFactory;
-import x.util.PrintingHelper;
+import orar.util.DefaultTestDataFactory;
+import orar.util.PrintingHelper;
 
 public class HornSHOIF_AbstractionGeneratorTest {
 	DefaultTestDataFactory testData = DefaultTestDataFactory.getInsatnce();
@@ -82,7 +83,7 @@ public class HornSHOIF_AbstractionGeneratorTest {
 	OWLObjectProperty funcRole = testData.getRole("funcRole");
 	OWLObjectProperty invFuncRole = testData.getRole("invFuncRole");
 	MetaDataOfOntology sharedData = MetaDataOfOntology.getInstance();
-	DataForTransferingEntailments sharedMap = DataForTransferingEntailments.getInstance();
+	DataForTransferringEntailmentInterface sharedMap = DataForTransferingEntailments.getInstance();
 	AbstractDataFactory abstractDataFactory = AbstractDataFactory.getInstance();
 	@Before
 	public void init() {
@@ -130,8 +131,8 @@ public class HornSHOIF_AbstractionGeneratorTest {
 		 * compute type and generate the abstraction
 		 */
 
-		TypeComputor typeComputor = new BasicTypeComputor();
-		Map<IndividualType, Set<Integer>> typeMap2Individuals = typeComputor.computeTypes(orarOntology);
+		TypeComputor typeComputor = new BasicTypeComputor(orarOntology);
+		Map<IndividualType, Set<Integer>> typeMap2Individuals = typeComputor.computeTypes();
 		AbstractionGenerator abstractionGenerator = new HornSHOIF_AbstractionGenerator(orarOntology,
 				typeMap2Individuals);
 		OWLOntology abstraction = abstractionGenerator.getAbstractOntology();
@@ -205,8 +206,8 @@ public class HornSHOIF_AbstractionGeneratorTest {
 		 * compute type and generate the abstraction
 		 */
 
-		TypeComputor typeComputor = new BasicTypeComputor();
-		Map<IndividualType, Set<Integer>> typeMap2Individuals = typeComputor.computeTypes(orarOntology);
+		TypeComputor typeComputor = new BasicTypeComputor(orarOntology);
+		Map<IndividualType, Set<Integer>> typeMap2Individuals = typeComputor.computeTypes();
 		AbstractionGenerator abstractionGenerator = new HornSHOIF_AbstractionGenerator(orarOntology,
 				typeMap2Individuals);
 		OWLOntology abstraction = abstractionGenerator.getAbstractOntology();

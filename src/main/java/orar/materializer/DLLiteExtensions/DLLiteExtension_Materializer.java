@@ -11,15 +11,13 @@ import org.semanticweb.owlapi.model.OWLOntology;
 
 import orar.abstraction.AbstractionGenerator;
 import orar.abstraction.DLLiteExtension.DLLiteExtension_AbstractionGenerator;
+import orar.innerreasoner.InnerReasoner;
+import orar.materializer.MaterializerTemplate2;
 import orar.modeling.ontology2.OrarOntology2;
 import orar.refinement.abstractroleassertion.AbstractRoleAssertionBox;
 import orar.refinement.assertiontransferring.AssertionTransporter;
 import orar.refinement.assertiontransferring.DLLiteExtensions.DLLiteExtension_AssertionTransporter;
-import orar.refinement.assertiontransferring.HornSHOIF.HornSHOIF_AssertionTransporter;
 import orar.type.IndividualType;
-import x.innerreasoner.InnerReasoner;
-import x.materializer.DLLiteExtension_MaterializerTemplate;
-import x.materializer.MaterializerTemplate2;
 
 public abstract class DLLiteExtension_Materializer extends MaterializerTemplate2 {
 	public DLLiteExtension_Materializer(OrarOntology2 normalizedOrarOntology) {
@@ -42,7 +40,7 @@ public abstract class DLLiteExtension_Materializer extends MaterializerTemplate2
 			Map<OWLNamedIndividual, Set<OWLClass>> entailedAbstractConceptAssertionsForY,
 			Map<OWLNamedIndividual, Set<OWLClass>> entailedAbstractConceptAssertionsForZ,
 			AbstractRoleAssertionBox entailedAbstractRoleAssertion,
-			Map<OWLNamedIndividual, Set<OWLNamedIndividual>> entailedSameasMap)  {
+			Map<OWLNamedIndividual, Set<OWLNamedIndividual>> entailedSameasMap) {
 		AssertionTransporter assertionTransporter = new DLLiteExtension_AssertionTransporter(normalizedORAROntology,
 				entailedAbstractConceptAssertionsForX, entailedAbstractRoleAssertion, entailedSameasMap);
 		return assertionTransporter;

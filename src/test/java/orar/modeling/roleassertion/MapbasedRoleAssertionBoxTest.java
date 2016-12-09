@@ -9,8 +9,8 @@ import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.semanticweb.owlapi.model.OWLObjectPropertyAssertionAxiom;
 
-import x.util.DefaultTestDataFactory;
-import x.util.PrintingHelper;
+import orar.util.DefaultTestDataFactory;
+import orar.util.PrintingHelper;
 
 public class MapbasedRoleAssertionBoxTest {
 	DefaultTestDataFactory testData = DefaultTestDataFactory.getInsatnce();

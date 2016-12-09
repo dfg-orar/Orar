@@ -2,11 +2,11 @@ package orar.materializer.HornSHOIF;
 
 import org.semanticweb.owlapi.model.OWLOntology;
 
+import orar.innerreasoner.InnerReasoner;
+import orar.innerreasoner.HornSHOIF.Konclude_HornSHOIF_InnerReasoner;
+import orar.innerreasoner.HornSHOIF.Konclude_HornSHOIF_InnerReasoner2;
 import orar.modeling.ontology.OrarOntology;
 import orar.modeling.ontology2.OrarOntology2;
-import x.innerreasoner.InnerReasoner;
-import x.innerreasoner.HornSHOIF.Konclude_HornSHOIF_InnerReasoner;
-import x.innerreasoner.HornSHOIF.Konclude_HornSHOIF_InnerReasoner2;
 
 public class HornSHOIF_Materializer_KoncludeOptimized extends HornSHOIF_MaterializerOptimized {
 	private int port = 8080;

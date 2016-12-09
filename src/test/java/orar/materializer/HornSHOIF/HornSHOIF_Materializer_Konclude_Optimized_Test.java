@@ -16,11 +16,12 @@ import orar.data.NormalizationDataFactory;
 import orar.dlreasoner.DLReasoner;
 import orar.dlreasoner.HermitDLReasoner;
 import orar.indexing.IndividualIndexer;
+import orar.io.ontologyreader.HornSHOIF_OntologyReader;
+import orar.io.ontologyreader.OntologyReader;
+import orar.materializer.Materializer;
 import orar.modeling.ontology2.OrarOntology2;
-import x.io.ontologyreader.HornSHOIF_OntologyReader;
-import x.io.ontologyreader.OntologyReader;
-import x.materializer.Materializer;
-import x.util.PrintingHelper;
+import orar.type.IndividualTypeFactory_UsingWeakHashMap;
+import orar.util.PrintingHelper;
 
 public class HornSHOIF_Materializer_Konclude_Optimized_Test {
 	@Before
@@ -29,6 +30,7 @@ public class HornSHOIF_Materializer_Konclude_Optimized_Test {
 		NormalizationDataFactory.getInstance().clear();
 		AbstractDataFactory.getInstance().clear();
 		DataForTransferingEntailments.getInstance().clear();
+		IndividualTypeFactory_UsingWeakHashMap.getInstance().clear();
 	}
 
 	@Test
@@ -38,7 +40,14 @@ public class HornSHOIF_Materializer_Konclude_Optimized_Test {
 		String ontologyPath = "src/test/resources/merigng/test1.owl";
 		haveTheSameResults(ontologyPath);
 	}
-
+	@SuppressWarnings("NOTE THAT: HermiT has a bug on this ontology. e.g. it failed to return c1,c2 when query for sameas of c3")
+	@Test
+	public void testMerging2() {
+		Configuration.getInstance().addAllDebugInfos();
+		String ontologyPath = "src/test/resources/merigng/test2_hermit_bug_on_merging.owl";
+		haveTheSameResults(ontologyPath);
+	}
+	
 	@SuppressWarnings("NOTE THAT: HermiT has a bug on this ontology. e.g. it failed to return c1,c2 when query for sameas of c3")
 	@Test
 	public void testMerging3() {
@@ -61,6 +70,16 @@ public class HornSHOIF_Materializer_Konclude_Optimized_Test {
 		Configuration.getInstance().addAllDebugInfos();
 
 		String ontologyPath = "src/test/resources/merigng/test5.owl";
+		haveTheSameResults(ontologyPath);
+	}
+
+	@Test
+	public void testTranstivity1() {
+		Configuration.getInstance().addAllDebugInfos();
+		/*
+		 * a-T->b-T->c-T->d-T->e; T SubroleOf R
+		 */
+		String ontologyPath = "src/test/resources/transitivity/testTran1.owl";
 		haveTheSameResults(ontologyPath);
 	}
 
@@ -302,9 +321,21 @@ public class HornSHOIF_Materializer_Konclude_Optimized_Test {
 		String aboxList = "src/test/resources/uobm-origin/abox/aboxListOf2.txt";
 		haveTheSameResults(ontologyTbox, aboxList);
 	}
-
+	@Test
+	public void testSameAsInABox() {
+		String ontologyTbox = "/Users/kien/pagoda/PAGOdA-master/data/smalltest/testSameAs.owl";
+		String aboxList = "/Users/kien/pagoda/PAGOdA-master/data/smalltest/testSameAsABoxList.txt";
+		haveTheSameResults(ontologyTbox, aboxList);
+	}
 	
-
+	@Test
+	public void testExampleWherePagodaFailed() {
+		String ontologyTbox = "/Users/kien/pagoda/PAGOdA-master/data/smalltest/pagodaFailureTBox.owl";
+		String aboxList = "/Users/kien/pagoda/PAGOdA-master/data/smalltest/pagodaFailureABoxList.txt";
+		haveTheSameResults(ontologyTbox, aboxList);
+	}
+	
+	
 	@Test
 	public void testCountingRoleAssertion() {
 		NormalizationDataFactory.getInstance().clear();
@@ -375,7 +406,7 @@ public class HornSHOIF_Materializer_Konclude_Optimized_Test {
 		Assert.assertTrue(checker.isConceptAssertionComplete());
 		Assert.assertTrue(checker.isSameasComplete());
 		Assert.assertTrue(checker.isRoleAssertionComplete());
-//		Assert.assertTrue(checker.isCountingAssertionCorrect());
+		// Assert.assertTrue(checker.isCountingAssertionCorrect());
 	}
 
 	/**
@@ -419,6 +450,6 @@ public class HornSHOIF_Materializer_Konclude_Optimized_Test {
 		Assert.assertTrue(checker.isConceptAssertionComplete());
 		Assert.assertTrue(checker.isSameasComplete());
 		Assert.assertTrue(checker.isRoleAssertionComplete());
-//		Assert.assertTrue(checker.isCountingAssertionCorrect());
+		// Assert.assertTrue(checker.isCountingAssertionCorrect());
 	}
 }

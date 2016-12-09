@@ -9,6 +9,7 @@ import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 
 import orar.abstraction.PairOfSubjectAndObject;
+import orar.type.IndividualType;
 
 /**
  * Data using to transfer entailments from the abstraction to the original ABox.
@@ -17,14 +18,17 @@ import orar.abstraction.PairOfSubjectAndObject;
  * @author kien
  *
  */
-public class DataForTransferingEntailments {
-	private static DataForTransferingEntailments instance;
+public class DataForTransferingEntailments implements DataForTransferringEntailmentInterface {
+	private static DataForTransferringEntailmentInterface instance;
+
+	private final Map<IndividualType, Set<Integer>> mapType2Individuals;
 
 	private final Map<Integer, OWLNamedIndividual> mapIndividual2XAbstract;
 	/*
 	 * Maps: x/y/z --> original individuals. x,y,z are abstract individuals for
 	 * combined-type.
 	 */
+	private final Map<OWLNamedIndividual, IndividualType> xAbstract2TypeMap;
 	private final Map<OWLNamedIndividual, Set<Integer>> xAbstract2OriginalIndividualsMap;
 	private final Map<OWLNamedIndividual, Set<Integer>> yAbstract2OriginalIndividualsMap;
 	private final Map<OWLNamedIndividual, Set<Integer>> zAbstract2OriginalIndividualsMap;
@@ -55,6 +59,7 @@ public class DataForTransferingEntailments {
 
 	private DataForTransferingEntailments() {
 
+		this.xAbstract2TypeMap = new HashMap<>();
 		this.xAbstract2OriginalIndividualsMap = new HashMap<OWLNamedIndividual, Set<Integer>>();
 		this.yAbstract2OriginalIndividualsMap = new HashMap<OWLNamedIndividual, Set<Integer>>();
 		this.zAbstract2OriginalIndividualsMap = new HashMap<OWLNamedIndividual, Set<Integer>>();
@@ -69,64 +74,109 @@ public class DataForTransferingEntailments {
 
 		this.mapIndividual2XAbstract = new HashMap<Integer, OWLNamedIndividual>();
 
+		this.mapType2Individuals = new HashMap<>();
+
 	}
 
-	public static DataForTransferingEntailments getInstance() {
+	public static DataForTransferringEntailmentInterface getInstance() {
 		if (instance == null) {
 			instance = new DataForTransferingEntailments();
 		}
 		return instance;
 	}
 
+	/* (non-Javadoc)
+	 * @see orar.data.DataForTransferringEntailmentInterface#getMap_XAbstractIndiv_2_Type()
+	 */
+	@Override
+	public Map<OWLNamedIndividual, IndividualType> getMap_XAbstractIndiv_2_Type() {
+		return this.xAbstract2TypeMap;
+	}
+
+	/* (non-Javadoc)
+	 * @see orar.data.DataForTransferringEntailmentInterface#getMap_XAbstractIndiv_2_OriginalIndivs()
+	 */
+	@Override
 	public Map<OWLNamedIndividual, Set<Integer>> getMap_XAbstractIndiv_2_OriginalIndivs() {
 		return xAbstract2OriginalIndividualsMap;
 	}
 
+	/* (non-Javadoc)
+	 * @see orar.data.DataForTransferringEntailmentInterface#getMap_YAbstractIndiv_2_OriginalIndivs()
+	 */
+	@Override
 	public Map<OWLNamedIndividual, Set<Integer>> getMap_YAbstractIndiv_2_OriginalIndivs() {
 		return yAbstract2OriginalIndividualsMap;
 	}
 
+	/* (non-Javadoc)
+	 * @see orar.data.DataForTransferringEntailmentInterface#getMap_ZAbstractIndiv_2_OriginalIndivs()
+	 */
+	@Override
 	public Map<OWLNamedIndividual, Set<Integer>> getMap_ZAbstractIndiv_2_OriginalIndivs() {
 		return zAbstract2OriginalIndividualsMap;
 	}
 
+	/* (non-Javadoc)
+	 * @see orar.data.DataForTransferringEntailmentInterface#getMap_UAbstractIndiv_2_OriginalIndivs()
+	 */
+	@Override
 	public Map<OWLNamedIndividual, Set<Integer>> getMap_UAbstractIndiv_2_OriginalIndivs() {
 		return uAbstract2OriginalIndividualsMap;
 	}
 
+	/* (non-Javadoc)
+	 * @see orar.data.DataForTransferringEntailmentInterface#getMap_XY_2_Role()
+	 */
+	@Override
 	public Map<PairOfSubjectAndObject, OWLObjectProperty> getMap_XY_2_Role() {
 		return xyMap2Role;
 	}
 
+	/* (non-Javadoc)
+	 * @see orar.data.DataForTransferringEntailmentInterface#getMap_ZX_2_Role()
+	 */
+	@Override
 	public Map<PairOfSubjectAndObject, OWLObjectProperty> getMap_ZX_2_Role() {
 		return zxMap2Role;
 	}
 
-	/**
-	 * @return a set of abstract indiv x whose type contains functional roles.
+	/* (non-Javadoc)
+	 * @see orar.data.DataForTransferringEntailmentInterface#getMapType_2_Individuals()
 	 */
+	@Override
+	public Map<IndividualType, Set<Integer>> getMapType_2_Individuals() {
+		return this.mapType2Individuals;
+	}
+
+	/* (non-Javadoc)
+	 * @see orar.data.DataForTransferringEntailmentInterface#getxAbstractHavingFunctionalRole()
+	 */
+	@Override
 	public Set<OWLNamedIndividual> getxAbstractHavingFunctionalRole() {
 		return xAbstractHavingFunctionalRole;
 	}
 
-	/**
-	 * @return a set of abstract indiv z whose type contains inverse functional
-	 *         roles.
+	/* (non-Javadoc)
+	 * @see orar.data.DataForTransferringEntailmentInterface#getzAbstractHavingInverseFunctionalRole()
 	 */
+	@Override
 	public Set<OWLNamedIndividual> getzAbstractHavingInverseFunctionalRole() {
 		return zAbstractHavingInverseFunctionalRole;
 	}
 
+	/* (non-Javadoc)
+	 * @see orar.data.DataForTransferringEntailmentInterface#getMapIndividual2XAbstract()
+	 */
+	@Override
 	public Map<Integer, OWLNamedIndividual> getMapIndividual2XAbstract() {
 		return mapIndividual2XAbstract;
 	}
 
-	/**
-	 * @param abstractInd
-	 * @return a set of original individuals for which the abstractInd
-	 *         represents.<b> Note </b> that changing in this set will affect
-	 *         the mapping.
+	/* (non-Javadoc)
+	 * @see orar.data.DataForTransferringEntailmentInterface#getOriginalIndividuals(org.semanticweb.owlapi.model.OWLNamedIndividual)
 	 */
+	@Override
 	public Set<Integer> getOriginalIndividuals(OWLNamedIndividual abstractInd) {
 
 		AbstractDataFactory abstractDataFactory = AbstractDataFactory.getInstance();
@@ -139,13 +189,15 @@ public class DataForTransferingEntailments {
 			return this.yAbstract2OriginalIndividualsMap.get(abstractInd);
 		} else if (abstractDataFactory.getZAbstractIndividuals().contains(abstractInd)) {
 			return this.zAbstract2OriginalIndividualsMap.get(abstractInd);
-		} else return new HashSet<Integer>();
-		
+		} else
+			return new HashSet<Integer>();
+
 	}
 
-	/**
-	 * Clear all maps.
+	/* (non-Javadoc)
+	 * @see orar.data.DataForTransferringEntailmentInterface#clear()
 	 */
+	@Override
 	public void clear() {
 
 		this.xAbstract2OriginalIndividualsMap.clear();
@@ -161,5 +213,19 @@ public class DataForTransferingEntailments {
 		this.zAbstractHavingInverseFunctionalRole.clear();
 
 		this.mapIndividual2XAbstract.clear();
+
+		/*
+		 * Note to not clear the map from Type --> set of individuals.
+		 */
+//		this.mapType2Individuals.clear();
+//		this.xAbstract2TypeMap.clear();
+	}
+	/* (non-Javadoc)
+	 * @see orar.data.DataForTransferringEntailmentInterface#clearMapOfTypes()
+	 */
+	@Override
+	public void clearMapOfTypes() {
+		this.mapType2Individuals.clear();
+		this.xAbstract2TypeMap.clear();
 	}
 }

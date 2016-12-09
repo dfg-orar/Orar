@@ -23,8 +23,8 @@ import org.semanticweb.owlapi.model.OWLSymmetricObjectPropertyAxiom;
 import org.semanticweb.owlapi.model.OWLTransitiveObjectPropertyAxiom;
 import org.semanticweb.owlapi.reasoner.InferenceType;
 
-import x.util.Pause;
-import x.util.PrintingHelper;
+import orar.util.Pause;
+import orar.util.PrintingHelper;
 
 public class HermitRoleReasoner implements RoleReasoner {
 	private final Logger logger = Logger.getLogger(HermitRoleReasoner.class);

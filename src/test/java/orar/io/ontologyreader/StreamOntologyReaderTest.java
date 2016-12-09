@@ -12,10 +12,9 @@ import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 
-
+import orar.io.ontologyreader.OWLAPI2OrarConverter;
+import orar.io.ontologyreader.StreamOntologyReader2InternalModel;
 import orar.modeling.ontology2.OrarOntology2;
-import x.io.ontologyreader.OWLAPI2OrarConverter;
-import x.io.ontologyreader.StreamOntologyReader2InternalModel;
 
 public class StreamOntologyReaderTest {
 

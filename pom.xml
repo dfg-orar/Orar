@@ -225,7 +225,7 @@
 						<manifest>
 							<!-- <mainClass>orar.commandline.OrarDebuggerCLI</mainClass> -->
 							<!-- <mainClass>orar.commandline.DLReasonerCLI</mainClass> -->
-							<mainClass>x.commandline.OrarCLI</mainClass>
+							<mainClass>orar.commandline.Orar2CLI</mainClass>
 							<!-- <mainClass>orar.sandbox.IndexingPerformance</mainClass> -->
 						</manifest>
 						<manifestEntries>

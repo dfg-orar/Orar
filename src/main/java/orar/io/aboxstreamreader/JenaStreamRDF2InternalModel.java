@@ -19,6 +19,7 @@ import orar.config.Configuration;
 import orar.config.DebugLevel;
 import orar.indexing.IndividualIndexer;
 import orar.modeling.ontology2.OrarOntology2;
+import orar.type.StringFactory;
 
 /**
  * A RDF triple processing class based on Jena. It reads each triple from a file
@@ -41,6 +42,8 @@ public class JenaStreamRDF2InternalModel extends StreamRDFBase {
 	private final String RDF_NAMESPACE = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
 	private final String OWL_ONTOLOGY = OWL_NAMESPACE + "Ontology";
 	private final String OWL_IMPORTS = OWL_NAMESPACE + "imports";
+	private final String OWL_SAMEAS = OWL_NAMESPACE + "sameAs";
+	private final String OWL_DIFFERENTFROM = OWL_NAMESPACE + "differentFrom";
 
 	private final String OWL_NAMEDINDIVIDUAL = OWL_NAMESPACE + "NamedIndividual";
 	private final String OWL_CLASS = OWL_NAMESPACE + "Class";
@@ -51,7 +54,7 @@ public class JenaStreamRDF2InternalModel extends StreamRDFBase {
 	private int numberOfAllTriples;
 	private int numberOfDeclairedConceptAssertions;
 	private int numberOfDeclariedRoleAssertions;
-
+	private final StringFactory stringFactory;
 	private static final Logger logger = Logger.getLogger(JenaStreamRDF2InternalModel.class);
 	// private final Set<OWLObjectProperty> definedRoleNames;
 	// private final Set<OWLClass> definedConceptNames;
@@ -80,7 +83,7 @@ public class JenaStreamRDF2InternalModel extends StreamRDFBase {
 		this.numberOfDeclariedRoleAssertions = 0;
 		this.indexer = IndividualIndexer.getInstance();
 		turnOWLAPISignatureToStrings(definedRoleNames, definedConceptNames);
-
+		this.stringFactory = StringFactory.getInstance();
 	}
 
 	private void turnOWLAPISignatureToStrings(Set<OWLObjectProperty> definedRoleNames,
@@ -98,7 +101,7 @@ public class JenaStreamRDF2InternalModel extends StreamRDFBase {
 		Node subject = triple.getSubject();
 		Node predicate = triple.getPredicate();
 		Node object = triple.getObject();
-
+//		logger.info("" + subject + ", " + predicate + "," + object);
 		if (isClassAssertion(subject, predicate, object)) {
 			addClassAssertion(subject, object);
 
@@ -156,6 +159,11 @@ public class JenaStreamRDF2InternalModel extends StreamRDFBase {
 	 * @param object
 	 */
 	private void addObjectPropertyAssertion(Node subject, Node predicate, Node object) {
+
+		// String subjectString =
+		// this.stringFactory.getString(subject.toString());
+		// String objectString =
+		// this.stringFactory.getString(object.toString());
 
 		int subjectIndex = indexer.getIndexOfIndividualString(subject.toString());
 
@@ -226,6 +234,14 @@ public class JenaStreamRDF2InternalModel extends StreamRDFBase {
 	 */
 	private boolean isImportTriple(Node subject, Node predicate, Node object) {
 		if (predicate.toString().equals(OWL_IMPORTS)) {
+			return true;
+		}
+		return false;
+	}
+
+	private boolean isSameAsTriple(Node subject, Node predicate, Node object) {
+		boolean isData = subject.isLiteral() || object.isLiteral();
+		if (!isData && predicate.toString().equals(OWL_SAMEAS)) {
 			return true;
 		}
 		return false;

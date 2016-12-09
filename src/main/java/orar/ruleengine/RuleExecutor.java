@@ -19,4 +19,5 @@ public interface RuleExecutor {
 	public boolean isABoxExtended();
 
 	public void clearOldBuffer();
+	public void setIncrementalAfterFirstAbstraction();
 }

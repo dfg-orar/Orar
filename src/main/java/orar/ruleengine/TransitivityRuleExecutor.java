@@ -20,7 +20,7 @@ public class TransitivityRuleExecutor implements RuleExecutor {
 	private final MetaDataOfOntology metaDataOfOntology;
 	private final OWLDataFactory dataFactory;
 	private boolean isABoxExtended;
-
+	private boolean isIncrementalStepAfterFirstAbstraction = false;
 	private final Logger logger = Logger.getLogger(TransitivityRuleExecutor.class);
 
 	public TransitivityRuleExecutor(OrarOntology2 orarOntology) {
@@ -33,8 +33,8 @@ public class TransitivityRuleExecutor implements RuleExecutor {
 
 	@Override
 	public void materialize() {
-//		long startTime = System.currentTimeMillis();
-		
+		// long startTime = System.currentTimeMillis();
+
 		// get all transitive role assertions.
 		Queue<IndexedRoleAssertion> todoTranRoleAssertions = getAllTransitiveRoleAssertions();
 		// logger.info("all tran role assertions:"+todoTranRoleAssertions);
@@ -53,9 +53,9 @@ public class TransitivityRuleExecutor implements RuleExecutor {
 				}
 			}
 		}
-//		long endTime = System.currentTimeMillis();
-//		long time = (endTime-startTime)/1000;
-//		logger.info("time in materializer step: "+ time);
+		// long endTime = System.currentTimeMillis();
+		// long time = (endTime-startTime)/1000;
+		// logger.info("time in materializer step: "+ time);
 	}
 
 	private Queue<IndexedRoleAssertion> getAllTransitiveRoleAssertions() {
@@ -146,6 +146,12 @@ public class TransitivityRuleExecutor implements RuleExecutor {
 	@Override
 	public void clearOldBuffer() {
 		this.newRoleAssertions.clear();
+
+	}
+
+	@Override
+	public void setIncrementalAfterFirstAbstraction() {
+		this.isIncrementalStepAfterFirstAbstraction = true;
 
 	}
 

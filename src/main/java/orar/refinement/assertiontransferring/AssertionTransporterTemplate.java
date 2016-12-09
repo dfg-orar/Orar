@@ -16,13 +16,14 @@ import orar.config.Configuration;
 import orar.config.DebugLevel;
 import orar.config.LogInfo;
 import orar.data.DataForTransferingEntailments;
+import orar.data.DataForTransferringEntailmentInterface;
 import orar.indexing.IndividualIndexer;
 import orar.modeling.ontology.OrarOntology;
 import orar.modeling.ontology2.OrarOntology2;
 import orar.modeling.roleassertion2.IndexedRoleAssertionList;
 import orar.refinement.abstractroleassertion.AbstractRoleAssertionBox;
 import orar.refinement.abstractroleassertion.RoleAssertionList;
-import x.util.PrintingHelper;
+import orar.util.PrintingHelper;
 
 public abstract class AssertionTransporterTemplate implements AssertionTransporter {
 	// original ontology
@@ -37,7 +38,7 @@ public abstract class AssertionTransporterTemplate implements AssertionTransport
 	protected final Configuration config;
 	private static final Logger logger = Logger.getLogger(AssertionTransporterTemplate.class);
 	// map/data for transferring assertions
-	protected final DataForTransferingEntailments dataForTransferingEntailments;
+	protected final DataForTransferringEntailmentInterface dataForTransferingEntailments;
 	// output
 	protected final IndexedRoleAssertionList newRoleAssertions;
 	protected final Set<Set<Integer>> newSameasAssertions;
@@ -291,5 +292,8 @@ public abstract class AssertionTransporterTemplate implements AssertionTransport
 	@SuppressWarnings("Don't use, this method is only for being compatiable with the optimized version")
 	public boolean isABoxExtendedWithNewSameasAssertions(){
 		return false;
+	}
+	public Set<Integer> getIndividualsHavingNewAssertions(){
+		return new HashSet<>();
 	}
 }

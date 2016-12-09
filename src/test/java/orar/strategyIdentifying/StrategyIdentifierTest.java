@@ -15,7 +15,7 @@ import junit.framework.Assert;
 import orar.strategyindentifying.StrategyIdentifier;
 import orar.strategyindentifying.StrategyIdentifierImpl;
 import orar.strategyindentifying.StrategyName;
-import x.util.PrintingHelper;
+import orar.util.PrintingHelper;
 
 public class StrategyIdentifierTest {
 

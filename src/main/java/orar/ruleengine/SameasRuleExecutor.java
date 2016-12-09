@@ -4,28 +4,40 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 import java.util.Stack;
 
 import org.apache.log4j.Logger;
 
+import orar.abstraction.TypeComputor;
+import orar.abstraction2.BasicTypeComputor_Increment;
+import orar.data.DataForTransferingEntailments;
 import orar.modeling.ontology2.OrarOntology2;
 import orar.modeling.roleassertion2.IndexedRoleAssertion;
+import orar.type.IndividualType;
 
 public class SameasRuleExecutor implements RuleExecutor {
 
 	private final OrarOntology2 orarOntology;
 	private final Set<Set<Integer>> newSameasAssertions;
 	private boolean isABoxExtended;
+	private boolean isIncrementalStepAfterFirstAbstraction = false;
 	// private Queue<Set<OWLNamedIndividual>> localTodoSameas;
 	// private final Logger logger = Logger.getLogger(SameasRuleExecutor.class);
 	Logger logger = Logger.getLogger(SameasRuleExecutor.class);
-
+	/*
+	 * for incremental type computation
+	 */
+	private final TypeComputor typeComputor;
+	private final Map<IndividualType, Set<Integer>> mapType2Individuals;
 	public SameasRuleExecutor(OrarOntology2 orarOntology) {
 		this.orarOntology = orarOntology;
 		this.isABoxExtended = false;
 		this.newSameasAssertions = new HashSet<>();
+		this.typeComputor = new BasicTypeComputor_Increment(this.orarOntology);
+		this.mapType2Individuals = DataForTransferingEntailments.getInstance().getMapType_2_Individuals();
 	}
 
 	@Override
@@ -88,7 +100,13 @@ public class SameasRuleExecutor implements RuleExecutor {
 
 		return this.isABoxExtended;
 	}
-
+	private void removeIndividuslFromOldMapType2Individuals(IndividualType oldTYpe, Set<Integer> currentIndividuals,
+			Integer individualToBeRemoved) {
+		currentIndividuals.remove(individualToBeRemoved);
+		if (currentIndividuals.isEmpty()) {
+			this.mapType2Individuals.remove(oldTYpe);
+		}
+	}
 	@Override
 	public void incrementalMaterialize(Set<Integer> setOfSameasIndividuals) {
 		// logger.info("SameasRuleExecutor.incrementalMaterialize");
@@ -98,12 +116,46 @@ public class SameasRuleExecutor implements RuleExecutor {
 			accumulatedSameasIndividuals.addAll(this.orarOntology.getSameIndividuals(ind));
 		}
 		if (accumulatedSameasIndividuals.size() == 0) {
+			Integer firstIndiv=null;
+			if (this.isIncrementalStepAfterFirstAbstraction){
+			 firstIndiv = accumulatedSameasIndividuals.iterator().next();
+			IndividualType oldType = this.typeComputor.computeType(firstIndiv);
+			Set<Integer> oldIndividuals = this.mapType2Individuals.get(oldType);
+			removeIndividuslFromOldMapType2Individuals(oldType, oldIndividuals, firstIndiv);
+			}
+			
 			this.orarOntology.addNewManySameAsAssertions(setOfSameasIndividuals);
+			if (this.isIncrementalStepAfterFirstAbstraction){
+			this.typeComputor.computeType(firstIndiv);
+			}
 			this.isABoxExtended = true;
+			
+			
 		} else {
 			accumulatedSameasIndividuals.addAll(setOfSameasIndividuals);
+			
+			Integer firstIndiv=null;
+			IndividualType oldType =null;
+			Set<Integer> oldIndividuals =null;
+			if (this.isIncrementalStepAfterFirstAbstraction){
+			 firstIndiv = accumulatedSameasIndividuals.iterator().next();
+			oldType = this.typeComputor.computeType(firstIndiv);
+			oldIndividuals = this.mapType2Individuals.get(oldType);
+			
+			}
+			
 			if (!setOfSameasIndividuals.containsAll(accumulatedSameasIndividuals)) {
+				
+				if(this.isIncrementalStepAfterFirstAbstraction){
+					removeIndividuslFromOldMapType2Individuals(oldType, oldIndividuals, firstIndiv);
+				}
+				
 				this.orarOntology.addNewManySameAsAssertions(accumulatedSameasIndividuals);
+				
+				if(this.isIncrementalStepAfterFirstAbstraction){
+					this.typeComputor.computeTypeIncrementally(firstIndiv);
+				}
+				
 				this.isABoxExtended = true;
 				/*
 				 * We don't need to add new sameas assertions to todo because
@@ -135,5 +187,11 @@ public class SameasRuleExecutor implements RuleExecutor {
 	public void incrementalMaterialize(IndexedRoleAssertion roleAssertion) {
 		// nothing to to
 
+	}
+
+	@Override
+	public void setIncrementalAfterFirstAbstraction() {
+		this.isIncrementalStepAfterFirstAbstraction=true;
+		
 	}
 }

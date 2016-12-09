@@ -3,10 +3,7 @@ package orar.abstraction;
 import java.util.Map;
 import java.util.Set;
 
-import org.semanticweb.owlapi.model.OWLNamedIndividual;
-
 import orar.modeling.ontology.OrarOntology;
-import orar.modeling.ontology2.OrarOntology2;
 import orar.type.IndividualType;
 
 /**
@@ -25,6 +22,17 @@ public interface TypeComputor {
 	 *            internal data structure for an ontology.
 	 * @return A map: type ---> set of individuals of this type
 	 */
-	public Map<IndividualType, Set<Integer>> computeTypes(OrarOntology2 orarOntology);
+	public Map<IndividualType, Set<Integer>> computeTypes();
+
+	/**
+	 * Compute type of an individual; used in incremental algorithm
+	 * 
+	 * @param individual
+	 * @return type of this particular individual
+	 */
+	public IndividualType computeType(Integer individual);
+
+	public void computeTypeIncrementally(Set<Integer> individualsHavingNewAssertions);
+	public void computeTypeIncrementally(Integer individualHavingNewAssertions);
 
 }

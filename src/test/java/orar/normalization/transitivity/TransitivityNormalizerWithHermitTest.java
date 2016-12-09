@@ -12,8 +12,8 @@ import org.semanticweb.owlapi.model.OWLOntology;
 
 import junit.framework.Assert;
 import orar.data.NormalizationDataFactory;
-import x.util.DefaultTestDataFactory;
-import x.util.PrintingHelper;
+import orar.util.DefaultTestDataFactory;
+import orar.util.PrintingHelper;
 
 public class TransitivityNormalizerWithHermitTest {
 

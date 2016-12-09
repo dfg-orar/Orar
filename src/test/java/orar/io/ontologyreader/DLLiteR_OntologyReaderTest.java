@@ -16,10 +16,10 @@ import orar.data.AbstractDataFactory;
 import orar.data.DataForTransferingEntailments;
 import orar.data.MetaDataOfOntology;
 import orar.data.NormalizationDataFactory;
+import orar.io.ontologyreader.DLLiteH_OntologyReader;
+import orar.io.ontologyreader.OntologyReader;
 import orar.modeling.ontology2.OrarOntology2;
-import x.io.ontologyreader.DLLiteH_OntologyReader;
-import x.io.ontologyreader.OntologyReader;
-import x.util.PrintingHelper;
+import orar.util.PrintingHelper;
 
 public class DLLiteR_OntologyReaderTest {
 

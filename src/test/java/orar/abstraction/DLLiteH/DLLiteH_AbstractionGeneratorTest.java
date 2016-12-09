@@ -11,12 +11,12 @@ import orar.abstraction.AbstractionGenerator;
 import orar.abstraction.BasicTypeComputor;
 import orar.abstraction.TypeComputor;
 import orar.abstraction.DLLiteH.DLLiteR_AbstractionGenerator;
+import orar.io.ontologyreader.DLLiteH_OntologyReader;
+import orar.io.ontologyreader.OntologyReader;
 import orar.modeling.ontology.OrarOntology;
 import orar.modeling.ontology2.OrarOntology2;
 import orar.type.IndividualType;
-import x.io.ontologyreader.DLLiteH_OntologyReader;
-import x.io.ontologyreader.OntologyReader;
-import x.util.PrintingHelper;
+import orar.util.PrintingHelper;
 
 public class DLLiteH_AbstractionGeneratorTest {
 
@@ -43,9 +43,9 @@ public class DLLiteH_AbstractionGeneratorTest {
 		OntologyReader ontologyReader = new DLLiteH_OntologyReader();
 		OrarOntology2 normalizedOrarOntology = ontologyReader.getNormalizedOrarOntology(ontologyPath);
 
-		TypeComputor typeComputor = new BasicTypeComputor();
+		TypeComputor typeComputor = new BasicTypeComputor(normalizedOrarOntology);
 		Map<IndividualType, Set<Integer>> typeMap2Individuals = typeComputor
-				.computeTypes(normalizedOrarOntology);
+				.computeTypes();
 
 		AbstractionGenerator abstractionGenerator = new DLLiteR_AbstractionGenerator(normalizedOrarOntology,
 				typeMap2Individuals);

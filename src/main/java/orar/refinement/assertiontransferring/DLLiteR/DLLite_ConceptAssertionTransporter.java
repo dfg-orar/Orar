@@ -14,6 +14,7 @@ import orar.config.Configuration;
 import orar.config.DebugLevel;
 import orar.data.AbstractDataFactory;
 import orar.data.DataForTransferingEntailments;
+import orar.data.DataForTransferringEntailmentInterface;
 import orar.modeling.ontology.OrarOntology;
 import orar.modeling.ontology2.OrarOntology2;
 import orar.modeling.roleassertion2.IndexedRoleAssertionList;
@@ -21,7 +22,7 @@ import orar.refinement.abstractroleassertion.AbstractRoleAssertionBox;
 import orar.refinement.abstractroleassertion.RoleAssertionList;
 import orar.refinement.assertiontransferring.AssertionTransporter;
 import orar.refinement.assertiontransferring.AssertionTransporterTemplate;
-import x.util.PrintingHelper;
+import orar.util.PrintingHelper;
 
 public class DLLite_ConceptAssertionTransporter implements AssertionTransporter {
 	// original ontology
@@ -35,7 +36,7 @@ public class DLLite_ConceptAssertionTransporter implements AssertionTransporter 
 	protected final Configuration config;
 	private static final Logger logger = Logger.getLogger(AssertionTransporterTemplate.class);
 	// map/data for transferring assertions
-	protected final DataForTransferingEntailments dataForTransferingEntailments;
+	protected final DataForTransferringEntailmentInterface dataForTransferingEntailments;
 	protected final AbstractDataFactory abstractDataFactory;
 
 	public DLLite_ConceptAssertionTransporter(OrarOntology2 orarOntoloy,
@@ -155,5 +156,8 @@ public class DLLite_ConceptAssertionTransporter implements AssertionTransporter 
 	public boolean isABoxExtendedWithNewSameasAssertions() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	public Set<Integer> getIndividualsHavingNewAssertions(){
+		return new HashSet<>();
 	}
 }

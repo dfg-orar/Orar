@@ -8,7 +8,7 @@ import java.util.Set;
 import org.junit.Test;
 
 import junit.framework.Assert;
-import x.util.MapComparator;
+import orar.util.MapComparator;
 
 public class MapComparatorTest {
 

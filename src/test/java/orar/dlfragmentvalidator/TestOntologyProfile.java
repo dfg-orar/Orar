@@ -4,10 +4,10 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import orar.io.ontologyreader.HornSHOIF_OntologyReader;
+import orar.io.ontologyreader.OntologyReader;
 import orar.modeling.ontology2.OrarOntology2;
-import x.io.ontologyreader.HornSHOIF_OntologyReader;
-import x.io.ontologyreader.OntologyReader;
-import x.util.PrintingHelper;
+import orar.util.PrintingHelper;
 
 public class TestOntologyProfile {
 

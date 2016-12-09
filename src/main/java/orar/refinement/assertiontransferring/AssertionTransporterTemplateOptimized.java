@@ -16,12 +16,13 @@ import orar.config.Configuration;
 import orar.config.DebugLevel;
 import orar.config.LogInfo;
 import orar.data.DataForTransferingEntailments;
+import orar.data.DataForTransferringEntailmentInterface;
 import orar.indexing.IndividualIndexer;
 import orar.modeling.ontology2.OrarOntology2;
 import orar.modeling.roleassertion2.IndexedRoleAssertionList;
 import orar.refinement.abstractroleassertion.AbstractRoleAssertionBox;
 import orar.refinement.abstractroleassertion.RoleAssertionList;
-import x.util.PrintingHelper;
+import orar.util.PrintingHelper;
 
 public abstract class AssertionTransporterTemplateOptimized implements AssertionTransporter {
 	// original ontology
@@ -43,7 +44,7 @@ public abstract class AssertionTransporterTemplateOptimized implements Assertion
 	protected final Configuration config;
 	private static final Logger logger = Logger.getLogger(AssertionTransporterTemplateOptimized.class);
 	// map/data for transferring assertions
-	protected final DataForTransferingEntailments dataForTransferingEntailments;
+	protected final DataForTransferringEntailmentInterface dataForTransferingEntailments;
 	// output
 	protected final IndexedRoleAssertionList newRoleAssertions;
 	protected final Set<Set<Integer>> newSameasAssertions;
@@ -317,5 +318,8 @@ public abstract class AssertionTransporterTemplateOptimized implements Assertion
 	@Override
 	public Set<Set<Integer>> getNewlyAddedSameasAssertions() {
 		return this.newSameasAssertions;
+	}
+	public Set<Integer> getIndividualsHavingNewAssertions(){
+		return new HashSet<>();
 	}
 }

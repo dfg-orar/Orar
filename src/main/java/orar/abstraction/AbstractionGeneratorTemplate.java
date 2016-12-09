@@ -22,6 +22,7 @@ import org.semanticweb.owlapi.model.OWLOntologyManager;
 
 import orar.data.AbstractDataFactory;
 import orar.data.DataForTransferingEntailments;
+import orar.data.DataForTransferringEntailmentInterface;
 import orar.data.MetaDataOfOntology;
 import orar.modeling.ontology2.OrarOntology2;
 import orar.type.IndividualType;
@@ -34,7 +35,7 @@ import orar.type.IndividualType;
  */
 public abstract class AbstractionGeneratorTemplate implements AbstractionGenerator {
 	private final Logger logger = Logger.getLogger(AbstractionGeneratorTemplate.class);
-	protected final DataForTransferingEntailments sharedMap;
+	protected  DataForTransferringEntailmentInterface sharedMap;
 	protected final MetaDataOfOntology metaDataOfOntology;
 
 	protected final OWLOntologyManager manager;
@@ -127,7 +128,7 @@ public abstract class AbstractionGeneratorTemplate implements AbstractionGenerat
 
 	}
 
-	private Set<OWLAxiom> generateAssertions(IndividualType type) {
+	protected Set<OWLAxiom> generateAssertions(IndividualType type) {
 		Set<OWLAxiom> abstractAssertions = new HashSet<OWLAxiom>();
 		/*
 		 * create x
@@ -207,7 +208,7 @@ public abstract class AbstractionGeneratorTemplate implements AbstractionGenerat
 			 */
 			Set<Integer> originalIndsMappedToZ = new HashSet<Integer>();
 
-			Set<Integer> originalIndsForX = sharedMap.getMap_XAbstractIndiv_2_OriginalIndivs().get(x);
+			Set<Integer> originalIndsForX = getOriginalIndivsForX(x);
 			for (Integer indForX : originalIndsForX) {
 				originalIndsMappedToZ.addAll(orarOntology.getPredecessors(indForX, preRole));
 			}
@@ -226,7 +227,9 @@ public abstract class AbstractionGeneratorTemplate implements AbstractionGenerat
 		return preRoleAssertions;
 
 	}
-
+	protected Set<Integer> getOriginalIndivsForX(OWLNamedIndividual x){
+		return sharedMap.getMap_XAbstractIndiv_2_OriginalIndivs().get(x);
+	}
 	protected Set<OWLAxiom> getSuccessorRoleAssertions(OWLNamedIndividual x, IndividualType type) {
 		Set<OWLAxiom> propertyAssertions = new HashSet<OWLAxiom>();
 		for (OWLObjectProperty succRole : type.getSuccessorRoles()) {
@@ -245,7 +248,7 @@ public abstract class AbstractionGeneratorTemplate implements AbstractionGenerat
 			 */
 			Set<Integer> originalIndsMappedToY = new HashSet<Integer>();
 
-			Set<Integer> originalIndsForX = sharedMap.getMap_XAbstractIndiv_2_OriginalIndivs().get(x);
+			Set<Integer> originalIndsForX = getOriginalIndivsForX(x);
 			for (Integer indForX : originalIndsForX) {
 				originalIndsMappedToY.addAll(orarOntology.getSuccessors(indForX, succRole));
 			}
@@ -263,7 +266,7 @@ public abstract class AbstractionGeneratorTemplate implements AbstractionGenerat
 		}
 		return propertyAssertions;
 	}
-
+	
 	protected abstract Set<OWLAxiom> getConceptAssertionsForConceptType(IndividualType type);
 
 	protected abstract void markXHavingFunctionalRole(OWLNamedIndividual xIndividual, IndividualType type);

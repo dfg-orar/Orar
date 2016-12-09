@@ -18,4 +18,5 @@ public interface RuleEngine {
 	public void addTodoRoleAsesrtions(Set<IndexedRoleAssertion> odoRoleAssertions);
 
 	public long getReasoningTime();
+	public void setIncrementalAfterFirstAbstraction();
 }

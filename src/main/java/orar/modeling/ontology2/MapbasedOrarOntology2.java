@@ -30,7 +30,7 @@ import orar.modeling.roleassertion2.MapbasedRoleAssertionBox2;
 import orar.modeling.roleassertion2.RoleAssertionBox2;
 import orar.modeling.sameas2.MapbasedSameAsBox2;
 import orar.modeling.sameas2.SameAsBox2;
-import x.util.MapOperator;
+import orar.util.MapOperator;
 
 public class MapbasedOrarOntology2 implements OrarOntology2 {
 	private static final Logger logger = Logger.getLogger(MapbasedOrarOntology2.class);

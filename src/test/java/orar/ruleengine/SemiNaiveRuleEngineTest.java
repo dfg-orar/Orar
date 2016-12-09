@@ -9,16 +9,17 @@ import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 
 import orar.data.DataForTransferingEntailments;
+import orar.data.DataForTransferringEntailmentInterface;
 import orar.data.MetaDataOfOntology;
 import orar.indexing.IndividualIndexer;
+import orar.io.ontologyreader.HornSHOIF_OntologyReader;
+import orar.io.ontologyreader.OntologyReader;
 import orar.modeling.ontology2.MapbasedOrarOntology2;
 import orar.modeling.ontology2.OrarOntology2;
 import orar.rolereasoning.HermitRoleReasoner;
 import orar.rolereasoning.RoleReasoner;
-import x.io.ontologyreader.HornSHOIF_OntologyReader;
-import x.io.ontologyreader.OntologyReader;
-import x.util.DefaultTestDataFactory;
-import x.util.PrintingHelper;
+import orar.util.DefaultTestDataFactory;
+import orar.util.PrintingHelper;
 
 public class SemiNaiveRuleEngineTest {
 	DefaultTestDataFactory testData = DefaultTestDataFactory.getInsatnce();
@@ -84,7 +85,7 @@ public class SemiNaiveRuleEngineTest {
 
 	OWLObjectProperty funcRole = testData.getRole("funcRole");
 	OWLObjectProperty invFuncRole = testData.getRole("invFuncRole");
-	DataForTransferingEntailments sharedMap = DataForTransferingEntailments.getInstance();
+	DataForTransferringEntailmentInterface sharedMap = DataForTransferingEntailments.getInstance();
 	MetaDataOfOntology metaDataOfOntology = MetaDataOfOntology.getInstance();
 
 	@Before

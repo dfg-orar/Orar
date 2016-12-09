@@ -6,11 +6,11 @@ import orar.data.AbstractDataFactory;
 import orar.data.DataForTransferingEntailments;
 import orar.data.MetaDataOfOntology;
 import orar.data.NormalizationDataFactory;
+import orar.io.ontologyreader.HornSHOIF_OntologyReader;
+import orar.io.ontologyreader.OntologyReader;
+import orar.materializer.Materializer;
 import orar.materializer.HornSHOIF.HornSHOIF_Materializer_KoncludeOptimized;
 import orar.modeling.ontology2.OrarOntology2;
-import x.io.ontologyreader.HornSHOIF_OntologyReader;
-import x.io.ontologyreader.OntologyReader;
-import x.materializer.Materializer;
 
 public class Merging {
 

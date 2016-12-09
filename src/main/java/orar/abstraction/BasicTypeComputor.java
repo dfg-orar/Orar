@@ -1,6 +1,5 @@
 package orar.abstraction;
 
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
@@ -8,16 +7,15 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import org.semanticweb.owlapi.model.OWLClass;
-
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 
-import orar.modeling.ontology.OrarOntology;
+import orar.data.DataForTransferingEntailments;
 import orar.modeling.ontology2.OrarOntology2;
 import orar.type.BasicIndividualType;
-import orar.type.BasicIndividualTypeFactory;
-import orar.type.BasicIndividualTypeFactory_UsingWeakHashMap;
 import orar.type.IndividualType;
-import x.util.MapOperator;
+import orar.type.IndividualTypeFactory;
+import orar.type.IndividualTypeFactory_UsingWeakHashMap;
+import orar.util.MapOperator;
 
 /**
  * Computing types for all individuals, taking equivalent individuals into
@@ -27,22 +25,19 @@ import x.util.MapOperator;
  *
  */
 public class BasicTypeComputor implements TypeComputor {
-	// private final BasicIndividualTypeFactory typeFactory;
+	protected Map<IndividualType, Set<Integer>> typeMap2Individuals;
+	protected OrarOntology2 orarOntology;
+	protected IndividualTypeFactory typeFactory;
 
-	// private Configuration config;
-	// private static Logger logger =
-	// Logger.getLogger(HornSHOIF_TypeComputor.class);
-
-	public BasicTypeComputor() {
-		// typeFactory =
-		// BasicIndividualTypeFactory_UsingWeakHashMap.getInstance();
-
-		// this.config = Configuration.getInstance();
+	public BasicTypeComputor(OrarOntology2 orarOntology) {
+		this.orarOntology = orarOntology;
+		this.typeMap2Individuals = DataForTransferingEntailments.getInstance().getMapType_2_Individuals();
+		this.typeFactory = IndividualTypeFactory_UsingWeakHashMap.getInstance();
 	}
 
 	@Override
-	public Map<IndividualType, Set<Integer>> computeTypes(OrarOntology2 orarOntology) {
-		Map<IndividualType, Set<Integer>> typeMap2Individuals = new HashMap<IndividualType, Set<Integer>>();
+	public Map<IndividualType, Set<Integer>> computeTypes() {
+
 		Set<Integer> todoIndividuals = orarOntology.getIndividualsInSignature();
 		Set<Integer> processedIndividuals = new HashSet<Integer>();
 		/*
@@ -82,7 +77,7 @@ public class BasicTypeComputor implements TypeComputor {
 					orarOntology.addManyConceptAssertions(currentIndividual, concepts);
 				}
 				// create type and add to the resulting map
-				IndividualType type = new BasicIndividualType(concepts, preRoles, sucRoles);
+				IndividualType type = this.typeFactory.getIndividualType(concepts, preRoles, sucRoles);
 
 				// Map type to a set of individuals
 
@@ -216,6 +211,37 @@ public class BasicTypeComputor implements TypeComputor {
 		}
 		return accumulatedRoles;
 
+	}
+
+	@Override
+	public IndividualType computeType(Integer currentIndividual) {
+		/*
+		 * collect from assertions of "currentIndividual" and its equal
+		 * individuals
+		 */
+		Set<Integer> sameIndsOfCurrentIndividual = orarOntology.getSameIndividuals(currentIndividual);
+		// sameInds should contains also the "currentIndividual"
+		sameIndsOfCurrentIndividual.add(currentIndividual);
+
+		// get element of accumulate type
+		Set<OWLClass> concepts = getConcepts(sameIndsOfCurrentIndividual, orarOntology);
+		Set<OWLObjectProperty> preRoles = getPreRoles(sameIndsOfCurrentIndividual, currentIndividual, orarOntology);
+		Set<OWLObjectProperty> sucRoles = getSuccRoles(sameIndsOfCurrentIndividual, currentIndividual, orarOntology);
+
+		// create type and add to the resulting map
+		IndividualType type = this.typeFactory.getIndividualType(concepts, preRoles, sucRoles);
+		return type;
+	}
+
+	@Override
+	public void computeTypeIncrementally(Set<Integer> individualsHavingNewAssertions) {
+		// Do nothing
+	}
+
+	@Override
+	public void computeTypeIncrementally(Integer individualHavingNewAssertions) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

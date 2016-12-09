@@ -1,6 +1,5 @@
 package orar.materializer.HornSHIF;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -11,16 +10,13 @@ import org.semanticweb.owlapi.model.OWLOntology;
 
 import orar.abstraction.AbstractionGenerator;
 import orar.abstraction.HornSHIF.HornSHIF_AbstractionGenerator;
-import orar.modeling.ontology.OrarOntology;
+import orar.innerreasoner.InnerReasoner;
+import orar.materializer.MaterializerTemplate2;
 import orar.modeling.ontology2.OrarOntology2;
 import orar.refinement.abstractroleassertion.AbstractRoleAssertionBox;
 import orar.refinement.assertiontransferring.AssertionTransporter;
-import orar.refinement.assertiontransferring.HornSHIF.HornSHIF_AssertionTransporter;
 import orar.refinement.assertiontransferring.HornSHIF.HornSHIF_AssertionTransporterOptimized;
 import orar.type.IndividualType;
-import x.innerreasoner.InnerReasoner;
-import x.materializer.MaterializerTemplate;
-import x.materializer.MaterializerTemplate2;
 
 public abstract class HornSHIF_MaterializerOptimized extends MaterializerTemplate2 {
 

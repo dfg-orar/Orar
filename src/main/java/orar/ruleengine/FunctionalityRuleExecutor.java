@@ -20,6 +20,7 @@ public class FunctionalityRuleExecutor implements RuleExecutor {
 //	private final Set<Set<Integer>> flattednewSameasAssertions;
 	private final OrarOntology2 orarOntology;
 	private final MetaDataOfOntology metaDataOfOntology;
+	private boolean isIncrementalStepAfterFirstAbstraction=false;
 	// private final Logger logger =
 	// Logger.getLogger(FunctionalityRuleExecutor.class);
 	Logger logger = Logger.getLogger(FunctionalityRuleExecutor.class);
@@ -184,6 +185,12 @@ public class FunctionalityRuleExecutor implements RuleExecutor {
 	@Override
 	public void clearOldBuffer() {
 		this.newSameasAssertions.clear();
+	}
+
+	@Override
+	public void setIncrementalAfterFirstAbstraction() {
+	this.isIncrementalStepAfterFirstAbstraction=true;
+		
 	}
 
 }
